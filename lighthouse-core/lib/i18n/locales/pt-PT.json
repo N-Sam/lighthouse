@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "O Lighthouse não conseguiu ler o `start_url` do manifesto. Como resultado, o `start_url` foi assumido como o URL do documento. Mensagem de erro: \"{manifestWarning}\"."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Superior ao orçamento"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Mantenha a quantidade e o tamanho dos pedidos de rede abaixo dos alvos estabelecidos pelo orçamento de desempenho fornecido. [Saiba mais](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Os tempos de resposta do servidor são curtos (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Duração"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Hora de início"

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Το Lighthouse δεν μπόρεσε να διαβάσει το `start_url` από το μανιφέστο. Επομένως, το `start_url` θεωρήθηκε ότι είναι το URL του εγγράφου. Μήνυμα σφάλματος: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Υπέρβαση προϋπολογισμού"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Διατηρήστε την ποσότητα και το μέγεθος των αιτημάτων δικτύου εντός των στόχων που ορίζονται από τον παρεχόμενο προϋπολογισμό απόδοσης. [Μάθετε περισσότερα](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Οι χρόνοι απόκρισης διακομιστή είναι χαμηλοί (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Διάρκεια"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Ώρα έναρξης"

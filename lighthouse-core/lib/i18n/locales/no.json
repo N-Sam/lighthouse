@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse kunne ikke lese `start_url` i manifestet. Derfor ble det antatt at `start_url` var dokumentets nettadresse. Feilmelding: «{manifestWarning}»."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Over budsjett"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Sørg for at antall nettverksforespørsler og størrelsen på disse er lavere enn målene som er angitt i det aktuelle ytelsesbudsjettet. [Finn ut mer](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Svartiden til tjeneren er lav (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Varighet"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Starttid"

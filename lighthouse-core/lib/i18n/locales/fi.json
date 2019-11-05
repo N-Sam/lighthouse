@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "`start_url` ei ollut Lighthousen luettavissa luettelossa. Siksi oletimme, että `start_url` on dokumentin URL-osoite. Virheilmoitus: {manifestWarning}"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Ylittää budjetin"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Pidä verkkopyyntöjen määrä ja koko tehokkuusbudjetissa määritettyjen tavoitteiden rajoissa. [Lue lisää](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Palvelimen vastausajat ovat lyhyitä (ensimmäistä tavua edeltävä aika)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Kesto"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Aloitusaika"

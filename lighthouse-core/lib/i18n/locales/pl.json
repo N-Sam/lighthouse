@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Narzędziu Lighthouse nie udało się odczytać elementu `start_url` z pliku manifestu. Dlatego uznano, że `start_url` to URL dokumentu. Komunikat o błędzie: „{manifestWarning}”."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Przekroczenie budżetu"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Liczba ani rozmiar żądań sieciowych nie mogą przekraczać wartości określonych przez podany budżet wydajności. [Więcej informacji](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Czasy odpowiedzi serwera są krótkie (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Czas trwania"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Czas rozpoczęcia"

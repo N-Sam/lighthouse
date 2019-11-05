@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Rīkā Lighthouse neizdevās no manifesta nolasīt `start_url`. Tāpēc tika pieņemts, ka `start_url` ir dokumenta URL. Kļūdas ziņojums: “{manifestWarning}”."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Pārsniegts budžets"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Saglabājiet tīkla pieprasījumu daudzumu un lielumu zem mērķiem, kas noteikti sniegtajā izpildes budžetā. [Uzziniet vairāk](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Servera atbildes laiks ir mazs (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Ilgums"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Sākuma laiks"

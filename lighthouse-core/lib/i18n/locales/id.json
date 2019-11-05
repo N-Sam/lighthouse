@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse tidak dapat membaca `start_url` dari manifes tersebut. Oleh karena itu, `start_url` dianggap sebagai URL dokumen. Pesan error: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Melebihi Anggaran"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Pertahankan jumlah dan ukuran permintaan jaringan di bawah target yang ditetapkan oleh anggaran performa yang disediakan. [Pelajari lebih lanjut](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Waktu respons server sedikit (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Durasi"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Waktu Mulai"

@@ -557,9 +557,9 @@ declare global {
       }
 
       export interface TimingSummary {
-        firstContentfulPaint: number | undefined;
+        firstContentfulPaint: number;
         firstContentfulPaintTs: number | undefined;
-        firstMeaningfulPaint: number | undefined;
+        firstMeaningfulPaint: number;
         firstMeaningfulPaintTs: number | undefined;
         largestContentfulPaint: number | undefined;
         largestContentfulPaintTs: number | undefined;
@@ -569,15 +569,16 @@ declare global {
         interactiveTs: number | undefined;
         speedIndex: number | undefined;
         speedIndexTs: number | undefined;
-        estimatedInputLatency: number | undefined;
+        estimatedInputLatency: number;
         estimatedInputLatencyTs: number | undefined;
-        totalBlockingTime: number | undefined;
-        observedNavigationStart: number | undefined;
-        observedNavigationStartTs: number | undefined;
+        maxPotentialFID: number | undefined;
+        totalBlockingTime: number;
+        observedNavigationStart: number;
+        observedNavigationStartTs: number;
         observedFirstPaint: number | undefined;
         observedFirstPaintTs: number | undefined;
-        observedFirstContentfulPaint: number | undefined;
-        observedFirstContentfulPaintTs: number | undefined;
+        observedFirstContentfulPaint: number;
+        observedFirstContentfulPaintTs: number;
         observedFirstMeaningfulPaint: number | undefined;
         observedFirstMeaningfulPaintTs: number | undefined;
         observedLargestContentfulPaint: number | undefined;
@@ -588,12 +589,12 @@ declare global {
         observedLoadTs: number | undefined;
         observedDomContentLoaded: number | undefined;
         observedDomContentLoadedTs: number | undefined;
-        observedFirstVisualChange: number | undefined;
-        observedFirstVisualChangeTs: number | undefined;
-        observedLastVisualChange: number | undefined;
-        observedLastVisualChangeTs: number | undefined;
-        observedSpeedIndex: number | undefined;
-        observedSpeedIndexTs: number | undefined;
+        observedFirstVisualChange: number;
+        observedFirstVisualChangeTs: number;
+        observedLastVisualChange: number;
+        observedLastVisualChangeTs: number;
+        observedSpeedIndex: number;
+        observedSpeedIndexTs: number;
       }
     }
   }

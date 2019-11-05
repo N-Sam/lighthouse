@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "„Lighthouse“ nepavyko nuskaityti `start_url` iš aprašo. Dėl to `start_url` buvo laikomas dokumento URL. Klaidos pranešimas: „{manifestWarning}“."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Viršijo biudžetą"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Tinklo užklausų kiekis ir dydis neturi viršyti tikslinių verčių, nustatytų našumo biudžete. [Sužinokite daugiau](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Serverio atsako laikas yra trumpas (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Trukmė"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Pradžios laikas"

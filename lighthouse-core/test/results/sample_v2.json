@@ -1259,6 +1259,7 @@
             "speedIndexTs": 185607736912,
             "estimatedInputLatency": 16,
             "totalBlockingTime": 117,
+            "maxPotentialFID": 123,
             "observedNavigationStart": 0,
             "observedNavigationStartTs": 185603319912,
             "observedFirstPaint": 3969,
@@ -5668,7 +5669,7 @@
         "audits[performance-budget].details.headings[2].text",
         "audits[resource-summary].details.headings[2].text"
       ],
-      "lighthouse-core/audits/performance-budget.js | columnOverBudget": [
+      "lighthouse-core/lib/i18n/i18n.js | columnOverBudget": [
         "audits[performance-budget].details.headings[4].text"
       ],
       "lighthouse-core/lib/i18n/i18n.js | scriptResourceType": [

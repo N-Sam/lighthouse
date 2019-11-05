@@ -19,23 +19,27 @@ const testDistPath = `${__dirname}/../../dist/test-bundle.js`;
 /**
  * Run Lighthouse using a CLI that shims lighthouse-core with the output of the bundler.
  * @param {string} url
- * @param {LH.Config.Json} config
+ * @param {LH.Config.Json=} config
  */
 async function runLighthouseFromMinifiedBundle(url, config) {
-  const configPath = `${__dirname}/../../.tmp/bundle-smoke-test-config.json`;
   const lhrPath = `${__dirname}/../../.tmp/bundle-smoke-test-lhr.json`;
   const gatherPath = `${__dirname}/../../.tmp/bundle-smoke-test-gather`;
 
-  fs.writeFileSync(configPath, JSON.stringify(config));
-
-  await execFileAsync('node', [
+  const args = [
     `${__dirname}/bundled-lighthouse-cli.js`,
     url,
-    `--config-path=${configPath}`,
     `-GA=${gatherPath}`,
     '--output=json',
     `--output-path=${lhrPath}`,
-  ]);
+  ];
+
+  if (config) {
+    const configPath = `${__dirname}/../../.tmp/bundle-smoke-test-config.json`;
+    fs.writeFileSync(configPath, JSON.stringify(config));
+    args.push(`--config-path=${configPath}`);
+  }
+
+  await execFileAsync('node', args);
 
   const lhr = JSON.parse(fs.readFileSync(lhrPath, 'utf-8'));
   const artifacts = JSON.parse(fs.readFileSync(`${gatherPath}/artifacts.json`, 'utf-8'));

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse no ha podido leer la propiedad `start_url` en el archivo de manifiesto. Por ello, se considera que el valor de `start_url` es la URL del documento. Mensaje de error: \"{manifestWarning}\"."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Por encima del límite"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Mantiene la cantidad y el tamaño de las solicitudes de red por debajo de los límites definidos en los límites de rendimiento. [Más información](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Los tiempos de respuesta del servidor son rápidos (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Duración"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Hora de inicio"

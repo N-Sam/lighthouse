@@ -30,6 +30,7 @@ Object {
   "interactiveTs": undefined,
   "largestContentfulPaint": undefined,
   "largestContentfulPaintTs": undefined,
+  "maxPotentialFID": 396.0000000000001,
   "observedDomContentLoaded": 560.294,
   "observedDomContentLoadedTs": 225414732309,
   "observedFirstContentfulPaint": 498.87,
@@ -64,6 +65,6 @@ Object {
     // Includs visual metrics from Speedline
     expect(result.metrics.observedFirstVisualChange).toBeDefined();
 
-    expect(result.debugInfo).toEqual({'lcpInvalidated': false});
+    expect(result.debugInfo).toEqual({lcpInvalidated: false});
   });
 });

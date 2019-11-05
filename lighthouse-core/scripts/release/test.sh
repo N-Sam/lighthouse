@@ -36,7 +36,7 @@ cd /tmp/lighthouse-local-test
 
 npm init -y
 npm install "$LH_PRISTINE_ROOT/lighthouse-$VERSION.tgz"
-npm explore lighthouse -- npm run smoke || npm explore lighthouse -- npm run smoke
+npm explore lighthouse -- npm run smoke -- --retries=3
 npm explore lighthouse -- npm run chrome # try the manual launcher
 npm explore lighthouse -- npm run fast -- http://example.com
 

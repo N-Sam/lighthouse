@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Nástroji Lighthouse se v manifestu nepodařilo přečíst atribut `start_url`. Proto se předpokládá, že adresou URL dokumentu je `start_url`. Chybová zpráva: {manifestWarning}"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Nad rozpočet"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Udržujte množství a velikost síťových požadavků pod cílovými hodnotami, které udává poskytnutý rozpočet výkonu. [Další informace](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Doby odezvy serveru jsou krátké (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Trvání"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Čas zahájení"

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "تعذّر على Lighthouse قراءة `start_url` من البيان. ونتيجة لذلك، كان من المفترض أن يكون `start_url` هو عنوان URL للمستند. رسالة خطأ: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "تجاوز الميزانية"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "يمكنك الحفاظ على كمية طلبات الشبكة وحجمها ضمن الاستهدافات المحدّدة في ميزانية الأداء المقدّمة. [مزيد من المعلومات](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "أوقات استجابة الخادم منخفضة (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "المدة"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "وقت البدء"

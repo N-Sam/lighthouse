@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "A Lighthouse nem tudta olvasni a manifest `start_url` elemét. Ennek következtében azt feltételezi, hogy a(z) `start_url` a dokumentum URL-címe. Hibaüzenet: „{manifestWarning}”."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Büdzsén kívül"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "A hálózati kérések száma és mérete maradjon a megadott teljesítménybüdzsé célpontjai alatt. [További információ](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Alacsony a szerver válaszideje (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Időtartam"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Kezdés ideje"

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse 无法从清单读取 `start_url`。因此，系统已将 `start_url` 视为该文档的网址。错误消息：“{manifestWarning}”。"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "超出预算"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "请将网络请求的数量和数据大小保持在提供的性能预算所设定的目标之内。[了解详情](https://developers.google.com/web/tools/lighthouse/audits/budgets)。"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "服务器响应用时较短 (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "时长"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "开始时间"

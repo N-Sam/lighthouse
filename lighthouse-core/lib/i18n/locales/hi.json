@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse, मेनिफ़ेस्ट फ़ाइल से `start_url` को नहीं ढूंढ सका. इसी वजह से, `start_url` को दस्तावेज़ का यूआरएल मान लिया गया. गड़बड़ी का मैसेज: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "बजट से ज़्यादा"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "नेटवर्क अनुरोधों की संख्या और उनकी क्वालिटी, आपको दिए गए परफ़ॉर्मेंस बजट की ओर से सेट किए गए लक्ष्यों के हिसाब से होनी चाहिए. [ज़्यादा जानें](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "सर्वर के जवाब देने के समय धीमे हैं (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "कुल समय"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "शुरुआत का समय"

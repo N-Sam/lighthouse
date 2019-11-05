@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse 無法從資訊清單中讀取 `start_url`，因此將 `start_url` 假設為文件的網址。錯誤訊息：「{manifestWarning}」。"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "超過預算"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "讓網路要求的數量和大小低於使用者根據效能預算所設定的目標。[瞭解詳情](https://developers.google.com/web/tools/lighthouse/audits/budgets)。"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "伺服器回應時間低 (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "時間長度"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "開始時間"

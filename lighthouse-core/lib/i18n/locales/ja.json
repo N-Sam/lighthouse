@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse でマニフェストから `start_url` を読み取れませんでした。その結果、`start_url` はドキュメントの URL と認識されています。エラー メッセージ: 「{manifestWarning}」。"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "予算超過"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "ネットワーク リクエストの数とサイズが、指定したパフォーマンス予算の設定目標内に収まるよう維持します。[詳細](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "サーバーの応答時間が遅い（TTFB）"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "継続時間"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "開始時間"

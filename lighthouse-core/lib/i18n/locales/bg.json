@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse не можа да прочете `start_url` от манифеста. В резултат на това бе предположено, че URL адресът на документа изпълнява функцията на `start_url`. Съобщение за грешка: „{manifestWarning}“."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Надхвърля бюджета"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Поддържайте количеството и обема на мрежовите заявки под целевите стойности в посочения бюджет за ефективността. [Научете повече](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Сървърът отговаря бързо (време до първия байт)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Продължителност"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Начален час"

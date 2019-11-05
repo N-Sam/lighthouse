@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse не удалось прочитать `start_url` в файле манифеста. По этой причине в качестве URL документа была выбрана ссылка `start_url`. Сообщение об ошибке: \"{manifestWarning}\"."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Сверх бюджета"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Следите за тем, чтобы количество и размер сетевых запросов соответствовали целям, установленным в бюджете производительности. [Подробнее…](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Короткое время ответа сервера (время до получения первого байта)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Длительность"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Время начала"

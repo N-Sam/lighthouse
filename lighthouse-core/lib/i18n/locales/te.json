@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "మానిఫెస్ట్ నుండి '`start_url`'ను Lighthouse చదవలేకపోయింది. దీని ఫలితంగా, '`start_url`' అన్నది పత్రం యొక్క URLగా పరిగణించబడింది. ఎర్రర్ సందేశం: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "బడ్జెట్ దాటిపోయింది"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "నెట్‌వర్క్ అభ్యర్థనల సంఖ్య, పరిమాణాన్ని అందించబడిన పనితీరు బడ్జెట్ ప్రకారం నిర్దేశించిన లక్ష్యాల కంటే తక్కువకు ఉంచండి. [మరింత తెలుసుకోండి](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "సర్వర్ ప్రతిస్పందన సమయాలు తక్కువగా ఉన్నాయి (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "వ్యవధి"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "ప్రారంభ సమయం"

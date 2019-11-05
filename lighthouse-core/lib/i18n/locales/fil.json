@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Hindi mabasa ng Lighthouse ang `start_url` na galing sa manifest. Dahil dito, ipinagpapalagay na `start_url` ang URL ng dokumento. Mensahe ng error: '{manifestWarning}.'"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Lampas sa Badyet"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Panatilihin ang dami at laki ng mga kahilingan sa network sa ilalim ng mga target na itinakda ng ibinigay na badyet sa performance. [Matuto pa](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Masyadong matagal ang pagtugon ng server (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Tagal"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Oras ng Pagsisimula"

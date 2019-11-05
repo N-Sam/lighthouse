@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "[Ļîĝĥţĥöûšé çöûļðñ'ţ ŕéåð ţĥé ᐅ`start_url`ᐊ ƒŕöm ţĥé måñîƒéšţ. Åš å ŕéšûļţ, ţĥé ᐅ`start_url`ᐊ ŵåš åššûméð ţö бé ţĥé ðöçûméñţ'š ÛŔĻ. Éŕŕöŕ méššåĝé: 'ᐅ{manifestWarning}ᐊ'. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty]"
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "[Övéŕ Бûðĝéţ one two]"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "[Ķééþ ţĥé qûåñţîţý åñð šîžé öƒ ñéţŵöŕķ ŕéqûéšţš ûñðéŕ ţĥé ţåŕĝéţš šéţ бý ţĥé þŕövîðéð þéŕƒöŕmåñçé бûðĝéţ. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://developers.google.com/web/tools/lighthouse/audits/budgets)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen]"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "[Šéŕvéŕ ŕéšþöñšé ţîméš åŕé ļöŵ (ŢŢFБ) one two three four five six seven eight]"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "[Ðûŕåţîöñ one]"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "[Šţåŕţ Ţîmé one two]"

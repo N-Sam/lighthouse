@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse ni mogel prebrati URL-ja `start_url` v manifestu. Za URL dokumenta se je posledično imelo ta URL: `start_url`. Sporočilo o napaki: »{manifestWarning}«."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Prek proračuna"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Količino in velikosti omrežnih zahtev imejte pod cilji, ki so nastavljeni z navedenim proračunom za uspešnost. [Več o tem](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Odzivni časi strežnika so nizki (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Trajanje"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Začetni čas"

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse, manifest dosyasından `start_url` öğesini okuyamadı. Bu yüzden `start_url` dokümanın URL'si olarak kabul edildi. Hata mesajı: \"{manifestWarning}\"."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Bütçe Aşımı"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Ağ isteklerinin miktarını ve büyüklüğünü, performans bütçesi tarafından belirlenen hedeflerin altında tutun. [Daha fazla bilgi](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Sunucu yanıt süreleri düşük (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Süre"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Başlangıç Zamanı"

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse không đọc được `start_url` trong tệp kê khai. Do đó, `start_url` được giả định là URL của tài liệu. Thông báo lỗi: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Vượt ngân sách"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Đảm bảo số lượng và quy mô của yêu cầu mạng thấp hơn mục tiêu đặt ra của ngân sách hiệu suất đã cung cấp. [Tìm hiểu thêm](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Thời gian phản hồi của máy chủ chậm (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Thời lượng"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Thời gian bắt đầu"

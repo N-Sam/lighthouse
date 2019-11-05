@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse nu a putut citi `start_url` din manifest. Prin urmare, s-a presupus că `start_url` este adresa URL a documentului. Mesaj de eroare: „{manifestWarning}”."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Peste buget"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Păstrează cantitatea și dimensiunea solicitărilor din rețea sub obiectivele stabilite de bugetul de performanță solicitat. [Află mai multe](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Serverul răspunde repede (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Durată"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Ora de începere"

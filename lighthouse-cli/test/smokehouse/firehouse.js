@@ -14,8 +14,8 @@
 /* eslint-disable no-console */
 
 const log = require('lighthouse-logger');
-const smokeTests = require('./smoke-test-dfns.js');
-const {collateResults, report} = require('./smokehouse-report.js');
+const smokeTests = require('./test-definitions/core-tests.js');
+const report = require('./report-assert.js');
 
 /**
  * @param {Smokehouse.FirehouseOptions} options
@@ -42,10 +42,11 @@ async function runSmokes(options) {
       modify && modify(test, expected);
       const results = await runLighthouse(expected.lhr.requestedUrl, test.config);
       console.log(`Asserting expected results match those found. (${expected.lhr.requestedUrl})`);
-      const collated = collateResults(results, expected);
-      const counts = report(collated);
+      const counts = report(results, expected);
       passingCount += counts.passed;
       failingCount += counts.failed;
+      // Log buffered report logging.
+      console.log(counts.log);
     }
   }
 

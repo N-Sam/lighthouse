@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse kunde inte läsa `start_url` i manifestet. Därför antogs det att `start_url` var dokumentets webbadress. Felmeddelande: {manifestWarning}."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Över budget"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Håll antal och storlek för nätverksbegäranden under de mål som anges i den angivna prestandabudgeten. [Läs mer](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "Servern svarar snabbt (tid till första byte)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Varaktighet"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Starttid"

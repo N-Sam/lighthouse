@@ -22,8 +22,6 @@ const UIStrings = {
     =1 {1 request}
     other {# requests}
    }`,
-  /** Label for a column in a data table; entries will be how much the quantity or size of network requests exceeded a predetermined budget.*/
-  columnOverBudget: 'Over Budget',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -139,7 +137,7 @@ class ResourceBudget extends Audit {
       {key: 'requestCount', itemType: 'numeric', text: str_(i18n.UIStrings.columnRequests)},
       {key: 'size', itemType: 'bytes', text: str_(i18n.UIStrings.columnTransferSize)},
       {key: 'countOverBudget', itemType: 'text', text: ''},
-      {key: 'sizeOverBudget', itemType: 'bytes', text: str_(UIStrings.columnOverBudget)},
+      {key: 'sizeOverBudget', itemType: 'bytes', text: str_(i18n.UIStrings.columnOverBudget)},
     ];
 
     return {

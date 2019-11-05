@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "מערכת Lighthouse לא הצליחה לקרוא את `start_url` מהמניפסט. כתוצאה מכך, התבצעה הנחה ש-`start_url` היא כתובת ה-URL של המסמך. הודעת שגיאה: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "גובה החריגה מהתקציב"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "הכמות והגודל של בקשות ברשת צריכים להיות מתחת ליעדים שהוגדרו בתקציב הביצועים הרלוונטי. [מידע נוסף](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "זמני התגובה של השרת ארוכים (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "משך זמן"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "שעת התחלה"

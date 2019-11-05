@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse가 매니페스트에서 `start_url`을(를) 읽지 못했습니다. 그 결과 `start_url`은(는) 문서 URL인 것으로 간주되었습니다. 오류 메시지는 '{manifestWarning}'입니다."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "예산 초과"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "네트워크 요청의 양과 크기는 제공된 성능 예산에 따라 설정된 목표치 아래로 유지하세요. [자세히 알아보기](https://developers.google.com/web/tools/lighthouse/audits/budgets)"
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "서버 응답 시간 낮음(TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "시간"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "시작 시간"

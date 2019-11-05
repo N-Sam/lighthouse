@@ -14,6 +14,7 @@ const FirstCPUIdle = require('./first-cpu-idle.js');
 const Interactive = require('./interactive.js');
 const SpeedIndex = require('./speed-index.js');
 const EstimatedInputLatency = require('./estimated-input-latency.js');
+const MaxPotentialFID = require('./max-potential-fid.js');
 const TotalBlockingTime = require('./total-blocking-time.js');
 const makeComputedArtifact = require('../computed-artifact.js');
 
@@ -44,6 +45,7 @@ class TimingSummary {
     const largestContentfulPaint = await requestOrUndefined(LargestContentfulPaint, metricComputationData); // eslint-disable-line max-len
     const firstCPUIdle = await requestOrUndefined(FirstCPUIdle, metricComputationData);
     const interactive = await requestOrUndefined(Interactive, metricComputationData);
+    const maxPotentialFID = await requestOrUndefined(MaxPotentialFID, metricComputationData);
     const speedIndex = await requestOrUndefined(SpeedIndex, metricComputationData);
     const estimatedInputLatency = await EstimatedInputLatency.request(metricComputationData, context); // eslint-disable-line max-len
     const totalBlockingTime = await TotalBlockingTime.request(metricComputationData, context); // eslint-disable-line max-len
@@ -66,6 +68,7 @@ class TimingSummary {
       estimatedInputLatency: estimatedInputLatency.timing,
       estimatedInputLatencyTs: estimatedInputLatency.timestamp,
       totalBlockingTime: totalBlockingTime.timing,
+      maxPotentialFID: maxPotentialFID && maxPotentialFID.timing,
 
       // Include all timestamps of interest from trace of tab
       observedNavigationStart: traceOfTab.timings.navigationStart,

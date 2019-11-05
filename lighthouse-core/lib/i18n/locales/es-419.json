@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "Lighthouse no pudo leer el atributo `start_url` del manifiesto. Por lo tanto, se tomó como `start_url` la URL del documento. Mensaje de error: \"{manifestWarning}\"."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "Superior a la estimación"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "Asegúrate de que la cantidad y el tamaño de las solicitudes de red sean menores que los valores objetivo establecidos en la estimación de rendimiento. [Obtén más información](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "La respuesta del servidor es lenta (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "Duración"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "Hora de inicio"

@@ -815,9 +815,6 @@
   "lighthouse-core/audits/offline-start-url.js | warningCantStart": {
     "message": "மெனிஃபெஸ்ட்டில் இருந்து `start_url`ஐ Lighthouseஸால் படிக்க முடியவில்லை. இதனால் `start_url` இந்த ஆவணத்தின் URL ஆகக் கருதப்பட்டது. பிழைச் செய்தி: '{manifestWarning}'."
   },
-  "lighthouse-core/audits/performance-budget.js | columnOverBudget": {
-    "message": "பட்ஜெட்டைத் தாண்டிவிட்டது"
-  },
   "lighthouse-core/audits/performance-budget.js | description": {
     "message": "நெட்வொர்க் கோரிக்கைகளின் அளவையும் எண்ணிக்கையையும் செயல்திறன் பட்ஜெட் அமைத்துள்ள இலக்கீடுகளுக்குள் வைத்திருக்கவும். [மேலும் அறிக](https://developers.google.com/web/tools/lighthouse/audits/budgets)."
   },
@@ -1069,9 +1066,6 @@
   },
   "lighthouse-core/audits/time-to-first-byte.js | title": {
     "message": "சேவையகம் எதிர்வினையாற்றும் நேரங்கள் குறைவாக உள்ளன (TTFB)"
-  },
-  "lighthouse-core/audits/user-timings.js | columnDuration": {
-    "message": "கால அளவு"
   },
   "lighthouse-core/audits/user-timings.js | columnStartTime": {
     "message": "தொடக்க நேரம்"
