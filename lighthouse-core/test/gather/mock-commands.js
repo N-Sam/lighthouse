@@ -22,8 +22,9 @@
  */
 function createMockSendCommandFn() {
   const mockResponses = [];
-  const mockFn = jest.fn().mockImplementation((command, ...args) => {
-    const indexOfResponse = mockResponses.findIndex(entry => entry.command === command);
+  const mockFn = jest.fn().mockImplementation((command, sessionId, ...args) => {
+    const indexOfResponse = mockResponses
+      .findIndex(entry => entry.command === command && entry.sessionId === sessionId);
     if (indexOfResponse === -1) throw new Error(`${command} unimplemented`);
     const {response, delay} = mockResponses[indexOfResponse];
     mockResponses.splice(indexOfResponse, 1);
@@ -37,9 +38,14 @@ function createMockSendCommandFn() {
     return mockFn;
   };
 
-  mockFn.findInvocation = command => {
-    expect(mockFn).toHaveBeenCalledWith(command, expect.anything());
-    return mockFn.mock.calls.find(call => call[0] === command)[1];
+  mockFn.mockResponseToSession = (command, sessionId, response, delay) => {
+    mockResponses.push({command, sessionId, response, delay});
+    return mockFn;
+  };
+
+  mockFn.findInvocation = (command, sessionId) => {
+    expect(mockFn).toHaveBeenCalledWith(command, sessionId, expect.anything());
+    return mockFn.mock.calls.find(call => call[0] === command && call[1] === sessionId)[2];
   };
 
   return mockFn;

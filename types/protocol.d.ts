@@ -12,11 +12,6 @@ declare global {
      */
     export type RawEventMessage = RawEventMessageRecord[keyof RawEventMessageRecord];
 
-    export interface RawSource {
-      targetId?: string;
-      sessionId: string;
-    }
-
     /**
      * Raw (over the wire) message format of all possible Crdp command responses.
      */
@@ -70,8 +65,8 @@ type RawEventMessageRecord = {
     method: K,
     // Drop [] for `undefined` (so a JS value is valid).
     params: LH.CrdpEvents[K] extends [] ? undefined: LH.CrdpEvents[K][number]
-    // If the source is not set, it means the event was from the root target.
-    source?: LH.Protocol.RawSource
+    // If sessionId is not set, it means the event was from the root target.
+    sessionId?: string;
   };
 }
 
