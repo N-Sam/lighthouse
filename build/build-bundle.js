@@ -36,6 +36,8 @@ const locales = fs.readdirSync(__dirname + '/../lighthouse-core/lib/i18n/locales
 /** @param {string} file */
 const isDevtools = file => path.basename(file).includes('devtools');
 /** @param {string} file */
+const isExtension = file => path.basename(file).includes('extension');
+/** @param {string} file */
 const isLightrider = file => path.basename(file).includes('lightrider');
 
 const BANNER = `// lighthouse, browserified. ${VERSION} (${COMMIT_HASH})\n`;
@@ -76,8 +78,8 @@ async function browserifyFile(entryPath, distPath) {
     bundle.ignore(require.resolve('../lighthouse-core/report/html/html-report-assets.js'));
   }
 
-  // Don't include locales in DevTools.
-  if (isDevtools(entryPath)) {
+  // Don't include locales in DevTools or the extension for now.
+  if (isDevtools(entryPath) || isExtension(entryPath)) {
     // @ts-ignore bundle.ignore does accept an array of strings.
     bundle.ignore(locales);
   }

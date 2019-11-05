@@ -20,8 +20,7 @@ const libDetectorSource = fs.readFileSync(
 /** @typedef {false | {version: string|null}} JSLibraryDetectorTestResult */
 /**
  * @typedef JSLibraryDetectorTest
- * @property {string} id
- * @property {string} icon
+ * @property {string} icon Essentially an id, useful if no npm name is detected.
  * @property {string} url
  * @property {string|null} npm npm module name, if applicable to library.
  * @property {function(Window): JSLibraryDetectorTestResult | Promise<JSLibraryDetectorTestResult>} test Returns false if library is not present, otherwise returns an object that contains the library version (set to null if the version is not detected).
@@ -29,8 +28,8 @@ const libDetectorSource = fs.readFileSync(
 
 /**
  * @typedef JSLibrary
- * @property {string} id
  * @property {string} name
+ * @property {string} icon
  * @property {string|null} version
  * @property {string|null} npm
  */
@@ -54,8 +53,8 @@ async function detectLibraries() {
       const result = await lib.test(window);
       if (result) {
         libraries.push({
-          id: lib.id,
           name: name,
+          icon: lib.icon,
           version: result.version,
           npm: lib.npm,
         });
@@ -81,7 +80,7 @@ async function collectStacks(passContext) {
 
   return jsLibraries.map(lib => ({
     detector: /** @type {'js'} */ ('js'),
-    id: lib.id,
+    id: lib.npm || lib.icon,
     name: lib.name,
     version: lib.version || undefined,
     npm: lib.npm || undefined,

@@ -10,11 +10,10 @@ const mkdir = fs.promises.mkdir;
 
 const archiver = require('archiver');
 const cpy = require('cpy');
-const browserify = require('browserify');
-const path = require('path');
+const bundleBuilder = require('./build-bundle.js');
 
-const sourceName = 'popup.js';
-const distName = 'popup-bundle.js';
+const sourceName = 'extension-entry.js';
+const distName = 'lighthouse-ext-bundle.js';
 
 const sourceDir = __dirname + '/../clients/extension';
 const distDir = __dirname + '/../dist/extension';
@@ -24,25 +23,29 @@ const manifestVersion = require(`${sourceDir}/manifest.json`).version;
 /**
  * Browserify and minify entry point.
  */
-async function buildEntryPoint() {
+function buildEntryPoint() {
   const inFile = `${sourceDir}/scripts/${sourceName}`;
   const outFile = `${distDir}/scripts/${distName}`;
-  const bundleStream = browserify(inFile).bundle();
+  return bundleBuilder.build(inFile, outFile);
+}
 
-  await mkdir(path.dirname(outFile), {recursive: true});
-  return new Promise((resolve, reject) => {
-    const writeStream = fs.createWriteStream(outFile);
-    writeStream.on('finish', resolve);
-    writeStream.on('error', reject);
+/**
+ * Copy popup.js to dist folder, inlining the current commit hash along the way.
+ * @return {Promise<void>}
+ */
+async function copyPopup() {
+  let popupSrc = fs.readFileSync(`${sourceDir}/scripts/popup.js`, {encoding: 'utf8'});
+  popupSrc = popupSrc.replace(/__COMMITHASH__/g, bundleBuilder.COMMIT_HASH);
 
-    bundleStream.pipe(writeStream);
-  });
+  const popupDir = `${distDir}/scripts`;
+  await mkdir(popupDir, {recursive: true});
+  fs.writeFileSync(`${popupDir}/popup.js`, popupSrc);
 }
 
 /**
  * @return {Promise<void>}
  */
-function copyAssets() {
+async function copyAssets() {
   return cpy([
     '*.html',
     'styles/**/*.css',
@@ -89,6 +92,7 @@ async function run() {
   await Promise.all([
     buildEntryPoint(),
     copyAssets(),
+    copyPopup(),
   ]);
 }
 

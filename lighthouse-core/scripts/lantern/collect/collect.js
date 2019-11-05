@@ -7,7 +7,6 @@
 
 /** @typedef {import('./common.js').Result} Result */
 /** @typedef {import('./common.js').Summary} Summary */
-/** @typedef {ReturnType<typeof createTask>} Task */
 
 const fs = require('fs');
 const fetch = require('isomorphic-fetch');
@@ -87,11 +86,12 @@ async function runUnthrottledLocally(url) {
     '--throttling-method=provided',
     '--output=json',
     `-AG=${artifactsFolder}`,
-    process.env.OOPIFS === '1' ? '' : '--chrome-flags=--disable-features=site-per-process',
+    process.env.WITH_OOPIFS === '1' ? '' : '--chrome-flags=--disable-features=site-per-process',
   ], {
     // Default (1024 * 1024) is too small.
     maxBuffer: 10 * 1024 * 1024,
   });
+  // Make the JSON small.
   const lhr = JSON.parse(stdout);
   assertLhr(lhr);
   const devtoolsLog = fs.readFileSync(`${artifactsFolder}/defaultPass.devtoolslog.json`, 'utf-8');
@@ -105,19 +105,11 @@ async function runUnthrottledLocally(url) {
 
 /**
  * @param {string} url
- * @param {function():void} startedCb
  * @return {Promise<Result>}
  */
-async function runForWpt(url, startedCb) {
-  let started = false;
+async function runForWpt(url) {
   const {testId, jsonUrl} = await startWptTest(url);
-  if (DEBUG) log.log({url, testId, jsonUrl});
-
-  function triggerStarted() {
-    if (started) return;
-    started = true;
-    startedCb();
-  }
+  if (DEBUG) log.log({testId, jsonUrl});
 
   // Poll for the results every x seconds, where x = position in queue.
   let lhr;
@@ -127,7 +119,6 @@ async function runForWpt(url, startedCb) {
     const response = JSON.parse(responseJson);
 
     if (response.statusCode === 200) {
-      triggerStarted(); // just in case WPT was super fast.
       lhr = response.data.lighthouse;
       assertLhr(lhr);
       break;
@@ -135,12 +126,8 @@ async function runForWpt(url, startedCb) {
 
     if (response.statusCode >= 100 && response.statusCode < 200) {
       // If behindCount doesn't exist, the test is currently running.
-      // * Wait 30 seconds if the test is currently running.
-      // * Wait an additional 10 seconds for every test ahead of this one.
-      // * Don't wait for more than 10 minutes.
-      const secondsToWait = Math.min(30 + 10 * (response.data.behindCount || 0), 10 * 1000);
+      const secondsToWait = 30 + 10 * (response.data.behindCount || 0);
       if (DEBUG) log.log('poll wpt in', secondsToWait);
-      if (!response.data.behindCount) triggerStarted();
       await new Promise((resolve) => setTimeout(resolve, secondsToWait * 1000));
     } else {
       throw new Error(`unexpected response: ${response.statusCode} ${response.statusText}`);
@@ -188,184 +175,115 @@ function assertLhr(lhr) {
   if (lhr.runtimeError) throw new Error(`runtime error: ${lhr.runtimeError}`);
   const metrics = common.getMetrics(lhr);
   if (metrics && metrics.interactive && metrics.firstContentfulPaint) return;
-  throw new Error('run failed to get metrics for ' + lhr.requestedUrl);
+  throw new Error('run failed to get metrics');
 }
 
 /** @type {typeof common.ProgressLogger['prototype']} */
 let log;
 
-/**
- * @param {string} url
- */
-function createTask(url) {
-  const wptResultPromises = [];
-  /** @type {Result[]} */
-  const wptResults = [];
-  /** @type {function():void} */
-  let wptStartedPromiseResolve;
-  const wptStartedPromise = new Promise(resolve => wptStartedPromiseResolve = resolve);
-
-  // Can run in parallel.
-  for (let i = 0; i < SAMPLES; i++) {
-    // Just need one promise to notify when WPT begins. It's OK that `resolve` will be
-    // called multiple times.
-    const resultPromise = repeatUntilPass(() => runForWpt(url, wptStartedPromiseResolve));
-    resultPromise.then(result => wptResults.push(result));
-    wptResultPromises.push(resultPromise);
-  }
-
-  const task = {
-    url,
-    wptStartedPromise,
-    wptResultPromises,
-    wptResults,
-    unthrottledResults: /** @type {Result[]} */([]),
-  };
-
-  return task;
-}
-
-/**
- * @param {Task[]} tasks
- * @param {Task} currentTask
- */
-function updateProgress(tasks, currentTask) {
-  const wptDoneCount = tasks.map(t => t.wptResults.length).reduce((acc, cur) => acc + cur);
-  const wptTotalCount = tasks.map(t => t.wptResultPromises.length).reduce((acc, cur) => acc + cur);
-
-  const curTaskWptDoneCount = currentTask.wptResults.length;
-  const curTaskWptTotalCount = currentTask.wptResultPromises.length;
-  const curTaskWptDone = curTaskWptDoneCount === curTaskWptTotalCount;
-
-  const curTaskUnthrottledDoneCount = currentTask.unthrottledResults.length;
-  const curTaskUnthrottledTotalCount = SAMPLES;
-  const curTaskUnthrottledDone = curTaskUnthrottledDoneCount === curTaskUnthrottledTotalCount;
-
-  log.progress([
-    'all wpt:', `${wptDoneCount} / ${wptTotalCount}`,
-    'tasks left:', tasks.length,
-    'current task:', currentTask.url,
-    'wpt',
-    '(' + (curTaskWptDone ? 'DONE' : `${curTaskWptDoneCount + 1} / ${curTaskWptTotalCount}`) + ')',
-    'unthrottled',
-    // eslint-disable-next-line max-len
-    '(' + (curTaskUnthrottledDone ? 'DONE' : `${curTaskUnthrottledDoneCount + 1} / ${curTaskUnthrottledTotalCount}`) + ')',
-  ].join(' '));
-}
-
-/**
- * @param {Summary[]} summary
- * @param {Task} task
- */
-function commit(summary, task) {
-  const url = task.url;
-  const sanitizedUrl = url.replace(/[^a-z0-9]/gi, '-');
-  const urlResultSet = {
-    url,
-    wpt: task.wptResults.filter(result => result.lhr && result.trace).map((result, i) => {
-      if (!result.lhr || !result.trace) throw new Error('Expected lhr and trace');
-      const prefix = `${sanitizedUrl}-mobile-wpt-${i + 1}`;
-      return {
-        lhr: saveData(`${prefix}-lhr.json`, result.lhr),
-        trace: saveData(`${prefix}-trace.json`, result.trace),
-      };
-    }),
-    unthrottled: task.unthrottledResults.filter(result => result.lhr && result.trace).map((result, i) => {
-      if (!result.lhr || !result.trace) throw new Error('Expected lhr and trace');
-      if (!result.devtoolsLog) throw new Error('expected devtools log');
-
-      const prefix = `${sanitizedUrl}-mobile-unthrottled-${i + 1}`;
-      return {
-        devtoolsLog: saveData(`${prefix}-devtoolsLog.json`, result.devtoolsLog),
-        lhr: saveData(`${prefix}-lhr.json`, result.lhr),
-        trace: saveData(`${prefix}-trace.json`, result.trace),
-      };
-    }),
-  };
-
-  // Too many attempts (with 3 retries) failed, so don't both saving results for this URL.
-  if (urlResultSet.wpt.length < SAMPLES / 2 || urlResultSet.unthrottled.length < SAMPLES / 2) {
-    log.log(`too many results for ${url} failed, skipping.`);
-    return;
-  }
-
-  // We just collected SAMPLES * 2 traces, so let's save our progress.
-  log.log(`collected results for ${url}, saving progress.`);
-  summary.push(urlResultSet);
-  common.saveSummary(summary);
-}
-
 async function main() {
   log = new common.ProgressLogger();
 
   // Resume state from previous invocation of script.
-  // This script should be run in a single go, but just in case it stops midway
-  // this prevents some duplication of work.
   const summary = common.loadSummary()
     // Remove data if no longer in URLS.
     .filter(urlSet => TEST_URLS.includes(urlSet.url));
 
   fs.mkdirSync(common.collectFolder, {recursive: true});
 
-  const urlsToRun = TEST_URLS.filter(url => {
+  // Traces are collected for one URL at a time, in series, so all traces are from a small time
+  // frame, reducing the chance of a site change affecting results.
+  for (const url of TEST_URLS) {
     // This URL has been done on a previous script invocation. Skip it.
     if (summary.find((urlResultSet) => urlResultSet.url === url)) {
       log.log(`already collected traces for ${url}`);
-      return false;
+      continue;
+    }
+    log.log(`collecting traces for ${url}`);
+
+    const sanitizedUrl = url.replace(/[^a-z0-9]/gi, '-');
+    /** @type {Result[]} */
+    const wptResults = [];
+    /** @type {Result[]} */
+    const unthrottledResults = [];
+
+    // The closure this makes is too convenient to decompose.
+    // eslint-disable-next-line no-inner-declarations
+    function updateProgress() {
+      const index = TEST_URLS.indexOf(url);
+      const wptDone = wptResults.length === SAMPLES;
+      const unthrottledDone = unthrottledResults.length === SAMPLES;
+      log.progress([
+        `${url} (${index + 1} / ${TEST_URLS.length})`,
+        'wpt',
+        '(' + (wptDone ? 'DONE' : `${wptResults.length + 1} / ${SAMPLES}`) + ')',
+        'unthrottledResults',
+        '(' + (unthrottledDone ? 'DONE' : `${unthrottledResults.length + 1} / ${SAMPLES}`) + ')',
+      ].join(' '));
     }
 
-    return true;
-  });
+    updateProgress();
 
-  // WPT requests made through the API are low priority, so we fire all of them at once.
-  // To ensure that local runs are collected near the same time that WPT renders it,
-  // the local runs for a URL only start after the first WPT run for that URL begins.
-  // To do this, we make a task for every URL, and for each expose a promise that resolves
-  // when the first WPT run for that URL has begun.
+    // Can run in parallel.
+    const wptResultsPromises = [];
+    for (let i = 0; i < SAMPLES; i++) {
+      const resultPromise = repeatUntilPass(() => runForWpt(url));
+      // Push to results array as they finish, so the progress indicator can track progress.
+      resultPromise.then((result) => wptResults.push(result)).finally(updateProgress);
+      wptResultsPromises.push(resultPromise);
+    }
 
-  /** @type {Task[]} */
-  const tasks = [];
-
-  const numWptRequests = urlsToRun.length * SAMPLES;
-  log.progress(`About to make ${numWptRequests} WPT requests. You have 10 seconds to cancel.`);
-  await new Promise(resolve => setTimeout(resolve, 1000 * 10));
-
-  // Start all the WPT requests.
-  for (const url of urlsToRun) {
-    tasks.push(createTask(url));
-  }
-
-  log.progress('waiting for first WPT run to start');
-
-  // This is a work queue that handles collecting the local, unthrottled runs. It only operates
-  // on one URL at a time.
-  while (tasks.length) {
-    // Wait for the next `wptStartedPromise` to resolve. Get the index so this task can be removed.
-    const curIndex = await Promise.race(tasks.map((t, i) => t.wptStartedPromise.then(() => i)));
-    const task = tasks[curIndex];
-    const url = task.url;
-    // The first WPT request for this URL has started.
-
-    updateProgress(tasks, task);
+    // Wait for the first WPT result to finish because we can sit in the queue for a while before we start
+    // and we want to avoid seeing totally different content locally.
+    await Promise.race(wptResultsPromises);
 
     // Must run in series.
     for (let i = 0; i < SAMPLES; i++) {
       const resultPromise = repeatUntilPass(() => runUnthrottledLocally(url));
-      task.unthrottledResults.push(await resultPromise);
-      updateProgress(tasks, task);
+      unthrottledResults.push(await resultPromise);
+      updateProgress();
     }
 
-    // All the desktop runs are done now, so once WPT is finished too we can commit the data.
-    // We can work on the next unthrottled task now, so do this part async.
-    Promise.all(task.wptResultPromises).then(() => commit(summary, task));
+    // Wait for *all* WPT runs to finish since we just waited on the first one earlier.
+    await Promise.all(wptResultsPromises);
 
-    // Remove this tasks from the work queue.
-    tasks.splice(curIndex, 1);
+    const urlResultSet = {
+      url,
+      wpt: wptResults.filter(result => result.lhr && result.trace).map((result, i) => {
+        if (!result.lhr || !result.trace) throw new Error('Expected lhr and trace');
+        const prefix = `${sanitizedUrl}-mobile-wpt-${i + 1}`;
+        return {
+          lhr: saveData(`${prefix}-lhr.json`, result.lhr),
+          trace: saveData(`${prefix}-trace.json`, result.trace),
+        };
+      }),
+      unthrottled: unthrottledResults.filter(result => result.lhr && result.trace).map((result, i) => {
+        if (!result.lhr || !result.trace) throw new Error('Expected lhr and trace');
+        if (!result.devtoolsLog) throw new Error('expected devtools log');
+
+        const prefix = `${sanitizedUrl}-mobile-unthrottled-${i + 1}`;
+        return {
+          devtoolsLog: saveData(`${prefix}-devtoolsLog.json`, result.devtoolsLog),
+          lhr: saveData(`${prefix}-lhr.json`, result.lhr),
+          trace: saveData(`${prefix}-trace.json`, result.trace),
+        };
+      }),
+    };
+
+    // Too many attempts (with 3 retries) failed, so don't both saving results for this URL.
+    if (urlResultSet.wpt.length < SAMPLES / 2 || urlResultSet.unthrottled.length < SAMPLES / 2) {
+      log.log(`too many results for ${url} failed, skipping.`);
+      continue;
+    }
+
+    // We just collected NUM_SAMPLES * 2 traces, so let's save our progress.
+    log.log(`collected results for ${url}, saving progress.`);
+    summary.push(urlResultSet);
+    common.saveSummary(summary);
   }
 
   log.progress('archiving ...');
   await common.archive(common.collectFolder);
-  log.log('done!');
   log.closeProgress();
 }
 

@@ -100,6 +100,13 @@ describe('Performance: Resource budgets audit', () => {
       });
     });
 
+    it('does not mutate the budget config', async () => {
+      const configBefore = JSON.parse(JSON.stringify(context.settings.budgets));
+      await ResourceBudgetAudit.audit(artifacts, context);
+      const configAfter = JSON.parse(JSON.stringify(context.settings.budgets));
+      expect(configBefore).toEqual(configAfter);
+    });
+
     it('only includes rows for resource types with budgets', async () => {
       const result = await ResourceBudgetAudit.audit(artifacts, context);
       expect(result.details.items).toHaveLength(2);
@@ -129,11 +136,8 @@ describe('Performance: Resource budgets audit', () => {
         expect(item.size).toBeGreaterThanOrEqual(items[index + 1].size);
       });
     });
-  });
-
-  describe('budget selection', () => {
-    describe('with a matching budget', () => {
-      it('applies the correct budget', async () => {
+    describe('budget path', () => {
+      it('applies the last matching budget', async () => {
         context.settings.budgets = [{
           path: '/',
           resourceSizes: [
@@ -165,10 +169,7 @@ describe('Performance: Resource budgets audit', () => {
         const result = await ResourceBudgetAudit.audit(artifacts, context);
         expect(result.details.items[0].resourceType).toBe('image');
       });
-    });
-
-    describe('without a matching budget', () => {
-      it('returns "audit does not apply"', async () => {
+      it('returns "audit does not apply" if no budget matches', async () => {
         context.settings.budgets = [{
           path: '/not-a-match',
           resourceSizes: [
@@ -184,17 +185,17 @@ describe('Performance: Resource budgets audit', () => {
         expect(result.notApplicable).toBe(true);
       });
     });
+  });
 
-    describe('without a budget.json', () => {
-      beforeEach(() => {
-        context.settings.budgets = null;
-      });
+  describe('without a budget.json', () => {
+    beforeEach(() => {
+      context.settings.budgets = null;
+    });
 
-      it('returns "audit does not apply"', async () => {
-        const result = await ResourceBudgetAudit.audit(artifacts, context);
-        expect(result.details).toBeUndefined();
-        expect(result.notApplicable).toBe(true);
-      });
+    it('audit does not apply', async () => {
+      const result = await ResourceBudgetAudit.audit(artifacts, context);
+      expect(result.details).toBeUndefined();
+      expect(result.notApplicable).toBe(true);
     });
   });
 });

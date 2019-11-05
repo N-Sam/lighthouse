@@ -4679,10 +4679,10 @@ jpeg-js@0.1.2, jpeg-js@^0.1.2:
   resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.1.2.tgz#135b992c0575c985cfa0f494a3227ed238583ece"
   integrity sha1-E1uZLAV1yYXPoPSUoyJ+0jhYPs4=
 
-js-library-detector@^5.6.0:
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/js-library-detector/-/js-library-detector-5.6.0.tgz#a44c95237870b5e4f66f0aff948270df7ec9f277"
-  integrity sha512-s9LeTXee2J+7qXQHJ1EHPbK4Mk5ZU820Wrw+EOxDRQcn2Tay4n+SvZaqJa6T8UpKu5mIomSh6nXoyuP1j2DzUw==
+js-library-detector@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/js-library-detector/-/js-library-detector-5.5.0.tgz#3cf17128f6eaaf594d3d6b4c631d18eca059bfdc"
+  integrity sha512-rLRizuKBAYFmCQM7Efjdbf8u8EoJnfuTlKYUBLQ/2bj9Raw2tr09guQoto/4NIOGmpAYLrzJQ0fmPUqxABCM5w==
 
 js-tokens@^1.0.1:
   version "1.0.3"

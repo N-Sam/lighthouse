@@ -197,53 +197,6 @@ describe('Budget', () => {
     });
   });
 
-  describe('budget matching', () => {
-    const budgets = [{
-      path: '/',
-      resourceSizes: [
-        {
-          resourceType: 'script',
-          budget: 0,
-        },
-      ],
-    },
-    {
-      path: '/file.html',
-      resourceSizes: [
-        {
-          resourceType: 'image',
-          budget: 0,
-        },
-      ],
-    },
-    {
-      path: '/not-a-match',
-      resourceSizes: [
-        {
-          resourceType: 'document',
-          budget: 0,
-        },
-      ],
-    },
-    ];
-    it('returns the last matching budget', () => {
-      const budget = Budget.getMatchingBudget(budgets, 'http://example.com/file.html');
-      expect(budget).toEqual(budgets[1]);
-    });
-
-    it('does not mutate the budget config', async () => {
-      const configBefore = JSON.parse(JSON.stringify(budgets));
-      Budget.getMatchingBudget(configBefore, 'https://example.com');
-      const configAfter = JSON.parse(JSON.stringify(budgets));
-      expect(configBefore).toEqual(configAfter);
-    });
-
-    it('returns "undefined" when there is no budget config', () => {
-      const budget = Budget.getMatchingBudget(null, 'https://example.com');
-      expect(budget).toEqual(undefined);
-    });
-  });
-
   describe('path validation', () => {
     it('recognizes valid budgets', () => {
       let budgets = [{path: '/'}];

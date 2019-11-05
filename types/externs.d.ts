@@ -221,7 +221,6 @@ declare global {
         fileName?: string;
         snapshot?: string;
         data?: {
-          frame?: string;
           isLoadingMainFrame?: boolean;
           documentLoaderURL?: string;
           frames?: {

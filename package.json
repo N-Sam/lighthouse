@@ -140,7 +140,7 @@
     "intl-messageformat": "^4.4.0",
     "intl-pluralrules": "^1.0.3",
     "jpeg-js": "0.1.2",
-    "js-library-detector": "^5.6.0",
+    "js-library-detector": "^5.5.0",
     "jsonld": "^1.5.0",
     "jsonlint-mod": "^1.7.5",
     "lighthouse-logger": "^1.2.0",
@@ -174,8 +174,8 @@
   },
   "bundlesize": [
     {
-      "path": "./dist/extension/scripts/popup-bundle.js",
-      "maxSize": "15 kB"
+      "path": "./dist/extension/scripts/lighthouse-ext-bundle.js",
+      "maxSize": "520 kB"
     },
     {
       "path": "./dist/lightrider/lighthouse-lr-bundle.js",

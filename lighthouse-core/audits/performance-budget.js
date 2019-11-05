@@ -124,7 +124,13 @@ class ResourceBudget extends Audit {
     const devtoolsLog = artifacts.devtoolsLogs[Audit.DEFAULT_PASS];
     const summary = await ResourceSummary.request({devtoolsLog, URL: artifacts.URL}, context);
     const mainResource = await MainResource.request({URL: artifacts.URL, devtoolsLog}, context);
-    const budget = Budget.getMatchingBudget(context.settings.budgets, mainResource.url);
+    // Clones budget so that the user-supplied version is not mutated.
+    /** @type {Array<LH.Budget>} */
+    const budgets = Array.from(context.settings.budgets || []);
+    // Applies the LAST matching budget
+    const budget = budgets ? budgets.reverse().find((b) => {
+      return Budget.urlMatchesPattern(mainResource.url, b.path);
+    }) : undefined;
 
     if (!budget) {
       return {
