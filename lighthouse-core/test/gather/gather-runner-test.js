@@ -269,10 +269,10 @@ describe('GatherRunner', function() {
     });
   });
 
-  it('uses correct emulation form factor', async () => {
-    let deviceMetricsParams;
+  it('applies the correct emulation given a particular emulationFormFactor', async () => {
+    const deviceMetricsFn = jest.fn();
     const driver = getMockedEmulationDriver(
-      params => deviceMetricsParams = params,
+      deviceMetricsFn,
       () => true,
       () => true
     );
@@ -285,14 +285,14 @@ describe('GatherRunner', function() {
     });
 
     await GatherRunner.setupDriver(driver, {settings: getSettings('mobile')});
-    expect(deviceMetricsParams).toMatchObject({mobile: true});
+    expect(deviceMetricsFn.mock.calls.slice(-1)[0][0]).toMatchObject({mobile: true});
 
     await GatherRunner.setupDriver(driver, {settings: getSettings('desktop')});
-    expect(deviceMetricsParams).toMatchObject({mobile: false});
+    expect(deviceMetricsFn.mock.calls.slice(-1)[0][0]).toMatchObject({mobile: false});
 
-    deviceMetricsParams = undefined;
+    deviceMetricsFn.mockClear();
     await GatherRunner.setupDriver(driver, {settings: getSettings('none')});
-    expect(deviceMetricsParams).toBe(undefined);
+    expect(deviceMetricsFn).not.toHaveBeenCalled();
   });
 
   it('stops throttling when not devtools', () => {
