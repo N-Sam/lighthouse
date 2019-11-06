@@ -6,17 +6,31 @@
 'use strict';
 
 const emulation = require('../../lib/emulation.js');
-const {getMockedEmulationDriver} = require('../gather/gather-runner-test.js');
+const Driver = require('../../gather/driver.js');
+const Connection = require('../../gather/connections/connection.js');
+const {createMockSendCommandFn} = require('../gather/mock-commands.js');
 
 /* eslint-env jest */
 
 describe('emulation', () => {
   describe('emulate', () => {
-    const deviceMetricsFn = jest.fn();
-    const setUAFn = jest.fn();
-    const driver = getMockedEmulationDriver(deviceMetricsFn, null, null, null, null, setUAFn);
+    let driver;
+    let connectionStub;
 
-    const getFnCallArg = fn => fn.mock.calls[0][0];
+    beforeEach(() => {
+      connectionStub = new Connection();
+      connectionStub.sendCommand = cmd => {
+        throw new Error(`${cmd} not implemented`);
+      };
+      driver = new Driver(connectionStub);
+
+      connectionStub.sendCommand = createMockSendCommandFn()
+        .mockResponse('Network.enable')
+        .mockResponse('Network.setUserAgentOverride')
+        .mockResponse('Emulation.setDeviceMetricsOverride')
+        .mockResponse('Emulation.setTouchEmulationEnabled');
+    });
+
     const getSettings = (formFactor, disableDeviceScreenEmulation) => ({
       emulatedFormFactor: formFactor,
       internal: {
@@ -24,51 +38,74 @@ describe('emulation', () => {
       },
     });
 
-    beforeEach(() => {
-      deviceMetricsFn.mockClear();
-      setUAFn.mockClear();
-    });
-
     it('handles: emulatedFormFactor: mobile / disableDeviceScreenEmulation: false', async () => {
       await emulation.emulate(driver, getSettings('mobile', false));
-      expect(setUAFn).toBeCalled();
-      expect(deviceMetricsFn).toBeCalled();
-      expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.MOBILE_USERAGENT});
-      expect(getFnCallArg(deviceMetricsFn)).toMatchObject({mobile: true});
+
+      const uaArgs = connectionStub.sendCommand.findInvocation('Network.setUserAgentOverride');
+      expect(uaArgs).toMatchObject({userAgent: emulation.MOBILE_USERAGENT});
+
+      const emulateArgs = connectionStub.sendCommand.findInvocation(
+        'Emulation.setDeviceMetricsOverride'
+      );
+      expect(emulateArgs).toMatchObject({mobile: true});
     });
 
     it('handles: emulatedFormFactor: desktop / disableDeviceScreenEmulation: false', async () => {
       await emulation.emulate(driver, getSettings('desktop', false));
-      expect(setUAFn).toBeCalled();
-      expect(deviceMetricsFn).toBeCalled();
-      expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.DESKTOP_USERAGENT});
-      expect(getFnCallArg(deviceMetricsFn)).toMatchObject({mobile: false});
+
+      const uaArgs = connectionStub.sendCommand.findInvocation('Network.setUserAgentOverride');
+      expect(uaArgs).toMatchObject({userAgent: emulation.DESKTOP_USERAGENT});
+
+      const emulateArgs = connectionStub.sendCommand.findInvocation(
+        'Emulation.setDeviceMetricsOverride'
+      );
+      expect(emulateArgs).toMatchObject({mobile: false});
     });
 
     it('handles: emulatedFormFactor: none / disableDeviceScreenEmulation: false', async () => {
       await emulation.emulate(driver, getSettings('none', false));
-      expect(setUAFn).not.toBeCalled();
-      expect(deviceMetricsFn).not.toBeCalled();
+      expect(connectionStub.sendCommand).not.toHaveBeenCalledWith(
+        'Network.setUserAgentOverride',
+        expect.anything()
+      );
+      expect(connectionStub.sendCommand).not.toHaveBeenCalledWith(
+        'Emulation.setDeviceMetricsOverride',
+        expect.anything()
+      );
     });
 
     it('handles: emulatedFormFactor: mobile / disableDeviceScreenEmulation: true', async () => {
       await emulation.emulate(driver, getSettings('mobile', true));
-      expect(setUAFn).toBeCalled();
-      expect(deviceMetricsFn).not.toBeCalled();
-      expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.MOBILE_USERAGENT});
+      const uaArgs = connectionStub.sendCommand.findInvocation('Network.setUserAgentOverride');
+      expect(uaArgs).toMatchObject({userAgent: emulation.MOBILE_USERAGENT});
+
+      expect(connectionStub.sendCommand).not.toHaveBeenCalledWith(
+        'Emulation.setDeviceMetricsOverride',
+        expect.anything()
+      );
     });
 
     it('handles: emulatedFormFactor: desktop / disableDeviceScreenEmulation: true', async () => {
       await emulation.emulate(driver, getSettings('desktop', true));
-      expect(setUAFn).toBeCalled();
-      expect(deviceMetricsFn).not.toBeCalled();
-      expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.DESKTOP_USERAGENT});
+      const uaArgs = connectionStub.sendCommand.findInvocation('Network.setUserAgentOverride');
+      expect(uaArgs).toMatchObject({userAgent: emulation.DESKTOP_USERAGENT});
+
+      expect(connectionStub.sendCommand).not.toHaveBeenCalledWith(
+        'Emulation.setDeviceMetricsOverride',
+        expect.anything()
+      );
     });
 
     it('handles: emulatedFormFactor: none / disableDeviceScreenEmulation: true', async () => {
       await emulation.emulate(driver, getSettings('none', true));
-      expect(setUAFn).not.toBeCalled();
-      expect(deviceMetricsFn).not.toBeCalled();
+      expect(connectionStub.sendCommand).not.toHaveBeenCalledWith(
+        'Network.setUserAgentOverride',
+        expect.anything()
+      );
+      expect(connectionStub.sendCommand).not.toHaveBeenCalledWith(
+        'Emulation.setDeviceMetricsOverride',
+        expect.anything()
+      );
     });
   });
 });

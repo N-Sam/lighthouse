@@ -39,7 +39,7 @@ class TestGathererNoArtifact extends Gatherer {
 const fakeDriver = require('./fake-driver.js');
 const fakeDriverUsingRealMobileDevice = fakeDriver.fakeDriverUsingRealMobileDevice;
 
-// TODO: Refactor this to use gather/mock-commands.js once landed
+// TODO: Refactor this to use gather/mock-commands.js
 function getMockedEmulationDriver(deviceMetricsFn, netThrottleFn, cpuThrottleFn,
   blockUrlFn, extraHeadersFn, setUAFn) {
   const Driver = require('../../gather/driver.js');
@@ -1537,7 +1537,3 @@ describe('GatherRunner', function() {
     });
   });
 });
-
-module.exports = {
-  getMockedEmulationDriver,
-};
