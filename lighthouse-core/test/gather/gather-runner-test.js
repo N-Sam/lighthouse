@@ -234,6 +234,32 @@ describe('GatherRunner', function() {
     });
   });
 
+  describe.only('collects HostFormFactor as an artifact', () => {
+    const requestedUrl = 'https://example.com';
+
+    function test(name, userAgent, expectedValue) {
+      it(name, async () => {
+        const driver = Object.assign({}, fakeDriver, {
+          getBrowserVersion() {
+            return Promise.resolve({userAgent: 'Android'});
+          },
+        });
+        const config = new Config({
+          passes: [],
+          settings: {},
+        });
+        const options = {requestedUrl, driver, settings: config.settings};
+
+        const results = await GatherRunner.run(config.passes, options);
+        expect(results.HostFormFactor).toBe('mobile');
+      });
+    }
+
+    test('works when running on mobile device', 'some mobile ua', 'mobile');
+    test('works when running on android device', 'some android ua', 'mobile');
+    test('works when running on desktop device', 'some desktop ua', 'desktop');
+  });
+
   it('sets up the driver to begin emulation when all emulation flags are undefined', () => {
     const tests = {
       calledDeviceEmulation: false,
