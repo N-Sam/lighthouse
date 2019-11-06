@@ -122,9 +122,9 @@ declare global {
       /** The budget.json object for LightWallet. */
       budgets?: Array<Budget> | null;
       /** Dangerous settings only to be used by Lighthouse team. Thar be dragons! */
-      internal: {
+      internal?: {
         /* Disables device metrics and touch emulation. Details in emulation.js */
-        disableDeviceScreenEmulation: boolean
+        disableDeviceScreenEmulation?: boolean
       }
     }
 

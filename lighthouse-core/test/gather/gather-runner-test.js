@@ -278,7 +278,7 @@ describe('GatherRunner', function() {
       emulatedFormFactor: formFactor,
       internal: {
         disableDeviceScreenEmulation: false,
-      }
+      },
     });
 
     await GatherRunner.setupDriver(driver, {settings: getSettings('mobile')});
