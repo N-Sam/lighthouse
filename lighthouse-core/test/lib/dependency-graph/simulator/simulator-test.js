@@ -130,7 +130,7 @@ describe('DependencyGraph/Simulator', () => {
       const simulator = new Simulator({serverResponseTimeByOrigin});
       const result = simulator.simulate(nodeA);
 
-      // should be ~2ms for A, ~12ms for B
+      // should be ~2ms for A (resourceSize 0), ~12ms for B (resourceSize 1MB)
       assert.equal(result.timeInMs, 14);
       assertNodeTiming(result, nodeA, {startTime: 0, endTime: 2});
       assertNodeTiming(result, nodeB, {startTime: 2, endTime: 14});

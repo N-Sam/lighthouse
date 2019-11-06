@@ -67,6 +67,8 @@ class NetworkNode extends BaseNode {
 
 
   /**
+   * Returns whether this network record can be downloaded without a TCP connection.
+   * During simulation we treat data coming in over a network connection separately from on-device data.
    * @return {boolean}
    */
   get isConnectionless() {
