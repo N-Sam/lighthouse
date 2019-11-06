@@ -32,15 +32,22 @@ class FirstMeaningfulPaint extends Audit {
   }
 
   /**
-   * @return {LH.Audit.ScoreOptions}
+   * @return {{mobile: LH.Audit.ScoreOptions, desktop: LH.Audit.ScoreOptions}}
    */
   static get defaultOptions() {
     return {
-      // 75th and 95th percentiles HTTPArchive -> median and PODR
-      // https://bigquery.cloud.google.com/table/httparchive:lighthouse.2018_04_01_mobile?pli=1
-      // see https://www.desmos.com/calculator/2t1ugwykrl
-      scorePODR: 2000,
-      scoreMedian: 4000,
+      mobile: {
+        // 75th and 95th percentiles HTTPArchive -> median and PODR
+        // https://bigquery.cloud.google.com/table/httparchive:lighthouse.2018_04_01_mobile?pli=1
+        // see https://www.desmos.com/calculator/2t1ugwykrl
+        scorePODR: 2000,
+        scoreMedian: 4000,
+      },
+      desktop: {
+        // SELECT QUANTILES(renderStart, 21) FROM [httparchive:summary_pages.2018_12_15_desktop] LIMIT 1000
+        scorePODR: 800,
+        scoreMedian: 1600,
+      },
     };
   }
 

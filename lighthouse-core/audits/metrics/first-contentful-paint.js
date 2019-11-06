@@ -32,7 +32,7 @@ class FirstContentfulPaint extends Audit {
   }
 
   /**
-   * @return {LH.Audit.ScoreOptions}
+   * @return {{mobile: LH.Audit.ScoreOptions, desktop: LH.Audit.ScoreOptions}}
    */
   static get defaultOptions() {
     return {
@@ -48,7 +48,7 @@ class FirstContentfulPaint extends Audit {
         scorePODR: 800,
         scoreMedian: 1600,
       },
-    }
+    };
   }
 
   /**
