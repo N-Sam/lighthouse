@@ -118,6 +118,24 @@ describe('DependencyGraph/Simulator', () => {
       assertNodeTiming(result, nodeB, {startTime: 8, endTime: 16});
     });
 
+    it('should simulate data URL network graphs', () => {
+      const url = 'data:image/jpeg;base64,foobar';
+      const protocol = 'data';
+      const parsedURL = {scheme: 'data', host: '', securityOrigin: 'null'};
+      const nodeA = new NetworkNode(request({startTime: 0, endTime: 1, url, parsedURL, protocol}));
+      const nodeB = new NetworkNode(request({startTime: 0, endTime: 3, url, parsedURL, protocol,
+        resourceSize: 1024 * 1024}));
+      nodeA.addDependent(nodeB);
+
+      const simulator = new Simulator({serverResponseTimeByOrigin});
+      const result = simulator.simulate(nodeA);
+
+      // should be ~2ms for A, ~12ms for B
+      assert.equal(result.timeInMs, 14);
+      assertNodeTiming(result, nodeA, {startTime: 0, endTime: 2});
+      assertNodeTiming(result, nodeB, {startTime: 2, endTime: 14});
+    });
+
     it('should simulate basic CPU queue graphs', () => {
       const nodeA = new NetworkNode(request({}));
       const nodeB = new CpuNode(cpuTask({duration: 100}));
@@ -260,20 +278,20 @@ describe('DependencyGraph/Simulator', () => {
     describe('on a real trace', () => {
       const trace = require('../../../fixtures/traces/progressive-app-m60.json');
       const devtoolsLog = require('../../../fixtures/traces/progressive-app-m60.devtools.log.json');
-      let result;
 
-      beforeAll(async () => {
+      it('should compute a timeInMs', async () => {
         const computedCache = new Map();
         const graph = await PageDependencyGraph.request({trace, devtoolsLog}, {computedCache});
         const simulator = new Simulator({serverResponseTimeByOrigin});
-        result = simulator.simulate(graph);
-      });
-
-      it('should compute a timeInMs', () => {
+        const result = simulator.simulate(graph);
         expect(result.timeInMs).toBeGreaterThan(100);
       });
 
-      it('should sort the task event times', () => {
+      it('should sort the task event times', async () => {
+        const computedCache = new Map();
+        const graph = await PageDependencyGraph.request({trace, devtoolsLog}, {computedCache});
+        const simulator = new Simulator({serverResponseTimeByOrigin});
+        const result = simulator.simulate(graph);
         const nodeTimings = Array.from(result.nodeTimings.entries());
 
         for (let i = 1; i < nodeTimings.length; i++) {

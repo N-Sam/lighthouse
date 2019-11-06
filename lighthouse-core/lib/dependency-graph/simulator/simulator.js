@@ -225,8 +225,8 @@ class Simulator {
 
     if (node.type !== BaseNode.TYPES.NETWORK) throw new Error('Unsupported');
 
-    // If a network request is cached, we can always start it, so skip the connection checks
-    if (!node.fromDiskCache) {
+    // If a network request is connectionless, we can always start it, so skip the connection checks
+    if (!node.isConnectionless) {
       // Start a network request if we're not at max requests and a connection is available
       const numberOfActiveRequests = this._numberInProgress(node.type);
       if (numberOfActiveRequests >= this._maximumConcurrentRequests) return;
@@ -295,10 +295,17 @@ class Simulator {
 
     let timeElapsed = 0;
     if (networkNode.fromDiskCache) {
-      // Rough access time for seeking to location on disk and reading sequentially = 8ms + 20ms/MB
+      // Rough access time for seeking to location on disk and reading sequentially.
+      // 8ms per seek + 20ms/MB
       // @see http://norvig.com/21-days.html#answers
       const sizeInMb = (record.resourceSize || 0) / 1024 / 1024;
       timeElapsed = 8 + 20 * sizeInMb - timingData.timeElapsed;
+    } else if (networkNode.isNonNetworkProtocol) {
+      // Estimates for the overhead of a data URL in Chromium and the decoding time for base64-encoded data.
+      // 2ms per request + 10ms/MB
+      // @see traces on https://dopiaza.org/tools/datauri/examples/index.php
+      const sizeInMb = (record.resourceSize || 0) / 1024 / 1024;
+      timeElapsed = 2 + 10 * sizeInMb - timingData.timeElapsed;
     } else {
       const connection = this._connectionPool.acquireActiveConnectionFromRecord(record);
       const dnsResolutionTime = this._dns.getTimeUntilResolution(record, {
@@ -342,7 +349,7 @@ class Simulator {
     const timingData = this._getTimingData(node);
     const isFinished = timingData.estimatedTimeElapsed === timePeriodLength;
 
-    if (node.type === BaseNode.TYPES.CPU || node.fromDiskCache) {
+    if (node.type === BaseNode.TYPES.CPU || node.isConnectionless) {
       return isFinished
         ? this._markNodeAsComplete(node, totalElapsedTime)
         : (timingData.timeElapsed += timePeriodLength);
