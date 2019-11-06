@@ -234,14 +234,14 @@ describe('GatherRunner', function() {
     });
   });
 
-  describe.only('collects HostFormFactor as an artifact', () => {
+  describe('collects HostFormFactor as an artifact', () => {
     const requestedUrl = 'https://example.com';
 
     function test(name, userAgent, expectedValue) {
       it(name, async () => {
         const driver = Object.assign({}, fakeDriver, {
           getBrowserVersion() {
-            return Promise.resolve({userAgent: 'Android'});
+            return Promise.resolve({userAgent: userAgent});
           },
         });
         const config = new Config({
@@ -251,7 +251,7 @@ describe('GatherRunner', function() {
         const options = {requestedUrl, driver, settings: config.settings};
 
         const results = await GatherRunner.run(config.passes, options);
-        expect(results.HostFormFactor).toBe('mobile');
+        expect(results.HostFormFactor).toBe(expectedValue);
       });
     }
 
