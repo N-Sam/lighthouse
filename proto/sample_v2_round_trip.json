@@ -2850,6 +2850,21 @@
             "scoreDisplayMode": "numeric",
             "title": "Remove unused CSS"
         },
+        "unused-javascript": {
+            "description": "Remove unused JavaScript to reduce bytes consumed by network activity. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "overallSavingsBytes": 0.0,
+                "overallSavingsMs": 0.0,
+                "type": "opportunity"
+            },
+            "id": "unused-javascript",
+            "numericValue": 0.0,
+            "score": 1.0,
+            "scoreDisplayMode": "numeric",
+            "title": "Remove unused JavaScript"
+        },
         "use-landmarks": {
             "description": "Landmark elements (<main>, <nav>, etc.) are used to improve the keyboard navigation of the page for assistive technology. [Learn more](https://web.dev/use-landmarks/).",
             "id": "use-landmarks",
@@ -3693,6 +3708,11 @@
                 {
                     "group": "load-opportunities",
                     "id": "unused-css-rules",
+                    "weight": 0.0
+                },
+                {
+                    "group": "load-opportunities",
+                    "id": "unused-javascript",
                     "weight": 0.0
                 },
                 {
@@ -4976,6 +4996,12 @@
                 "duration": 100.0,
                 "entryType": "measure",
                 "name": "lh:audit:unused-css-rules",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:unused-javascript",
                 "startTime": 0.0
             },
             {

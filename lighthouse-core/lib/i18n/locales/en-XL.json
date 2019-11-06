@@ -462,7 +462,7 @@
     "message": "R̂ém̂óv̂é ûńûśêd́ ĈŚŜ"
   },
   "lighthouse-core/audits/byte-efficiency/unused-javascript.js | description": {
-    "message": "R̂ém̂óv̂é ûńûśêd́ Ĵáv̂áŜćr̂íp̂t́ t̂ó r̂éd̂úĉé b̂ýt̂éŝ ćôńŝúm̂éd̂ b́ŷ ńêt́ŵór̂ḱ âćt̂ív̂ít̂ý."
+    "message": "R̂ém̂óv̂é ûńûśêd́ Ĵáv̂áŜćr̂íp̂t́ t̂ó r̂éd̂úĉé b̂ýt̂éŝ ćôńŝúm̂éd̂ b́ŷ ńêt́ŵór̂ḱ âćt̂ív̂ít̂ý. [L̂éâŕn̂ ḿôŕê](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting)."
   },
   "lighthouse-core/audits/byte-efficiency/unused-javascript.js | title": {
     "message": "R̂ém̂óv̂é ûńûśêd́ Ĵáv̂áŜćr̂íp̂t́"

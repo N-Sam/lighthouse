@@ -2568,6 +2568,22 @@
         "overallSavingsBytes": 0
       }
     },
+    "unused-javascript": {
+      "id": "unused-javascript",
+      "title": "Remove unused JavaScript",
+      "description": "Remove unused JavaScript to reduce bytes consumed by network activity. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting).",
+      "score": 1,
+      "scoreDisplayMode": "numeric",
+      "numericValue": 0,
+      "displayValue": "",
+      "details": {
+        "type": "opportunity",
+        "headings": [],
+        "items": [],
+        "overallSavingsMs": 0,
+        "overallSavingsBytes": 0
+      }
+    },
     "uses-webp-images": {
       "id": "uses-webp-images",
       "title": "Serve images in next-gen formats",
@@ -3528,6 +3544,11 @@
         },
         {
           "id": "unused-css-rules",
+          "weight": 0,
+          "group": "load-opportunities"
+        },
+        {
+          "id": "unused-javascript",
           "weight": 0,
           "group": "load-opportunities"
         },
@@ -5079,6 +5100,12 @@
       },
       {
         "startTime": 0,
+        "name": "lh:audit:unused-javascript",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
         "name": "lh:audit:uses-webp-images",
         "duration": 100,
         "entryType": "measure"
@@ -6156,6 +6183,12 @@
       ],
       "lighthouse-core/audits/byte-efficiency/unused-css-rules.js | description": [
         "audits[unused-css-rules].description"
+      ],
+      "lighthouse-core/audits/byte-efficiency/unused-javascript.js | title": [
+        "audits[unused-javascript].title"
+      ],
+      "lighthouse-core/audits/byte-efficiency/unused-javascript.js | description": [
+        "audits[unused-javascript].description"
       ],
       "lighthouse-core/audits/byte-efficiency/uses-webp-images.js | title": [
         "audits[uses-webp-images].title"

@@ -12,7 +12,8 @@ const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user to remove JavaScript that is never evaluated during page load. This is displayed in a list of audit titles that Lighthouse generates. */
   title: 'Remove unused JavaScript',
   /** Description of a Lighthouse audit that tells the user *why* they should remove JavaScript that is never needed/evaluated by the browser. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'Remove unused JavaScript to reduce bytes consumed by network activity.',
+  description: 'Remove unused JavaScript to reduce bytes consumed by network activity. ' +
+    '[Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
