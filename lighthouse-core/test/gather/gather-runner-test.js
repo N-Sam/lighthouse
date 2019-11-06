@@ -255,9 +255,9 @@ describe('GatherRunner', function() {
       });
     }
 
-    test('works when running on mobile device', 'some mobile ua', 'mobile');
-    test('works when running on android device', 'some android ua', 'mobile');
-    test('works when running on desktop device', 'some desktop ua', 'desktop');
+    test('works when running on mobile device', 'Some Mobile UA', 'mobile');
+    test('works when running on android device', 'Some Android UA', 'mobile');
+    test('works when running on desktop device', 'Some Desktop UA', 'desktop');
   });
 
   it('sets up the driver to begin emulation when all emulation flags are undefined', () => {

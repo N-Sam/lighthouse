@@ -456,7 +456,8 @@ class GatherRunner {
 
     const {emulatedFormFactor} = options.settings;
     // Whether Lighthouse was run on a mobile device (i.e. not on a desktop machine).
-    const HostFormFactor = /android|mobile/i.test(hostUserAgent) ? 'mobile' : 'desktop';
+    const HostFormFactor = hostUserAgent.includes('Android') || hostUserAgent.includes('Mobile') ?
+      'mobile' : 'desktop';
     const TestedAsMobileDevice = emulatedFormFactor === 'mobile' ||
       (emulatedFormFactor !== 'desktop' && HostFormFactor === 'mobile');
 
