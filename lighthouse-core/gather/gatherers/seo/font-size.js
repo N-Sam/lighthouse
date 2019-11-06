@@ -304,7 +304,8 @@ class FontSize extends Gatherer {
       });
 
     const analyzedFailingNodesData = (await Promise.all(analysisPromises))
-      // Throw out the nodes that got deleted.
+      // Throw out the nodes that got deleted, but keep the nodes that
+      // we couldn't attribute to a specific style rule (undefined).
       .filter(data => 'cssRule' in data);
 
     const analyzedFailingTextLength = analyzedFailingNodesData.reduce(
@@ -345,6 +346,8 @@ class FontSize extends Gatherer {
 
     passContext.driver.off('CSS.styleSheetAdded', onStylesheetAdd);
 
+    // For the nodes whose computed style we could attribute to a stylesheet, assign
+    // the stylsheet to the data.
     analyzedFailingNodesData
       .filter(data => data.cssRule && data.cssRule.styleSheetId)
       // @ts-ignore - guaranteed to exist from the filter immediately above
