@@ -86,7 +86,7 @@ async function emulate(driver, settings) {
   const params = emulationParams[settings.emulatedFormFactor];
 
   // In DevTools, emulation is applied before Lighthouse starts (to deal with viewport emulation bugs)
-  // As a result, we don't double-apply viewport emulation.
+  // As a result, we don't double-apply viewport emulation (devtools sets `emulatedViewportMethod` to `provided`).
   // UA emulation, however, is lost in the protocol handover from devtools frontend to the audits_worker. So it's always applied.
 
   // Network.enable must be called for UA overriding to work
