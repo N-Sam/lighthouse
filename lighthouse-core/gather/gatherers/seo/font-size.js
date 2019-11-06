@@ -192,24 +192,29 @@ function getNodeTextLength(node) {
 /**
  * @param {Driver} driver
  * @param {LH.Crdp.DOM.Node} node text node
- * @returns {Promise<NodeFontData['cssRule']|undefined>}
+ * @returns {Promise<?NodeFontData['cssRule']|undefined>}
  */
 async function fetchSourceRule(driver, node) {
-  const matchedRules = await driver.sendCommand('CSS.getMatchedStylesForNode', {
-    nodeId: node.nodeId,
-  });
-  const sourceRule = getEffectiveFontRule(matchedRules);
-  if (!sourceRule) return undefined;
+  try {
+    const matchedRules = await driver.sendCommand('CSS.getMatchedStylesForNode', {
+      nodeId: node.nodeId,
+    });
+    const sourceRule = getEffectiveFontRule(matchedRules);
+    if (!sourceRule) return undefined;
 
-  return {
-    type: sourceRule.type,
-    range: sourceRule.range,
-    styleSheetId: sourceRule.styleSheetId,
-    parentRule: sourceRule.parentRule && {
-      origin: sourceRule.parentRule.origin,
-      selectors: sourceRule.parentRule.selectors,
-    },
-  };
+    return {
+      type: sourceRule.type,
+      range: sourceRule.range,
+      styleSheetId: sourceRule.styleSheetId,
+      parentRule: sourceRule.parentRule && {
+        origin: sourceRule.parentRule.origin,
+        selectors: sourceRule.parentRule.selectors,
+      },
+    };
+  } catch (err) {
+    Sentry.captureException(err, {tags: {gatherer: 'FontSize'}});
+    return null;
+  }
 }
 
 /**
@@ -294,11 +299,17 @@ class FontSize extends Gatherer {
       .sort((a, b) => b.textLength - a.textLength)
       .slice(0, MAX_NODES_SOURCE_RULE_FETCHED)
       .map(async failingNode => {
-        failingNode.cssRule = await fetchSourceRule(driver, failingNode.node);
+        const cssRule = await fetchSourceRule(driver, failingNode.node);
+        // If cssRule is null, then the node was deleted. Don't set `cssRule` in that case.
+        if (cssRule !== null) {
+          failingNode.cssRule = cssRule;
+        }
         return failingNode;
       });
 
-    const analyzedFailingNodesData = await Promise.all(analysisPromises);
+    const analyzedFailingNodesData = (await Promise.all(analysisPromises))
+      // Throw out the nodes that got deleted.
+      .filter(data => 'cssRule' in data);
 
     const analyzedFailingTextLength = analyzedFailingNodesData.reduce(
       (sum, {textLength}) => (sum += textLength),
