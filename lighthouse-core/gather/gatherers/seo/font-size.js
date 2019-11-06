@@ -18,6 +18,7 @@
 
 const Gatherer = require('../gatherer.js');
 const Sentry = require('../../../lib/sentry.js');
+const log = require('lighthouse-logger');
 const FONT_SIZE_PROPERTY_NAME = 'font-size';
 const TEXT_NODE_BLOCK_LIST = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT']);
 const MINIMAL_LEGIBLE_FONT_SIZE_PX = 12;
@@ -192,29 +193,24 @@ function getNodeTextLength(node) {
 /**
  * @param {Driver} driver
  * @param {LH.Crdp.DOM.Node} node text node
- * @returns {Promise<?NodeFontData['cssRule']|undefined>}
+ * @returns {Promise<NodeFontData['cssRule']|undefined>}
  */
 async function fetchSourceRule(driver, node) {
-  try {
-    const matchedRules = await driver.sendCommand('CSS.getMatchedStylesForNode', {
-      nodeId: node.nodeId,
-    });
-    const sourceRule = getEffectiveFontRule(matchedRules);
-    if (!sourceRule) return undefined;
+  const matchedRules = await driver.sendCommand('CSS.getMatchedStylesForNode', {
+    nodeId: node.nodeId,
+  });
+  const sourceRule = getEffectiveFontRule(matchedRules);
+  if (!sourceRule) return undefined;
 
-    return {
-      type: sourceRule.type,
-      range: sourceRule.range,
-      styleSheetId: sourceRule.styleSheetId,
-      parentRule: sourceRule.parentRule && {
-        origin: sourceRule.parentRule.origin,
-        selectors: sourceRule.parentRule.selectors,
-      },
-    };
-  } catch (err) {
-    Sentry.captureException(err, {tags: {gatherer: 'FontSize'}});
-    return null;
-  }
+  return {
+    type: sourceRule.type,
+    range: sourceRule.range,
+    styleSheetId: sourceRule.styleSheetId,
+    parentRule: sourceRule.parentRule && {
+      origin: sourceRule.parentRule.origin,
+      selectors: sourceRule.parentRule.selectors,
+    },
+  };
 }
 
 /**
@@ -299,10 +295,12 @@ class FontSize extends Gatherer {
       .sort((a, b) => b.textLength - a.textLength)
       .slice(0, MAX_NODES_SOURCE_RULE_FETCHED)
       .map(async failingNode => {
-        const cssRule = await fetchSourceRule(driver, failingNode.node);
-        // If cssRule is null, then the node was deleted. Don't set `cssRule` in that case.
-        if (cssRule !== null) {
+        try {
+          const cssRule = await fetchSourceRule(driver, failingNode.node);
           failingNode.cssRule = cssRule;
+        } catch (err) {
+          // The node was deleted. Don't set `cssRule` in that case.
+          log.error('font-size', err.message);
         }
         return failingNode;
       });
