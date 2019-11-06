@@ -6,10 +6,10 @@
 'use strict';
 
 const fs = require('fs');
+const mkdir = fs.promises.mkdir;
 
 const archiver = require('archiver');
 const cpy = require('cpy');
-const makeDir = require('make-dir');
 const bundleBuilder = require('./build-bundle.js');
 
 const sourceName = 'extension-entry.js';
@@ -38,7 +38,7 @@ async function copyPopup() {
   popupSrc = popupSrc.replace(/__COMMITHASH__/g, bundleBuilder.COMMIT_HASH);
 
   const popupDir = `${distDir}/scripts`;
-  await makeDir(popupDir);
+  await mkdir(popupDir, {recursive: true});
   fs.writeFileSync(`${popupDir}/popup.js`, popupSrc);
 }
 
@@ -65,7 +65,7 @@ async function copyAssets() {
  */
 async function packageExtension() {
   const packagePath = `${distDir}/../extension-package`;
-  await makeDir(packagePath);
+  await mkdir(packagePath, {recursive: true});
 
   return new Promise((resolve, reject) => {
     const archive = archiver('zip', {

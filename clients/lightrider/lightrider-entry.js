@@ -9,6 +9,7 @@ const lighthouse = require('../../lighthouse-core/index.js');
 
 const LHError = require('../../lighthouse-core/lib/lh-error.js');
 const preprocessor = require('../../lighthouse-core/lib/proto-preprocessor.js');
+const assetSaver = require('../../lighthouse-core/lib/asset-saver.js');
 
 /** @type {Record<'mobile'|'desktop', LH.Config.Json>} */
 const LR_PRESETS = {
@@ -54,15 +55,22 @@ async function runLighthouseInLR(connection, url, flags, lrOpts) {
     const runnerResult = await lighthouse(url, flags, config, connection);
     if (!runnerResult) throw new Error('Lighthouse finished without a runnerResult');
 
+    // pre process the LHR for proto
+    const preprocessedLhr = preprocessor.processForProto(runnerResult.lhr);
+
     // When LR is called with |internal: {keep_raw_response: true, save_lighthouse_assets: true}|,
-    // this code will log artifacts to raw_response.artifacts.
+    // we log artifacts to raw_response.artifacts.
     if (logAssets) {
-      // @ts-ignore - piggyback the artifacts on the LHR.
-      runnerResult.lhr.artifacts = runnerResult.artifacts;
+      // Properly serialize artifact errors.
+      const artifactsJson = JSON.stringify(runnerResult.artifacts, assetSaver.stringifyReplacer);
+
+      return JSON.stringify({
+        ...preprocessedLhr,
+        artifacts: JSON.parse(artifactsJson),
+      });
     }
 
-    // pre process the LHR for proto
-    return JSON.stringify(preprocessor.processForProto(runnerResult.lhr));
+    return JSON.stringify(preprocessedLhr);
   } catch (err) {
     // If an error ruined the entire lighthouse run, attempt to return a meaningful error.
     let runtimeError;

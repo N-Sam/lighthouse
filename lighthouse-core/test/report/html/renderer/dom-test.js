@@ -10,6 +10,7 @@ const fs = require('fs');
 const jsdom = require('jsdom');
 const URL = require('../../../../lib/url-shim.js');
 const DOM = require('../../../../report/html/renderer/dom.js');
+const Util = require('../../../../report/html/renderer/util.js');
 
 const TEMPLATE_FILE = fs.readFileSync(__dirname +
     '/../../../../report/html/templates.html', 'utf8');
@@ -21,6 +22,7 @@ describe('DOM', () => {
 
   beforeAll(() => {
     global.URL = URL;
+    global.Util = Util;
     const {document} = new jsdom.JSDOM(TEMPLATE_FILE).window;
     dom = new DOM(document);
     dom.setLighthouseChannel('someChannel');
@@ -28,6 +30,7 @@ describe('DOM', () => {
 
   afterAll(() => {
     global.URL = undefined;
+    global.Util = undefined;
   });
 
   describe('createElement', () => {
@@ -124,7 +127,14 @@ describe('DOM', () => {
       assert.equal(result.innerHTML, '<a rel="noopener" target="_blank" href="https://developers.google.com/web/tools/lighthouse/audits/description?utm_source=lighthouse&amp;utm_medium=someChannel">Learn more</a>.');
     });
 
-    it('doesn\'t append utm params to non https://developers.google.com origins', () => {
+    it('appends utm params to the URLs with https://web.dev origin', () => {
+      const text = '[Learn more](https://web.dev/tap-targets/).';
+
+      const result = dom.convertMarkdownLinkSnippets(text);
+      assert.equal(result.innerHTML, '<a rel="noopener" target="_blank" href="https://web.dev/tap-targets/?utm_source=lighthouse&amp;utm_medium=someChannel">Learn more</a>.');
+    });
+
+    it('doesn\'t append utm params to other (non-docs) origins', () => {
       const text = '[Learn more](https://example.com/info).';
 
       const result = dom.convertMarkdownLinkSnippets(text);

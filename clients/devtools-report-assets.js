@@ -7,18 +7,30 @@
 
 /**
  * @fileoverview Instead of loading report assets form the filesystem, in Devtools we must load
- * them via Runtime.cachedResources. We use this module to shim
+ * them via Root.Runtime.cachedResources. We use this module to shim
  * lighthouse-core/report/html/html-report-assets.js in Devtools.
  */
 
-/* global Runtime */
+/* global Root */
 
-// @ts-ignore: Runtime exists in Devtools.
-const cachedResources = Runtime.cachedResources;
+// @ts-ignore: Root.Runtime exists in Devtools.
+const cachedResources = Root.Runtime.cachedResources;
 
+// Getters are necessary because the DevTools bundling processes
+// resources after this module is resolved. These properties are not
+// read from immediately, so we can defer reading with getters and everything
+// is going to be OK.
 module.exports = {
-  REPORT_CSS: cachedResources['audits/lighthouse/report.css'],
-  REPORT_JAVASCRIPT: cachedResources['audits/lighthouse/report.js'],
-  REPORT_TEMPLATE: cachedResources['audits/lighthouse/template.html'],
-  REPORT_TEMPLATES: cachedResources['audits/lighthouse/templates.html'],
+  get REPORT_CSS() {
+    return cachedResources['audits/lighthouse/report.css'];
+  },
+  get REPORT_JAVASCRIPT() {
+    return cachedResources['audits/lighthouse/report.js'];
+  },
+  get REPORT_TEMPLATE() {
+    return cachedResources['audits/lighthouse/template.html'];
+  },
+  get REPORT_TEMPLATES() {
+    return cachedResources['audits/lighthouse/templates.html'];
+  },
 };

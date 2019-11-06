@@ -17,7 +17,7 @@ const generatorFilename = `./lighthouse-core/report/report-generator.js`;
 const htmlReportAssets = require('../lighthouse-core/report/html/html-report-assets.js');
 
 /**
- * Used to save cached resources (Runtime.cachedResources).
+ * Used to save cached resources (Root.Runtime.cachedResources).
  * @param {string} name
  * @param {string} content
  */

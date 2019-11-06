@@ -19,7 +19,7 @@ describe('Mobile-friendly: viewport audit', () => {
       MetaElements: [],
     }, fakeContext);
     assert.equal(auditResult.score, 0);
-    assert.equal(auditResult.explanation, 'No viewport meta tag found');
+    expect(auditResult.explanation).toBeDisplayString('No `<meta name="viewport">` tag found');
   });
 
   it('fails when HTML contains a non-mobile friendly viewport meta tag', async () => {

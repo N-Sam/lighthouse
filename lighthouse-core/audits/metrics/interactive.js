@@ -10,11 +10,9 @@ const i18n = require('../../lib/i18n/i18n.js');
 const Interactive = require('../../computed/metrics/interactive.js');
 
 const UIStrings = {
-  /** The name of the metric that marks the time at which the page is fully loaded and is able to quickly respond to user input (clicks, taps, and keypresses feel responsive). Shown to users as the label for the numeric metric value. Ideally fits within a ~40 character limit. */
-  title: 'Time to Interactive',
   /** Description of the Time to Interactive (TTI) metric, which evaluates when a page has completed its primary network activity and main thread work. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Time to interactive is the amount of time it takes for the page to become fully ' +
-    'interactive. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/consistently-interactive).',
+    'interactive. [Learn more](https://web.dev/interactive).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -32,7 +30,7 @@ class InteractiveMetric extends Audit {
   static get meta() {
     return {
       id: 'interactive',
-      title: str_(UIStrings.title),
+      title: str_(i18n.UIStrings.interactiveMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       requiredArtifacts: ['traces', 'devtoolsLogs'],

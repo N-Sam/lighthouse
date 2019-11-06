@@ -8,6 +8,7 @@
 const NoVulnerableLibrariesAudit =
   require('../../../audits/dobetterweb/no-vulnerable-libraries.js');
 const assert = require('assert');
+const semver = require('semver');
 
 /* eslint-env jest */
 describe('Avoids front-end JavaScript libraries with known vulnerabilities', () => {
@@ -97,5 +98,57 @@ describe('Avoids front-end JavaScript libraries with known vulnerabilities', () 
       Stacks: [],
     });
     assert.equal(auditResult.score, 1);
+  });
+});
+
+describe('Snyk database', () => {
+  // https://github.com/npm/node-semver/issues/166#issuecomment-245990039
+  function hasUpperBound(rangeString) {
+    const range = new semver.Range(rangeString);
+    if (!range) return false;
+
+    // For every subset ...
+    for (const subset of range.set) {
+    // Upperbound exists if...
+
+    // < or <= is in one of the subset's clauses (= gets normalized to >= and <).
+      if (subset.some(comparator => comparator.operator && comparator.operator.match(/^</))) {
+        continue;
+      }
+
+      // Subset has a prerelease tag (operator will be empty string).
+      if (subset.length === 1 && subset[0].operator === '') {
+        continue;
+      }
+
+      // No upperbound for this subset.
+      return false;
+    }
+
+    return true;
+  }
+
+  it('hasUpperBound works as intended', () => {
+    assert.equal(hasUpperBound('<1.12.2'), true);
+    assert.equal(hasUpperBound('=1.12.2'), true);
+    assert.equal(hasUpperBound('>=1.12.3 <2.2.2'), true);
+    assert.equal(hasUpperBound('>=2.2.3 <3.0.0'), true);
+    assert.equal(hasUpperBound('>=3.0.0 <3.10.1 || =3.10.2'), true);
+
+    assert.equal(hasUpperBound('>1.12.2'), false);
+    assert.equal(hasUpperBound('>=1.12.2'), false);
+    assert.equal(hasUpperBound('*'), false);
+  });
+
+  it('every snyk vulnerability has an upper bound', () => {
+    for (const vulns of Object.values(NoVulnerableLibrariesAudit.snykDB.npm)) {
+      for (const vuln of vulns) {
+        for (const semver of vuln.semver.vulnerable) {
+          if (!hasUpperBound(semver)) {
+            assert.fail(`invalid semver: ${semver}. Must contain an upper bound`);
+          }
+        }
+      }
+    }
   });
 });

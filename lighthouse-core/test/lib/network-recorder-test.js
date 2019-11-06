@@ -313,9 +313,7 @@ describe('network recorder', function() {
       ];
 
       const periods = NetworkRecorder.findNetworkQuietPeriods(records, 0);
-      assert.deepStrictEqual(periods, [
-        {start: 2000, end: Infinity},
-      ]);
+      assert.deepStrictEqual(periods, []);
     });
   });
 });

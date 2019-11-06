@@ -2,6 +2,10 @@
 
 We'd love your help! This doc covers how to become a contributor and submit code to the project.
 
+## Where can I start?
+
+We tag issues that are good candidates for those new to the code with [`good first issue`](https://github.com/GoogleChrome/lighthouse/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22). We recommend you start there!
+
 ## Follow the coding style
 
 The `.eslintrc` file defines all. We use [JSDoc](http://usejsdoc.org/) with [TypeScript](https://github.com/Microsoft/TypeScript/wiki/JSDoc-support-in-JavaScript). Annotations are encouraged for all contributions.

@@ -23,7 +23,7 @@ describe('Performance: Resource budgets audit', () => {
           {url: 'http://third-party.com/file.jpg', resourceType: 'Image', transferSize: 70},
         ]),
       },
-      URL: {requestedURL: 'http://example.com', finalURL: 'http://example.com'},
+      URL: {requestedUrl: 'http://example.com', finalUrl: 'http://example.com'},
     };
     context = {computedCache: new Map(), settings: {}};
   });
@@ -31,6 +31,7 @@ describe('Performance: Resource budgets audit', () => {
   describe('with a budget.json', () => {
     beforeEach(() => {
       context.settings.budgets = [{
+        path: '/',
         resourceSizes: [
           {
             resourceType: 'script',
@@ -86,6 +87,7 @@ describe('Performance: Resource budgets audit', () => {
 
       it('convert budgets from kilobytes to bytes during calculations', async () => {
         context.settings.budgets = [{
+          path: '/',
           resourceSizes: [
             {
               resourceType: 'document',
@@ -98,6 +100,13 @@ describe('Performance: Resource budgets audit', () => {
       });
     });
 
+    it('does not mutate the budget config', async () => {
+      const configBefore = JSON.parse(JSON.stringify(context.settings.budgets));
+      await ResourceBudgetAudit.audit(artifacts, context);
+      const configAfter = JSON.parse(JSON.stringify(context.settings.budgets));
+      expect(configBefore).toEqual(configAfter);
+    });
+
     it('only includes rows for resource types with budgets', async () => {
       const result = await ResourceBudgetAudit.audit(artifacts, context);
       expect(result.details.items).toHaveLength(2);
@@ -105,6 +114,7 @@ describe('Performance: Resource budgets audit', () => {
 
     it('sorts rows by descending file size overage', async () => {
       context.settings.budgets = [{
+        path: '/',
         resourceSizes: [
           {
             resourceType: 'document',
@@ -126,27 +136,54 @@ describe('Performance: Resource budgets audit', () => {
         expect(item.size).toBeGreaterThanOrEqual(items[index + 1].size);
       });
     });
-
-    it('uses the first budget in budgets', async () => {
-      context.settings.budgets = [{
-        resourceSizes: [
-          {
-            resourceType: 'image',
-            budget: 0,
-          },
-        ],
-      },
-      {
-        resourceSizes: [
-          {
-            resourceType: 'script',
-            budget: 0,
-          },
-        ],
-      },
-      ];
-      const result = await ResourceBudgetAudit.audit(artifacts, context);
-      expect(result.details.items[0].resourceType).toBe('image');
+    describe('budget path', () => {
+      it('applies the last matching budget', async () => {
+        context.settings.budgets = [{
+          path: '/',
+          resourceSizes: [
+            {
+              resourceType: 'script',
+              budget: 0,
+            },
+          ],
+        },
+        {
+          path: '/file.html',
+          resourceSizes: [
+            {
+              resourceType: 'image',
+              budget: 0,
+            },
+          ],
+        },
+        {
+          path: '/not-a-match',
+          resourceSizes: [
+            {
+              resourceType: 'document',
+              budget: 0,
+            },
+          ],
+        },
+        ];
+        const result = await ResourceBudgetAudit.audit(artifacts, context);
+        expect(result.details.items[0].resourceType).toBe('image');
+      });
+      it('returns "audit does not apply" if no budget matches', async () => {
+        context.settings.budgets = [{
+          path: '/not-a-match',
+          resourceSizes: [
+            {
+              resourceType: 'script',
+              budget: 0,
+            },
+          ],
+        },
+        ];
+        const result = await ResourceBudgetAudit.audit(artifacts, context);
+        expect(result.details).toBeUndefined();
+        expect(result.notApplicable).toBe(true);
+      });
     });
   });
 

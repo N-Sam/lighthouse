@@ -50,7 +50,8 @@ function swapLocale(lhr, requestedLocale) {
 
   const locale = i18n.lookupLocale(requestedLocale);
   const {icuMessagePaths} = lhr.i18n;
-  const missingIcuMessageIds = /** @type {string[]} */([]);
+  /** @type {string[]} */
+  const missingIcuMessageIds = [];
 
   Object.entries(icuMessagePaths).forEach(([icuMessageId, messageInstancesInLHR]) => {
     for (const instance of messageInstancesInLHR) {

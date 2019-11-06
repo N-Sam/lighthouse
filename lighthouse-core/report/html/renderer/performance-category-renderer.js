@@ -127,8 +127,8 @@ class PerformanceCategoryRenderer extends CategoryRenderer {
 
     // Metric descriptions toggle.
     const toggleTmpl = this.dom.cloneTemplate('#tmpl-lh-metrics-toggle', this.templateContext);
-    const toggleEl = this.dom.find('.lh-metrics-toggle', toggleTmpl);
-    metricAuditsEl.append(...toggleEl.childNodes);
+    const _toggleEl = this.dom.find('.lh-metrics-toggle', toggleTmpl);
+    metricAuditsEl.append(..._toggleEl.childNodes);
 
     const metricAudits = category.auditRefs.filter(audit => audit.group === 'metrics');
     const keyMetrics = metricAudits.filter(a => a.weight >= 3);
@@ -148,7 +148,8 @@ class PerformanceCategoryRenderer extends CategoryRenderer {
     // 'Values are estimated and may vary' is used as the category description for PSI
     if (environment !== 'PSI') {
       const estValuesEl = this.dom.createChildOf(metricAuditsEl, 'div', 'lh-metrics__disclaimer');
-      estValuesEl.textContent = Util.UIStrings.varianceDisclaimer;
+      const disclaimerEl = this.dom.convertMarkdownLinkSnippets(Util.UIStrings.varianceDisclaimer);
+      estValuesEl.appendChild(disclaimerEl);
     }
 
     metricAuditsEl.classList.add('lh-audit-group--metrics');

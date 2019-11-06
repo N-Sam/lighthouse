@@ -8,9 +8,15 @@ declare global {
   module LH {
     /**
      * The performance budget interface.
-     * More info: https://github.com/GoogleChrome/lighthouse/issues/6053#issuecomment-428385930
+     * More info: https://github.com/GoogleChrome/budget.json
      */
     export interface Budget {
+      /**
+       * Indicates which pages a budget applies to. Uses the robots.txt format.
+       * If it is not supplied, the budget applies to all pages.
+       * More info on robots.txt: https://developers.google.com/search/reference/robots_txt#url-matching-based-on-path-values
+       */
+      path?: string;
       /** Budgets based on resource count. */
       resourceCounts?: Array<Budget.ResourceBudget>;
       /** Budgets based on resource size. */
@@ -32,12 +38,10 @@ declare global {
         metric: TimingMetric;
         /** Budget for timing measurement, in milliseconds. */
         budget: number;
-        /** Tolerance, i.e. buffer, to apply to a timing budget. Units: milliseconds. */
-        tolerance?: number;
       }
 
       /** Supported timing metrics. */
-      export type TimingMetric = 'first-contentful-paint' | 'first-cpu-idle' | 'interactive' | 'first-meaningful-paint' | 'max-potential-fid';
+      export type TimingMetric = 'first-contentful-paint' | 'first-cpu-idle' | 'interactive' | 'first-meaningful-paint' | 'max-potential-fid' | 'estimated-input-latency' | 'total-blocking-time' | 'speed-index';
 
       /** Supported values for the resourceType property of a ResourceBudget. */
       export type ResourceType = 'stylesheet' | 'image' | 'media' | 'font' | 'script' | 'document' | 'other' | 'total' | 'third-party';

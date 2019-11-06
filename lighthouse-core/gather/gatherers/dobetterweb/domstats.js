@@ -86,8 +86,8 @@ function elementPathInDOM(element) {
 /* istanbul ignore next */
 function getDOMStats(element, deep = true) {
   let deepestElement = null;
-  let maxDepth = 0;
-  let maxWidth = 0;
+  let maxDepth = -1;
+  let maxWidth = -1;
   let numElements = 0;
   let parentWithMostChildren = null;
 

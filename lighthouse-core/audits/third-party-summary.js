@@ -14,24 +14,27 @@ const NetworkRecords = require('../computed/network-records.js');
 const MainThreadTasks = require('../computed/main-thread-tasks.js');
 
 const UIStrings = {
-  /** Title of a Lighthouse audit that identifies the code on the page that the user doesn't control. This is shown in a list of audits that Lighthouse generates. */
-  title: 'Third-Party Usage',
+  /** Title of a diagnostic audit that provides details about the code on a web page that the user doesn't control (referred to as "third-party code"). This descriptive title is shown to users when the amount is acceptable and no user action is required. */
+  title: 'Minimize third-party usage',
+  /** Title of a diagnostic audit that provides details about the code on a web page that the user doesn't control (referred to as "third-party code"). This imperative title is shown to users when there is a significant amount of page execution time caused by third-party code that should be reduced. */
+  failureTitle: 'Reduce the impact of third-party code',
   /** Description of a Lighthouse audit that identifies the code on the page that the user doesn't control. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Third-party code can significantly impact load performance. ' +
     'Limit the number of redundant third-party providers and try to load third-party code after ' +
     'your page has primarily finished loading. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/).',
   /** Label for a table column that displays the name of a third-party provider that potentially links to their website. */
   columnThirdParty: 'Third-Party',
-  /** Label for a table column that displays how much time each row spent executing on the main thread, entries will be the number of milliseconds spent. */
-  columnMainThreadTime: 'Main Thread Time',
-  /** Summary text for the result of a Lighthouse audit that identifies the code on the page that the user doesn't control. This text summarizes the number of distinct entities that were found on the page. */
-  displayValue: `{itemCount, plural,
-    =1 {1 Third-Party Found}
-    other {# Third-Parties Found}
-  }`,
+  /** Label for a table column that displays how much time each row spent blocking other work on the main thread, entries will be the number of milliseconds spent. */
+  columnBlockingTime: 'Main-Thread Blocking Time',
+  /** Summary text for the result of a Lighthouse audit that identifies the code on a web page that the user doesn't control (referred to as "third-party code"). This text summarizes the number of distinct entities that were found on the page. */
+  displayValue: 'Third-party code blocked the main thread for ' +
+    `{timeInMs, number, milliseconds}\xa0ms`,
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
+
+// A page passes when all third-party code blocks for less than 250 ms.
+const PASS_THRESHOLD_IN_MS = 250;
 
 /** @typedef {import("third-party-web").IEntity} ThirdPartyEntity */
 
@@ -43,8 +46,8 @@ class ThirdPartySummary extends Audit {
     return {
       id: 'third-party-summary',
       title: str_(UIStrings.title),
+      failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      scoreDisplayMode: Audit.SCORING_MODES.INFORMATIVE,
       requiredArtifacts: ['traces', 'devtoolsLogs'],
     };
   }
@@ -69,17 +72,18 @@ class ThirdPartySummary extends Audit {
    * @param {Array<LH.Artifacts.NetworkRequest>} networkRecords
    * @param {Array<LH.Artifacts.TaskNode>} mainThreadTasks
    * @param {number} cpuMultiplier
-   * @return {Map<ThirdPartyEntity, {mainThreadTime: number, transferSize: number}>}
+   * @return {Map<ThirdPartyEntity, {mainThreadTime: number, transferSize: number, blockingTime: number}>}
    */
   static getSummaryByEntity(networkRecords, mainThreadTasks, cpuMultiplier) {
-    /** @type {Map<ThirdPartyEntity, {mainThreadTime: number, transferSize: number}>} */
+    /** @type {Map<ThirdPartyEntity, {mainThreadTime: number, transferSize: number, blockingTime: number}>} */
     const entities = new Map();
+    const defaultEntityStat = {mainThreadTime: 0, blockingTime: 0, transferSize: 0};
 
     for (const request of networkRecords) {
       const entity = ThirdPartySummary.getEntitySafe(request.url);
       if (!entity) continue;
 
-      const entityStats = entities.get(entity) || {mainThreadTime: 0, transferSize: 0};
+      const entityStats = entities.get(entity) || {...defaultEntityStat};
       entityStats.transferSize += request.transferSize;
       entities.set(entity, entityStats);
     }
@@ -91,8 +95,14 @@ class ThirdPartySummary extends Audit {
       const entity = ThirdPartySummary.getEntitySafe(attributeableURL);
       if (!entity) continue;
 
-      const entityStats = entities.get(entity) || {mainThreadTime: 0, transferSize: 0};
-      entityStats.mainThreadTime += task.selfTime * cpuMultiplier;
+      const entityStats = entities.get(entity) || {...defaultEntityStat};
+      const taskDuration = task.selfTime * cpuMultiplier;
+      // The amount of time spent on main thread is the sum of all durations.
+      entityStats.mainThreadTime += taskDuration;
+      // The amount of time spent *blocking* on main thread is the sum of all time longer than 50ms.
+      // Note that this is not totally equivalent to the TBT definition since it fails to account for FCP,
+      // but a majority of third-party work occurs after FCP and should yield largely similar numbers.
+      entityStats.blockingTime += Math.max(taskDuration - 50, 0);
       entities.set(entity, entityStats);
     }
 
@@ -117,15 +127,10 @@ class ThirdPartySummary extends Audit {
 
     const summary = {wastedBytes: 0, wastedMs: 0};
 
-    // Sort by a combined measure of bytes + main thread time.
-    // 1KB ~= 1 ms
-    /** @param {{transferSize: number, mainThreadTime: number}} stats */
-    const computeSortValue = stats => stats.transferSize / 1024 + stats.mainThreadTime;
-
     const results = Array.from(summaryByEntity.entries())
       .map(([entity, stats]) => {
         summary.wastedBytes += stats.transferSize;
-        summary.wastedMs += stats.mainThreadTime;
+        summary.wastedMs += stats.blockingTime;
 
         return {
           entity: /** @type {LH.Audit.Details.LinkValue} */ ({
@@ -135,17 +140,19 @@ class ThirdPartySummary extends Audit {
           }),
           transferSize: stats.transferSize,
           mainThreadTime: stats.mainThreadTime,
+          blockingTime: stats.blockingTime,
         };
       })
-      .sort((a, b) => computeSortValue(b) - computeSortValue(a));
+      // Sort by blocking time first, then transfer size to break ties.
+      .sort((a, b) => (b.blockingTime - a.blockingTime) || (b.transferSize - a.transferSize));
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
       {key: 'entity', itemType: 'link', text: str_(UIStrings.columnThirdParty)},
       {key: 'transferSize', granularity: 1, itemType: 'bytes',
         text: str_(i18n.UIStrings.columnSize)},
-      {key: 'mainThreadTime', granularity: 1, itemType: 'ms',
-        text: str_(UIStrings.columnMainThreadTime)},
+      {key: 'blockingTime', granularity: 1, itemType: 'ms',
+        text: str_(UIStrings.columnBlockingTime)},
     ];
 
     if (!results.length) {
@@ -156,8 +163,10 @@ class ThirdPartySummary extends Audit {
     }
 
     return {
-      score: Number(results.length === 0),
-      displayValue: str_(UIStrings.displayValue, {itemCount: results.length}),
+      score: Number(summary.wastedMs <= PASS_THRESHOLD_IN_MS),
+      displayValue: str_(UIStrings.displayValue, {
+        timeInMs: summary.wastedMs,
+      }),
       details: Audit.makeTableDetails(headings, results, summary),
     };
   }

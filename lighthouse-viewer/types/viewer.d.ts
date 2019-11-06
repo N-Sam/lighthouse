@@ -9,6 +9,7 @@ import _Logger = require('../../lighthouse-core/report/html/renderer/logger.js')
 import _LighthouseReportViewer = require('../app/src/lighthouse-report-viewer.js');
 import _DragAndDrop = require('../app/src/drag-and-drop.js');
 import _GithubApi = require('../app/src/github-api.js');
+import _PSIApi = require('../app/src/psi-api.js');
 import _FirebaseAuth = require('../app/src/firebase-auth.js');
 import _ViewerUIFeatures = require('../app/src/viewer-ui-features.js');
 import 'google.analytics';
@@ -23,6 +24,7 @@ declare global {
   var LighthouseReportViewer: typeof _LighthouseReportViewer;
   var DragAndDrop: typeof _DragAndDrop;
   var GithubApi: typeof _GithubApi;
+  var PSIApi: typeof _PSIApi;
   var FirebaseAuth: typeof _FirebaseAuth;
   var ViewerUIFeatures: typeof _ViewerUIFeatures;
 

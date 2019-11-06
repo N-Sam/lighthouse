@@ -26,6 +26,12 @@ describe('swap-locale', () => {
     // Renderer formatted strings
     expect(lhrEn.i18n.rendererFormattedStrings.labDataTitle).toEqual('Lab Data');
     expect(lhrEs.i18n.rendererFormattedStrings.labDataTitle).toEqual('Datos de prueba');
+
+    // Formatted numbers in placeholders.
+    expect(lhrEn.audits['render-blocking-resources'].displayValue)
+      .toEqual('Potential savings of 1,130 ms');
+    expect(lhrEs.audits['render-blocking-resources'].displayValue)
+      .toEqual('Ahorro potencial de 1.130 ms');
   });
 
   it('can roundtrip back to english correctly', () => {

@@ -5,7 +5,7 @@
     "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3358.0 Safari/537.36",
     "benchmarkIndex": 1000
   },
-  "lighthouseVersion": "5.1.0",
+  "lighthouseVersion": "5.6.0",
   "fetchTime": "2018-03-13T00:55:45.840Z",
   "requestedUrl": "http://localhost:10200/dobetterweb/dbw_tester.html",
   "finalUrl": "http://localhost:10200/dobetterweb/dbw_tester.html",
@@ -14,7 +14,7 @@
     "is-on-https": {
       "id": "is-on-https",
       "title": "Does not use HTTPS",
-      "description": "All sites should be protected with HTTPS, even ones that don't handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/https).",
+      "description": "All sites should be protected with HTTPS, even ones that don't handle sensitive data. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more](https://web.dev/is-on-https).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "displayValue": "1 insecure request found",
@@ -37,21 +37,21 @@
     "redirects-http": {
       "id": "redirects-http",
       "title": "Does not redirect HTTP traffic to HTTPS",
-      "description": "If you've already set up HTTPS, make sure that you redirect all HTTP traffic to HTTPS. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/http-redirects-to-https).",
+      "description": "If you've already set up HTTPS, make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://web.dev/redirects-http).",
       "score": 0,
       "scoreDisplayMode": "binary"
     },
     "service-worker": {
       "id": "service-worker",
-      "title": "Does not register a service worker that controls page and start_url",
-      "description": "The service worker is the technology that enables your app to use many Progressive Web App features, such as offline, add to homescreen, and push notifications. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/registered-service-worker).",
+      "title": "Does not register a service worker that controls page and `start_url`",
+      "description": "The service worker is the technology that enables your app to use many Progressive Web App features, such as offline, add to homescreen, and push notifications. [Learn more](https://web.dev/service-worker).",
       "score": 0,
       "scoreDisplayMode": "binary"
     },
     "works-offline": {
       "id": "works-offline",
       "title": "Current page does not respond with a 200 when offline",
-      "description": "If you're building a Progressive Web App, consider using a service worker so that your app can work offline. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/http-200-when-offline).",
+      "description": "If you're building a Progressive Web App, consider using a service worker so that your app can work offline. [Learn more](https://web.dev/works-offline).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "warnings": []
@@ -59,7 +59,7 @@
     "viewport": {
       "id": "viewport",
       "title": "Has a `<meta name=\"viewport\">` tag with `width` or `initial-scale`",
-      "description": "Add a viewport meta tag to optimize your app for mobile screens. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/has-viewport-meta-tag).",
+      "description": "Add a `<meta name=\"viewport\">` tag to optimize your app for mobile screens. [Learn more](https://web.dev/viewport).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "warnings": []
@@ -67,14 +67,14 @@
     "without-javascript": {
       "id": "without-javascript",
       "title": "Contains some content when JavaScript is not available",
-      "description": "Your app should display some content when JavaScript is disabled, even if it's just a warning to the user that JavaScript is required to use the app. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/no-js).",
+      "description": "Your app should display some content when JavaScript is disabled, even if it's just a warning to the user that JavaScript is required to use the app. [Learn more](https://web.dev/without-javascript).",
       "score": 1,
       "scoreDisplayMode": "binary"
     },
     "first-contentful-paint": {
       "id": "first-contentful-paint",
       "title": "First Contentful Paint",
-      "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint).",
+      "description": "First Contentful Paint marks the time at which the first text or image is painted. [Learn more](https://web.dev/first-contentful-paint).",
       "score": 0.51,
       "scoreDisplayMode": "numeric",
       "numericValue": 3969.135,
@@ -83,7 +83,7 @@
     "first-meaningful-paint": {
       "id": "first-meaningful-paint",
       "title": "First Meaningful Paint",
-      "description": "First Meaningful Paint measures when the primary content of a page is visible. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-meaningful-paint).",
+      "description": "First Meaningful Paint measures when the primary content of a page is visible. [Learn more](https://web.dev/first-meaningful-paint).",
       "score": 0.51,
       "scoreDisplayMode": "numeric",
       "numericValue": 3969.136,
@@ -92,7 +92,7 @@
     "load-fast-enough-for-pwa": {
       "id": "load-fast-enough-for-pwa",
       "title": "Page load is fast enough on mobile networks",
-      "description": "A fast page load over a cellular network ensures a good mobile user experience. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/fast-3g).",
+      "description": "A fast page load over a cellular network ensures a good mobile user experience. [Learn more](https://web.dev/load-fast-enough-for-pwa).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "numericValue": 4927.278
@@ -100,7 +100,7 @@
     "speed-index": {
       "id": "speed-index",
       "title": "Speed Index",
-      "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/speed-index).",
+      "description": "Speed Index shows how quickly the contents of a page are visibly populated. [Learn more](https://web.dev/speed-index).",
       "score": 0.74,
       "scoreDisplayMode": "numeric",
       "numericValue": 4417,
@@ -185,16 +185,16 @@
     "estimated-input-latency": {
       "id": "estimated-input-latency",
       "title": "Estimated Input Latency",
-      "description": "Estimated Input Latency is an estimate of how long your app takes to respond to user input, in milliseconds, during the busiest 5s window of page load. If your latency is higher than 50 ms, users may perceive your app as laggy. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/estimated-input-latency).",
+      "description": "Estimated Input Latency is an estimate of how long your app takes to respond to user input, in milliseconds, during the busiest 5s window of page load. If your latency is higher than 50 ms, users may perceive your app as laggy. [Learn more](https://web.dev/estimated-input-latency).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 16,
       "displayValue": "20 ms"
     },
-    "cumulative-long-queuing-delay": {
-      "id": "cumulative-long-queuing-delay",
-      "title": "Cumulative Long Queuing Delay",
-      "description": "[Experimental metric] Total time period between FCP and Time to Interactive during which queuing time for any input event would be higher than 50ms.",
+    "total-blocking-time": {
+      "id": "total-blocking-time",
+      "title": "Total Blocking Time",
+      "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 116.79800000000023,
@@ -203,7 +203,7 @@
     "max-potential-fid": {
       "id": "max-potential-fid",
       "title": "Max Potential First Input Delay",
-      "description": "The maximum potential First Input Delay that your users could experience is the duration, in milliseconds, of the longest task. [Learn more](https://developers.google.com/web/updates/2018/05/first-input-delay).",
+      "description": "The maximum potential First Input Delay that your users could experience is the duration, in milliseconds, of the longest task. [Learn more](https://web.dev/lighthouse-max-potential-fid).",
       "score": 0.92,
       "scoreDisplayMode": "numeric",
       "numericValue": 122.537,
@@ -212,7 +212,7 @@
     "errors-in-console": {
       "id": "errors-in-console",
       "title": "Browser errors were logged to the console",
-      "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns.",
+      "description": "Errors logged to the console indicate unresolved problems. They can come from network request failures and other browser concerns. [Learn more](https://web.dev/errors-in-console)",
       "score": 0,
       "scoreDisplayMode": "binary",
       "numericValue": 5,
@@ -237,6 +237,11 @@
             "url": "http://localhost:10200/dobetterweb/dbw_tester.html"
           },
           {
+            "source": "Runtime.exception",
+            "description": "Error: An error\n    at http://localhost:10200/dobetterweb/dbw_tester.html:42:38",
+            "url": "http://localhost:10200/dobetterweb/dbw_tester.html"
+          },
+          {
             "source": "network",
             "description": "Failed to load resource: the server responded with a status of 404 (Not Found)",
             "url": "http://localhost:10200/dobetterweb/unknown404.css?delay=200"
@@ -250,11 +255,6 @@
             "source": "network",
             "description": "Failed to load resource: the server responded with a status of 404 (Not Found)",
             "url": "http://localhost:10200/dobetterweb/unknown404.css?delay=200"
-          },
-          {
-            "source": "Runtime.exception",
-            "description": "Error: An error\n    at http://localhost:10200/dobetterweb/dbw_tester.html:42:38",
-            "url": "http://localhost:10200/dobetterweb/dbw_tester.html"
           }
         ]
       }
@@ -262,7 +262,7 @@
     "time-to-first-byte": {
       "id": "time-to-first-byte",
       "title": "Server response times are low (TTFB)",
-      "description": "Time To First Byte identifies the time at which your server sends a response. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/ttfb).",
+      "description": "Time To First Byte identifies the time at which your server sends a response. [Learn more](https://web.dev/time-to-first-byte).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "numericValue": 570.5630000000001,
@@ -277,7 +277,7 @@
     "first-cpu-idle": {
       "id": "first-cpu-idle",
       "title": "First CPU Idle",
-      "description": "First CPU Idle marks the first time at which the page's main thread is quiet enough to handle input. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-interactive).",
+      "description": "First CPU Idle marks the first time at which the page's main thread is quiet enough to handle input.  [Learn more](https://web.dev/first-cpu-idle).",
       "score": 0.72,
       "scoreDisplayMode": "numeric",
       "numericValue": 4927.278,
@@ -286,7 +286,7 @@
     "interactive": {
       "id": "interactive",
       "title": "Time to Interactive",
-      "description": "Time to interactive is the amount of time it takes for the page to become fully interactive. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/consistently-interactive).",
+      "description": "Time to interactive is the amount of time it takes for the page to become fully interactive. [Learn more](https://web.dev/interactive).",
       "score": 0.78,
       "scoreDisplayMode": "numeric",
       "numericValue": 4927.278,
@@ -295,7 +295,7 @@
     "user-timings": {
       "id": "user-timings",
       "title": "User Timing marks and measures",
-      "description": "Consider instrumenting your app with the User Timing API to measure your app's real-world performance during key user experiences. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/user-timing).",
+      "description": "Consider instrumenting your app with the User Timing API to measure your app's real-world performance during key user experiences. [Learn more](https://web.dev/user-timings).",
       "score": null,
       "scoreDisplayMode": "notApplicable",
       "details": {
@@ -306,8 +306,8 @@
     },
     "critical-request-chains": {
       "id": "critical-request-chains",
-      "title": "Minimize Critical Requests Depth",
-      "description": "The Critical Request Chains below show you what resources are loaded with a high priority. Consider reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/critical-request-chains).",
+      "title": "Avoid chaining critical requests",
+      "description": "The Critical Request Chains below show you what resources are loaded with a high priority. Consider reducing the length of chains, reducing the download size of resources, or deferring the download of unnecessary resources to improve page load. [Learn more](https://web.dev/critical-request-chains).",
       "score": null,
       "scoreDisplayMode": "informative",
       "displayValue": "12 chains found",
@@ -453,7 +453,7 @@
     "redirects": {
       "id": "redirects",
       "title": "Avoid multiple page redirects",
-      "description": "Redirects introduce additional delays before the page can be loaded. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/redirects).",
+      "description": "Redirects introduce additional delays before the page can be loaded. [Learn more](https://web.dev/redirects).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -468,7 +468,7 @@
     "installable-manifest": {
       "id": "installable-manifest",
       "title": "Web app manifest does not meet the installability requirements",
-      "description": "Browsers can proactively prompt users to add your app to their homescreen, which can lead to higher engagement. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/install-prompt).",
+      "description": "Browsers can proactively prompt users to add your app to their homescreen, which can lead to higher engagement. [Learn more](https://web.dev/installable-manifest).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "explanation": "Failures: No manifest was fetched.",
@@ -488,7 +488,7 @@
     "apple-touch-icon": {
       "id": "apple-touch-icon",
       "title": "Does not provide a valid `apple-touch-icon`",
-      "description": "For ideal appearance on iOS when users add to the home screen, define an apple-touch-icon. It must point to a non-transparent 192px (or 180px) square PNG. [Learn More](https://developers.google.com/web/fundamentals/design-and-ux/browser-customization/).",
+      "description": "For ideal appearance on iOS when users add a progressive web app to the home screen, define an `apple-touch-icon`. It must point to a non-transparent 192px (or 180px) square PNG. [Learn More](https://web.dev/apple-touch-icon/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "warnings": []
@@ -496,7 +496,7 @@
     "splash-screen": {
       "id": "splash-screen",
       "title": "Is not configured for a custom splash screen",
-      "description": "A themed splash screen ensures a high-quality experience when users launch your app from their homescreens. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/custom-splash-screen).",
+      "description": "A themed splash screen ensures a high-quality experience when users launch your app from their homescreens. [Learn more](https://web.dev/splash-screen).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "explanation": "Failures: No manifest was fetched.",
@@ -515,8 +515,8 @@
     },
     "themed-omnibox": {
       "id": "themed-omnibox",
-      "title": "Does not set an address-bar theme color",
-      "description": "The browser address bar can be themed to match your site. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/address-bar).",
+      "title": "Does not set a theme color for the address bar.",
+      "description": "The browser address bar can be themed to match your site. [Learn more](https://web.dev/themed-omnibox).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "explanation": "Failures: No manifest was fetched,\nNo `<meta name=\"theme-color\">` tag found.",
@@ -538,7 +538,7 @@
     "content-width": {
       "id": "content-width",
       "title": "Content is sized correctly for the viewport",
-      "description": "If the width of your app's content doesn't match the width of the viewport, your app might not be optimized for mobile screens. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/content-sized-correctly-for-viewport).",
+      "description": "If the width of your app's content doesn't match the width of the viewport, your app might not be optimized for mobile screens. [Learn more](https://web.dev/content-width).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "explanation": ""
@@ -546,7 +546,7 @@
     "image-aspect-ratio": {
       "id": "image-aspect-ratio",
       "title": "Displays images with incorrect aspect ratio",
-      "description": "Image display dimensions should match natural aspect ratio. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/aspect-ratio).",
+      "description": "Image display dimensions should match natural aspect ratio. [Learn more](https://web.dev/image-aspect-ratio).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "warnings": [],
@@ -587,7 +587,7 @@
     "deprecations": {
       "id": "deprecations",
       "title": "Uses deprecated APIs",
-      "description": "Deprecated APIs will eventually be removed from the browser. [Learn more](https://www.chromestatus.com/features#deprecated).",
+      "description": "Deprecated APIs will eventually be removed from the browser. [Learn more](https://web.dev/deprecations).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "displayValue": "3 warnings found",
@@ -596,7 +596,7 @@
         "headings": [
           {
             "key": "value",
-            "itemType": "code",
+            "itemType": "text",
             "text": "Deprecation / Warning"
           },
           {
@@ -634,7 +634,7 @@
     "mainthread-work-breakdown": {
       "id": "mainthread-work-breakdown",
       "title": "Minimizes main-thread work",
-      "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this.",
+      "description": "Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this. [Learn more](https://web.dev/mainthread-work-breakdown)",
       "score": 0.96,
       "scoreDisplayMode": "numeric",
       "numericValue": 1548.5690000000002,
@@ -696,7 +696,7 @@
     "bootup-time": {
       "id": "bootup-time",
       "title": "JavaScript execution time",
-      "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/bootup).",
+      "description": "Consider reducing the time spent parsing, compiling, and executing JS. You may find delivering smaller JS payloads helps with this. [Learn more](https://web.dev/bootup-time).",
       "score": 0.92,
       "scoreDisplayMode": "numeric",
       "numericValue": 1150.573,
@@ -762,7 +762,7 @@
     "uses-rel-preload": {
       "id": "uses-rel-preload",
       "title": "Preload key requests",
-      "description": "Consider using <link rel=preload> to prioritize fetching resources that are currently requested later in page load. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/preload).",
+      "description": "Consider using `<link rel=preload>` to prioritize fetching resources that are currently requested later in page load. [Learn more](https://web.dev/uses-rel-preload).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -777,7 +777,7 @@
     "uses-rel-preconnect": {
       "id": "uses-rel-preconnect",
       "title": "Preconnect to required origins",
-      "description": "Consider adding preconnect or dns-prefetch resource hints to establish early connections to important third-party origins. [Learn more](https://developers.google.com/web/fundamentals/performance/resource-prioritization#preconnect).",
+      "description": "Consider adding `preconnect` or `dns-prefetch` resource hints to establish early connections to important third-party origins. [Learn more](https://web.dev/uses-rel-preconnect).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -793,7 +793,7 @@
     "font-display": {
       "id": "font-display",
       "title": "All text remains visible during webfont loads",
-      "description": "Leverage the font-display CSS feature to ensure text is user-visible while webfonts are loading. [Learn more](https://developers.google.com/web/updates/2016/02/font-display).",
+      "description": "Leverage the font-display CSS feature to ensure text is user-visible while webfonts are loading. [Learn more](https://web.dev/font-display).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "warnings": [],
@@ -1127,7 +1127,7 @@
             "text": "URL"
           },
           {
-            "key": "serverReponseTime",
+            "key": "serverResponseTime",
             "itemType": "ms",
             "granularity": 1,
             "text": "Time Spent"
@@ -1136,11 +1136,11 @@
         "items": [
           {
             "origin": "http://localhost:10200",
-            "serverReponseTime": 572.829
+            "serverResponseTime": 572.829
           },
           {
             "origin": "http://ajax.googleapis.com",
-            "serverReponseTime": 562.398
+            "serverResponseTime": 562.398
           }
         ]
       }
@@ -1242,7 +1242,7 @@
       "description": "Collects all available metrics.",
       "score": null,
       "scoreDisplayMode": "informative",
-      "numericValue": 4927.278,
+      "numericValue": 4927,
       "details": {
         "type": "debugdata",
         "items": [
@@ -1258,7 +1258,7 @@
             "speedIndex": 4417,
             "speedIndexTs": 185607736912,
             "estimatedInputLatency": 16,
-            "cumulativeLongQueuingDelay": 117,
+            "totalBlockingTime": 117,
             "observedNavigationStart": 0,
             "observedNavigationStartTs": 185603319912,
             "observedFirstPaint": 3969,
@@ -1279,14 +1279,17 @@
             "observedLastVisualChangeTs": 185608110912,
             "observedSpeedIndex": 4417,
             "observedSpeedIndexTs": 185607736763
+          },
+          {
+            "lcpInvalidated": false
           }
         ]
       }
     },
     "offline-start-url": {
       "id": "offline-start-url",
-      "title": "start_url does not respond with a 200 when offline",
-      "description": "A service worker enables your web app to be reliable in unpredictable network conditions. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/http-200-when-offline).",
+      "title": "`start_url` does not respond with a 200 when offline",
+      "description": "A service worker enables your web app to be reliable in unpredictable network conditions. [Learn more](https://web.dev/offline-start-url).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "explanation": "No usable web app manifest found on page.",
@@ -1481,11 +1484,11 @@
     },
     "third-party-summary": {
       "id": "third-party-summary",
-      "title": "Third-Party Usage",
+      "title": "Minimize third-party usage",
       "description": "Third-party code can significantly impact load performance. Limit the number of redundant third-party providers and try to load third-party code after your page has primarily finished loading. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/).",
-      "score": null,
-      "scoreDisplayMode": "informative",
-      "displayValue": "1 Third-Party Found",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "displayValue": "Third-party code blocked the main thread for 20 ms",
       "details": {
         "type": "table",
         "headings": [
@@ -1501,10 +1504,10 @@
             "text": "Size"
           },
           {
-            "key": "mainThreadTime",
+            "key": "blockingTime",
             "granularity": 1,
             "itemType": "ms",
-            "text": "Main Thread Time"
+            "text": "Main-Thread Blocking Time"
           }
         ],
         "items": [
@@ -1515,103 +1518,152 @@
               "url": "https://developers.google.com/speed/libraries/"
             },
             "transferSize": 30174,
-            "mainThreadTime": 82.74100000000001
+            "mainThreadTime": 82.74100000000001,
+            "blockingTime": 22.918000000000006
           }
         ],
         "summary": {
           "wastedBytes": 30174,
-          "wastedMs": 82.74100000000001
+          "wastedMs": 22.918000000000006
         }
       }
     },
     "pwa-cross-browser": {
       "id": "pwa-cross-browser",
       "title": "Site works cross-browser",
-      "description": "To reach the most number of users, sites should work across every major browser. [Learn more](https://developers.google.com/web/progressive-web-apps/checklist#site-works-cross-browser).",
+      "description": "To reach the most number of users, sites should work across every major browser. [Learn more](https://web.dev/pwa-cross-browser).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "pwa-page-transitions": {
       "id": "pwa-page-transitions",
       "title": "Page transitions don't feel like they block on the network",
-      "description": "Transitions should feel snappy as you tap around, even on a slow network, a key to perceived performance. [Learn more](https://developers.google.com/web/progressive-web-apps/checklist#page-transitions-dont-feel-like-they-block-on-the-network).",
+      "description": "Transitions should feel snappy as you tap around, even on a slow network. This experience is key to a user's perception of performance. [Learn more](https://web.dev/pwa-page-transitions).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "pwa-each-page-has-url": {
       "id": "pwa-each-page-has-url",
       "title": "Each page has a URL",
-      "description": "Ensure individual pages are deep linkable via the URLs and that URLs are unique for the purpose of shareability on social media. [Learn more](https://developers.google.com/web/progressive-web-apps/checklist#each-page-has-a-url).",
+      "description": "Ensure individual pages are deep linkable via URL and that URLs are unique for the purpose of shareability on social media. [Learn more](https://web.dev/pwa-each-page-has-url).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "accesskeys": {
       "id": "accesskeys",
       "title": "`[accesskey]` values are unique",
-      "description": "Access keys let users quickly focus a part of the page. For proper navigation, each access key must be unique. [Learn more](https://dequeuniversity.com/rules/axe/3.1/accesskeys?application=lighthouse).",
+      "description": "Access keys let users quickly focus a part of the page. For proper navigation, each access key must be unique. [Learn more](https://web.dev/accesskeys/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "aria-allowed-attr": {
       "id": "aria-allowed-attr",
       "title": "`[aria-*]` attributes match their roles",
-      "description": "Each ARIA `role` supports a specific subset of `aria-*` attributes. Mismatching these invalidates the `aria-*` attributes. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-allowed-attr?application=lighthouse).",
+      "description": "Each ARIA `role` supports a specific subset of `aria-*` attributes. Mismatching these invalidates the `aria-*` attributes. [Learn more](https://web.dev/aria-allowed-attr/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
+    },
+    "aria-hidden-body": {
+      "id": "aria-hidden-body",
+      "title": "`[aria-hidden=\"true\"]` is not present on the document `<body>`",
+      "description": "Assistive technologies, like screen readers, work inconsistently when `aria-hidden=\"true\"` is set on the document `<body>`. [Learn more](https://web.dev/aria-hidden-body/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "aria-hidden-focus": {
+      "id": "aria-hidden-focus",
+      "title": "`[aria-hidden=\"true\"]` elements do not contain focusable descendents",
+      "description": "Focusable descendents within an `[aria-hidden=\"true\"]` element prevent those interactive elements from being available to users of assistive technologies like screen readers. [Learn more](https://web.dev/aria-hidden-focus/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "aria-input-field-name": {
+      "id": "aria-input-field-name",
+      "title": "ARIA input fields have accessible names",
+      "description": "When an input field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-input-field-name/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
     },
     "aria-required-attr": {
       "id": "aria-required-attr",
       "title": "`[role]`s have all required `[aria-*]` attributes",
-      "description": "Some ARIA roles have required attributes that describe the state of the element to screen readers. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-required-attr?application=lighthouse).",
+      "description": "Some ARIA roles have required attributes that describe the state of the element to screen readers. [Learn more](https://web.dev/aria-required-attr/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "aria-required-children": {
       "id": "aria-required-children",
-      "title": "Elements with `[role]` that require specific children `[role]`s, are present",
-      "description": "Some ARIA parent roles must contain specific child roles to perform their intended accessibility functions. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-required-children?application=lighthouse).",
+      "title": "Elements with an ARIA `[role]` that require children to contain a specific `[role]` have all required children.",
+      "description": "Some ARIA parent roles must contain specific child roles to perform their intended accessibility functions. [Learn more](https://web.dev/aria-required-children/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "aria-required-parent": {
       "id": "aria-required-parent",
       "title": "`[role]`s are contained by their required parent element",
-      "description": "Some ARIA child roles must be contained by specific parent roles to properly perform their intended accessibility functions. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-required-parent?application=lighthouse).",
+      "description": "Some ARIA child roles must be contained by specific parent roles to properly perform their intended accessibility functions. [Learn more](https://web.dev/aria-required-parent/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "aria-roles": {
       "id": "aria-roles",
       "title": "`[role]` values are valid",
-      "description": "ARIA roles must have valid values in order to perform their intended accessibility functions. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-roles?application=lighthouse).",
+      "description": "ARIA roles must have valid values in order to perform their intended accessibility functions. [Learn more](https://web.dev/aria-roles/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
+    },
+    "aria-toggle-field-name": {
+      "id": "aria-toggle-field-name",
+      "title": "ARIA toggle fields have accessible names",
+      "description": "When a toggle field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-toggle-field-label/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
     },
     "aria-valid-attr-value": {
       "id": "aria-valid-attr-value",
       "title": "`[aria-*]` attributes have valid values",
-      "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid values. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-valid-attr-value?application=lighthouse).",
+      "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid values. [Learn more](https://web.dev/aria-valid-attr-value/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "aria-valid-attr": {
       "id": "aria-valid-attr",
       "title": "`[aria-*]` attributes are valid and not misspelled",
-      "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid names. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-valid-attr?application=lighthouse).",
+      "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid names. [Learn more](https://web.dev/aria-valid-attr/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "audio-caption": {
       "id": "audio-caption",
       "title": "`<audio>` elements contain a `<track>` element with `[kind=\"captions\"]`",
-      "description": "Captions make audio elements usable for deaf or hearing-impaired users, providing critical information such as who is talking, what they're saying, and other non-speech information. [Learn more](https://dequeuniversity.com/rules/axe/3.1/audio-caption?application=lighthouse).",
+      "description": "Captions make audio elements usable for deaf or hearing-impaired users, providing critical information such as who is talking, what they're saying, and other non-speech information. [Learn more](https://web.dev/audio-caption/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "button-name": {
       "id": "button-name",
       "title": "Buttons have an accessible name",
-      "description": "When a button doesn't have an accessible name, screen readers announce it as \"button\", making it unusable for users who rely on screen readers. [Learn more](https://dequeuniversity.com/rules/axe/3.1/button-name?application=lighthouse).",
+      "description": "When a button doesn't have an accessible name, screen readers announce it as \"button\", making it unusable for users who rely on screen readers. [Learn more](https://web.dev/button-name/).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1623,7 +1675,7 @@
     "bypass": {
       "id": "bypass",
       "title": "The page contains a heading, skip link, or landmark region",
-      "description": "Adding ways to bypass repetitive content lets keyboard users navigate the page more efficiently. [Learn more](https://dequeuniversity.com/rules/axe/3.1/bypass?application=lighthouse).",
+      "description": "Adding ways to bypass repetitive content lets keyboard users navigate the page more efficiently. [Learn more](https://web.dev/bypass/).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1635,7 +1687,7 @@
     "color-contrast": {
       "id": "color-contrast",
       "title": "Background and foreground colors do not have a sufficient contrast ratio.",
-      "description": "Low-contrast text is difficult or impossible for many users to read. [Learn more](https://dequeuniversity.com/rules/axe/3.1/color-contrast?application=lighthouse).",
+      "description": "Low-contrast text is difficult or impossible for many users to read. [Learn more](https://web.dev/color-contrast/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1683,21 +1735,21 @@
     "definition-list": {
       "id": "definition-list",
       "title": "`<dl>`'s contain only properly-ordered `<dt>` and `<dd>` groups, `<script>` or `<template>` elements.",
-      "description": "When definition lists are not properly marked up, screen readers may produce confusing or inaccurate output. [Learn more](https://dequeuniversity.com/rules/axe/3.1/definition-list?application=lighthouse).",
+      "description": "When definition lists are not properly marked up, screen readers may produce confusing or inaccurate output. [Learn more](https://web.dev/definition-list/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "dlitem": {
       "id": "dlitem",
       "title": "Definition list items are wrapped in `<dl>` elements",
-      "description": "Definition list items (`<dt>` and `<dd>`) must be wrapped in a parent `<dl>` element to ensure that screen readers can properly announce them. [Learn more](https://dequeuniversity.com/rules/axe/3.1/dlitem?application=lighthouse).",
+      "description": "Definition list items (`<dt>` and `<dd>`) must be wrapped in a parent `<dl>` element to ensure that screen readers can properly announce them. [Learn more](https://web.dev/dlitem/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "document-title": {
       "id": "document-title",
       "title": "Document has a `<title>` element",
-      "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/title).",
+      "description": "The title gives screen reader users an overview of the page, and search engine users rely on it heavily to determine if a page is relevant to their search. [Learn more](https://web.dev/document-title/).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1706,10 +1758,34 @@
         "items": []
       }
     },
-    "duplicate-id": {
-      "id": "duplicate-id",
-      "title": "`[id]` attributes on the page are unique",
-      "description": "The value of an id attribute must be unique to prevent other instances from being overlooked by assistive technologies. [Learn more](https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=lighthouse).",
+    "duplicate-id-active": {
+      "id": "duplicate-id-active",
+      "title": "`[id]` attributes on active, focusable elements are unique",
+      "description": "All focusable elements must have a unique `id` to ensure that they're visible to assistive technologies. [Learn more](https://web.dev/duplicate-id-active/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "duplicate-id-aria": {
+      "id": "duplicate-id-aria",
+      "title": "ARIA IDs are unique",
+      "description": "The value of an ARIA ID must be unique to prevent other instances from being overlooked by assistive technologies. [Learn more](https://web.dev/duplicate-id-aria/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "form-field-multiple-labels": {
+      "id": "form-field-multiple-labels",
+      "title": "No form fields have multiple labels",
+      "description": "Form fields with multiple labels can be confusingly announced by assistive technologies like screen readers which use either the first, the last, or all of the labels. [Learn more](https://web.dev/form-field-multiple-labels/).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1721,14 +1797,26 @@
     "frame-title": {
       "id": "frame-title",
       "title": "`<frame>` or `<iframe>` elements have a title",
-      "description": "Screen reader users rely on frame titles to describe the contents of frames. [Learn more](https://dequeuniversity.com/rules/axe/3.1/frame-title?application=lighthouse).",
+      "description": "Screen reader users rely on frame titles to describe the contents of frames. [Learn more](https://web.dev/frame-title/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
+    },
+    "heading-order": {
+      "id": "heading-order",
+      "title": "Heading elements appear in a sequentially-descending order",
+      "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more](https://web.dev/heading-order/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
     },
     "html-has-lang": {
       "id": "html-has-lang",
       "title": "`<html>` element does not have a `[lang]` attribute",
-      "description": "If a page doesn't specify a lang attribute, a screen reader assumes that the page is in the default language that the user chose when setting up the screen reader. If the page isn't actually in the default language, then the screen reader might not announce the page's text correctly. [Learn more](https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=lighthouse).",
+      "description": "If a page doesn't specify a lang attribute, a screen reader assumes that the page is in the default language that the user chose when setting up the screen reader. If the page isn't actually in the default language, then the screen reader might not announce the page's text correctly. [Learn more](https://web.dev/html-has-lang/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1766,14 +1854,14 @@
     "html-lang-valid": {
       "id": "html-lang-valid",
       "title": "`<html>` element has a valid value for its `[lang]` attribute",
-      "description": "Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) helps screen readers announce text properly. [Learn more](https://dequeuniversity.com/rules/axe/3.1/valid-lang?application=lighthouse).",
+      "description": "Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) helps screen readers announce text properly. [Learn more](https://web.dev/html-lang-valid/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "image-alt": {
       "id": "image-alt",
       "title": "Image elements do not have `[alt]` attributes",
-      "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more](https://dequeuniversity.com/rules/axe/3.1/image-alt?application=lighthouse).",
+      "description": "Informative elements should aim for short, descriptive alternate text. Decorative elements can be ignored with an empty alt attribute. [Learn more](https://web.dev/image-alt/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1843,14 +1931,14 @@
     "input-image-alt": {
       "id": "input-image-alt",
       "title": "`<input type=\"image\">` elements have `[alt]` text",
-      "description": "When an image is being used as an `<input>` button, providing alternative text can help screen reader users understand the purpose of the button. [Learn more](https://dequeuniversity.com/rules/axe/3.1/input-image-alt?application=lighthouse).",
+      "description": "When an image is being used as an `<input>` button, providing alternative text can help screen reader users understand the purpose of the button. [Learn more](https://web.dev/input-image-alt/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "label": {
       "id": "label",
       "title": "Form elements do not have associated labels",
-      "description": "Labels ensure that form controls are announced properly by assistive technologies, like screen readers. [Learn more](https://dequeuniversity.com/rules/axe/3.1/label?application=lighthouse).",
+      "description": "Labels ensure that form controls are announced properly by assistive technologies, like screen readers. [Learn more](https://web.dev/label/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1911,14 +1999,14 @@
     "layout-table": {
       "id": "layout-table",
       "title": "Presentational `<table>` elements avoid using `<th>`, `<caption>` or the `[summary]` attribute.",
-      "description": "A table being used for layout purposes should not include data elements, such as the th or caption elements or the summary attribute, because this can create a confusing experience for screen reader users. [Learn more](https://dequeuniversity.com/rules/axe/3.1/layout-table?application=lighthouse).",
+      "description": "A table being used for layout purposes should not include data elements, such as the th or caption elements or the summary attribute, because this can create a confusing experience for screen reader users. [Learn more](https://web.dev/layout-table/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "link-name": {
       "id": "link-name",
       "title": "Links do not have a discernible name",
-      "description": "Link text (and alternate text for images, when used as links) that is discernible, unique, and focusable improves the navigation experience for screen reader users. [Learn more](https://dequeuniversity.com/rules/axe/3.1/link-name?application=lighthouse).",
+      "description": "Link text (and alternate text for images, when used as links) that is discernible, unique, and focusable improves the navigation experience for screen reader users. [Learn more](https://web.dev/link-name/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1969,28 +2057,28 @@
     "list": {
       "id": "list",
       "title": "Lists contain only `<li>` elements and script supporting elements (`<script>` and `<template>`).",
-      "description": "Screen readers have a specific way of announcing lists. Ensuring proper list structure aids screen reader output. [Learn more](https://dequeuniversity.com/rules/axe/3.1/list?application=lighthouse).",
+      "description": "Screen readers have a specific way of announcing lists. Ensuring proper list structure aids screen reader output. [Learn more](https://web.dev/list/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "listitem": {
       "id": "listitem",
       "title": "List items (`<li>`) are contained within `<ul>` or `<ol>` parent elements",
-      "description": "Screen readers require list items (`<li>`) to be contained within a parent `<ul>` or `<ol>` to be announced properly. [Learn more](https://dequeuniversity.com/rules/axe/3.1/listitem?application=lighthouse).",
+      "description": "Screen readers require list items (`<li>`) to be contained within a parent `<ul>` or `<ol>` to be announced properly. [Learn more](https://web.dev/listitem/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "meta-refresh": {
       "id": "meta-refresh",
       "title": "The document does not use `<meta http-equiv=\"refresh\">`",
-      "description": "Users do not expect a page to refresh automatically, and doing so will move focus back to the top of the page. This may create a frustrating or confusing experience. [Learn more](https://dequeuniversity.com/rules/axe/3.1/meta-refresh?application=lighthouse).",
+      "description": "Users do not expect a page to refresh automatically, and doing so will move focus back to the top of the page. This may create a frustrating or confusing experience. [Learn more](https://web.dev/meta-refresh/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "meta-viewport": {
       "id": "meta-viewport",
       "title": "`[user-scalable=\"no\"]` is not used in the `<meta name=\"viewport\">` element and the `[maximum-scale]` attribute is not less than 5.",
-      "description": "Disabling zooming is problematic for users with low vision who rely on screen magnification to properly see the contents of a web page. [Learn more](https://dequeuniversity.com/rules/axe/3.1/meta-viewport?application=lighthouse).",
+      "description": "Disabling zooming is problematic for users with low vision who rely on screen magnification to properly see the contents of a web page. [Learn more](https://web.dev/meta-viewport/).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2002,7 +2090,7 @@
     "object-alt": {
       "id": "object-alt",
       "title": "`<object>` elements do not have `[alt]` text",
-      "description": "Screen readers cannot translate non-text content. Adding alt text to `<object>` elements helps screen readers convey meaning to users. [Learn more](https://dequeuniversity.com/rules/axe/3.1/object-alt?application=lighthouse).",
+      "description": "Screen readers cannot translate non-text content. Adding alt text to `<object>` elements helps screen readers convey meaning to users. [Learn more](https://web.dev/object-alt/).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2052,126 +2140,119 @@
     "tabindex": {
       "id": "tabindex",
       "title": "No element has a `[tabindex]` value greater than 0",
-      "description": "A value greater than 0 implies an explicit navigation ordering. Although technically valid, this often creates frustrating experiences for users who rely on assistive technologies. [Learn more](https://dequeuniversity.com/rules/axe/3.1/tabindex?application=lighthouse).",
+      "description": "A value greater than 0 implies an explicit navigation ordering. Although technically valid, this often creates frustrating experiences for users who rely on assistive technologies. [Learn more](https://web.dev/tabindex/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "td-headers-attr": {
       "id": "td-headers-attr",
-      "title": "Cells in a `<table>` element that use the `[headers]` attribute only refer to other cells of that same table.",
-      "description": "Screen readers have features to make navigating tables easier. Ensuring `<td>` cells using the `[headers]` attribute only refer to other cells in the same table may improve the experience for screen reader users. [Learn more](https://dequeuniversity.com/rules/axe/3.1/td-headers-attr?application=lighthouse).",
+      "title": "Cells in a `<table>` element that use the `[headers]` attribute refer to table cells within the same table.",
+      "description": "Screen readers have features to make navigating tables easier. Ensuring `<td>` cells using the `[headers]` attribute only refer to other cells in the same table may improve the experience for screen reader users. [Learn more](https://web.dev/td-headers-attr/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "th-has-data-cells": {
       "id": "th-has-data-cells",
       "title": "`<th>` elements and elements with `[role=\"columnheader\"/\"rowheader\"]` have data cells they describe.",
-      "description": "Screen readers have features to make navigating tables easier. Ensuring table headers always refer to some set of cells may improve the experience for screen reader users. [Learn more](https://dequeuniversity.com/rules/axe/3.1/th-has-data-cells?application=lighthouse).",
+      "description": "Screen readers have features to make navigating tables easier. Ensuring table headers always refer to some set of cells may improve the experience for screen reader users. [Learn more](https://web.dev/th-has-data-cells/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "valid-lang": {
       "id": "valid-lang",
       "title": "`[lang]` attributes have a valid value",
-      "description": "Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) on elements helps ensure that text is pronounced correctly by a screen reader. [Learn more](https://dequeuniversity.com/rules/axe/3.1/valid-lang?application=lighthouse).",
+      "description": "Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) on elements helps ensure that text is pronounced correctly by a screen reader. [Learn more](https://web.dev/valid-lang/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "video-caption": {
       "id": "video-caption",
       "title": "`<video>` elements contain a `<track>` element with `[kind=\"captions\"]`",
-      "description": "When a video provides a caption it is easier for deaf and hearing impaired users to access its information. [Learn more](https://dequeuniversity.com/rules/axe/3.1/video-caption?application=lighthouse).",
+      "description": "When a video provides a caption it is easier for deaf and hearing impaired users to access its information. [Learn more](https://web.dev/video-caption/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "video-description": {
       "id": "video-description",
       "title": "`<video>` elements contain a `<track>` element with `[kind=\"description\"]`",
-      "description": "Audio descriptions provide relevant information for videos that dialogue cannot, such as facial expressions and scenes. [Learn more](https://dequeuniversity.com/rules/axe/3.1/video-description?application=lighthouse).",
+      "description": "Audio descriptions provide relevant information for videos that dialogue cannot, such as facial expressions and scenes. [Learn more](https://web.dev/video-description/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "custom-controls-labels": {
       "id": "custom-controls-labels",
       "title": "Custom controls have associated labels",
-      "description": "Custom interactive controls have associated labels, provided by aria-label or aria-labelledby. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#try_it_with_a_screen_reader).",
+      "description": "Custom interactive controls have associated labels, provided by aria-label or aria-labelledby. [Learn more](https://web.dev/custom-controls-labels/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "custom-controls-roles": {
       "id": "custom-controls-roles",
       "title": "Custom controls have ARIA roles",
-      "description": "Custom interactive controls have appropriate ARIA roles. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#try_it_with_a_screen_reader).",
+      "description": "Custom interactive controls have appropriate ARIA roles. [Learn more](https://web.dev/custom-control-roles/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "focus-traps": {
       "id": "focus-traps",
       "title": "User focus is not accidentally trapped in a region",
-      "description": "A user can tab into and out of any control or region without accidentally trapping their focus. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#start_with_the_keyboard).",
+      "description": "A user can tab into and out of any control or region without accidentally trapping their focus. [Learn more](https://web.dev/focus-traps/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "focusable-controls": {
       "id": "focusable-controls",
       "title": "Interactive controls are keyboard focusable",
-      "description": "Custom interactive controls are keyboard focusable and display a focus indicator. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#start_with_the_keyboard).",
-      "score": null,
-      "scoreDisplayMode": "manual"
-    },
-    "heading-levels": {
-      "id": "heading-levels",
-      "title": "Headings don't skip levels",
-      "description": "Headings are used to create an outline for the page and heading levels are not skipped. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#take_advantage_of_headings_and_landmarks).",
+      "description": "Custom interactive controls are keyboard focusable and display a focus indicator. [Learn more](https://web.dev/focusable-controls/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "interactive-element-affordance": {
       "id": "interactive-element-affordance",
       "title": "Interactive elements indicate their purpose and state",
-      "description": "Interactive elements, such as links and buttons, should indicate their state and be distinguishable from non-interactive elements. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#interactive_elements_like_links_and_buttons_should_indicate_their_purpose_and_state).",
+      "description": "Interactive elements, such as links and buttons, should indicate their state and be distinguishable from non-interactive elements. [Learn more](https://web.dev/interactive-element-affordance/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "logical-tab-order": {
       "id": "logical-tab-order",
       "title": "The page has a logical tab order",
-      "description": "Tabbing through the page follows the visual layout. Users cannot focus elements that are offscreen. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#start_with_the_keyboard).",
+      "description": "Tabbing through the page follows the visual layout. Users cannot focus elements that are offscreen. [Learn more](https://web.dev/logical-tab-order/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "managed-focus": {
       "id": "managed-focus",
       "title": "The user's focus is directed to new content added to the page",
-      "description": "If new content, such as a dialog, is added to the page, the user's focus is directed to it. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#start_with_the_keyboard).",
+      "description": "If new content, such as a dialog, is added to the page, the user's focus is directed to it. [Learn more](https://web.dev/managed-focus/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "offscreen-content-hidden": {
       "id": "offscreen-content-hidden",
       "title": "Offscreen content is hidden from assistive technology",
-      "description": "Offscreen content is hidden with display: none or aria-hidden=true. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#try_it_with_a_screen_reader).",
+      "description": "Offscreen content is hidden with display: none or aria-hidden=true. [Learn more](https://web.dev/offscreen-content-hidden/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "use-landmarks": {
       "id": "use-landmarks",
       "title": "HTML5 landmark elements are used to improve navigation",
-      "description": "Landmark elements (<main>, <nav>, etc.) are used to improve the keyboard navigation of the page for assistive technology. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#take_advantage_of_headings_and_landmarks).",
+      "description": "Landmark elements (<main>, <nav>, etc.) are used to improve the keyboard navigation of the page for assistive technology. [Learn more](https://web.dev/use-landmarks/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "visual-order-follows-dom": {
       "id": "visual-order-follows-dom",
       "title": "Visual order on the page follows DOM order",
-      "description": "DOM order matches the visual order, improving navigation for assistive technology. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#try_it_with_a_screen_reader).",
+      "description": "DOM order matches the visual order, improving navigation for assistive technology. [Learn more](https://web.dev/visual-order-follows-dom/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
     "uses-long-cache-ttl": {
       "id": "uses-long-cache-ttl",
       "title": "Serve static assets with an efficient cache policy",
-      "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/cache-policy).",
+      "description": "A long cache lifetime can speed up repeat visits to your page. [Learn more](https://web.dev/uses-long-cache-ttl).",
       "score": 0.58,
       "scoreDisplayMode": "numeric",
       "numericValue": 103455,
@@ -2278,7 +2359,7 @@
     "total-byte-weight": {
       "id": "total-byte-weight",
       "title": "Avoids enormous network payloads",
-      "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/network-payloads).",
+      "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn more](https://web.dev/total-byte-weight).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 160738,
@@ -2344,7 +2425,7 @@
     "offscreen-images": {
       "id": "offscreen-images",
       "title": "Defer offscreen images",
-      "description": "Consider lazy-loading offscreen and hidden images after all critical resources have finished loading to lower time to interactive. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/offscreen-images).",
+      "description": "Consider lazy-loading offscreen and hidden images after all critical resources have finished loading to lower time to interactive. [Learn more](https://web.dev/offscreen-images).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2361,7 +2442,7 @@
     "render-blocking-resources": {
       "id": "render-blocking-resources",
       "title": "Eliminate render-blocking resources",
-      "description": "Resources are blocking the first paint of your page. Consider delivering critical JS/CSS inline and deferring all non-critical JS/styles. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/blocking-resources).",
+      "description": "Resources are blocking the first paint of your page. Consider delivering critical JS/CSS inline and deferring all non-critical JS/styles. [Learn more](https://web.dev/render-blocking-resources).",
       "score": 0.46,
       "scoreDisplayMode": "numeric",
       "numericValue": 1129,
@@ -2418,7 +2499,7 @@
     "unminified-css": {
       "id": "unminified-css",
       "title": "Minify CSS",
-      "description": "Minifying CSS files can reduce network payload sizes. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/minify-css).",
+      "description": "Minifying CSS files can reduce network payload sizes. [Learn more](https://web.dev/unminified-css).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2434,7 +2515,7 @@
     "unminified-javascript": {
       "id": "unminified-javascript",
       "title": "Minify JavaScript",
-      "description": "Minifying JavaScript files can reduce payload sizes and script parse time. [Learn more](https://developers.google.com/speed/docs/insights/MinifyResources).",
+      "description": "Minifying JavaScript files can reduce payload sizes and script parse time. [Learn more](https://web.dev/unminified-javascript).",
       "score": 0.88,
       "scoreDisplayMode": "numeric",
       "numericValue": 150,
@@ -2474,7 +2555,7 @@
     "unused-css-rules": {
       "id": "unused-css-rules",
       "title": "Remove unused CSS",
-      "description": "Remove dead rules from stylesheets and defer the loading of CSS not used for above-the-fold content to reduce unnecessary bytes consumed by network activity. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/unused-css).",
+      "description": "Remove dead rules from stylesheets and defer the loading of CSS not used for above-the-fold content to reduce unnecessary bytes consumed by network activity. [Learn more](https://web.dev/unused-css-rules).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2490,7 +2571,7 @@
     "uses-webp-images": {
       "id": "uses-webp-images",
       "title": "Serve images in next-gen formats",
-      "description": "Image formats like JPEG 2000, JPEG XR, and WebP often provide better compression than PNG or JPEG, which means faster downloads and less data consumption. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/webp).",
+      "description": "Image formats like JPEG 2000, JPEG XR, and WebP often provide better compression than PNG or JPEG, which means faster downloads and less data consumption. [Learn more](https://web.dev/uses-webp-images).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2536,7 +2617,7 @@
     "uses-optimized-images": {
       "id": "uses-optimized-images",
       "title": "Efficiently encode images",
-      "description": "Optimized images load faster and consume less cellular data. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/optimize-images).",
+      "description": "Optimized images load faster and consume less cellular data. [Learn more](https://web.dev/uses-optimized-images).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2553,7 +2634,7 @@
     "uses-text-compression": {
       "id": "uses-text-compression",
       "title": "Enable text compression",
-      "description": "Text-based resources should be served with compression (gzip, deflate or brotli) to minimize total network bytes. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/text-compression).",
+      "description": "Text-based resources should be served with compression (gzip, deflate or brotli) to minimize total network bytes. [Learn more](https://web.dev/uses-text-compression).",
       "score": 0.75,
       "scoreDisplayMode": "numeric",
       "numericValue": 300,
@@ -2596,7 +2677,7 @@
     "uses-responsive-images": {
       "id": "uses-responsive-images",
       "title": "Properly size images",
-      "description": "Serve images that are appropriately-sized to save cellular data and improve load time. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/oversized-images).",
+      "description": "Serve images that are appropriately-sized to save cellular data and improve load time. [Learn more](https://web.dev/uses-responsive-images).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2613,7 +2694,7 @@
     "efficient-animated-content": {
       "id": "efficient-animated-content",
       "title": "Use video formats for animated content",
-      "description": "Large GIFs are inefficient for delivering animated content. Consider using MPEG4/WebM videos for animations and PNG/WebP for static images instead of GIF to save network bytes. [Learn more](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/)",
+      "description": "Large GIFs are inefficient for delivering animated content. Consider using MPEG4/WebM videos for animations and PNG/WebP for static images instead of GIF to save network bytes. [Learn more](https://web.dev/efficient-animated-content)",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 0,
@@ -2629,7 +2710,7 @@
     "appcache-manifest": {
       "id": "appcache-manifest",
       "title": "Uses Application Cache",
-      "description": "Application Cache is deprecated. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/appcache).",
+      "description": "Application Cache is deprecated. [Learn more](https://web.dev/appcache-manifest).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "displayValue": "Found \"clock.appcache\""
@@ -2637,14 +2718,14 @@
     "doctype": {
       "id": "doctype",
       "title": "Page has the HTML doctype",
-      "description": "Specifying a doctype prevents the browser from switching to quirks-mode. Read more on the [MDN Web Docs page](https://developer.mozilla.org/en-US/docs/Glossary/Doctype)",
+      "description": "Specifying a doctype prevents the browser from switching to quirks-mode. [Learn more](https://web.dev/doctype).",
       "score": 1,
       "scoreDisplayMode": "binary"
     },
     "dom-size": {
       "id": "dom-size",
       "title": "Avoids an excessive DOM size",
-      "description": "Browser engineers recommend pages contain fewer than ~1,500 DOM elements. The sweet spot is a tree depth < 32 elements and fewer than 60 children/parent element. A large DOM can increase memory usage, cause longer [style calculations](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), and produce costly [layout reflows](https://developers.google.com/speed/articles/reflow). [Learn more](https://developers.google.com/web/tools/lighthouse/audits/dom-size).",
+      "description": "A large DOM will increase memory usage, cause longer [style calculations](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), and produce costly [layout reflows](https://developers.google.com/speed/articles/reflow). [Learn more](https://web.dev/dom-size).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 31,
@@ -2696,7 +2777,7 @@
     "external-anchors-use-rel-noopener": {
       "id": "external-anchors-use-rel-noopener",
       "title": "Links to cross-origin destinations are unsafe",
-      "description": "Add `rel=\"noopener\"` or `rel=\"noreferrer\"` to any external links to improve performance and prevent security vulnerabilities. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/noopener).",
+      "description": "Add `rel=\"noopener\"` or `rel=\"noreferrer\"` to any external links to improve performance and prevent security vulnerabilities. [Learn more](https://web.dev/external-anchors-use-rel-noopener).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "warnings": [
@@ -2746,7 +2827,7 @@
     "geolocation-on-start": {
       "id": "geolocation-on-start",
       "title": "Requests the geolocation permission on page load",
-      "description": "Users are mistrustful of or confused by sites that request their location without context. Consider tying the request to a user action instead. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/geolocation-on-load).",
+      "description": "Users are mistrustful of or confused by sites that request their location without context. Consider tying the request to a user action instead. [Learn more](https://web.dev/geolocation-on-start).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2778,7 +2859,7 @@
     "no-document-write": {
       "id": "no-document-write",
       "title": "Uses `document.write()`",
-      "description": "For users on slow connections, external scripts dynamically injected via `document.write()` can delay page load by tens of seconds. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/document-write).",
+      "description": "For users on slow connections, external scripts dynamically injected via `document.write()` can delay page load by tens of seconds. [Learn more](https://web.dev/no-document-write).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2814,7 +2895,7 @@
     "no-vulnerable-libraries": {
       "id": "no-vulnerable-libraries",
       "title": "Includes front-end JavaScript libraries with known security vulnerabilities",
-      "description": "Some third-party scripts may contain known security vulnerabilities that are easily identified and exploited by attackers. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/vulnerabilities).",
+      "description": "Some third-party scripts may contain known security vulnerabilities that are easily identified and exploited by attackers. [Learn more](https://web.dev/no-vulnerable-libraries).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "displayValue": "2 vulnerabilities detected",
@@ -2854,7 +2935,7 @@
     "js-libraries": {
       "id": "js-libraries",
       "title": "Detected JavaScript libraries",
-      "description": "All front-end JavaScript libraries detected on the page.",
+      "description": "All front-end JavaScript libraries detected on the page. [Learn more](https://web.dev/js-libraries).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2878,6 +2959,10 @@
             "npm": "jquery"
           },
           {
+            "name": "jQuery (Fast path)",
+            "npm": "jquery"
+          },
+          {
             "name": "WordPress"
           }
         ],
@@ -2887,7 +2972,7 @@
     "notification-on-start": {
       "id": "notification-on-start",
       "title": "Requests the notification permission on page load",
-      "description": "Users are mistrustful of or confused by sites that request to send notifications without context. Consider tying the request to user gestures instead. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/notifications-on-load).",
+      "description": "Users are mistrustful of or confused by sites that request to send notifications without context. Consider tying the request to user gestures instead. [Learn more](https://web.dev/notification-on-start).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2915,7 +3000,7 @@
     "password-inputs-can-be-pasted-into": {
       "id": "password-inputs-can-be-pasted-into",
       "title": "Prevents users to paste into password fields",
-      "description": "Preventing password pasting undermines good security policy. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/password-pasting).",
+      "description": "Preventing password pasting undermines good security policy. [Learn more](https://web.dev/password-inputs-can-be-pasted-into).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -2946,7 +3031,7 @@
     "uses-http2": {
       "id": "uses-http2",
       "title": "Does not use HTTP/2 for all of its resources",
-      "description": "HTTP/2 offers many benefits over HTTP/1.1, including binary headers, multiplexing, and server push. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/http2).",
+      "description": "HTTP/2 offers many benefits over HTTP/1.1, including binary headers, multiplexing, and server push. [Learn more](https://web.dev/uses-http2).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "displayValue": "15 requests not served via HTTP/2",
@@ -3031,7 +3116,7 @@
     "uses-passive-event-listeners": {
       "id": "uses-passive-event-listeners",
       "title": "Does not use passive listeners to improve scrolling performance",
-      "description": "Consider marking your touch and wheel event listeners as `passive` to improve your page's scroll performance. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/passive-event-listeners).",
+      "description": "Consider marking your touch and wheel event listeners as `passive` to improve your page's scroll performance. [Learn more](https://web.dev/uses-passive-event-listeners).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "details": {
@@ -3067,21 +3152,21 @@
     "meta-description": {
       "id": "meta-description",
       "title": "Document does not have a meta description",
-      "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/description).",
+      "description": "Meta descriptions may be included in search results to concisely summarize page content. [Learn more](https://web.dev/meta-description).",
       "score": 0,
       "scoreDisplayMode": "binary"
     },
     "http-status-code": {
       "id": "http-status-code",
       "title": "Page has successful HTTP status code",
-      "description": "Pages with unsuccessful HTTP status codes may not be indexed properly. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/successful-http-code).",
+      "description": "Pages with unsuccessful HTTP status codes may not be indexed properly. [Learn more](https://web.dev/http-status-code).",
       "score": 1,
       "scoreDisplayMode": "binary"
     },
     "font-size": {
       "id": "font-size",
       "title": "Document uses legible font sizes",
-      "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/font-sizes).",
+      "description": "Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more](https://web.dev/font-size).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "displayValue": "100% legible text",
@@ -3122,7 +3207,7 @@
     "link-text": {
       "id": "link-text",
       "title": "Links have descriptive text",
-      "description": "Descriptive link text helps search engines understand your content. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/descriptive-link-text).",
+      "description": "Descriptive link text helps search engines understand your content. [Learn more](https://web.dev/link-text).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -3135,7 +3220,7 @@
     "is-crawlable": {
       "id": "is-crawlable",
       "title": "Page isn’t blocked from indexing",
-      "description": "Search engines are unable to include your pages in search results if they don't have permission to crawl them. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/indexing).",
+      "description": "Search engines are unable to include your pages in search results if they don't have permission to crawl them. [Learn more](https://web.dev/is-crawable).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -3147,14 +3232,14 @@
     "robots-txt": {
       "id": "robots-txt",
       "title": "robots.txt is valid",
-      "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed.",
+      "description": "If your robots.txt file is malformed, crawlers may not be able to understand how you want your website to be crawled or indexed. [Learn more](https://web.dev/robots-txt).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "tap-targets": {
       "id": "tap-targets",
       "title": "Tap targets are not sized appropriately",
-      "description": "Interactive elements like buttons and links should be large enough (48x48px), and have enough space around them, to be easy enough to tap without overlapping onto other elements. [Learn more](https://developers.google.com/web/fundamentals/accessibility/accessible-styles#multi-device_responsive_design).",
+      "description": "Interactive elements like buttons and links should be large enough (48x48px), and have enough space around them, to be easy enough to tap without overlapping onto other elements. [Learn more](https://web.dev/tap-targets).",
       "score": 0,
       "scoreDisplayMode": "binary",
       "displayValue": "0% appropriately sized tap targets",
@@ -3206,7 +3291,7 @@
     "hreflang": {
       "id": "hreflang",
       "title": "Document has a valid `hreflang`",
-      "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/hreflang).",
+      "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more](https://web.dev/hreflang).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -3218,7 +3303,7 @@
     "plugins": {
       "id": "plugins",
       "title": "Document avoids plugins",
-      "description": "Search engines can't index plugin content, and many devices restrict plugins or don't support them. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/plugins).",
+      "description": "Search engines can't index plugin content, and many devices restrict plugins or don't support them. [Learn more](https://web.dev/plugins).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -3230,14 +3315,14 @@
     "canonical": {
       "id": "canonical",
       "title": "Document has a valid `rel=canonical`",
-      "description": "Canonical links suggest which URL to show in search results. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/canonical).",
+      "description": "Canonical links suggest which URL to show in search results. [Learn more](https://web.dev/canonical).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
     "structured-data": {
       "id": "structured-data",
       "title": "Structured data is valid",
-      "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more](https://developers.google.com/search/docs/guides/mark-up-content).",
+      "description": "Run the [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/) and the [Structured Data Linter](http://linter.structured-data.org/) to validate structured data. [Learn more](https://web.dev/structured-data).",
       "score": null,
       "scoreDisplayMode": "manual"
     }
@@ -3246,7 +3331,7 @@
     "output": [
       "json"
     ],
-    "maxWaitForFcp": 15000,
+    "maxWaitForFcp": 30000,
     "maxWaitForLoad": 45000,
     "throttlingMethod": "devtools",
     "throttling": {
@@ -3265,6 +3350,7 @@
     "channel": "cli",
     "budgets": [
       {
+        "path": "/",
         "resourceSizes": [
           {
             "resourceType": "total",
@@ -3344,28 +3430,23 @@
         "timings": [
           {
             "metric": "first-contentful-paint",
-            "budget": 3000,
-            "tolerance": 100
+            "budget": 3000
           },
           {
             "metric": "first-cpu-idle",
-            "budget": 2900,
-            "tolerance": 100
+            "budget": 2900
           },
           {
             "metric": "interactive",
-            "budget": 2900,
-            "tolerance": 100
+            "budget": 2900
           },
           {
             "metric": "first-meaningful-paint",
-            "budget": 2000,
-            "tolerance": 100
+            "budget": 2000
           },
           {
             "metric": "max-potential-fid",
-            "budget": 100,
-            "tolerance": 100
+            "budget": 100
           }
         ]
       }
@@ -3418,7 +3499,7 @@
           "weight": 0
         },
         {
-          "id": "cumulative-long-queuing-delay",
+          "id": "total-blocking-time",
           "weight": 0
         },
         {
@@ -3598,6 +3679,21 @@
           "group": "a11y-aria"
         },
         {
+          "id": "aria-hidden-body",
+          "weight": 10,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "aria-hidden-focus",
+          "weight": 3,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "aria-input-field-name",
+          "weight": 3,
+          "group": "a11y-aria"
+        },
+        {
           "id": "aria-required-attr",
           "weight": 0,
           "group": "a11y-aria"
@@ -3615,6 +3711,11 @@
         {
           "id": "aria-roles",
           "weight": 0,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "aria-toggle-field-name",
+          "weight": 3,
           "group": "a11y-aria"
         },
         {
@@ -3663,14 +3764,29 @@
           "group": "a11y-names-labels"
         },
         {
-          "id": "duplicate-id",
-          "weight": 1,
-          "group": "a11y-best-practices"
+          "id": "duplicate-id-active",
+          "weight": 3,
+          "group": "a11y-navigation"
+        },
+        {
+          "id": "duplicate-id-aria",
+          "weight": 10,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "form-field-multiple-labels",
+          "weight": 2,
+          "group": "a11y-names-labels"
         },
         {
           "id": "frame-title",
           "weight": 0,
           "group": "a11y-names-labels"
+        },
+        {
+          "id": "heading-order",
+          "weight": 2,
+          "group": "a11y-navigation"
         },
         {
           "id": "html-has-lang",
@@ -3799,16 +3915,12 @@
           "weight": 0
         },
         {
-          "id": "heading-levels",
-          "weight": 0
-        },
-        {
           "id": "use-landmarks",
           "weight": 0
         }
       ],
       "id": "accessibility",
-      "score": 0.46
+      "score": 0.66
     },
     "best-practices": {
       "title": "Best Practices",
@@ -4048,7 +4160,7 @@
     },
     "load-opportunities": {
       "title": "Opportunities",
-      "description": "These optimizations can speed up your page load."
+      "description": "These suggestions can help your page load faster. They don't [directly affect](https://github.com/GoogleChrome/lighthouse/blob/d2ec9ffbb21de9ad1a0f86ed24575eda32c796f0/docs/scoring.md#how-are-the-scores-weighted) the Performance score."
     },
     "budgets": {
       "title": "Budgets",
@@ -4056,7 +4168,7 @@
     },
     "diagnostics": {
       "title": "Diagnostics",
-      "description": "More information about the performance of your application."
+      "description": "More information about the performance of your application. These numbers don't [directly affect](https://github.com/GoogleChrome/lighthouse/blob/d2ec9ffbb21de9ad1a0f86ed24575eda32c796f0/docs/scoring.md#how-are-the-scores-weighted) the Performance score."
     },
     "pwa-fast-reliable": {
       "title": "Fast and reliable"
@@ -4284,13 +4396,13 @@
       },
       {
         "startTime": 0,
-        "name": "lh:audit:cumulative-long-queuing-delay",
+        "name": "lh:audit:total-blocking-time",
         "duration": 100,
         "entryType": "measure"
       },
       {
         "startTime": 0,
-        "name": "lh:computed:CumulativeLongQueuingDelay",
+        "name": "lh:computed:TotalBlockingTime",
         "duration": 100,
         "entryType": "measure"
       },
@@ -4542,6 +4654,18 @@
       },
       {
         "startTime": 0,
+        "name": "lh:computed:TimingSummary",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:computed:LargestContentfulPaint",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
         "name": "lh:audit:offline-start-url",
         "duration": 100,
         "entryType": "measure"
@@ -4602,6 +4726,24 @@
       },
       {
         "startTime": 0,
+        "name": "lh:audit:aria-hidden-body",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:aria-hidden-focus",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:aria-input-field-name",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
         "name": "lh:audit:aria-required-attr",
         "duration": 100,
         "entryType": "measure"
@@ -4621,6 +4763,12 @@
       {
         "startTime": 0,
         "name": "lh:audit:aria-roles",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:aria-toggle-field-name",
         "duration": 100,
         "entryType": "measure"
       },
@@ -4680,13 +4828,31 @@
       },
       {
         "startTime": 0,
-        "name": "lh:audit:duplicate-id",
+        "name": "lh:audit:duplicate-id-active",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:duplicate-id-aria",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:form-field-multiple-labels",
         "duration": 100,
         "entryType": "measure"
       },
       {
         "startTime": 0,
         "name": "lh:audit:frame-title",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:heading-order",
         "duration": 100,
         "entryType": "measure"
       },
@@ -4819,12 +4985,6 @@
       {
         "startTime": 0,
         "name": "lh:audit:focusable-controls",
-        "duration": 100,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 0,
-        "name": "lh:audit:heading-levels",
         "duration": 100,
         "entryType": "measure"
       },
@@ -5113,7 +5273,7 @@
       "snippetExpandButtonLabel": "Expand snippet",
       "thirdPartyResourcesLabel": "Show 3rd-party resources",
       "toplevelWarningsMessage": "There were issues affecting this run of Lighthouse:",
-      "varianceDisclaimer": "Values are estimated and may vary.",
+      "varianceDisclaimer": "Values are estimated and may vary. The performance score is [based only on these metrics](https://github.com/GoogleChrome/lighthouse/blob/d2ec9ffbb21de9ad1a0f86ed24575eda32c796f0/docs/scoring.md#how-are-the-scores-weighted).",
       "warningAuditsGroupTitle": "Passed audits but with warnings",
       "warningHeader": "Warnings: "
     },
@@ -5135,7 +5295,37 @@
       "lighthouse-core/audits/is-on-https.js | columnInsecureURL": [
         "audits[is-on-https].details.headings[0].text"
       ],
-      "lighthouse-core/audits/metrics/first-contentful-paint.js | title": [
+      "lighthouse-core/audits/redirects-http.js | failureTitle": [
+        "audits[redirects-http].title"
+      ],
+      "lighthouse-core/audits/redirects-http.js | description": [
+        "audits[redirects-http].description"
+      ],
+      "lighthouse-core/audits/service-worker.js | failureTitle": [
+        "audits[service-worker].title"
+      ],
+      "lighthouse-core/audits/service-worker.js | description": [
+        "audits[service-worker].description"
+      ],
+      "lighthouse-core/audits/works-offline.js | failureTitle": [
+        "audits[works-offline].title"
+      ],
+      "lighthouse-core/audits/works-offline.js | description": [
+        "audits[works-offline].description"
+      ],
+      "lighthouse-core/audits/viewport.js | title": [
+        "audits.viewport.title"
+      ],
+      "lighthouse-core/audits/viewport.js | description": [
+        "audits.viewport.description"
+      ],
+      "lighthouse-core/audits/without-javascript.js | title": [
+        "audits[without-javascript].title"
+      ],
+      "lighthouse-core/audits/without-javascript.js | description": [
+        "audits[without-javascript].description"
+      ],
+      "lighthouse-core/lib/i18n/i18n.js | firstContentfulPaintMetric": [
         "audits[first-contentful-paint].title"
       ],
       "lighthouse-core/audits/metrics/first-contentful-paint.js | description": [
@@ -5185,7 +5375,7 @@
           "path": "audits[bootup-time].displayValue"
         }
       ],
-      "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | firstMeaningfulPaintMetric": [
         "audits[first-meaningful-paint].title"
       ],
       "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": [
@@ -5197,13 +5387,13 @@
       "lighthouse-core/audits/load-fast-enough-for-pwa.js | description": [
         "audits[load-fast-enough-for-pwa].description"
       ],
-      "lighthouse-core/audits/metrics/speed-index.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | speedIndexMetric": [
         "audits[speed-index].title"
       ],
       "lighthouse-core/audits/metrics/speed-index.js | description": [
         "audits[speed-index].description"
       ],
-      "lighthouse-core/audits/metrics/estimated-input-latency.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | estimatedInputLatencyMetric": [
         "audits[estimated-input-latency].title"
       ],
       "lighthouse-core/audits/metrics/estimated-input-latency.js | description": [
@@ -5215,6 +5405,12 @@
             "timeInMs": 16
           },
           "path": "audits[estimated-input-latency].displayValue"
+        },
+        {
+          "values": {
+            "timeInMs": 116.79800000000023
+          },
+          "path": "audits[total-blocking-time].displayValue"
         },
         {
           "values": {
@@ -5235,7 +5431,13 @@
           "path": "audits[network-server-latency].displayValue"
         }
       ],
-      "lighthouse-core/audits/metrics/max-potential-fid.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | totalBlockingTimeMetric": [
+        "audits[total-blocking-time].title"
+      ],
+      "lighthouse-core/audits/metrics/total-blocking-time.js | description": [
+        "audits[total-blocking-time].description"
+      ],
+      "lighthouse-core/lib/i18n/i18n.js | maxPotentialFIDMetric": [
         "audits[max-potential-fid].title"
       ],
       "lighthouse-core/audits/metrics/max-potential-fid.js | description": [
@@ -5284,13 +5486,13 @@
           "path": "audits[time-to-first-byte].displayValue"
         }
       ],
-      "lighthouse-core/audits/metrics/first-cpu-idle.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | firstCPUIdleMetric": [
         "audits[first-cpu-idle].title"
       ],
       "lighthouse-core/audits/metrics/first-cpu-idle.js | description": [
         "audits[first-cpu-idle].description"
       ],
-      "lighthouse-core/audits/metrics/interactive.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | interactiveMetric": [
         "audits.interactive.title"
       ],
       "lighthouse-core/audits/metrics/interactive.js | description": [
@@ -5322,11 +5524,35 @@
       "lighthouse-core/audits/redirects.js | description": [
         "audits.redirects.description"
       ],
+      "lighthouse-core/audits/installable-manifest.js | failureTitle": [
+        "audits[installable-manifest].title"
+      ],
+      "lighthouse-core/audits/installable-manifest.js | description": [
+        "audits[installable-manifest].description"
+      ],
       "lighthouse-core/audits/apple-touch-icon.js | failureTitle": [
         "audits[apple-touch-icon].title"
       ],
       "lighthouse-core/audits/apple-touch-icon.js | description": [
         "audits[apple-touch-icon].description"
+      ],
+      "lighthouse-core/audits/splash-screen.js | failureTitle": [
+        "audits[splash-screen].title"
+      ],
+      "lighthouse-core/audits/splash-screen.js | description": [
+        "audits[splash-screen].description"
+      ],
+      "lighthouse-core/audits/themed-omnibox.js | failureTitle": [
+        "audits[themed-omnibox].title"
+      ],
+      "lighthouse-core/audits/themed-omnibox.js | description": [
+        "audits[themed-omnibox].description"
+      ],
+      "lighthouse-core/audits/content-width.js | title": [
+        "audits[content-width].title"
+      ],
+      "lighthouse-core/audits/content-width.js | description": [
+        "audits[content-width].description"
       ],
       "lighthouse-core/audits/image-aspect-ratio.js | failureTitle": [
         "audits[image-aspect-ratio].title"
@@ -5418,6 +5644,12 @@
       ],
       "lighthouse-core/audits/network-server-latency.js | description": [
         "audits[network-server-latency].description"
+      ],
+      "lighthouse-core/audits/offline-start-url.js | failureTitle": [
+        "audits[offline-start-url].title"
+      ],
+      "lighthouse-core/audits/offline-start-url.js | description": [
+        "audits[offline-start-url].description"
       ],
       "lighthouse-core/audits/performance-budget.js | title": [
         "audits[performance-budget].title"
@@ -5532,7 +5764,7 @@
       "lighthouse-core/audits/third-party-summary.js | displayValue": [
         {
           "values": {
-            "itemCount": 1
+            "timeInMs": 22.918000000000006
           },
           "path": "audits[third-party-summary].displayValue"
         }
@@ -5550,8 +5782,26 @@
         "audits[uses-text-compression].details.headings[1].label",
         "audits[tap-targets].details.headings[1].text"
       ],
-      "lighthouse-core/audits/third-party-summary.js | columnMainThreadTime": [
+      "lighthouse-core/audits/third-party-summary.js | columnBlockingTime": [
         "audits[third-party-summary].details.headings[2].text"
+      ],
+      "lighthouse-core/audits/manual/pwa-cross-browser.js | title": [
+        "audits[pwa-cross-browser].title"
+      ],
+      "lighthouse-core/audits/manual/pwa-cross-browser.js | description": [
+        "audits[pwa-cross-browser].description"
+      ],
+      "lighthouse-core/audits/manual/pwa-page-transitions.js | title": [
+        "audits[pwa-page-transitions].title"
+      ],
+      "lighthouse-core/audits/manual/pwa-page-transitions.js | description": [
+        "audits[pwa-page-transitions].description"
+      ],
+      "lighthouse-core/audits/manual/pwa-each-page-has-url.js | title": [
+        "audits[pwa-each-page-has-url].title"
+      ],
+      "lighthouse-core/audits/manual/pwa-each-page-has-url.js | description": [
+        "audits[pwa-each-page-has-url].description"
       ],
       "lighthouse-core/audits/accessibility/accesskeys.js | title": [
         "audits.accesskeys.title"
@@ -5564,6 +5814,24 @@
       ],
       "lighthouse-core/audits/accessibility/aria-allowed-attr.js | description": [
         "audits[aria-allowed-attr].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-body.js | title": [
+        "audits[aria-hidden-body].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-body.js | description": [
+        "audits[aria-hidden-body].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-focus.js | title": [
+        "audits[aria-hidden-focus].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-focus.js | description": [
+        "audits[aria-hidden-focus].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-input-field-name.js | title": [
+        "audits[aria-input-field-name].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-input-field-name.js | description": [
+        "audits[aria-input-field-name].description"
       ],
       "lighthouse-core/audits/accessibility/aria-required-attr.js | title": [
         "audits[aria-required-attr].title"
@@ -5588,6 +5856,12 @@
       ],
       "lighthouse-core/audits/accessibility/aria-roles.js | description": [
         "audits[aria-roles].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | title": [
+        "audits[aria-toggle-field-name].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | description": [
+        "audits[aria-toggle-field-name].description"
       ],
       "lighthouse-core/audits/accessibility/aria-valid-attr-value.js | title": [
         "audits[aria-valid-attr-value].title"
@@ -5651,17 +5925,35 @@
       "lighthouse-core/audits/accessibility/document-title.js | description": [
         "audits[document-title].description"
       ],
-      "lighthouse-core/audits/accessibility/duplicate-id.js | title": [
-        "audits[duplicate-id].title"
+      "lighthouse-core/audits/accessibility/duplicate-id-active.js | title": [
+        "audits[duplicate-id-active].title"
       ],
-      "lighthouse-core/audits/accessibility/duplicate-id.js | description": [
-        "audits[duplicate-id].description"
+      "lighthouse-core/audits/accessibility/duplicate-id-active.js | description": [
+        "audits[duplicate-id-active].description"
+      ],
+      "lighthouse-core/audits/accessibility/duplicate-id-aria.js | title": [
+        "audits[duplicate-id-aria].title"
+      ],
+      "lighthouse-core/audits/accessibility/duplicate-id-aria.js | description": [
+        "audits[duplicate-id-aria].description"
+      ],
+      "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | title": [
+        "audits[form-field-multiple-labels].title"
+      ],
+      "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | description": [
+        "audits[form-field-multiple-labels].description"
       ],
       "lighthouse-core/audits/accessibility/frame-title.js | title": [
         "audits[frame-title].title"
       ],
       "lighthouse-core/audits/accessibility/frame-title.js | description": [
         "audits[frame-title].description"
+      ],
+      "lighthouse-core/audits/accessibility/heading-order.js | title": [
+        "audits[heading-order].title"
+      ],
+      "lighthouse-core/audits/accessibility/heading-order.js | description": [
+        "audits[heading-order].description"
       ],
       "lighthouse-core/audits/accessibility/html-has-lang.js | failureTitle": [
         "audits[html-has-lang].title"
@@ -6018,7 +6310,7 @@
       "lighthouse-core/audits/dobetterweb/js-libraries.js | description": [
         "audits[js-libraries].description"
       ],
-      "lighthouse-core/audits/dobetterweb/js-libraries.js | columnName": [
+      "lighthouse-core/lib/i18n/i18n.js | columnName": [
         "audits[js-libraries].details.headings[0].text"
       ],
       "lighthouse-core/audits/dobetterweb/js-libraries.js | columnVersion": [
@@ -6173,6 +6465,15 @@
       ],
       "lighthouse-core/config/default-config.js | seoCategoryManualDescription": [
         "categories.seo.manualDescription"
+      ],
+      "lighthouse-core/config/default-config.js | pwaCategoryTitle": [
+        "categories.pwa.title"
+      ],
+      "lighthouse-core/config/default-config.js | pwaCategoryDescription": [
+        "categories.pwa.description"
+      ],
+      "lighthouse-core/config/default-config.js | pwaCategoryManualDescription": [
+        "categories.pwa.manualDescription"
       ],
       "lighthouse-core/config/default-config.js | metricGroupTitle": [
         "categoryGroups.metrics.title"

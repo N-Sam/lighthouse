@@ -18,13 +18,14 @@ describe('locales', () => {
     const deprecatedCodes = {
       in: 'id',
       iw: 'he',
+      mo: 'ro',
     };
 
     for (const locale of Object.keys(locales)) {
       const canonicalLocale = Intl.getCanonicalLocales(locale)[0];
       const substitute = deprecatedCodes[locale];
       assert.ok(locale === canonicalLocale || substitute === canonicalLocale,
-          `locale code '${locale}' not canonical`);
+        `locale code '${locale}' not canonical ('${canonicalLocale}' found instead)`);
     }
 
     // Deprecation subsitutes should be removed from the test if no longer used.

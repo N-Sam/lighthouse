@@ -11,6 +11,9 @@ const TTIComputed = require('../../computed/metrics/interactive.js');
 const pwaTrace = require('../fixtures/traces/progressive-app-m60.json');
 const pwaDevtoolsLog = require('../fixtures/traces/progressive-app-m60.devtools.log.json');
 
+const lcpTrace = require('../fixtures/traces/lcp-m79.json');
+const lcpDevtoolsLog = require('../fixtures/traces/lcp-m79.devtools.log.json');
+
 /* eslint-env jest */
 
 describe('Performance: metrics', () => {
@@ -29,7 +32,22 @@ describe('Performance: metrics', () => {
     expect(result.details.items[0]).toMatchSnapshot();
   });
 
-  it('does to fail the entire audit when TTI errors', async () => {
+  it('evaluates valid input (with lcp) correctly', async () => {
+    const artifacts = {
+      traces: {
+        [MetricsAudit.DEFAULT_PASS]: lcpTrace,
+      },
+      devtoolsLogs: {
+        [MetricsAudit.DEFAULT_PASS]: lcpDevtoolsLog,
+      },
+    };
+
+    const context = {settings: {throttlingMethod: 'devtools'}, computedCache: new Map()};
+    const result = await MetricsAudit.audit(artifacts, context);
+    expect(result.details.items[0]).toMatchSnapshot();
+  });
+
+  it('does not fail the entire audit when TTI errors', async () => {
     const artifacts = {
       traces: {
         [MetricsAudit.DEFAULT_PASS]: pwaTrace,

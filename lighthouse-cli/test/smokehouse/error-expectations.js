@@ -12,14 +12,16 @@ const NONEMPTY_ARRAY = {
 };
 
 /**
+ * @type {Array<Smokehouse.ExpectedRunnerResult>}
  * Expected Lighthouse audit values for sites with various errors.
  */
-module.exports = [
+const expectations = [
   {
     lhr: {
       requestedUrl: 'http://localhost:10200/infinite-loop.html',
       finalUrl: 'http://localhost:10200/infinite-loop.html',
       runtimeError: {code: 'PAGE_HUNG'},
+      runWarnings: ['Lighthouse was unable to reliably load the URL you requested because the page stopped responding.'],
       audits: {
         'first-contentful-paint': {
           scoreDisplayMode: 'error',
@@ -42,6 +44,7 @@ module.exports = [
       requestedUrl: 'https://expired.badssl.com',
       finalUrl: 'https://expired.badssl.com/',
       runtimeError: {code: 'INSECURE_DOCUMENT_REQUEST'},
+      runWarnings: ['The URL you have provided does not have a valid security certificate. net::ERR_CERT_DATE_INVALID'],
       audits: {
         'first-contentful-paint': {
           scoreDisplayMode: 'error',
@@ -59,4 +62,28 @@ module.exports = [
       },
     },
   },
+  {
+    lhr: {
+      // Our interstitial error handling used to be quite aggressive, so we'll test a page
+      // that has a bad iframe to make sure LH audits successfully.
+      // https://github.com/GoogleChrome/lighthouse/issues/9562
+      requestedUrl: 'http://localhost:10200/badssl-iframe.html',
+      finalUrl: 'http://localhost:10200/badssl-iframe.html',
+      audits: {
+        'first-contentful-paint': {
+          scoreDisplayMode: 'numeric',
+        },
+      },
+    },
+    artifacts: {
+      devtoolsLogs: {
+        defaultPass: NONEMPTY_ARRAY,
+      },
+      traces: {
+        defaultPass: {traceEvents: NONEMPTY_ARRAY},
+      },
+    },
+  },
 ];
+
+module.exports = expectations;

@@ -58,7 +58,7 @@ Note that some flag functionality is only available to the CLI. The set of share
 | `chromeFlags` | Ignored, Chrome is not launched for you. |
 | `outputPath` | Ignored, output is returned as string in `.report` property. |
 | `saveAssets` | Ignored, artifacts are returned in `.artifacts` property. |
-| `view` | Ignored, use the `opn` npm module if you want this functionality. |
+| `view` | Ignored, use the `open` npm module if you want this functionality. |
 | `enableErrorReporting` | Ignored, error reporting is always disabled for node. |
 | `listAllAudits` | Ignored, not relevant in programmatic use. |
 | `listTraceCategories` | Ignored, not relevant in programmatic use. |
@@ -92,10 +92,9 @@ In order to extend the Lighthouse configuration programmatically, you need to pa
   settings: {
     onlyAudits: [
       'first-meaningful-paint',
-      'speed-index-metric',
-      'estimated-input-latency',
-      'first-interactive',
-      'consistently-interactive',
+      'speed-index',
+      'first-cpu-idle',
+      'interactive',
     ],
   },
 }

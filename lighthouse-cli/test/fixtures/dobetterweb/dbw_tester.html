@@ -18,7 +18,7 @@
 
 <!-- AMP-style stylesheet script -->
 <!-- based on https://github.com/ampproject/amphtml/blob/38f1bdf4cc385f9a25cf2979abf215952880b876/src/font-stylesheet-timeout.js#L87-L103 -->
-<script type="text/javascript">
+<script type="text/javascript" id="amp-style-styling-script">
   setTimeout(() => {
     const stylesheet = document.getElementById('amp-style-link');
     stylesheet.media = 'not-matching';
@@ -30,7 +30,7 @@
 <!-- Note: these will only fail when using the static-server.js, which supports the ?delay=true param.
      If you're using your own server, the resource will load instantly and the
      stylesheets will be ignored for being below the threshold. -->
-<link rel="stylesheet" href="./dobetterweb/dbw_tester.css?delay=100"> <!-- FAIL, when run under smokehouse -->
+<link rel="stylesheet" href="./dbw_tester.css?delay=100">
 <link rel="stylesheet" href="./unknown404.css?delay=200"> <!-- FAIL -->
 <link rel="stylesheet" href="./dbw_tester.css?delay=2200"> <!-- FAIL -->
 <link rel="stylesheet" href="./dbw_disabled.css?delay=200&isdisabled" disabled> <!-- PASS -->
@@ -44,14 +44,20 @@
 <!-- PASS: async stylesheet -->
 <link rel="stylesheet" href="./dbw_tester.css?delay=3000&async=true" disabled onload="this.disabled = false">
 
+<!-- Alternate stylesheets should not show in TagsBlockingFirstPaint artifact -->
+<link rel="alternate stylesheet" href="./empty.css">
+
 <!-- FAIL: block rendering -->
-<script src="./dbw_tester.js"></script>
+<script src="./dbw_tester.js" id="dbw-tester-script"></script>
 
 <!-- PASS: 'modules' are deferred by default and don't block rendering -->
 <script type="module" src="./empty_module.js?delay=500"></script>
 
 <!-- FAIL(errors-in-console): exception thrown -->
-<script type="text/javascript">throw new Error('An error');</script>
+<script type="text/javascript" id="error-time">throw new Error('A distinctive error');</script>
+
+<!-- PASS(errors-in-console): exception thrown but ignoredPatterns removes it -->
+<script type="text/javascript">throw new Error('An ignored error');</script>
 
 <!-- Add non-functional script to appear to be a Wordpress page for Stack Packs. -->
 <script type="example" src="fake-script-wp-includes"></script>
@@ -146,6 +152,13 @@
 <div>
   <h2>Do better web tester page</h2>
   <span>Hi there!</span>
+
+  <!-- Invalid SVG with a link just to ensure the `LinkElements` gatherer can handle it. -->
+  <svg role="img" class="social-facebook" aria-labelledby="social-facebook-5">
+    <title id="social-facebook-5">Facebook</title>
+    <link rel="preload" href="https://fonts.googleapis.com/made-up-url"></link>
+    <use xlink:href=""></use>
+  </svg>
 </div>
 
 <section id="touchmove-section">touchmove section</section>
@@ -415,12 +428,14 @@ if (location.search === '') {
 }
 </script>
 
-<!-- PASS: not in header, so it does not block rendering. zone.js is loaded
-     by the static-server and provides a polyfill for Promise. -->
-<script src="/zone.js"></script>
+<!-- Including this script validates that driver.evaluateAsync() still works even with
+  window.Promise being mucked with. See file source for details.
+  Also, script is located down here to avoid being flagged in render-blocking-resources. -->
+<script src="./third_party/aggressive-promise-polyfill.js"></script>
+
 <!-- FAIL(is-on-https): requires a non-localhost http file
-     FAIL: Loads a vulnerable JS library
--->
+     FAIL(no-vulnerable-libraries): Loads a vulnerable JS library -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </body>
 </html>

@@ -182,11 +182,9 @@ function cleanFlagsForSettings(flags = {}) {
   const settings = {};
 
   for (const key of Object.keys(flags)) {
-    // @ts-ignore - intentionally testing some keys not on defaultSettings to discard them.
-    if (typeof constants.defaultSettings[key] !== 'undefined') {
-      // Cast since key now must be able to index both Flags and Settings.
-      const safekey = /** @type {Extract<keyof LH.Flags, keyof LH.Config.Settings>} */ (key);
-      settings[safekey] = flags[safekey];
+    if (key in constants.defaultSettings) {
+      // @ts-ignore tsc can't yet express that key is only a single type in each iteration, not a union of types.
+      settings[key] = flags[key];
     }
   }
 

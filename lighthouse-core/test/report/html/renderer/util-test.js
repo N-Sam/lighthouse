@@ -9,26 +9,17 @@ const assert = require('assert');
 const Util = require('../../../../report/html/renderer/util.js');
 const sampleResult = require('../../../results/sample_v2.json');
 
+// Require i18n to make sure Intl is polyfilled in Node without full-icu for testing.
+// When Util is run in a browser, Intl will be supplied natively (IE11+).
+// eslint-disable-next-line no-unused-vars
+const i18n = require('../../../../lib/i18n/i18n.js');
+
 const NBSP = '\xa0';
 
 /* eslint-env jest */
-/* eslint-disable no-console */
 /* global URL */
 
 describe('util helpers', () => {
-  let origConsoleWarn;
-  let consoleWarnCalls;
-
-  beforeEach(() => {
-    origConsoleWarn = console.warn;
-    consoleWarnCalls = [];
-    console.warn = msg => consoleWarnCalls.push(msg);
-  });
-
-  afterEach(() => {
-    console.warn = origConsoleWarn;
-  });
-
   it('formats a number', () => {
     assert.strictEqual(Util.formatNumber(10), '10');
     assert.strictEqual(Util.formatNumber(100.01), '100');
@@ -61,25 +52,40 @@ describe('util helpers', () => {
     assert.equal(Util.formatDuration(28 * 60 * 60 * 1000 + 5000), `1${NBSP}d 4${NBSP}h 5${NBSP}s`);
   });
 
-  // TODO: need ICU support in node on Travis/Appveyor
-  it.skip('formats based on locale', () => {
+  it('formats numbers based on locale', () => {
+    // Requires full-icu or Intl polyfill.
     const number = 12346.858558;
 
     const originalLocale = Util.numberDateLocale;
     Util.setNumberDateLocale('de');
     assert.strictEqual(Util.formatNumber(number), '12.346,9');
-    Util.setNumberDateLocale(originalLocale); // reset
+    assert.strictEqual(Util.formatBytesToKB(number), `12,1${NBSP}KB`);
+    assert.strictEqual(Util.formatMilliseconds(number), `12.350${NBSP}ms`);
+    assert.strictEqual(Util.formatSeconds(number), `12,3${NBSP}s`);
+
+    Util.setNumberDateLocale(originalLocale); // reset locale
     assert.strictEqual(Util.formatNumber(number), '12,346.9');
+    assert.strictEqual(Util.formatBytesToKB(number), `12.1${NBSP}KB`);
+    assert.strictEqual(Util.formatMilliseconds(number), `12,350${NBSP}ms`);
+    assert.strictEqual(Util.formatSeconds(number), `12.3${NBSP}s`);
   });
 
-  it.skip('uses decimal comma with en-XA test locale', () => {
+  it('uses decimal comma with en-XA test locale', () => {
+    // Requires full-icu or Intl polyfill.
     const number = 12346.858558;
 
     const originalLocale = Util.numberDateLocale;
     Util.setNumberDateLocale('en-XA');
     assert.strictEqual(Util.formatNumber(number), '12.346,9');
-    Util.setNumberDateLocale(originalLocale); // reset
+    assert.strictEqual(Util.formatBytesToKB(number), `12,1${NBSP}KB`);
+    assert.strictEqual(Util.formatMilliseconds(number), `12.350${NBSP}ms`);
+    assert.strictEqual(Util.formatSeconds(number), `12,3${NBSP}s`);
+
+    Util.setNumberDateLocale(originalLocale); // reset locale
     assert.strictEqual(Util.formatNumber(number), '12,346.9');
+    assert.strictEqual(Util.formatBytesToKB(number), `12.1${NBSP}KB`);
+    assert.strictEqual(Util.formatMilliseconds(number), `12,350${NBSP}ms`);
+    assert.strictEqual(Util.formatSeconds(number), `12.3${NBSP}s`);
   });
 
   it('calculates a score ratings', () => {
@@ -277,6 +283,174 @@ describe('util helpers', () => {
       assert.equal(Util.getRootDomain(new URL('https://sub.example.tokyo.jp')), 'tokyo.jp');
       assert.equal(Util.getRootDomain(new URL('http://localhost')), 'localhost');
       assert.equal(Util.getRootDomain(new URL('http://localhost:8080')), 'localhost');
+    });
+  });
+
+  describe('#splitMarkdownCodeSpans', () => {
+    it('handles strings with no backticks in them', () => {
+      expect(Util.splitMarkdownCodeSpans('regular text')).toEqual([
+        {isCode: false, text: 'regular text'},
+      ]);
+    });
+
+    it('does not split on a single backtick', () => {
+      expect(Util.splitMarkdownCodeSpans('regular `text')).toEqual([
+        {isCode: false, text: 'regular `text'},
+      ]);
+    });
+
+    it('splits on backticked code', () => {
+      expect(Util.splitMarkdownCodeSpans('regular `code` text')).toEqual([
+        {isCode: false, text: 'regular '},
+        {isCode: true, text: 'code'},
+        {isCode: false, text: ' text'},
+      ]);
+    });
+
+    it('splits on backticked code at the beginning of the string', () => {
+      expect(Util.splitMarkdownCodeSpans('`start code` regular text')).toEqual([
+        {isCode: true, text: 'start code'},
+        {isCode: false, text: ' regular text'},
+      ]);
+    });
+
+    it('splits on backticked code at the end of the string', () => {
+      expect(Util.splitMarkdownCodeSpans('regular text `end code`')).toEqual([
+        {isCode: false, text: 'regular text '},
+        {isCode: true, text: 'end code'},
+      ]);
+    });
+
+    it('does not split on a single backtick after split out backticked code', () => {
+      expect(Util.splitMarkdownCodeSpans('regular text `code` and more `text')).toEqual([
+        {isCode: false, text: 'regular text '},
+        {isCode: true, text: 'code'},
+        {isCode: false, text: ' and more `text'},
+      ]);
+    });
+
+    it('splits on two instances of backticked code', () => {
+      expect(Util.splitMarkdownCodeSpans('regular text `code` more text `and more code`')).toEqual([
+        {isCode: false, text: 'regular text '},
+        {isCode: true, text: 'code'},
+        {isCode: false, text: ' more text '},
+        {isCode: true, text: 'and more code'},
+      ]);
+    });
+
+    it('splits on two directly adjacent instances of backticked code', () => {
+      // eslint-disable-next-line max-len
+      expect(Util.splitMarkdownCodeSpans('regular text `first code``second code` end text')).toEqual([
+        {isCode: false, text: 'regular text '},
+        {isCode: true, text: 'first code'},
+        {isCode: true, text: 'second code'},
+        {isCode: false, text: ' end text'},
+      ]);
+    });
+
+    it('handles text only within backticks', () => {
+      expect(Util.splitMarkdownCodeSpans('`first code``second code`')).toEqual([
+        {isCode: true, text: 'first code'},
+        {isCode: true, text: 'second code'},
+      ]);
+    });
+
+    it('splits on two instances of backticked code separated by only a space', () => {
+      // eslint-disable-next-line max-len
+      expect(Util.splitMarkdownCodeSpans('`first code` `second code`')).toEqual([
+        {isCode: true, text: 'first code'},
+        {isCode: false, text: ' '},
+        {isCode: true, text: 'second code'},
+      ]);
+    });
+  });
+
+  describe('#splitMarkdownLink', () => {
+    it('handles strings with no links in them', () => {
+      expect(Util.splitMarkdownLink('some text')).toEqual([
+        {isLink: false, text: 'some text'},
+      ]);
+    });
+
+    it('does not split on an incomplete markdown link', () => {
+      expect(Util.splitMarkdownLink('some [not link text](text')).toEqual([
+        {isLink: false, text: 'some [not link text](text'},
+      ]);
+    });
+
+    it('splits on a markdown link', () => {
+      expect(Util.splitMarkdownLink('some [link text](https://example.com) text')).toEqual([
+        {isLink: false, text: 'some '},
+        {isLink: true, text: 'link text', linkHref: 'https://example.com'},
+        {isLink: false, text: ' text'},
+      ]);
+    });
+
+    it('splits on an http markdown link', () => {
+      expect(Util.splitMarkdownLink('you should [totally click here](http://never-mitm.com) now')).toEqual([
+        {isLink: false, text: 'you should '},
+        {isLink: true, text: 'totally click here', linkHref: 'http://never-mitm.com'},
+        {isLink: false, text: ' now'},
+      ]);
+    });
+
+    it('does not split on a non-http/https link', () => {
+      expect(Util.splitMarkdownLink('some [link text](ftp://example.com) text')).toEqual([
+        {isLink: false, text: 'some [link text](ftp://example.com) text'},
+      ]);
+    });
+
+    it('does not split on a malformed markdown link', () => {
+      expect(Util.splitMarkdownLink('some [link ]text](https://example.com')).toEqual([
+        {isLink: false, text: 'some [link ]text](https://example.com'},
+      ]);
+
+      expect(Util.splitMarkdownLink('some [link text] (https://example.com')).toEqual([
+        {isLink: false, text: 'some [link text] (https://example.com'},
+      ]);
+    });
+
+    it('does not split on empty link text', () => {
+      expect(Util.splitMarkdownLink('some [](https://example.com) empty link')).toEqual([
+        {isLink: false, text: 'some [](https://example.com) empty link'},
+      ]);
+    });
+
+    it('splits on a markdown link at the beginning of a string', () => {
+      expect(Util.splitMarkdownLink('[link text](https://example.com) end text')).toEqual([
+        {isLink: true, text: 'link text', linkHref: 'https://example.com'},
+        {isLink: false, text: ' end text'},
+      ]);
+    });
+
+    it('splits on a markdown link at the end of a string', () => {
+      expect(Util.splitMarkdownLink('start text [link text](https://example.com)')).toEqual([
+        {isLink: false, text: 'start text '},
+        {isLink: true, text: 'link text', linkHref: 'https://example.com'},
+      ]);
+    });
+
+    it('handles a string consisting only of a markdown link', () => {
+      expect(Util.splitMarkdownLink(`[I'm only a link](https://example.com)`)).toEqual([
+        {isLink: true, text: `I'm only a link`, linkHref: 'https://example.com'},
+      ]);
+    });
+
+    it('handles a string starting and ending with a markdown link', () => {
+      expect(Util.splitMarkdownLink('[first link](https://first.com) other text [second link](https://second.com)')).toEqual([
+        {isLink: true, text: 'first link', linkHref: 'https://first.com'},
+        {isLink: false, text: ' other text '},
+        {isLink: true, text: 'second link', linkHref: 'https://second.com'},
+      ]);
+    });
+
+    it('handles a string with adjacent markdown links', () => {
+      expect(Util.splitMarkdownLink('start text [first link](https://first.com)[second link](https://second.com) and scene')).toEqual([
+        {isLink: false, text: 'start text '},
+        {isLink: true, text: 'first link', linkHref: 'https://first.com'},
+        {isLink: true, text: 'second link', linkHref: 'https://second.com'},
+        {isLink: false, text: ' and scene'},
+      ]);
     });
   });
 });

@@ -6,6 +6,7 @@
 'use strict';
 
 /**
+ * @type {Array<Smokehouse.ExpectedRunnerResult>}
  * Expected Lighthouse audit values for perf tests.
  */
 module.exports = [
@@ -79,8 +80,8 @@ module.exports = [
               {resourceType: 'font', requestCount: 2, size: '80000±1000'},
               {resourceType: 'script', requestCount: 3, size: '55000±1000'},
               {resourceType: 'image', requestCount: 2, size: '28000±1000'},
-              {resourceType: 'document', requestCount: 1, size: '2100±100'},
-              {resourceType: 'other', requestCount: 2, size: '1250±50'},
+              {resourceType: 'document', requestCount: 1, size: '2200±100'},
+              {resourceType: 'other', requestCount: 2, size: '1300±50'},
               {resourceType: 'stylesheet', requestCount: 1, size: '450±100'},
               {resourceType: 'media', requestCount: 0, size: 0},
               {resourceType: 'third-party', requestCount: 0, size: 0},

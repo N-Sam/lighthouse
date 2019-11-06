@@ -10,15 +10,16 @@ const path = require('path');
 const {promisify} = require('util');
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
+const mkdir = fs.promises.mkdir;
 
 const browserify = require('browserify');
 const cpy = require('cpy');
 const ghPages = require('gh-pages');
 const glob = promisify(require('glob'));
 const lighthousePackage = require('../package.json');
-const makeDir = require('make-dir');
 const rimraf = require('rimraf');
-const uglifyEs = require('uglify-es'); // Use uglify-es to get ES6 support.
+const terser = require('terser');
+const {minifyFileTransform} = require('./build-utils.js');
 
 const htmlReportAssets = require('../lighthouse-core/report/html/html-report-assets.js');
 const sourceDir = `${__dirname}/../lighthouse-viewer`;
@@ -58,7 +59,7 @@ async function loadFiles(pattern) {
  */
 async function safeWriteFileAsync(filePath, data) {
   const fileDir = path.dirname(filePath);
-  await makeDir(fileDir);
+  await mkdir(fileDir, {recursive: true});
   return writeFileAsync(filePath, data);
 }
 
@@ -66,8 +67,8 @@ async function safeWriteFileAsync(filePath, data) {
  * Copy static assets.
  * @return {Promise<void>}
  */
-async function copyAssets() {
-  await cpy([
+function copyAssets() {
+  return cpy([
     'images/**/*',
     'sw.js',
     'manifest.json',
@@ -75,12 +76,6 @@ async function copyAssets() {
     cwd: `${sourceDir}/app/`,
     parents: true,
   });
-
-  // Copy polyfills.
-  return cpy([
-    '../node_modules/url-search-params/build/url-search-params.js',
-    '../node_modules/whatwg-fetch/fetch.js',
-  ], `${distDir}/src/polyfills`, {cwd: sourceDir});
 }
 
 /**
@@ -112,7 +107,9 @@ async function compileJs() {
   // JS bundle from browserified ReportGenerator.
   const generatorFilename = `${sourceDir}/../lighthouse-core/report/report-generator.js`;
   const generatorBrowserify = browserify(generatorFilename, {standalone: 'ReportGenerator'})
-    .transform('brfs');
+    .transform('@wardpeet/brfs', {
+      readFileSyncTransform: minifyFileTransform,
+    });
 
   /** @type {Promise<string>} */
   const generatorJsPromise = new Promise((resolve, reject) => {
@@ -137,6 +134,7 @@ async function compileJs() {
   const viewJsFiles = await loadFiles(`${sourceDir}/app/src/*.js`);
 
   const contents = [
+    `"use strict";`,
     generatorJs,
     rendererJs,
     idbKeyvalJs,
@@ -146,8 +144,8 @@ async function compileJs() {
   const options = {
     output: {preamble: license}, // Insert license at top.
   };
-  const uglified = uglifyEs.minify(contents, options);
-  if (uglified.error) {
+  const uglified = terser.minify(contents, options);
+  if (uglified.error || !uglified.code) {
     throw uglified.error;
   }
 

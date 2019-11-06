@@ -30,7 +30,7 @@ Local networks have inherent variability from packet loss, variable traffic prio
 
 ### Tier-1 Network Variability
 
-Network interconnects are generally very stable and have minimal impact but cross-geo requests, i.e. measuring performance of a Chinese site from the US, can start to experience a high degree of latency introduced from tier-1 network hops. _Applied_ throttling partially mask these effects with network throttling. _Simulated_ throttling mitigates these effects by replaying network activity on its own.
+Network interconnects are generally very stable and have minimal impact but cross-geo requests, i.e. measuring performance of a Chinese site from the US, can start to experience a high degree of latency introduced from tier-1 network hops. _Applied_ throttling partially masks these effects with network throttling. _Simulated_ throttling mitigates these effects by replaying network activity on its own.
 
 ### Web Server Variability
 
@@ -83,3 +83,4 @@ The median Lighthouse score of 5 runs is twice as stable as 1 run, and tools lik
 
 - [Lighthouse Variability and Accuracy Analysis](https://docs.google.com/document/d/1BqtL-nG53rxWOI5RO0pItSRPowZVnYJ_gBEQCJ5EeUE/edit?usp=sharing)
 - [Throttling documentation](./throttling.md)
+- [Why is my Lighthouse score different from PageSpeed Insights?](https://www.debugbear.com/blog/why-is-my-lighthouse-score-different-from-pagespeed-insights)

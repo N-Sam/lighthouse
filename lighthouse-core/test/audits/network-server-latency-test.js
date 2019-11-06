@@ -16,7 +16,7 @@ describe('Network Server Latency audit', () => {
     const artifacts = {devtoolsLogs: {defaultPass: acceptableDevToolsLog}};
     const result = await ServerLatency.audit(artifacts, {computedCache: new Map()});
     result.details.items.forEach(
-      item => (item.serverReponseTime = Math.round(item.serverReponseTime * 100) / 100)
+      item => (item.serverResponseTime = Math.round(item.serverResponseTime * 100) / 100)
     );
 
     // These were all from a trace that used our ancient 150ms devtools throttling which appears as
@@ -24,15 +24,15 @@ describe('Network Server Latency audit', () => {
     expect(result.details.items).toEqual([
       {
         origin: 'https://www.google-analytics.com',
-        serverReponseTime: 159.55,
+        serverResponseTime: 159.55,
       },
       {
         origin: 'https://pwa.rocks',
-        serverReponseTime: 159.42,
+        serverResponseTime: 159.42,
       },
       {
         origin: 'https://www.googletagmanager.com',
-        serverReponseTime: 153.03,
+        serverResponseTime: 153.03,
       },
     ]);
   });

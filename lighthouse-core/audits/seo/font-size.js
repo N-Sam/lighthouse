@@ -19,14 +19,12 @@ const UIStrings = {
   /** Title of a Lighthouse audit that provides detail on the font sizes used on the page. This descriptive title is shown to users when there is a font that may be too small to be read by users. */
   failureTitle: 'Document doesn\'t use legible font sizes',
   /** Description of a Lighthouse audit that tells the user *why* they need to use a larger font size. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/font-sizes).',
+  description: 'Font sizes less than 12px are too small to be legible and require mobile visitors to “pinch to zoom” in order to read. Strive to have >60% of page text ≥12px. [Learn more](https://web.dev/font-size).',
   /** Label for the audit identifying font sizes that are too small. */
   displayValue: '{decimalProportion, number, extendedPercent} legible text',
   /** Explanatory message stating that there was a failure in an audit caused by a missing page viewport meta tag configuration. "viewport" and "meta" are HTML terms and should not be translated. */
   explanationViewport: 'Text is illegible because there\'s no viewport meta tag optimized ' +
     'for mobile screens.',
-  /** Explanatory message stating that there was a failure in an audit caused by a certain percentage of the text on the page being too small. "decimalProportion" will be replaced by a percentage between 0 and 100%. */
-  explanation: '{decimalProportion, number, extendedPercent} of text is too small.',
   /** Explanatory message stating that there was a failure in an audit caused by a certain percentage of the text on the page being too small, based on a sample size of text that was less than 100% of the text on the page. "decimalProportion" will be replaced by a percentage between 0 and 100%. */
   explanationWithDisclaimer: '{decimalProportion, number, extendedPercent} of text is too ' +
     'small (based on {decimalProportionVisited, number, extendedPercent} sample).',
@@ -156,13 +154,27 @@ function findStyleRuleSource(baseURL, styleDeclaration, node) {
         const range = styleDeclaration.range;
         source = `${url.href}`;
 
+        // !!range == has defined location in a source file (.css or .html)
         if (range) {
-          // `stylesheet` can be either an external file (stylesheet.startLine will always be 0),
-          // or a <style> block (stylesheet.startLine will vary)
-          const absoluteStartLine = range.startLine + stylesheet.startLine + 1;
-          const absoluteStartColumn = range.startColumn + stylesheet.startColumn + 1;
+          let line = range.startLine + 1;
+          let column = range.startColumn;
 
-          source += `:${absoluteStartLine}:${absoluteStartColumn}`;
+          // Add the startLine/startColumn of the <style> element to the range, if stylesheet
+          // is inline.
+          // Always use the rule's location if a sourceURL magic comment is
+          // present (`hasSourceURL` is true) - this makes the line/col relative to the start
+          // of the style tag, which makes them relevant when the "file" is open in DevTool's
+          // Sources panel.
+          const addHtmlLocationOffset = stylesheet.isInline && !stylesheet.hasSourceURL;
+          if (addHtmlLocationOffset) {
+            line += stylesheet.startLine;
+            // The column the stylesheet begins on is only relevant if the rule is declared on the same line.
+            if (range.startLine === 0) {
+              column += stylesheet.startColumn;
+            }
+          }
+
+          source += `:${line}:${column}`;
         }
       } else {
         // dynamically injected to page
@@ -176,6 +188,8 @@ function findStyleRuleSource(baseURL, styleDeclaration, node) {
     }
   }
 
+  // The responsible style declaration was not captured in the font-size gatherer due to
+  // the rate limiting we do in `fetchFailingNodeSourceRules`.
   return {
     selector: '',
     source: 'Unknown',
@@ -312,9 +326,6 @@ class FontSize extends Audit {
             decimalProportion: percentageOfFailingText,
             decimalProportionVisited: percentageOfVisitedText,
           });
-      } else {
-        explanation = str_(UIStrings.explanation,
-          {decimalProportion: percentageOfFailingText});
       }
     }
 

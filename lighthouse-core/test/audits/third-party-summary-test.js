@@ -22,7 +22,10 @@ describe('Third party summary', () => {
 
     const results = await ThirdPartySummary.audit(artifacts, {computedCache: new Map()});
 
-    expect(results.displayValue).toBeDisplayString('2 Third-Parties Found');
+    expect(results.score).toBe(1);
+    expect(results.displayValue).toBeDisplayString(
+      'Third-party code blocked the main thread for 20 ms'
+    );
     expect(results.details.items).toEqual([
       {
         entity: {
@@ -31,6 +34,7 @@ describe('Third party summary', () => {
           url: 'https://marketingplatform.google.com/about/tag-manager/',
         },
         mainThreadTime: 104.70300000000002,
+        blockingTime: 18.186999999999998,
         transferSize: 30827,
       },
       {
@@ -40,6 +44,7 @@ describe('Third party summary', () => {
           url: 'https://www.google.com/analytics/analytics/',
         },
         mainThreadTime: 87.576,
+        blockingTime: 0,
         transferSize: 20913,
       },
     ]);
@@ -54,9 +59,12 @@ describe('Third party summary', () => {
     const settings = {throttlingMethod: 'simulate', throttling: {cpuSlowdownMultiplier: 4}};
     const results = await ThirdPartySummary.audit(artifacts, {computedCache: new Map(), settings});
 
+    expect(results.score).toBe(0);
     expect(results.details.items).toHaveLength(2);
     expect(Math.round(results.details.items[0].mainThreadTime)).toEqual(419);
+    expect(Math.round(results.details.items[0].blockingTime)).toEqual(250);
     expect(Math.round(results.details.items[1].mainThreadTime)).toEqual(350);
+    expect(Math.round(results.details.items[1].blockingTime)).toEqual(157);
   });
 
   it('be not applicable when no third parties are present', async () => {

@@ -192,7 +192,7 @@ class Util {
    */
   static formatNumber(number, granularity = 0.1) {
     const coarseValue = Math.round(number / granularity) * granularity;
-    return coarseValue.toLocaleString(Util.numberDateLocale);
+    return Util.numberFormatter.format(coarseValue);
   }
 
   /**
@@ -201,8 +201,7 @@ class Util {
    * @return {string}
    */
   static formatBytesToKB(size, granularity = 0.1) {
-    const kbs = (Math.round(size / 1024 / granularity) * granularity)
-      .toLocaleString(Util.numberDateLocale);
+    const kbs = Util.numberFormatter.format(Math.round(size / 1024 / granularity) * granularity);
     return `${kbs}${NBSP}KB`;
   }
 
@@ -213,7 +212,7 @@ class Util {
    */
   static formatMilliseconds(ms, granularity = 10) {
     const coarseTime = Math.round(ms / granularity) * granularity;
-    return `${coarseTime.toLocaleString(Util.numberDateLocale)}${NBSP}ms`;
+    return `${Util.numberFormatter.format(coarseTime)}${NBSP}ms`;
   }
 
   /**
@@ -223,7 +222,7 @@ class Util {
    */
   static formatSeconds(ms, granularity = 0.1) {
     const coarseTime = Math.round(ms / 1000 / granularity) * granularity;
-    return `${coarseTime.toLocaleString(Util.numberDateLocale)}${NBSP}s`;
+    return `${Util.numberFormatter.format(coarseTime)}${NBSP}s`;
   }
 
   /**
@@ -278,6 +277,73 @@ class Util {
     });
 
     return parts.join(' ');
+  }
+
+  /**
+   * Split a string by markdown code spans (enclosed in `backticks`), splitting
+   * into segments that were enclosed in backticks (marked as `isCode === true`)
+   * and those that outside the backticks (`isCode === false`).
+   * @param {string} text
+   * @return {Array<{isCode: true, text: string}|{isCode: false, text: string}>}
+   */
+  static splitMarkdownCodeSpans(text) {
+    /** @type {Array<{isCode: true, text: string}|{isCode: false, text: string}>} */
+    const segments = [];
+
+    // Split on backticked code spans.
+    const parts = text.split(/`(.*?)`/g);
+    for (let i = 0; i < parts.length; i ++) {
+      const text = parts[i];
+
+      // Empty strings are an artifact of splitting, not meaningful.
+      if (!text) continue;
+
+      // Alternates between plain text and code segments.
+      const isCode = i % 2 !== 0;
+      segments.push({
+        isCode,
+        text,
+      });
+    }
+
+    return segments;
+  }
+
+  /**
+   * Split a string on markdown links (e.g. [some link](https://...)) into
+   * segments of plain text that weren't part of a link (marked as
+   * `isLink === false`), and segments with text content and a URL that did make
+   * up a link (marked as `isLink === true`).
+   * @param {string} text
+   * @return {Array<{isLink: true, text: string, linkHref: string}|{isLink: false, text: string}>}
+   */
+  static splitMarkdownLink(text) {
+    /** @type {Array<{isLink: true, text: string, linkHref: string}|{isLink: false, text: string}>} */
+    const segments = [];
+
+    const parts = text.split(/\[([^\]]+?)\]\((https?:\/\/.*?)\)/g);
+    while (parts.length) {
+      // Shift off the same number of elements as the pre-split and capture groups.
+      const [preambleText, linkText, linkHref] = parts.splice(0, 3);
+
+      if (preambleText) { // Skip empty text as it's an artifact of splitting, not meaningful.
+        segments.push({
+          isLink: false,
+          text: preambleText,
+        });
+      }
+
+      // Append link if there are any.
+      if (linkText && linkHref) {
+        segments.push({
+          isLink: true,
+          text: linkText,
+          linkHref,
+        });
+      }
+    }
+
+    return segments;
   }
 
   /**
@@ -489,10 +555,11 @@ class Util {
    * @param {LH.Locale} locale
    */
   static setNumberDateLocale(locale) {
-    Util.numberDateLocale = locale;
-
     // When testing, use a locale with more exciting numeric formatting
-    if (Util.numberDateLocale === 'en-XA') Util.numberDateLocale = 'de';
+    if (locale === 'en-XA') locale = 'de';
+
+    Util.numberDateLocale = locale;
+    Util.numberFormatter = new Intl.NumberFormat(locale);
   }
 
   /**
@@ -552,12 +619,18 @@ class Util {
 Util.numberDateLocale = 'en';
 
 /**
+ * This value stays in sync with Util.numberDateLocale.
+ * @type {Intl.NumberFormat}
+ */
+Util.numberFormatter = new Intl.NumberFormat(Util.numberDateLocale);
+
+/**
  * Report-renderer-specific strings.
  * @type {LH.I18NRendererStrings}
  */
 Util.UIStrings = {
   /** Disclaimer shown to users below the metric values (First Contentful Paint, Time to Interactive, etc) to warn them that the numbers they see will likely change slightly the next time they run Lighthouse. */
-  varianceDisclaimer: 'Values are estimated and may vary.',
+  varianceDisclaimer: 'Values are estimated and may vary. The performance score is [based only on these metrics](https://github.com/GoogleChrome/lighthouse/blob/d2ec9ffbb21de9ad1a0f86ed24575eda32c796f0/docs/scoring.md#how-are-the-scores-weighted).',
   /** Column heading label for the listing of opportunity audits. Each audit title represents an opportunity. There are only 2 columns, so no strict character limit.  */
   opportunityResourceColumnLabel: 'Opportunity',
   /** Column heading label for the estimated page load savings of opportunity audits. Estimated Savings is the total amount of time (in seconds) that Lighthouse computed could be reduced from the total page load time, if the suggested action is taken. There are only 2 columns, so no strict character limit. */

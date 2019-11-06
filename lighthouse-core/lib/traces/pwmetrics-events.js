@@ -7,11 +7,9 @@
 
 const log = require('lighthouse-logger');
 
-/** @typedef {import('../../audits/metrics.js').UberMetricsItem} UberMetricsItem */
-
 /**
  * @param {LH.Audit.Results} auditResults
- * @return {UberMetricsItem|undefined}
+ * @return {LH.Artifacts.TimingSummary|undefined}
  */
 function getUberMetrics(auditResults) {
   const metricsAudit = auditResults.metrics;
@@ -32,7 +30,7 @@ class Metrics {
 
   /**
    * Returns simplified representation of all metrics
-   * @return {Array<{id: string, name: string, tsKey: keyof UberMetricsItem}>} metrics to consider
+   * @return {Array<{id: string, name: string, tsKey: keyof LH.Artifacts.TimingSummary}>} metrics to consider
    */
   static get metricsDefinitions() {
     return [

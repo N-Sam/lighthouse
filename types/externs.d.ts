@@ -39,7 +39,7 @@ declare global {
   type NonVoid<T> = T extends void ? never : T;
 
   /** Remove properties K from T. */
-  type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+  type StrictOmit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
   /** Obtain the type of the first parameter of a function. */
   type FirstParamType<T extends (arg1: any, ...args: any[]) => any> =

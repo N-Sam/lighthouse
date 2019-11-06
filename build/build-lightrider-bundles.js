@@ -8,8 +8,8 @@
 const browserify = require('browserify');
 const fs = require('fs');
 const path = require('path');
-const makeDir = require('make-dir');
 const bundleBuilder = require('./build-bundle.js');
+const {minifyFileTransform} = require('./build-utils.js');
 
 const distDir = path.join(__dirname, '..', 'dist', 'lightrider');
 const sourceDir = __dirname + '/../clients/lightrider';
@@ -20,7 +20,7 @@ const generatorFilename = `./lighthouse-core/report/report-generator.js`;
 const entrySourceName = 'lightrider-entry.js';
 const entryDistName = 'lighthouse-lr-bundle.js';
 
-makeDir.sync(path.dirname(distDir));
+fs.mkdirSync(path.dirname(distDir), {recursive: true});
 
 /**
  * Browserify and minify entry point.
@@ -37,7 +37,11 @@ function buildEntryPoint() {
 function buildReportGenerator() {
   browserify(generatorFilename, {standalone: 'ReportGenerator'})
     // Transform the fs.readFile etc into inline strings.
-    .transform('brfs', {global: true, parserOpts: {ecmaVersion: 10}})
+    .transform('@wardpeet/brfs', {
+      readFileSyncTransform: minifyFileTransform,
+      global: true,
+      parserOpts: {ecmaVersion: 10},
+    })
     .bundle((err, src) => {
       if (err) throw err;
       fs.writeFileSync(bundleOutFile, src.toString());

@@ -220,15 +220,16 @@ describe('ReportRenderer', () => {
     const container = renderer._dom._document.body;
     const output = renderer.renderReport(sampleResults, container);
 
+    const DOCS_ORIGINS = ['https://developers.google.com', 'https://web.dev'];
     const utmChannels = [...output.querySelectorAll('a[href*="utm_source=lighthouse"')]
       .map(a => new URL(a.href))
-      .filter(url => url.origin === 'https://developers.google.com')
+      .filter(url => DOCS_ORIGINS.includes(url.origin))
       .map(url => url.searchParams.get('utm_medium'));
 
-    assert.ok(utmChannels.length > 20);
-    utmChannels.forEach(anchorChannel => {
-      assert.strictEqual(anchorChannel, lhrChannel);
-    });
+    assert.ok(utmChannels.length > 100);
+    for (const utmChannel of utmChannels) {
+      assert.strictEqual(utmChannel, lhrChannel);
+    }
   });
 
   it('renders `not_applicable` audits as `notApplicable`', () => {
@@ -250,5 +251,52 @@ describe('ReportRenderer', () => {
     const notApplicableElementCount = reportElement
       .querySelectorAll('.lh-audit--notapplicable').length;
     assert.strictEqual(notApplicableCount, notApplicableElementCount);
+  });
+
+  describe('axe-core', () => {
+    let axe;
+
+    beforeAll(() =>{
+      // Needed by axe-core
+      // https://github.com/dequelabs/axe-core/blob/581c441c/doc/examples/jsdom/test/a11y.js#L24
+      global.window = global.self;
+      global.Node = global.self.Node;
+      global.Element = global.self.Element;
+
+      // axe-core must be required after the global polyfills
+      axe = require('axe-core');
+    });
+
+    afterAll(() => {
+      global.window = undefined;
+      global.Node = undefined;
+      global.Element = undefined;
+    });
+
+    it('renders without axe violations', (done) => {
+      const container = renderer._dom._document.body;
+      const output = renderer.renderReport(sampleResults, container);
+
+      const config = {
+        rules: {
+          // Reports may have duplicate ids
+          // https://github.com/GoogleChrome/lighthouse/issues/9432
+          'duplicate-id': {enabled: false},
+          // The following rules are disable for axe-core + jsdom compatibility
+          // https://github.com/dequelabs/axe-core/tree/b573b1c1/doc/examples/jest_react#to-run-the-example
+          'color-contrast': {enabled: false},
+          'link-in-text-block': {enabled: false},
+        },
+      };
+
+      axe.run(output, config, (error, {violations}) => {
+        assert.ifError(error);
+        assert.ok(violations.length === 0, JSON.stringify(violations, null, 1));
+        done();
+      });
+
+    // Set timeout to 10s to give axe-core enough time to complete
+    // https://github.com/dequelabs/axe-core/tree/b573b1c1/doc/examples/jest_react#timeout-issues
+    }, /* timeout= */ 10 * 1000);
   });
 });

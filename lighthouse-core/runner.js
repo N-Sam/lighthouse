@@ -333,7 +333,9 @@ class Runner {
       // to prevent consumers from unnecessary type assertions.
       const requiredArtifacts = audit.meta.requiredArtifacts
         .reduce((requiredArtifacts, artifactName) => {
-          requiredArtifacts[artifactName] = artifacts[artifactName];
+          const requiredArtifact = artifacts[artifactName];
+          // @ts-ignore tsc can't yet express that artifactName is only a single type in each iteration, not a union of types.
+          requiredArtifacts[artifactName] = requiredArtifact;
           return requiredArtifacts;
         }, /** @type {LH.Artifacts} */ ({}));
       const product = await audit.audit(requiredArtifacts, auditContext);

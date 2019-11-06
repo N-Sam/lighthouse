@@ -12,7 +12,7 @@ const options = DOMSize.defaultOptions;
 /* eslint-env jest */
 
 describe('DOMSize audit', () => {
-  const numElements = DOMSize.MAX_DOM_ELEMENTS;
+  const numElements = 1500;
   const artifact = {
     DOMStats: {
       totalBodyElements: numElements,

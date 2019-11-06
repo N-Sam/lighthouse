@@ -1,8 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Performance: metrics evaluates valid input (with lcp) correctly 1`] = `
+Object {
+  "estimatedInputLatency": 1324,
+  "estimatedInputLatencyTs": undefined,
+  "firstCPUIdle": 14907,
+  "firstCPUIdleTs": 1671236823075,
+  "firstContentfulPaint": 4702,
+  "firstContentfulPaintTs": 1671226617803,
+  "firstMeaningfulPaint": 4702,
+  "firstMeaningfulPaintTs": 1671226617803,
+  "interactive": 14907,
+  "interactiveTs": 1671236823075,
+  "largestContentfulPaint": 15024,
+  "largestContentfulPaintTs": 1671236939268,
+  "observedDomContentLoaded": 14907,
+  "observedDomContentLoadedTs": 1671236823075,
+  "observedFirstContentfulPaint": 4702,
+  "observedFirstContentfulPaintTs": 1671226617803,
+  "observedFirstMeaningfulPaint": 4702,
+  "observedFirstMeaningfulPaintTs": 1671226617803,
+  "observedFirstPaint": 4702,
+  "observedFirstPaintTs": 1671226617803,
+  "observedFirstVisualChange": 4685,
+  "observedFirstVisualChangeTs": 1671226600754,
+  "observedLargestContentfulPaint": 15024,
+  "observedLargestContentfulPaintTs": 1671236939268,
+  "observedLastVisualChange": 4685,
+  "observedLastVisualChangeTs": 1671226600754,
+  "observedLoad": 40464,
+  "observedLoadTs": 1671262379989,
+  "observedNavigationStart": 0,
+  "observedNavigationStartTs": 1671221915754,
+  "observedSpeedIndex": 5715,
+  "observedSpeedIndexTs": 1671227631023,
+  "observedTraceEnd": 44549,
+  "observedTraceEndTs": 1671266464483,
+  "speedIndex": 5715,
+  "speedIndexTs": 1671227630754,
+  "totalBlockingTime": 1935,
+}
+`;
+
 exports[`Performance: metrics evaluates valid input correctly 1`] = `
 Object {
-  "cumulativeLongQueuingDelay": 748,
   "estimatedInputLatency": 78,
   "estimatedInputLatencyTs": undefined,
   "firstCPUIdle": 3351,
@@ -13,6 +54,8 @@ Object {
   "firstMeaningfulPaintTs": undefined,
   "interactive": 3427,
   "interactiveTs": undefined,
+  "largestContentfulPaint": undefined,
+  "largestContentfulPaintTs": undefined,
   "observedDomContentLoaded": 560,
   "observedDomContentLoadedTs": 225414732309,
   "observedFirstContentfulPaint": 499,
@@ -23,6 +66,8 @@ Object {
   "observedFirstPaintTs": 225414670868,
   "observedFirstVisualChange": 520,
   "observedFirstVisualChangeTs": 225414692015,
+  "observedLargestContentfulPaint": undefined,
+  "observedLargestContentfulPaintTs": undefined,
   "observedLastVisualChange": 818,
   "observedLastVisualChangeTs": 225414990015,
   "observedLoad": 2199,
@@ -35,5 +80,6 @@ Object {
   "observedTraceEndTs": 225426711887,
   "speedIndex": 1657,
   "speedIndexTs": undefined,
+  "totalBlockingTime": 726,
 }
 `;

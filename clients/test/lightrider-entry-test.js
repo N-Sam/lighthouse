@@ -118,5 +118,32 @@ describe('lightrider-entry', () => {
 
       runStub.mockRestore();
     });
+
+    it('exposes artifacts when logAssets is true', async () => {
+      const originalRun = Runner.run;
+      Runner.run = jest.fn().mockReturnValue(Promise.resolve({
+        lhr: {},
+        artifacts: {
+          Artifact: new Error('some error'),
+        },
+      }));
+      afterEach(() => {
+        Runner.run = originalRun;
+      });
+
+      const mockConnection = {};
+      const url = 'https://example.com';
+      const lrFlags = {
+        logAssets: true,
+      };
+      const resultJson = await lhBackground.runLighthouseInLR(mockConnection, url, {}, lrFlags);
+      const result = JSON.parse(resultJson);
+      expect(result.artifacts).toMatchObject({
+        Artifact: {
+          sentinel: '__ErrorSentinel',
+          message: 'some error',
+        },
+      });
+    });
   });
 });

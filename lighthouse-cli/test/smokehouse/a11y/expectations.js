@@ -8,9 +8,10 @@
 /* eslint-disable max-len */
 
 /**
+ * @type {Array<Smokehouse.ExpectedRunnerResult>}
  * Expected Lighthouse audit values for byte efficiency tests
  */
-module.exports = [
+const expectations = [
   {
     lhr: {
       requestedUrl: 'http://localhost:10200/a11y/a11y_tester.html',
@@ -27,6 +28,46 @@ module.exports = [
                   'snippet': '<div id="aria-allowed-attr" role="alert" aria-checked="true">\n      </div>',
                   'explanation': 'Fix any of the following:\n  ARIA attribute is not allowed: aria-checked="true"',
                   'nodeLabel': 'div',
+                },
+              },
+            ],
+          },
+        },
+        'aria-hidden-body': {
+          score: 1,
+          details: {
+            'type': 'table',
+            'headings': [],
+            'items': [],
+          },
+        },
+        'aria-hidden-focus': {
+          score: 0,
+          details: {
+            items: [
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '#aria-hidden-focus',
+                  'snippet': '<div id="aria-hidden-focus" aria-hidden="true">\n        <button>Focusable Button</button>\n      </div>',
+                  'explanation': 'Fix all of the following:\n  Focusable content should be disabled or be removed from the DOM',
+                  'nodeLabel': 'Focusable Button',
+                },
+              },
+            ],
+          },
+        },
+        'aria-input-field-name': {
+          score: 0,
+          details: {
+            items: [
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '#aria-input-field-name',
+                  'snippet': '<div id="aria-input-field-name" role="textbox">text-in-a-box</div>',
+                  'explanation': 'Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty',
+                  'nodeLabel': 'text-in-a-box',
                 },
               },
             ],
@@ -80,6 +121,41 @@ module.exports = [
             ],
           },
         },
+        'aria-toggle-field-name': {
+          score: 0,
+          details: {
+            items: [
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '#aria-required-attr',
+                  'path': '2,HTML,1,BODY,9,SECTION,0,DIV',
+                  'snippet': '<div id="aria-required-attr" role="checkbox">\n      </div>',
+                  'explanation': 'Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty\n  Element does not have text that is visible to screen readers',
+                  'nodeLabel': 'div',
+                },
+              },
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '#aria-valid-attr',
+                  'path': '2,HTML,1,BODY,17,SECTION,0,DIV',
+                  'snippet': '<div id="aria-valid-attr" role="checkbox" aria-chked="true">\n      </div>',
+                  'nodeLabel': 'div',
+                },
+              },
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '#aria-valid-attr-value',
+                  'path': '2,HTML,1,BODY,19,SECTION,0,DIV',
+                  'snippet': '<div id="aria-valid-attr-value" role="checkbox" aria-checked="0">\n      </div>',
+                  'nodeLabel': 'div',
+                },
+              },
+            ],
+          },
+        },
         'aria-valid-attr-value': {
           score: 0,
           details: {
@@ -121,7 +197,7 @@ module.exports = [
                   'type': 'node',
                   'selector': '#button-name',
                   'snippet': '<button id="button-name"></button>',
-                  'explanation': 'Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element has a value attribute and the value attribute is empty\n  Element has no value attribute or the value attribute is empty\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element\'s default semantics were not overridden with role="presentation"\n  Element\'s default semantics were not overridden with role="none"\n  Element has no title attribute or the title attribute is empty',
+                  'explanation': 'Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element\'s default semantics were not overridden with role="presentation"\n  Element\'s default semantics were not overridden with role="none"\n  Element has no title attribute or the title attribute is empty',
                   'nodeLabel': 'button',
                 },
               },
@@ -129,19 +205,11 @@ module.exports = [
           },
         },
         'bypass': {
-          score: 0,
+          score: 1,
           details: {
-            items: [
-              {
-                node: {
-                  'type': 'node',
-                  'selector': 'html',
-                  'snippet': '<html>',
-                  'explanation': 'Fix any of the following:\n  No valid skip link found\n  Page does not have a header\n  Page does not have a landmark region',
-                  'nodeLabel': 'html',
-                },
-              },
-            ],
+            type: 'table',
+            headings: [],
+            items: [],
           },
         },
         'color-contrast': {
@@ -153,7 +221,8 @@ module.exports = [
                   'type': 'node',
                   'selector': '#color-contrast',
                   'snippet': '<div id="color-contrast" style="background-color: red; color: pink;">\n          Hello\n      </div>',
-                  'explanation': 'Fix any of the following:\n  Element has insufficient color contrast of 2.59 (foreground color: #ffc0cb, background color: #ff0000, font size: 28.5pt, font weight: normal). Expected contrast ratio of 3:1',
+                  // Default font size is different depending on the platform (e.g. 28.5 on travis, 30.0 on Mac), so use \d\d\.\d.
+                  'explanation': /^Fix any of the following:\n {2}Element has insufficient color contrast of 2\.59 \(foreground color: #ffc0cb, background color: #ff0000, font size: \d\d\.\dpt, font weight: normal\). Expected contrast ratio of 3:1$/,
                   'nodeLabel': 'Hello',
                 },
               },
@@ -209,17 +278,52 @@ module.exports = [
 
           },
         },
-        'duplicate-id': {
+        'duplicate-id-active': {
           score: 0,
           details: {
             items: [
               {
                 node: {
                   'type': 'node',
-                  'selector': 'section:nth-child(28) > div:nth-child(1)',
-                  'snippet': '<div id="duplicate-id"></div>',
-                  'explanation': 'Fix any of the following:\n  Document has multiple static elements with the same id attribute',
+                  'selector': 'textarea[aria-label="text1"]',
+                  'path': '2,HTML,1,BODY,31,SECTION,0,TEXTAREA',
+                  'snippet': '<textarea id="duplicate-id-active" aria-label="text1"></textarea>',
+                  'explanation': 'Fix any of the following:\n  Document has active elements with the same id attribute: duplicate-id-active',
+                  'nodeLabel': 'text1',
+                },
+              },
+            ],
+          },
+        },
+        'duplicate-id-aria': {
+          score: 0,
+          details: {
+            items: [
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '.duplicate-id-aria',
+                  'path': '2,HTML,1,BODY,33,SECTION,0,DIV',
+                  'snippet': '<div id="duplicate-id-aria" class="duplicate-id-aria">\n      <div id="duplicate-id-aria"></div>\n      <div aria-labelledby="duplicate-id-aria"></div>\n    </div>',
+                  'explanation': 'Fix any of the following:\n  Document has multiple elements referenced with ARIA with the same id attribute: duplicate-id-aria',
                   'nodeLabel': 'div',
+                },
+              },
+            ],
+          },
+        },
+        'form-field-multiple-labels': {
+          score: 0,
+          details: {
+            items: [
+              {
+                node: {
+                  'type': 'node',
+                  'selector': '#form-field-multiple-labels',
+                  'path': '2,HTML,1,BODY,35,SECTION,2,INPUT',
+                  'snippet': '<input type="checkbox" id="form-field-multiple-labels">',
+                  'explanation': 'Fix all of the following:\n  Multiple label elements is not widely supported in assistive technologies',
+                  'nodeLabel': 'input',
                 },
               },
             ],
@@ -236,6 +340,23 @@ module.exports = [
                   'snippet': '<iframe id="frame-title"></iframe>',
                   'explanation': 'Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty\n  Element\'s default semantics were not overridden with role="presentation"\n  Element\'s default semantics were not overridden with role="none"',
                   'nodeLabel': 'iframe',
+                },
+              },
+            ],
+          },
+        },
+        'heading-order': {
+          score: 0,
+          details: {
+            items: [
+              {
+                node: {
+                  'type': 'node',
+                  'selector': 'h3',
+                  'path': '2,HTML,1,BODY,39,SECTION,1,H3',
+                  'snippet': '<h3>sub-sub-header</h3>',
+                  'explanation': 'Fix any of the following:\n  Heading order invalid',
+                  'nodeLabel': 'sub-sub-header',
                 },
               },
             ],
@@ -461,3 +582,5 @@ module.exports = [
     },
   },
 ];
+
+module.exports = expectations;

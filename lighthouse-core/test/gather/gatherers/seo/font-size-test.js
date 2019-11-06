@@ -151,6 +151,7 @@ describe('Font size gatherer', () => {
 
     let inlineStyle;
     let matchedCSSRules;
+    let attributesStyle;
     let inherited;
 
     beforeEach(() => {
@@ -167,6 +168,7 @@ describe('Font size gatherer', () => {
 
       inlineStyle = createStyle({id: 1, properties: {'font-size': '1em'}});
       matchedCSSRules = [{matchingSelectors: [1], rule: fontRule}];
+      attributesStyle = {cssProperties: createProps({'font-size': '10px'})};
       inherited = [{matchedCSSRules: [{matchingSelectors: [0], rule: userAgentRule}]}];
     });
 
@@ -181,6 +183,19 @@ describe('Font size gatherer', () => {
         ],
         styleSheetId: 1,
         type: 'Inline',
+      });
+    });
+
+    it('should identify attributes styles', () => {
+      const result = FontSizeGather.getEffectiveFontRule({attributesStyle});
+      expect(result).toEqual({
+        cssProperties: [
+          {
+            name: 'font-size',
+            value: '10px',
+          },
+        ],
+        type: 'Attributes',
       });
     });
 
@@ -232,12 +247,19 @@ describe('Font size gatherer', () => {
     });
 
     it('should respect precendence', () => {
-      let result = FontSizeGather.getEffectiveFontRule({inlineStyle, matchedCSSRules, inherited});
+      let result = FontSizeGather.getEffectiveFontRule(
+        {attributesStyle, inlineStyle, matchedCSSRules, inherited});
       expect(result).toMatchObject({type: 'Inline'});
-      result = FontSizeGather.getEffectiveFontRule({matchedCSSRules, inherited});
+
+      result = FontSizeGather.getEffectiveFontRule({attributesStyle, inherited});
+      expect(result).toMatchObject({type: 'Attributes'});
+
+      result = FontSizeGather.getEffectiveFontRule({attributesStyle, matchedCSSRules, inherited});
       expect(result.parentRule).toMatchObject({origin: 'regular'});
+
       result = FontSizeGather.getEffectiveFontRule({inherited});
       expect(result.parentRule).toMatchObject({origin: 'user-agent'});
+
       result = FontSizeGather.getEffectiveFontRule({});
       expect(result).toBe(undefined);
     });

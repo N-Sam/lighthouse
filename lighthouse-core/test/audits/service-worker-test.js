@@ -113,10 +113,9 @@ describe('Offline: service worker audit', () => {
     const manifest = {start_url: finalUrl};
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(new RegExp(`${finalUrl}.*not in scope`)),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This origin has one or more service workers, ' +
+      'however the page (https://example.com/index.html) is not in scope.');
   });
 
   it('fails when start_url is out of scope', () => {
@@ -128,13 +127,12 @@ describe('Offline: service worker audit', () => {
     const startUrl = 'https://example.com/';
     const manifest = {start_url: startUrl};
 
-    const scopeURL = 'https://example.com/serviceworker';
+    const scopeURL = 'https://example.com/serviceworker/';
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(new RegExp(`start_url.*${startUrl}.*${scopeURL}`)),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This page is controlled by a service worker, ' +
+      `however the \`start_url\` (${startUrl}) is not in the service worker's scope (${scopeURL})`);
   });
 
   it('fails when explicit scopeURL puts the page URL out of scope', () => {
@@ -147,10 +145,9 @@ describe('Offline: service worker audit', () => {
     const manifest = {start_url: finalUrl};
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(new RegExp(`${finalUrl}.*not in scope`)),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This origin has one or more service workers, ' +
+      `however the page (${finalUrl}) is not in scope.`);
   });
 
   it('fails when explicit scopeURL puts the start_url out of scope', () => {
@@ -165,10 +162,9 @@ describe('Offline: service worker audit', () => {
     const manifest = {start_url: startUrl};
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(new RegExp(`start_url.*${startUrl}.*${scopeURL}`)),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString(
+      /service worker,.*\(.*\) is not in the service worker's scope \(.*\)/);
   });
 
   it('passes when both outside default scope but explicit scopeURL puts it back in', () => {
@@ -239,10 +235,9 @@ describe('Offline: service worker audit', () => {
     const manifest = {start_url: finalUrl};
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(new RegExp(`${finalUrl}.*not in scope`)),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This origin has one or more service workers, ' +
+      `however the page (${finalUrl}) is not in scope.`);
   });
 
   it('fails when SW that controls start_url is different than SW that controls page', () => {
@@ -258,13 +253,12 @@ describe('Offline: service worker audit', () => {
     const startUrl = 'https://example.com/index.html';
     const manifest = {start_url: startUrl};
 
-    const scopeURL = 'https://example.com/project';
+    const scopeURL = 'https://example.com/project/';
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(new RegExp(`start_url.*${startUrl}.*${scopeURL}`)),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This page is controlled by a service worker, ' +
+      `however the \`start_url\` (${startUrl}) is not in the service worker's scope (${scopeURL})`);
   });
 
   it('fails when a manifest was not found', () => {
@@ -276,10 +270,9 @@ describe('Offline: service worker audit', () => {
     const manifest = null;
 
     const output = ServiceWorker.audit(createArtifacts(swOpts, finalUrl, manifest));
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(/start_url.*no manifest was fetched/),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This page is controlled by a service worker, ' +
+      'however no `start_url` was found because no manifest was fetched.');
   });
 
   it('fails when a manifest is invalid', () => {
@@ -293,9 +286,8 @@ describe('Offline: service worker audit', () => {
     artifacts.WebAppManifest = manifestParser('{,;}', finalUrl, finalUrl);
 
     const output = ServiceWorker.audit(artifacts);
-    expect(output).toMatchObject({
-      score: 0,
-      explanation: expect.stringMatching(/start_url.*manifest failed to parse as valid JSON/),
-    });
+    assert.strictEqual(output.score, 0);
+    expect(output.explanation).toBeDisplayString('This page is controlled by a service worker, ' +
+      'however no `start_url` was found because manifest failed to parse as valid JSON');
   });
 });

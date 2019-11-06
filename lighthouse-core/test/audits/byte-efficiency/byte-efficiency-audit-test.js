@@ -77,6 +77,12 @@ describe('Byte efficiency base audit', () => {
       const result = estimate({transferSize: 1000, resourceType}, 100);
       assert.equal(result, 100);
     });
+
+    it('should not error when resource size is 0', () => {
+      const resourceType = 'Other';
+      const result = estimate({transferSize: 1000, resourceSize: 0, resourceType}, 100);
+      assert.equal(result, 100);
+    });
   });
 
   it('should format details', () => {

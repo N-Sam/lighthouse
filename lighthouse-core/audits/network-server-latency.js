@@ -45,22 +45,22 @@ class NetworkServerLatency extends Audit {
 
     /** @type {number} */
     let maxLatency = 0;
-    /** @type {Array<{origin: string, serverReponseTime: number}>} */
+    /** @type {Array<{origin: string, serverResponseTime: number}>} */
     const results = [];
-    for (const [origin, serverReponseTime] of analysis.serverResponseTimeByOrigin.entries()) {
+    for (const [origin, serverResponseTime] of analysis.serverResponseTimeByOrigin.entries()) {
       // Ignore entries that don't look like real origins, like the __SUMMARY__ entry.
       if (!origin.startsWith('http')) continue;
 
-      maxLatency = Math.max(serverReponseTime, maxLatency);
-      results.push({origin, serverReponseTime});
+      maxLatency = Math.max(serverResponseTime, maxLatency);
+      results.push({origin, serverResponseTime});
     }
 
-    results.sort((a, b) => b.serverReponseTime - a.serverReponseTime);
+    results.sort((a, b) => b.serverResponseTime - a.serverResponseTime);
 
     /** @type {LH.Audit.Details.Table['headings']} */
     const headings = [
       {key: 'origin', itemType: 'text', text: str_(i18n.UIStrings.columnURL)},
-      {key: 'serverReponseTime', itemType: 'ms', granularity: 1,
+      {key: 'serverResponseTime', itemType: 'ms', granularity: 1,
         text: str_(i18n.UIStrings.columnTimeSpent)},
     ];
 

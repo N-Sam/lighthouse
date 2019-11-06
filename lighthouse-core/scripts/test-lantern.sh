@@ -21,8 +21,12 @@ if ! echo $CHANGED_FILES | grep -E 'dependency-graph|metrics|lantern' > /dev/nul
   exit 0
 fi
 
-printf "Lantern files affected!\n\nDownloading test set...\n"
-"$LH_ROOT/lighthouse-core/scripts/lantern/download-traces.sh"
+# Google Drive will sometimes respond with a bad result, so we repeat until it works.
+for i in {1..5}; do
+  printf "Lantern files affected!\n\nDownloading test set...\n"
+  "$LH_ROOT/lighthouse-core/scripts/lantern/download-traces.sh" && break || sleep 15;
+  echo "failed to download"
+done
 
 printf "\n\nRunning lantern on all sites...\n"
 "$LH_ROOT/lighthouse-core/scripts/lantern/run-on-all-assets.js"

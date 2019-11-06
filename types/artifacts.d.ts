@@ -61,6 +61,10 @@ declare global {
     export interface PublicGathererArtifacts {
       /** Console deprecation and intervention warnings logged by Chrome during page load. */
       ConsoleMessages: Crdp.Log.EntryAddedEvent[];
+      /** All the iframe elements in the page.*/
+      IFrameElements: Artifacts.IFrameElement[];
+      /** The contents of the main HTML document network resource. */
+      MainDocumentContent: string;
       /** Information on size and loading for all the images in the page. Natural size information for `picture` and CSS images is only available if the image was one of the largest 50 images. */
       ImageElements: Artifacts.ImageElement[];
       /** All the link elements on the page or equivalently declared in `Link` headers. @see https://html.spec.whatwg.org/multipage/links.html */
@@ -123,6 +127,8 @@ declare global {
       RobotsTxt: {status: number|null, content: string|null};
       /** Version information for all ServiceWorkers active after the first page load. */
       ServiceWorker: {versions: Crdp.ServiceWorker.ServiceWorkerVersion[], registrations: Crdp.ServiceWorker.ServiceWorkerRegistration[]};
+      /** Source maps of scripts executed in the page. */
+      SourceMaps: Array<Artifacts.SourceMap>;
       /** The status of an offline fetch of the page's start_url. -1 and a explanation if missing or there was an error. */
       StartUrl: {statusCode: number, explanation?: string};
       /** Information on <script> and <link> tags blocking first paint. */
@@ -182,6 +188,24 @@ declare global {
         params: {name: string; value: string}[];
       }
 
+      export interface IFrameElement {
+        /** The `id` attribute of the iframe. */
+        id: string,
+        /** The `src` attribute of the iframe. */
+        src: string,
+        /** The iframe's ClientRect. @see https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect */
+        clientRect: {
+          top: number;
+          bottom: number;
+          left: number;
+          right: number;
+          width: number;
+          height: number;
+        },
+        /** If the iframe or an ancestor of the iframe is fixed in position. */
+        isPositionFixed: boolean,
+      }
+
       /** @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#Attributes */
       export interface LinkElement {
         /** The `rel` attribute of the link, normalized to lower case. @see https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types */
@@ -195,7 +219,7 @@ declare global {
         /** The `as` attribute of the link */
         as: string
         /** The `crossOrigin` attribute of the link */
-        crossOrigin: 'anonymous'|'use-credentials'|null
+        crossOrigin: string | null
         /** Where the link was found, either in the DOM or in the headers of the main document */
         source: 'head'|'body'|'headers'
       }
@@ -203,6 +227,8 @@ declare global {
       export interface ScriptElement {
         type: string | null
         src: string | null
+        /** The `id` property of the script element; null if it had no `id` or if `source` is 'network'. */
+        id: string | null
         async: boolean
         defer: boolean
         /** Path that uniquely identifies the node in the DOM */
@@ -213,6 +239,46 @@ declare global {
         content: string | null
         /** The ID of the network request that matched the URL of the src or the main document if inline, null if no request could be found. */
         requestId: string | null
+      }
+
+      /** @see https://sourcemaps.info/spec.html#h.qz3o9nc69um5 */
+      export type RawSourceMap = {
+        /** File version and must be a positive integer. */
+        version: number
+        /** A list of original source files used by the `mappings` entry. */
+        sources: string[]
+        /** A list of symbol names used by the `mappings` entry. */
+        names?: string[]
+        /** An optional source root, useful for relocating source files on a server or removing repeated values in the `sources` entry. This value is prepended to the individual entries in the `source` field. */
+        sourceRoot?: string
+        /** An optional list of source content, useful when the `source` can’t be hosted. The contents are listed in the same order as the sources. */
+        sourcesContent?: string[]
+        /** A string with the encoded mapping data. */
+        mappings: string
+        /** An optional name of the generated code (the bundled code that was the result of this build process) that this source map is associated with. */
+        file?: string
+      }
+
+      /**
+       * Source map for a given script found at scriptUrl. If there is an error in fetching or
+       * parsing the map, errorMessage will be defined instead of map.
+       */
+      export type SourceMap = {
+        /** URL of code that source map applies to. */
+        scriptUrl: string
+        /** URL of the source map. undefined if from data URL. */
+        sourceMapUrl?: string
+        /** Source map data structure. */
+        map: RawSourceMap
+      } | {
+        /** URL of code that source map applies to. */
+        scriptUrl: string
+        /** URL of the source map. undefined if from data URL. */
+        sourceMapUrl?: string
+        /** Error that occurred during fetching or parsing of source map. */
+        errorMessage: string
+        /** No map on account of error. */
+        map?: undefined;
       }
 
       /** @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#Attributes */
@@ -241,6 +307,7 @@ declare global {
         failingTextLength: number;
         visitedTextLength: number;
         analyzedFailingTextLength: number;
+        /** Elements that contain a text node that failed size criteria. */
         analyzedFailingNodesData: Array<{
           fontSize: number;
           textLength: number;
@@ -433,6 +500,7 @@ declare global {
         firstPaint?: number;
         firstContentfulPaint: number;
         firstMeaningfulPaint?: number;
+        largestContentfulPaint?: number;
         traceEnd: number;
         load?: number;
         domContentLoaded?: number;
@@ -457,6 +525,8 @@ declare global {
         firstContentfulPaintEvt: TraceEvent;
         /** The trace event marking firstMeaningfulPaint, if it was found. */
         firstMeaningfulPaintEvt?: TraceEvent;
+        /** The trace event marking largestContentfulPaint, if it was found. */
+        largestContentfulPaintEvt?: TraceEvent;
         /** The trace event marking loadEventEnd, if it was found. */
         loadEvt?: TraceEvent;
         /** The trace event marking domContentLoadedEventEnd, if it was found. */
@@ -466,6 +536,8 @@ declare global {
          * firstMeaningfulPaintCandidate events had to be attempted.
          */
         fmpFellBack: boolean;
+        /** Whether LCP was invalidated without a new candidate. */
+        lcpInvalidated: boolean;
       }
 
       /** Information on a tech stack (e.g. a JS library) used by the page. */
@@ -480,6 +552,46 @@ declare global {
         version?: string;
         /** The package name on NPM, if it exists. */
         npm?: string;
+      }
+
+      export interface TimingSummary {
+        firstContentfulPaint: number | undefined;
+        firstContentfulPaintTs: number | undefined;
+        firstMeaningfulPaint: number | undefined;
+        firstMeaningfulPaintTs: number | undefined;
+        largestContentfulPaint: number | undefined;
+        largestContentfulPaintTs: number | undefined;
+        firstCPUIdle: number | undefined;
+        firstCPUIdleTs: number | undefined;
+        interactive: number | undefined;
+        interactiveTs: number | undefined;
+        speedIndex: number | undefined;
+        speedIndexTs: number | undefined;
+        estimatedInputLatency: number | undefined;
+        estimatedInputLatencyTs: number | undefined;
+        totalBlockingTime: number | undefined;
+        observedNavigationStart: number | undefined;
+        observedNavigationStartTs: number | undefined;
+        observedFirstPaint: number | undefined;
+        observedFirstPaintTs: number | undefined;
+        observedFirstContentfulPaint: number | undefined;
+        observedFirstContentfulPaintTs: number | undefined;
+        observedFirstMeaningfulPaint: number | undefined;
+        observedFirstMeaningfulPaintTs: number | undefined;
+        observedLargestContentfulPaint: number | undefined;
+        observedLargestContentfulPaintTs: number | undefined;
+        observedTraceEnd: number | undefined;
+        observedTraceEndTs: number | undefined;
+        observedLoad: number | undefined;
+        observedLoadTs: number | undefined;
+        observedDomContentLoaded: number | undefined;
+        observedDomContentLoadedTs: number | undefined;
+        observedFirstVisualChange: number | undefined;
+        observedFirstVisualChangeTs: number | undefined;
+        observedLastVisualChange: number | undefined;
+        observedLastVisualChangeTs: number | undefined;
+        observedSpeedIndex: number | undefined;
+        observedSpeedIndexTs: number | undefined;
       }
     }
   }

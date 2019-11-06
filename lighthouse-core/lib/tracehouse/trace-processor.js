@@ -62,10 +62,114 @@ class TraceProcessor {
   }
 
   /**
+   * This method sorts a group of trace events that have the same timestamp. We want to...
+   *
+   * 1. Put E events first, we finish off our existing events before we start new ones.
+   * 2. Order B/X events by their duration, we want parents to start before child events.
+   * 3. If we don't have any of this to go on, just use the position in the original array (stable sort).
+   *
+   * Note that the typical group size with the same timestamp will be quite small (<10 or so events),
+   * and the number of groups typically ~1% of total trace, so the same ultra-performance-sensitive consideration
+   * given to functions that run on entire traces does not necessarily apply here.
+   *
+   * @param {number[]} tsGroupIndices
+   * @param {number[]} timestampSortedIndices
+   * @param {number} indexOfTsGroupIndicesStart
+   * @param {LH.TraceEvent[]} traceEvents
+   * @return {number[]}
+   */
+  static _sortTimestampEventGroup(
+      tsGroupIndices,
+      timestampSortedIndices,
+      indexOfTsGroupIndicesStart,
+      traceEvents
+  ) {
+    /*
+     * We have two different sets of indices going on here.
+
+     *    1. There's the index for an element of `traceEvents`, referred to here as an `ArrayIndex`.
+     *       `timestampSortedIndices` is an array of `ArrayIndex` elements.
+     *    2. There's the index for an element of `timestampSortedIndices`, referred to here as a `TsIndex`.
+     *       A `TsIndex` is therefore an index to an element which is itself an index.
+     *
+     * These two helper functions help resolve this layer of indirection.
+     * Our final return value is an array of `ArrayIndex` in their final sort order.
+     */
+    /** @param {number} i */
+    const lookupArrayIndexByTsIndex = i => timestampSortedIndices[i];
+    /** @param {number} i */
+    const lookupEventByTsIndex = i => traceEvents[lookupArrayIndexByTsIndex(i)];
+
+    /** @type {Array<number>} */
+    const eEventIndices = [];
+    /** @type {Array<number>} */
+    const bxEventIndices = [];
+    /** @type {Array<number>} */
+    const otherEventIndices = [];
+
+    for (const tsIndex of tsGroupIndices) {
+      // See comment above for the distinction between `tsIndex` and `arrayIndex`.
+      const arrayIndex = lookupArrayIndexByTsIndex(tsIndex);
+      const event = lookupEventByTsIndex(tsIndex);
+      if (event.ph === 'E') eEventIndices.push(arrayIndex);
+      else if (event.ph === 'X' || event.ph === 'B') bxEventIndices.push(arrayIndex);
+      else otherEventIndices.push(arrayIndex);
+    }
+
+    /** @type {Map<number, number>} */
+    const effectiveDuration = new Map();
+    for (const index of bxEventIndices) {
+      const event = traceEvents[index];
+      if (event.ph === 'X') {
+        effectiveDuration.set(index, event.dur);
+      } else {
+        // Find the next available 'E' event *after* the current group of events that matches our name, pid, and tid.
+        let duration = Number.MAX_SAFE_INTEGER;
+        // To find the next "available" 'E' event, we need to account for nested events of the same name.
+        let additionalNestedEventsWithSameName = 0;
+        const startIndex = indexOfTsGroupIndicesStart + tsGroupIndices.length;
+        for (let j = startIndex; j < timestampSortedIndices.length; j++) {
+          const potentialMatchingEvent = lookupEventByTsIndex(j);
+          const eventMatches = potentialMatchingEvent.name === event.name &&
+            potentialMatchingEvent.pid === event.pid &&
+            potentialMatchingEvent.tid === event.tid;
+
+          // The event doesn't match, just skip it.
+          if (!eventMatches) continue;
+
+          if (potentialMatchingEvent.ph === 'E' && additionalNestedEventsWithSameName === 0) {
+            // It's the next available 'E' event for us, so set the duration and break the loop.
+            duration = potentialMatchingEvent.ts - event.ts;
+            break;
+          } else if (potentialMatchingEvent.ph === 'E') {
+            // It's an 'E' event but for a nested event. Decrement our counter and move on.
+            additionalNestedEventsWithSameName--;
+          } else if (potentialMatchingEvent.ph === 'B') {
+            // It's a nested 'B' event. Increment our counter and move on.
+            additionalNestedEventsWithSameName++;
+          }
+        }
+
+        effectiveDuration.set(index, duration);
+      }
+    }
+
+    bxEventIndices.sort((indexA, indexB) => ((effectiveDuration.get(indexB) || 0) -
+      (effectiveDuration.get(indexA) || 0) || (indexA - indexB)));
+
+    otherEventIndices.sort((indexA, indexB) => indexA - indexB);
+
+    return [...eEventIndices, ...bxEventIndices, ...otherEventIndices];
+  }
+
+  /**
+   * Sorts and filters trace events by timestamp and respecting the nesting structure inherent to
+   * parent/child event relationships.
+   *
    * @param {LH.TraceEvent[]} traceEvents
    * @param {(e: LH.TraceEvent) => boolean} filter
    */
-  static _filteredStableSort(traceEvents, filter) {
+  static filteredTraceSort(traceEvents, filter) {
     // create an array of the indices that we want to keep
     const indices = [];
     for (let srcIndex = 0; srcIndex < traceEvents.length; srcIndex++) {
@@ -74,11 +178,33 @@ class TraceProcessor {
       }
     }
 
-    // sort by ts, if there's no ts difference sort by index
-    indices.sort((indexA, indexB) => {
-      const result = traceEvents[indexA].ts - traceEvents[indexB].ts;
-      return result ? result : indexA - indexB;
-    });
+    // Sort by ascending timestamp first.
+    indices.sort((indexA, indexB) => traceEvents[indexA].ts - traceEvents[indexB].ts);
+
+    // Now we find groups with equal timestamps and order them by their nesting structure.
+    for (let i = 0; i < indices.length - 1; i++) {
+      const ts = traceEvents[indices[i]].ts;
+      const tsGroupIndices = [i];
+      for (let j = i + 1; j < indices.length; j++) {
+        if (traceEvents[indices[j]].ts !== ts) break;
+        tsGroupIndices.push(j);
+      }
+
+      // We didn't find any other events with the same timestamp, just keep going.
+      if (tsGroupIndices.length === 1) continue;
+
+      // Sort the group by other criteria and replace our index array with it.
+      const finalIndexOrder = TraceProcessor._sortTimestampEventGroup(
+        tsGroupIndices,
+        indices,
+        i,
+        traceEvents
+      );
+      indices.splice(i, finalIndexOrder.length, ...finalIndexOrder);
+      // We just sorted this set of identical timestamps, so skip over the rest of the group.
+      // -1 because we already have i++.
+      i += tsGroupIndices.length - 1;
+    }
 
     // create a new array using the target indices from previous sort step
     const sorted = [];
@@ -352,7 +478,7 @@ class TraceProcessor {
   static computeTraceOfTab(trace) {
     // Parse the trace for our key events and sort them by timestamp. Note: sort
     // *must* be stable to keep events correctly nested.
-    const keyEvents = this._filteredStableSort(trace.traceEvents, e => {
+    const keyEvents = this.filteredTraceSort(trace.traceEvents, e => {
       return e.cat.includes('blink.user_timing') ||
           e.cat.includes('loading') ||
           e.cat.includes('devtools.timeline') ||
@@ -398,6 +524,28 @@ class TraceProcessor {
       firstMeaningfulPaint = lastCandidate;
     }
 
+    // LCP comes from the latest `largestContentfulPaint::Candidate`, but it can be invalidated
+    // by a `largestContentfulPaint::Invalidate` event. In the case that the last candidate is
+    // invalidated, the value will be undefined.
+    let largestContentfulPaint;
+    let lcpInvalidated = false;
+    // Iterate the events backwards.
+    for (let i = frameEvents.length - 1; i >= 0; i--) {
+      const e = frameEvents[i];
+      // If the event's timestamp is before the navigation start, stop.
+      if (e.ts <= navigationStart.ts) break;
+      // If the last lcp event in the trace is 'Invalidate', there is inconclusive data to determine LCP.
+      if (e.name === 'largestContentfulPaint::Invalidate') {
+        lcpInvalidated = true;
+        break;
+      }
+      // If not an lcp 'Candidate', keep iterating.
+      if (e.name !== 'largestContentfulPaint::Candidate') continue;
+      // Found the last LCP candidate in the trace, let's use it.
+      largestContentfulPaint = e;
+      break;
+    }
+
     const load = frameEvents.find(e => e.name === 'loadEventEnd' && e.ts > navigationStart.ts);
     const domContentLoaded = frameEvents.find(
       e => e.name === 'domContentLoadedEventEnd' && e.ts > navigationStart.ts
@@ -406,7 +554,7 @@ class TraceProcessor {
     // subset all trace events to just our tab's process (incl threads other than main)
     // stable-sort events to keep them correctly nested.
     const processEvents = TraceProcessor
-      ._filteredStableSort(trace.traceEvents, e => e.pid === mainFrameIds.pid);
+      .filteredTraceSort(trace.traceEvents, e => e.pid === mainFrameIds.pid);
 
     const mainThreadEvents = processEvents
       .filter(e => e.tid === mainFrameIds.tid);
@@ -425,6 +573,7 @@ class TraceProcessor {
       firstPaint: getTimestamp(firstPaint),
       firstContentfulPaint: getTimestamp(firstContentfulPaint),
       firstMeaningfulPaint: getTimestamp(firstMeaningfulPaint),
+      largestContentfulPaint: getTimestamp(largestContentfulPaint),
       traceEnd: fakeEndOfTraceEvt.ts,
       load: getTimestamp(load),
       domContentLoaded: getTimestamp(domContentLoaded),
@@ -440,6 +589,7 @@ class TraceProcessor {
       firstPaint: maybeGetTiming(timestamps.firstPaint),
       firstContentfulPaint: maybeGetTiming(timestamps.firstContentfulPaint),
       firstMeaningfulPaint: maybeGetTiming(timestamps.firstMeaningfulPaint),
+      largestContentfulPaint: maybeGetTiming(timestamps.largestContentfulPaint),
       traceEnd: getTiming(timestamps.traceEnd),
       load: maybeGetTiming(timestamps.load),
       domContentLoaded: maybeGetTiming(timestamps.domContentLoaded),
@@ -455,9 +605,11 @@ class TraceProcessor {
       firstPaintEvt: firstPaint,
       firstContentfulPaintEvt: firstContentfulPaint,
       firstMeaningfulPaintEvt: firstMeaningfulPaint,
+      largestContentfulPaintEvt: largestContentfulPaint,
       loadEvt: load,
       domContentLoadedEvt: domContentLoaded,
       fmpFellBack,
+      lcpInvalidated,
     };
   }
 }

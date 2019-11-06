@@ -45,6 +45,7 @@
   --color-gray-50: #FAFAFA;
   --color-gray-500: #9E9E9E;
   --color-gray-600: #757575;
+  --color-gray-700: #616161;
   --color-gray-800: #424242;
   --color-gray-900: #212121;
   --color-gray: #000000;
@@ -97,6 +98,7 @@
   --header-line-height: 24px;
   --highlighter-background-color: var(--report-text-color);
   --icon-square-size: calc(var(--score-icon-size) * 0.88);
+  --image-preview-size: 48px;
   --metric-toggle-lines-fill: #7F7F7F;
   --metrics-toggle-background-color: var(--color-gray-200);
   --plugin-badge-background-color: var(--color-white);
@@ -208,6 +210,7 @@
     --gauge-percentage-font-size: 26px;
     --gauge-wrapper-width: 112px;
     --header-padding: 16px 0 16px 0;
+    --image-preview-size: 24px;
     --plugin-icon-size: 75%;
     --pwa-icon-margin: 0 7px 0 -3px;
     --report-font-size: 14px;
@@ -258,6 +261,10 @@
 
 .lh-devtools.lh-root {
   height: 100%;
+}
+.lh-devtools.lh-root img {
+  /* Override devtools default 'min-width: 0' so svg without size in a flexbox isn't collapsed. */
+  min-width: auto;
 }
 .lh-devtools .lh-container {
   overflow-y: scroll;
@@ -590,6 +597,9 @@
 .lh-metrics__disclaimer {
   color: var(--color-gray-600);
   margin: var(--section-padding-vertical) 0;
+}
+.lh-metrics__disclaimer a {
+  color: var(--color-gray-700);
 }
 
 .lh-metric__description {
@@ -945,8 +955,9 @@
 }
 
 .lh-audit-explanation {
-  margin: var(--audit-padding-vertical) 0 calc(var(--audit-padding-vertical) / 2);
+  margin: var(--audit-padding-vertical) 0 calc(var(--audit-padding-vertical) / 2) var(--audit-margin-horizontal);
   line-height: var(--audit-explanation-line-height);
+  display: inline-block;
 }
 
 .lh-audit--fail .lh-audit-explanation {
@@ -1154,11 +1165,6 @@
   width: var(--gauge-wrapper-width);
 }
 
-.lh-scores-header .lh-gauge--pwa__wrapper {
-  /* Can remove when this bug is resolved: https://bugs.chromium.org/p/chromium/issues/detail?id=942097 */
-  will-change: transform;
-}
-
 .lh-scorescale {
   display: inline-flex;
   margin: 12px auto 0 auto;
@@ -1300,7 +1306,6 @@
 }
 
 .lh-table {
-  --image-preview-size: 24px;
   border-collapse: collapse;
   /* Can't assign padding to table, so shorten the width instead. */
   width: calc(100% - var(--audit-description-padding-left));
@@ -1347,8 +1352,10 @@
 }
 
 
-.lh-table-column--thumbnail {
-  width: calc(var(--image-preview-size) * 2);
+
+.lh-table .lh-table-column--thumbnail {
+  width: var(--image-preview-size);
+  padding: 0;
 }
 
 .lh-table-column--url {
@@ -1377,9 +1384,15 @@
 }
 
 .lh-thumbnail {
-  height: var(--image-preview-size);
+  object-fit: cover;
   width: var(--image-preview-size);
-  object-fit: contain;
+  height: var(--image-preview-size);
+  display: block;
+}
+
+.lh-unknown pre {
+  overflow: scroll;
+  border: solid 1px var(--color-gray-200);
 }
 
 .lh-text__url > a {

@@ -46,7 +46,9 @@ async function update(artifactName) {
       throw Error('Unknown artifact name: ' + artifactName);
     }
     const finalArtifacts = oldArtifacts;
-    finalArtifacts[artifactName] = newArtifacts[artifactName];
+    const newArtifact = newArtifacts[artifactName];
+    // @ts-ignore tsc can't yet express that artifactName is only a single type in each iteration, not a union of types.
+    finalArtifacts[artifactName] = newArtifact;
     await assetSaver.saveArtifacts(finalArtifacts, artifactPath);
   }
 }

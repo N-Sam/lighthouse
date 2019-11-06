@@ -4,8 +4,8 @@
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
  */
 'use strict';
+
 const BASE_URL = 'http://localhost:10200/seo/';
-const URLSearchParams = require('url').URLSearchParams;
 
 /**
  * @param {[string, string][]} headers
@@ -94,9 +94,10 @@ const passHeaders = headersParam([[
 ]]);
 
 /**
+ * @type {Array<Smokehouse.ExpectedRunnerResult>}
  * Expected Lighthouse audit values for seo tests
  */
-module.exports = [
+const expectations = [
   {
     lhr: {
       requestedUrl: BASE_URL + 'seo-tester.html?' + passHeaders,
@@ -117,9 +118,65 @@ module.exports = [
         'font-size': {
           score: 1,
           details: {
-            items: {
-              length: 6,
-            },
+            items: [
+              {
+                source: /seo-tester\.html.+:24:12$/,
+                selector: '.small',
+                fontSize: '11px',
+              },
+              {
+                source: /seo-tester\.html.+:28:55$/,
+                selector: '.small-2',
+                fontSize: '11px',
+              },
+              {
+                source: /seo-tester-inline-magic\.css:3:14$/,
+                selector: '.small-3',
+                fontSize: '6px',
+              },
+              {
+                source: /seo-tester-styles-magic\.css:3:10$/,
+                selector: '.small-4',
+                fontSize: '6px',
+              },
+              {
+                source: 'User Agent Stylesheet',
+                selector: 'h6',
+                fontSize: '10px',
+              },
+              {
+                source: /seo-tester\.html.+$/,
+                selector: {
+                  type: 'node',
+                  selector: 'body',
+                  snippet: '<font size="1">',
+                },
+                fontSize: '10px',
+              },
+              {
+                source: /seo-tester\.html.+$/,
+                selector: {
+                  type: 'node',
+                  selector: 'font',
+                  snippet: '<b>',
+                },
+                fontSize: '10px',
+              },
+              {
+                source: /seo-tester\.html.+$/,
+                selector: {
+                  type: 'node',
+                  selector: 'body',
+                  snippet: '<p style="font-size:10px">',
+                },
+                fontSize: '10px',
+              },
+              {
+                source: 'Legible text',
+                selector: '',
+                fontSize: '≥ 12px',
+              },
+            ],
           },
         },
         'link-text': {
@@ -214,6 +271,7 @@ module.exports = [
         code: 'ERRORED_DOCUMENT_REQUEST',
         message: /Status code: 403/,
       },
+      runWarnings: ['Lighthouse was unable to reliably load the page you requested. Make sure you are testing the correct URL and that the server is properly responding to all requests. (Status code: 403)'],
       audits: {
         'http-status-code': {
           score: null,
@@ -335,3 +393,5 @@ module.exports = [
     },
   },
 ];
+
+module.exports = expectations;

@@ -44,6 +44,25 @@ const BLOCKLIST = new Set([
   'enlace',
   'este enlace',
   'empezar',
+  // Portuguese
+  'clique aqui',
+  'inicio',
+  'início',
+  'ir',
+  'mais informação',
+  'mais informações',
+  'mais',
+  'veja mais',
+  // Korean
+  '여기',
+  '여기를 클릭',
+  '클릭',
+  '링크',
+  '자세히',
+  '자세히 보기',
+  '계속',
+  '이동',
+  '전체 보기',
 ]);
 const i18n = require('../../lib/i18n/i18n.js');
 
@@ -54,7 +73,7 @@ const UIStrings = {
   failureTitle: 'Links do not have descriptive text',
   /** Description of a Lighthouse audit that tells the user *why* they need to have descriptive text on the links in their page. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Descriptive link text helps search engines understand your content. ' +
-  '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/descriptive-link-text).',
+  '[Learn more](https://web.dev/link-text).',
   /** [ICU Syntax] Label for the audit identifying the number of links found. "link" here refers to the links in a web page to other web pages. */
   displayValue: `{itemCount, plural,
     =1 {1 link found}

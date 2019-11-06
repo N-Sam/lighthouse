@@ -1,10 +1,12 @@
 syntax = "proto3";
 
+// This comment required for Lightrider import compatibility # header
+
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
 
-// This comment required for LightRider import compatibility
+// This comment required for LightRider import compatibility # suffix
 
 // Canonical list of errors created by Lighthouse.
 enum LighthouseError {
@@ -142,7 +144,8 @@ message LighthouseResult {
     // nullable list of strings
     google.protobuf.Value only_categories = 3;
 
-    // How Lighthouse was run, e.g. from the Chrome extension or from the npm module
+    // How Lighthouse was run, e.g. from the Chrome extension or from the npm
+    // module
     string channel = 4;
   }
 
@@ -154,8 +157,8 @@ message LighthouseResult {
 
   // Message containing the performance timing data for the Lighthouse run
   message Timing {
-
-    // Corresponds to: https://www.w3.org/TR/performance-timeline-2/#dom-performanceentry
+    // Corresponds to:
+    // https://www.w3.org/TR/performance-timeline-2/#dom-performanceentry
     message PerformanceEntry {
       string name = 1;
       string entry_type = 2;
@@ -169,7 +172,8 @@ message LighthouseResult {
     // The total duration of Lighthouse's run
     google.protobuf.DoubleValue total = 1;
 
-    // Corresponds to: https://www.w3.org/TR/performance-timeline-2/#idl-def-performanceentrylist
+    // Corresponds to:
+    // https://www.w3.org/TR/performance-timeline-2/#idl-def-performanceentrylist
     repeated PerformanceEntry entries = 2;
   }
 

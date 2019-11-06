@@ -60,6 +60,9 @@
   cursor: pointer;
   background-color: #fff;
 }
+.viewer-placeholder-inner.lh-loading {
+  filter: blur(2px);
+}
 .viewer-placeholder-inner.dropping {
   border-color: currentColor;
 }

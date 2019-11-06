@@ -7,32 +7,8 @@
 
 /* global LighthouseReportViewer, Logger */
 
-/**
- * @param {string} src
- * @return {Promise}
- */
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    // document.head is defined.
-    /** @type {HTMLHeadElement} */ (document.head).appendChild(script);
-  });
-}
-
-const loadPolyfillPromises = [];
-if (!('fetch' in window)) {
-  loadPolyfillPromises.push(loadScript('./src/polyfills/fetch.js'));
-}
-if (!('URLSearchParams' in window)) {
-  loadPolyfillPromises.push(loadScript('./src/polyfills/url-search-params.js'));
-}
-
-// Lazy load polyfills that are needed. If any of the load promises fails,
-// stop and don't create a report.
-Promise.all(loadPolyfillPromises).then(_ => {
+// eslint-disable-next-line no-unused-vars
+function main() {
   const logEl = document.querySelector('#lh-log');
   if (!logEl) {
     throw new Error('logger element not found');
@@ -71,8 +47,4 @@ Promise.all(loadPolyfillPromises).then(_ => {
   });
 
   window.viewer = new LighthouseReportViewer();
-});
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
 }

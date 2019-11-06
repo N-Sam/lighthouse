@@ -10,11 +10,9 @@ const i18n = require('../../lib/i18n/i18n.js');
 const ComputedFcp = require('../../computed/metrics/first-contentful-paint.js');
 
 const UIStrings = {
-  /** The name of the metric that marks the time at which the first text or image is painted by the browser. Shown to users as the label for the numeric metric value. Ideally fits within a ~40 character limit. */
-  title: 'First Contentful Paint',
   /** Description of the First Contentful Paint (FCP) metric, which marks the time at which the first text or image is painted by the browser. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'First Contentful Paint marks the time at which the first text or image is ' +
-      `painted. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/first-contentful-paint).`,
+      `painted. [Learn more](https://web.dev/first-contentful-paint).`,
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -26,7 +24,7 @@ class FirstContentfulPaint extends Audit {
   static get meta() {
     return {
       id: 'first-contentful-paint',
-      title: str_(UIStrings.title),
+      title: str_(i18n.UIStrings.firstContentfulPaintMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       requiredArtifacts: ['traces', 'devtoolsLogs'],

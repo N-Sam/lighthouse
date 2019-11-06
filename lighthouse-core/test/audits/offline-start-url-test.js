@@ -68,6 +68,7 @@ describe('Offline start_url audit', () => {
     assert.strictEqual(result.score, 1);
     assert.strictEqual(result.explanation, undefined);
     assert.strictEqual(result.warnings.length, 1);
-    assert.ok(result.warnings[0].includes('start_url must be same-origin as document'));
+    expect(result.warnings[0]).toBeDisplayString(
+      /Lighthouse couldn't read the `start_url`.*ERROR: start_url must be same-origin as document/);
   });
 });

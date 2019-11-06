@@ -23,9 +23,6 @@ yarn build-all
 echo "Running the standard test suite..."
 yarn test
 
-echo "Running the smoke tests...."
-yarn smoke || yarn smoke || yarn smoke
-
 echo "Testing the CLI..."
 yarn start "https://example.com" --view
 
@@ -39,7 +36,7 @@ cd /tmp/lighthouse-local-test
 
 npm init -y
 npm install "$LH_PRISTINE_ROOT/lighthouse-$VERSION.tgz"
-npm explore lighthouse -- npm run smoke
+npm explore lighthouse -- npm run smoke || npm explore lighthouse -- npm run smoke
 npm explore lighthouse -- npm run chrome # try the manual launcher
 npm explore lighthouse -- npm run fast -- http://example.com
 

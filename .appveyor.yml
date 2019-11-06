@@ -32,7 +32,9 @@ test_script:
   - which yarn
   - yarn lint
   - yarn unit-core --runInBand
-  - yarn unit-cli
+  # Appveyor protocol timeouts are unusually common.
+  # We retry our smoketests 3 times for this reason, so do the same for CLI tests that launch Chrome.
+  - yarn unit-cli || yarn unit-cli || yarn unit-cli
   - yarn unit-viewer
   - yarn type-check
   # FIXME: Exclude Appveyor from running `perf` smoketest until we fix the flake.

@@ -18,7 +18,7 @@ const log = require('lighthouse-logger');
 const getFilenamePrefix = require('../lighthouse-core/lib/file-namer.js').getFilenamePrefix;
 const assetSaver = require('../lighthouse-core/lib/asset-saver.js');
 
-const opn = require('opn');
+const open = require('open');
 
 /** @typedef {import('../lighthouse-core/lib/lh-error.js')} LighthouseError */
 
@@ -138,7 +138,7 @@ async function saveResults(runnerResult, flags) {
 
     if (outputType === Printer.OutputMode[Printer.OutputMode.html]) {
       if (flags.view) {
-        opn(outputPath, {wait: false});
+        open(outputPath, {wait: false});
       } else {
         // eslint-disable-next-line max-len
         log.log('CLI', 'Protip: Run lighthouse with `--view` to immediately open the HTML report in your browser');

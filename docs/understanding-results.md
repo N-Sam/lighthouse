@@ -12,7 +12,7 @@ For an always up-to-date definition of the LHR, take a look [at our typedefs](ht
 
 | Name | Description |
 | - | - |
-| lighthouseVersion | The version of Lighthouse with which this result were generated. |
+| lighthouseVersion | The version of Lighthouse with which this result was generated. |
 | fetchTime | The ISO-8601 timestamp of when the result was generated. |
 | userAgent | The user agent string of the version of Chrome that was used by Lighthouse. |
 | requestedUrl | The URL that was supplied to Lighthouse and initially navigated to. |
