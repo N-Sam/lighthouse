@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Le document contient un élément `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "La valeur de chaque attribut \"id\" doit être unique afin que les différentes instances soient toutes prises en compte par les technologies d'assistance. [En savoir plus](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Les attributs `[id]` de la page ne sont pas uniques"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Les attributs `[id]` de la page sont uniques"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Les lecteurs d'écran s'appuient sur le titre des frames pour décrire le contenu de ces derniers aux utilisateurs. [En savoir plus](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "La valeur \"Estimated Input Latency\" est une estimation du temps en millisecondes que prend votre application pour réagir à l'intervention de l'utilisateur, pendant la fenêtre de pointe de 5 s de chargement de la page. Si le temps de latence est supérieur à 50 ms, les utilisateurs peuvent percevoir votre application comme étant lente. [En savoir plus](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Estimation du temps de latence avant intervention"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "La statistique \"First Contentful Paint\" indique le moment où le premier texte ou la première image sont affichés. [En savoir plus](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "First Contentful Paint"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "La statistique \"First CPU Idle\" marque la première fois que le thread principal de la page est suffisamment silencieux pour gérer l'entrée.  [Découvrez-en davantage.](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Premier processeur inactif"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "La statistique \"First Meaningful Paint\" mesure quand le contenu principal d'une page est visible. [En savoir plus](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "First Meaningful Paint"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "La valeur \"Time to Interactive\" correspond au temps nécessaire pour que la page devienne entièrement interactive. [En savoir plus](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Délai avant interactivité"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Le retard maximal (Maximum Potential First Input Delay) auquel vos utilisateurs peuvent éventuellement être confrontés correspond à la durée, en millisecondes, de la tâche la plus longue. [En savoir plus](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Max Potential First Input Delay"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "La valeur \"Speed Index\" indique la rapidité avec laquelle le contenu d'une page est disponible. [En savoir plus](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Indice de vitesse"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Somme en millisecondes de toutes les périodes entre le FCP et le délai avant interactivité, lorsque la durée de la tâche a dépassé 50 ms."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Total Blocking Time"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Les délais aller-retour (DAR) du réseau ont un impact important sur les performances. Si le DAR par rapport à un point d'origine est élevé, cela signifie que les performances des serveurs proches de l'utilisateur peuvent sans doute être améliorées. [En savoir plus](https://hpbn.co/primer-on-latency-and-bandwidth/)"

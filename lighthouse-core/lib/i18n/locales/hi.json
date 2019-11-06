@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "दस्तावेज़ में `<title>` एलिमेंट है"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "सहायक तकनीकों को दूसरे इंस्टेंस अनदेखा करने से रोकने के लिए, आईडी विशेषता का मान सबसे अलग होना चाहिए. [ज़्यादा जानें](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "पेज पर `[id]` विशेषताएं सबसे अलग नहीं हैं"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "पेज पर `[id]` विशेषताएं सबसे अलग हैं"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "स्क्रीन रीडर उपयोगकर्ता, फ़्रेम की सामग्री के बारे में जानने के लिए फ़्रेम के शीर्षकों का इस्तेमाल करते हैं. [ज़्यादा जानें](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "इनपुट के इंतज़ार के समय का अंदाज़ा, इस बात से लगाया जाता है कि पेज लोड होने की सबसे व्यस्त पांच सेकंड की विंडो के दौरान आपके ऐप्लिकेशन को इस्तेमाल करने वाले के इनपुट का जवाब देने में कितना समय लगेगा. इस समय का हिसाब मिलीसेकंड में लगाया जाता है. अगर इंतज़ार का समय 50 मिलीसेकंड से ज़्यादा हो, तो इस्तेमाल करने वाले आपके ऐप्लिकेशन को धीमा मान सकते हैं. [ज़्यादा जानें](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "अनुमानित इनपुट प्रतीक्षा समय"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "फ़र्स्ट कॉन्टेंटफ़ुल पेंट से उस समय का पता चलता है जब पहले टेक्स्ट या इमेज को पेंट किया गया था. [ज़्यादा जानें](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "उपयोगी सामग्री वाला पहला पेंट"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "First CPU Idle marks the first time at which the page's main thread is quiet enough to handle input.  [Learn more](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "पहला सीपीयू (CPU) इस्तेमाल में नहीं"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "फ़र्स्ट मीनिंगफ़ुल पेंट, पेज की मुख्य सामग्री दिखाई देने का समय बताता है. [ज़्यादा जानें](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "पहला सार्थक पेंट"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "इंटरैक्टिव में लगने वाला समय, वह समय है जितनी देर में पेज पूरी तरह से इंटरैक्टिव हो जाता है. [ज़्यादा जानें](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "इंटरएक्टिव में लगने वाला समय"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "आपके उपयोगकर्ताओं को अनुभव होने वाले संभावित फ़र्स्ट इनपुट डिले में सबसे लंबे टास्क की अवधि शामिल होती है. यह वह डिले है जिसकी वजह से आपके उपयोगकर्ताओं को सबसे ज़्यादा देरी का सामना करना पड़ सकता है. यह अवधि मिलीसेकंड इकाई में बताई जाती है. [ज़्यादा जानें](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "सबसे ज़्यादा संभावित फ़र्स्ट इनपुट डिले"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "स्पीड इंडेक्स से पता चलता है कि किसी पेज की सामग्री, विज़ुअल रूप से कितनी तेज़ी से डाली गई है. [ज़्यादा जानें](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "गति इंडेक्स"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "टास्क में लगने वाले समय की अवधि 50 मि. से. से ज़्यादा होने पर एफ़सीपी और इंटरैक्टिव में लगने वाले समय के बीच के कुल समय. यह समय मिलिसेकंड इकाई में बताया जाता है."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "ब्लॉक होने का कुल समय"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "नेटवर्क के 'दोतरफ़ा यात्रा के समय' (आरटीटी) का परफ़ॉर्मेंस पर बहुत गहरा असर होता है. शुरुआत की जगह पर आरटीटी ज़्यादा होने से यह पता चलता है कि अगर सर्वर इस्तेमाल करने वालों के करीब होंगे, तो परफ़ॉर्मेंस बेहतर हो सकती है. [ज़्यादा जानें](https://hpbn.co/primer-on-latency-and-bandwidth/)."

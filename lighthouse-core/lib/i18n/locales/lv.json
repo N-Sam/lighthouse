@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokumentā ir ietverts elements `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "ID atribūta vērtībai ir jābūt unikālai, lai palīgtehnoloģijas neizlaistu citas instances. [Uzziniet vairāk](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Atribūti `[id]` lapā nav unikāli"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Atribūti `[id]` lapā ir unikāli"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Ekrāna lasītāji izmanto ietvaru nosaukumus, lai raksturotu ietvaru saturu. [Uzziniet vairāk](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Paredzētais ievades latentums aptuveni norāda, pēc cik ilga laika (milisekundēs) uz lietotāja ievadi reaģēs jūsu lietotne aizņemtākajā lapas ielādes 5 s periodā. Ja latentums pārsniedz 50 ms, iespējams, lietotājiem liksies, ka jūsu lietotne strādā ar traucējumiem. [Uzziniet vairāk](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Paredzētais ievades latentums"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Metrika \"Pirmais satura marķējums\" atzīmē laiku, kad tiek marķēts pirmais teksts vai attēls. [Uzziniet vairāk](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Pirmais saturīgais satura atveidojums"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Metrika “Pirmā CPU dīkstāve” norāda laiku, kad lapas galvenais pavediens ir kļuvis pietiekami mazs, lai varētu apstrādāt ievadi.  [Uzziniet vairāk](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Pirmā CPU dīkstāve"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Metrika “Pirmais nozīmīgais satura atveidojums” norāda, kad kļūst redzams lapas galvenais saturs. [Uzziniet vairāk](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Pirmais nozīmīgais satura atveidojums"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Laiks līdz interaktivitātei ir laika apjoms, kas nepieciešams, lai lapa kļūtu pilnībā interaktīva. [Uzziniet vairāk](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Laiks līdz interaktivitātei"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Iespējamā maksimālā pirmās ievades aizkave, ar ko jūsu lietotāji var saskarties, ir ilgākā uzdevuma ilgums milisekundēs. [Uzziniet vairāk](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Maks. potenciālā pirmā ievades aizkave"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Ātruma rādītājs norāda, cik ātri tiek parādīts lapas saturs. [Uzziniet vairāk](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Ātruma rādītājs"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Visu laika periodu summa (no PSM līdz “Laiks līdz interaktivitātei”), kad uzdevuma ilgums pārsniedz 50 ms (izteikts milisekundēs)."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Kopējais bloķēšanas laiks"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Tīkla aprites laiks (RTT) spēcīgi ietekmē veiktspēju. Ja aprites laiks uz sākumpunktu ir augsts, tas norāda, ka serveru veiktspēja, kas atrodas tuvāk lietotājam, var tikt uzlabota. [Uzziniet vairāk](https://hpbn.co/primer-on-latency-and-bandwidth/)."

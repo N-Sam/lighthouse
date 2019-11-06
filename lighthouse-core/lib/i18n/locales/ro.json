@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Documentul are un element `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Valoarea unui atribut ID trebuie să fie unică pentru a preveni omiterea altor instanțe de tehnologiile care asigură asistență. [Află mai multe](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Atributele `[id]` de pe pagină nu sunt unice"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Atributele `[id]` de pe pagină sunt unice"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Utilizatorii cititoarelor de ecran se bazează pe titlurile cadrelor pentru a descrie conținutul cadrelor. [Află mai multe](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Latența estimată a comenzilor reprezintă o estimare a duratei necesare pentru ca aplicația să răspundă la comanda utilizatorului, în milisecunde, în cea mai aglomerată fereastră de cinci secunde de încărcare a paginii. Dacă latența este mai mare de 50 ms, utilizatorii îți pot percepe aplicația ca fiind lentă. [Află mai multe](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Latența estimată a comenzilor"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Prima redare de conținut arată momentul când se redă primul text sau prima imagine. [Află mai multe](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Prima redare de conținut"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Primul „CPU inactiv” semnalează primul moment în care firul principal al paginii este suficient de liber pentru a accepta comenzi.  [Află mai multe](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Primul „CPU inactiv”"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Prima redare semnificativă arată momentul când este vizibil conținutul principal al unei pagini. [Află mai multe](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Prima redare semnificativă"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Timpul până la interactivitate este timpul necesar pentru ca pagina să devină complet interactivă. [Află mai multe](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Timpul până la interactivitate"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Timpul maxim potențial de la prima interacțiune cu care utilizatorii se pot confrunta este durata, în milisecunde, a celei mai lungi activități. [Află mai multe](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Timpul maxim potențial de la prima interacțiune"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Indexul de viteză arată cât de repede se completează vizibil conținutul unei pagini. [Află mai multe](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Index de viteză"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Suma tuturor perioadelor de timp dintre FCP și Timpul până la interactivitate, când lungimea activității a depășit 50 ms, exprimate în milisecunde."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Durata totală de blocare"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Durata pingului în rețea (RTT) are impact important asupra performanței. Dacă RTT către o origine este mare, înseamnă că serverele mai apropiate de utilizator pot îmbunătăți performanța. [Află mai multe](https://hpbn.co/primer-on-latency-and-bandwidth/)."

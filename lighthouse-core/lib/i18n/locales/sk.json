@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokument má prvok `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Hodnota atribútu ID musí byť jedinečná, aby asistenčné technológie neprehliadli ďalšie výskyty. [Ďalšie informácie](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Atribúty `[id]` na stránke nie sú jedinečné"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Atribúty `[id]` na stránke sú jedinečné"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Používatelia čítačiek obrazovky zistia obsah rámcov pomocou ich názvov. [Ďalšie informácie](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Odhadovaná latencia vstupu je odhadovaný čas odozvy na vstup používateľa v milisekundách počas najrušnejších 5 sekúnd načítania stránky. Ak latencia prevyšuje 50 ms, používateľom sa môžu zdať odozvy aplikácie oneskorené. [Ďalšie informácie](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Odhadovaná latencia vstupu"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Prvé vykreslenie obsahu označuje čas, za ktorý je vykreslený prvý text alebo obrázok. [Ďalšie informácie](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Prvé obsahové vyfarbenie"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Prvá nečinnosť procesora označuje, kedy je hlavné vlákno stránky prvýkrát dostatočne nečinné na spracovanie vstupu.  [Ďalšie informácie](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Prvá nečinnosť procesora"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Prvé zmysluplné vykreslenie meria, kedy je hlavný obsah stránky viditeľný. [Ďalšie informácie](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Prvé účelné vyfarbenie"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Čas do interaktivity je údaj o tom, koľko času prejde, kým bude stránka plne interaktívna. [Ďalšie informácie](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Čas do interaktívneho vykreslenia"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Maximálne potenciálne oneskorenie prvého vstupu, ktoré sa u vašich používateľov môže vyskytnúť, je trvanie najdlhšej úlohy (v milisekundách). [Ďalšie informácie](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Max. potenc. oneskorenie prvého vstupu"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Index rýchlosti znázorňuje, za aký čas sa viditeľne doplní obsah stránky. [Ďalšie informácie](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Index rýchlosti"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Súčet všetkých časových období medzi prvým vykreslením obsahu a časom do interaktivity, kedy dĺžka úlohy presiahla 50 ms (vyjadrený v milisekundách)."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Celkový čas blokovania"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Časy vrátenia žiadostí v rámci siete majú veľký vplyv na výkonnosť. Ak je čas vrátenia žiadostí v rámci siete k pôvodnému zdroju vysoký, znamená to, že servery umiestnené bližšie k používateľovi by mohli zlepšiť výkonnosť. [Ďalšie informácie](https://hpbn.co/primer-on-latency-and-bandwidth/)"

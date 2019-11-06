@@ -10,8 +10,6 @@ const i18n = require('../../lib/i18n/i18n.js');
 const ComputedSi = require('../../computed/metrics/speed-index.js');
 
 const UIStrings = {
-  /** The name of the metric that summarizes how quickly the page looked visually complete. The name of this metric is largely abstract and can be loosely translated. Shown to users as the label for the numeric metric value. Ideally fits within a ~40 character limit. */
-  title: 'Speed Index',
   /** Description of the Speed Index metric, which summarizes how quickly the page looked visually complete. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Speed Index shows how quickly the contents of a page are visibly populated. ' +
       '[Learn more](https://web.dev/speed-index).',
@@ -26,7 +24,7 @@ class SpeedIndex extends Audit {
   static get meta() {
     return {
       id: 'speed-index',
-      title: str_(UIStrings.title),
+      title: str_(i18n.UIStrings.speedIndexMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       requiredArtifacts: ['traces', 'devtoolsLogs'],

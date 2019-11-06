@@ -23,7 +23,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
 const ChromeProtocol = require('../../lighthouse-core/gather/connections/cri.js');
 
@@ -51,15 +50,12 @@ const lighthouse = (function getLighthouseCoreBundled() {
     // TODO: use `globalThis` when we drop Node 10.
     .replace('new ChromeProtocol', 'new global.ChromeProtocol')
     // Needed for asset-saver.js.
-    .replace(/mkdirp\./g, 'global.mkdirp.')
     .replace(/rimraf\./g, 'global.rimraf.')
-    .replace(/fs\.(writeFileSync|createWriteStream)/g, 'global.$&');
+    .replace(/fs\.(writeFileSync|createWriteStream|mkdirSync)/g, 'global.$&');
 
   /* eslint-disable no-undef */
   // @ts-ignore
   global.ChromeProtocol = ChromeProtocol;
-  // @ts-ignore
-  global.mkdirp = mkdirp;
   // @ts-ignore
   global.rimraf = rimraf;
   // @ts-ignore

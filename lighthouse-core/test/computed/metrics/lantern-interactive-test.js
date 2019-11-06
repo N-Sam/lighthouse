@@ -10,8 +10,11 @@ const assert = require('assert');
 
 const trace = require('../../fixtures/traces/progressive-app-m60.json');
 const devtoolsLog = require('../../fixtures/traces/progressive-app-m60.devtools.log.json');
+const iframeTrace = require('../../fixtures/traces/iframe-m79.trace.json');
+const iframeDevtoolsLog = require('../../fixtures/traces/iframe-m79.devtoolslog.json');
 
 /* eslint-env jest */
+
 describe('Metrics: Lantern TTI', () => {
   it('should compute predicted value', async () => {
     const settings = {};
@@ -26,6 +29,24 @@ describe('Metrics: Lantern TTI', () => {
     }).toMatchSnapshot();
     assert.equal(result.optimisticEstimate.nodeTimings.size, 19);
     assert.equal(result.pessimisticEstimate.nodeTimings.size, 79);
+    assert.ok(result.optimisticGraph, 'should have created optimistic graph');
+    assert.ok(result.pessimisticGraph, 'should have created pessimistic graph');
+  });
+
+  it('should compute predicted value on iframes with substantial layout', async () => {
+    const settings = {};
+    const context = {settings, computedCache: new Map()};
+    const result = await LanternInteractive.request({
+      trace: iframeTrace,
+      devtoolsLog: iframeDevtoolsLog,
+      settings,
+    }, context);
+
+    expect({
+      timing: Math.round(result.timing),
+      optimistic: Math.round(result.optimisticEstimate.timeInMs),
+      pessimistic: Math.round(result.pessimisticEstimate.timeInMs),
+    }).toMatchSnapshot();
     assert.ok(result.optimisticGraph, 'should have created optimistic graph');
     assert.ok(result.pessimisticGraph, 'should have created pessimistic graph');
   });

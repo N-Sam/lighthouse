@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokumen memiliki elemen `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Nilai atribut ID harus unik untuk mencegah instance lain terabaikan oleh teknologi asistif. [Pelajari lebih lanjut](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Atribut `[id]` di halaman ini tidak unik"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Atribut `[id]` di halaman ini unik"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Pengguna pembaca layar mengandalkan judul bingkai untuk menjelaskan isi bingkai. [Pelajari lebih lanjut](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Perkiraan Latensi Masukan adalah perkiraan durasi yang diperlukan aplikasi untuk merespons masukan pengguna, dalam milidetik, selama durasi 5 detik tersibuk saat pemuatan halaman. Jika latensi di atas 50 md, pengguna dapat menganggap aplikasi Anda lambat. [Pelajari lebih lanjut](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Perkiraan Latensi Masukan"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "First Contentful Paint menandai waktu saat teks atau gambar pertama di-paint. [Pelajari lebih lanjut](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "First Contentful Paint"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "CPU Pertama Tidak Ada Aktivitas menandai waktu pertama kalinya thread utama halaman menjadi agak tenang untuk menangani masukan.  [Pelajari lebih lanjut](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU Pertama Tidak Ada Aktivitas"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "First Meaningful Paint mengukur waktu saat konten utama halaman terlihat. [Pelajari lebih lanjut](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "First Meaningful Paint"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Waktu untuk interaktif adalah lamanya waktu yang diperlukan halaman untuk menjadi interaktif sepenuhnya. [Pelajari lebih lanjut](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Waktu untuk Interaktif"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Potensi maksimal Penundaan Input Pertama yang dapat dialami pengguna Anda adalah durasi tugas terpanjang, yang dinyatakan dalam milidetik. [Pelajari lebih lanjut](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Potensi Maksimal Penundaan Input Pertama"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Indeks Kecepatan menunjukkan seberapa cepat konten halaman terlihat terisi lengkap. [Pelajari lebih lanjut](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Indeks Kecepatan"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Jumlah semua jangka waktu antara FCP dan Waktu untuk Interaktif, ketika durasi tugas melebihi 50 md, dinyatakan dalam milidetik."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Total Waktu Pemblokiran"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Waktu round trip (RTT) jaringan berdampak besar pada performa. RTT ke asal yang tinggi merupakan indikasi bahwa server yang berjarak lebih dekat ke pengguna dapat meningkatkan performa. [Pelajari lebih lanjut](https://hpbn.co/primer-on-latency-and-bandwidth/)."

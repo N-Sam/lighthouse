@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokumentissa on `<title>`-elementti"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Tunnusmääritteen arvon on oltava yksilöllinen, jotta avustustekniikat eivät jätä muita esiintymiä huomioimatta. [Lue lisää](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Sivulla olevat `[id]`-määritteet eivät ole yksilöllisiä"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Sivulla olevat `[id]`-määritteet ovat yksilöllisiä"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Näytönlukuohjelman käyttäjät saavat tietää kehysten sisällöt vain kehysten nimien avulla. [Lue lisää](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Arvioitu syöttöviive on millisekunteina annettu arvio siitä, kuinka kauan sovelluksellasi kestää vastata käyttäjän syötteeseen sivun lataamisen kiireisimmän, viiden sekunnin mittaisen jakson aikana. Jos viive on yli 50 ms, sovelluksesi voi toimia käyttäjien mielestä hitaasti. [Lue lisää](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Arvioitu syöttöviive"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Ensimmäinen sisällön renderöinti kertoo, milloin ensimmäinen tekstikohde tai kuva renderöidään. [Lue lisää](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Ensimmäinen sisällön renderöinti"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "CPU:n ensimmäinen toimettomuusjakso kertoo, milloin sivun pääsäikeen tilanne sallii syötteiden käsittelyn.  [Lue lisää](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU:n ensimmäinen toimettomuusjakso"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Ensimmäinen merkityksellinen renderöinti kertoo, milloin sivun ensisijainen sisältö tulee näkyviin. [Lue lisää](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Ensimmäinen merkityksellinen renderöinti"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Interaktiivisuutta edeltävä aika tarkoittaa aikaa, joka sivulla kestää siihen, että se on täysin interaktiivinen. [Lue lisää](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Interaktiivisuutta edeltävä aika"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Käyttäjiesi suurin mahdollinen ensimmäisen toiminnon viive on pisimmän tehtävän kesto millisekunneissa. [Lue lisää](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Suurin mahdollinen ensimmäisen toiminnon viive"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Nopeusindeksi kertoo, kuinka nopeasti sivun sisältö tulee näkyviin. [Lue lisää](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Nopeusindeksi"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Kaikkien FCP:n ja interaktiivisuutta edeltävän ajan väliset ajanjaksot yhteenlaskettuna, kun tehtävän pituus on yli 50 ms (ilmoitettu millisekunteina)"
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Estoaika yhteensä"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Verkon meno-paluuajoilla (RTT) on suuri vaikutus suorituskykyyn. Jos RTT lähtöpaikkaan on korkea, se on merkki siitä, että käyttäjää lähellä olevien palvelimien suorituskyvyssä on parantamisen varaa. [Lue lisää](https://hpbn.co/primer-on-latency-and-bandwidth/)."

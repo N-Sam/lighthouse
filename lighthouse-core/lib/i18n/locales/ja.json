@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "ドキュメントに `<title>` 要素が指定されています"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "他のインスタンスが支援技術によって見落とされることのないように、id 属性の値は一意にする必要があります。[詳細](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "ページの `[id]` 属性が一意ではありません"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "ページの `[id]` 属性は一意です"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "スクリーン リーダーでは、フレームのコンテンツを説明するためにフレームのタイトルが使用されます。[詳細](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "入力の推定待ち時間とは、ページ読み込みの最もビジーな 5 秒間における、ユーザーの入力に対するアプリの推定応答時間（ミリ秒単位）です。待ち時間が 50 ミリ秒より長い場合、ユーザーはアプリの反応が悪いと感じる可能性があります。[詳細](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "入力の推定待ち時間"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "First Contentful Paint は、テキストまたは画像が初めてペイントされるまでにかかった時間です。[詳細](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "First Contentful Paint"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "First CPU Idle marks the first time at which the page's main thread is quiet enough to handle input.  [Learn more](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU の初回アイドル"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "First Meaningful Paint は、ページの主要なコンテンツが可視化されるまでにかかった時間です。[詳細](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "First Meaningful Paint"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "操作可能になるまでの時間とは、ページが完全に操作可能になるのに要する時間です。[詳細](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "インタラクティブになるまでの時間"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "ユーザーに発生する可能性がある初回入力遅延の最大推定時間とは、最も長いタスクの時間（ミリ秒単位）です。[詳細](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "初回入力遅延の最大推定時間"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "速度インデックスは、ページのコンテンツが取り込まれて表示される速さを表します。[詳細](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "速度インデックス"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "タスクの時間が 50 ミリ秒を上回った場合の、コンテンツの初回ペイントから操作可能になるまでのすべての時間の合計を、ミリ秒単位で表します。"
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "合計ブロック時間"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "ネットワークのラウンドトリップ時間（RTT）はパフォーマンスに大きく影響します。発信元への RTT が高い場合は、サーバーの場所をユーザーの近くにするとパフォーマンスを改善できることを示しています。[詳細](https://hpbn.co/primer-on-latency-and-bandwidth/)"

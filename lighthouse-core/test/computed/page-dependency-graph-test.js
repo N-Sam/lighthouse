@@ -106,6 +106,27 @@ describe('PageDependencyGraph computed artifact:', () => {
       assert.deepEqual(indexedByUrl.get('urlA'), [nodes[0]]);
       assert.deepEqual(indexedByUrl.get('urlB'), [nodes[1], nodes[2]]);
     });
+
+    it('should index nodes by frame', () => {
+      const networkNodeOutput = PageDependencyGraph.getNetworkNodeOutput([
+        {...createRequest(1, 'urlA'), documentURL: 'urlA', frameId: 'A'},
+        {...createRequest(2, 'urlB'), documentURL: 'urlA', frameId: 'A'},
+        {...createRequest(3, 'urlC'), documentURL: 'urlC', frameId: 'C',
+          resourceType: NetworkRequest.TYPES.XHR},
+        {...createRequest(4, 'urlD'), documentURL: 'urlD', frameId: 'D'},
+        {...createRequest(4, 'urlE'), documentURL: 'urlE', frameId: undefined},
+        {...createRequest(4, 'urlF'), documentURL: 'urlF', frameId: 'collision'},
+        {...createRequest(4, 'urlG'), documentURL: 'urlG', frameId: 'collision'},
+      ]);
+
+      const nodes = networkNodeOutput.nodes;
+      const indexedByFrame = networkNodeOutput.frameIdToNodeMap;
+      expect([...indexedByFrame.entries()]).toEqual([
+        ['A', nodes[0]],
+        ['D', nodes[3]],
+        ['collision', null],
+      ]);
+    });
   });
 
   describe('#getCPUNodes', () => {

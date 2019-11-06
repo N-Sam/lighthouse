@@ -6,14 +6,15 @@
 'use strict';
 
 const fs = require('fs');
+const mkdir = fs.promises.mkdir;
 
 const archiver = require('archiver');
 const cpy = require('cpy');
-const makeDir = require('make-dir');
-const bundleBuilder = require('./build-bundle.js');
+const browserify = require('browserify');
+const path = require('path');
 
-const sourceName = 'extension-entry.js';
-const distName = 'lighthouse-ext-bundle.js';
+const sourceName = 'popup.js';
+const distName = 'popup-bundle.js';
 
 const sourceDir = __dirname + '/../clients/extension';
 const distDir = __dirname + '/../dist/extension';
@@ -23,29 +24,25 @@ const manifestVersion = require(`${sourceDir}/manifest.json`).version;
 /**
  * Browserify and minify entry point.
  */
-function buildEntryPoint() {
+async function buildEntryPoint() {
   const inFile = `${sourceDir}/scripts/${sourceName}`;
   const outFile = `${distDir}/scripts/${distName}`;
-  return bundleBuilder.build(inFile, outFile);
-}
+  const bundleStream = browserify(inFile).bundle();
 
-/**
- * Copy popup.js to dist folder, inlining the current commit hash along the way.
- * @return {Promise<void>}
- */
-async function copyPopup() {
-  let popupSrc = fs.readFileSync(`${sourceDir}/scripts/popup.js`, {encoding: 'utf8'});
-  popupSrc = popupSrc.replace(/__COMMITHASH__/g, bundleBuilder.COMMIT_HASH);
+  await mkdir(path.dirname(outFile), {recursive: true});
+  return new Promise((resolve, reject) => {
+    const writeStream = fs.createWriteStream(outFile);
+    writeStream.on('finish', resolve);
+    writeStream.on('error', reject);
 
-  const popupDir = `${distDir}/scripts`;
-  await makeDir(popupDir);
-  fs.writeFileSync(`${popupDir}/popup.js`, popupSrc);
+    bundleStream.pipe(writeStream);
+  });
 }
 
 /**
  * @return {Promise<void>}
  */
-async function copyAssets() {
+function copyAssets() {
   return cpy([
     '*.html',
     'styles/**/*.css',
@@ -65,7 +62,7 @@ async function copyAssets() {
  */
 async function packageExtension() {
   const packagePath = `${distDir}/../extension-package`;
-  await makeDir(packagePath);
+  await mkdir(packagePath, {recursive: true});
 
   return new Promise((resolve, reject) => {
     const archive = archiver('zip', {
@@ -92,7 +89,6 @@ async function run() {
   await Promise.all([
     buildEntryPoint(),
     copyAssets(),
-    copyPopup(),
   ]);
 }
 

@@ -15,7 +15,7 @@ const expectations = [
       Stacks: [{
         id: 'jquery',
       }, {
-        id: 'jquery',
+        id: 'jquery-fast',
         name: 'jQuery (Fast path)',
       }, {
         id: 'wordpress',

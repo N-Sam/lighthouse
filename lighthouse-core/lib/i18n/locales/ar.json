@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "المستند يحتوي على عنصر `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "يجب أن تكون قيمة سمة رقم التعريف فريدة لكي لا تتغاضى تقنيات المساعدة عن الأمثلة الأخرى. [مزيد من المعلومات](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "سمات `[id]` في الصفحة هي غير فريدة"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "سمات `[id]` في الصفحة هي فريدة"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "يعتمد مستخدمو برامج قراءة الشاشة على عناوين الإطارات لوصف محتوى الإطارات. [مزيد من المعلومات](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "إن \"وقت الاستجابة المقدر للإدخال\" هو تقدير لطول المدة التي يستغرقها تطبيقك للاستجابة لإدخال المستخدم بالمللي ثانية، وذلك أثناء الثواني الخمس الأكثر انشغالاً في فترة تحميل الصفحة. وفي حال كان وقت الاستجابة أكثر من 50 مللي ثانية، يمكن للمستخدمين اعتبار تطبيقك بأنه بطيء في التفاعل. [مزيد من المعلومات](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "وقت الاستجابة المُقدّر للإدخال"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "تحدد \"سرعة عرض المحتوى على الصفحة\" الوقت الذي يُعرَض فيه أول صورة أو نص. [مزيد من المعلومات](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "First Contentful Paint"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "تشير \"وحدة المعالجة المركزية الأولى الخاملة\" إلى المرة الأولى التي يتوفر فيها وقت كافٍ للعملية الرئيسية للصفحة حتى تعالج إدخالات المستخدم.  [مزيد من المعلومات](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "وحدة المعالجة المركزية الأولى الخاملة"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "تقيس \"سرعة عرض أوّل محتوى مفيد على الصفحة\" الوقت الذي يكون فيه المحتوى الأساسي لصفحة مرئيًا. [مزيد من المعلومات](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "First Meaningful Paint"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "وقت التفاعل هو مقدار الوقت المستغرق حتى تصبح الصفحة تفاعلية بالكامل. [مزيد من المعلومات](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "وقت التفاعل"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "الحد الأقصى المحتمل من \"مهلة الاستجابة لأوّل إدخال\" الذي قد يواجهه المستخدمون هو المدة بالمللي ثانية لأطول مهمة. [مزيد من المعلومات](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "الحد الأقصى المحتمل من مهلة الاستجابة لأوّل إدخال"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "يوضح مؤشر السرعة وتيرة تعبئة محتوى الصفحة على شاشة المستخدم. [مزيد من المعلومات](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "مؤشر السرعة"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "مجموع جميع الفترات الزمنية بين \"سرعة عرض المحتوى على الصفحة\" و\"وقت التفاعل\"، عندما تتجاوز مدة المهمة 50 مللي ثانية، معبرًا عنها بالمللي ثانية."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "إجمالي حظر الوقت"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "تؤثر مُدد الإرسال والاستقبال للشبكة تأثيرًا كبيرًا في مستوى الأداء. في حال كانت مدة الإرسال والاستقبال كبيرة، يشير ذلك إلى احتمال تحسّن أداء الخوادم الأقرب إلى المستخدم. [مزيد من المعلومات](https://hpbn.co/primer-on-latency-and-bandwidth/)"

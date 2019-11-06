@@ -5,7 +5,7 @@
     "hostUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3358.0 Safari/537.36",
     "benchmarkIndex": 1000
   },
-  "lighthouseVersion": "5.5.0",
+  "lighthouseVersion": "5.6.0",
   "fetchTime": "2018-03-13T00:55:45.840Z",
   "requestedUrl": "http://localhost:10200/dobetterweb/dbw_tester.html",
   "finalUrl": "http://localhost:10200/dobetterweb/dbw_tester.html",
@@ -194,7 +194,7 @@
     "total-blocking-time": {
       "id": "total-blocking-time",
       "title": "Total Blocking Time",
-      "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds.",
+      "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time).",
       "score": 1,
       "scoreDisplayMode": "numeric",
       "numericValue": 116.79800000000023,
@@ -203,7 +203,7 @@
     "max-potential-fid": {
       "id": "max-potential-fid",
       "title": "Max Potential First Input Delay",
-      "description": "The maximum potential First Input Delay that your users could experience is the duration, in milliseconds, of the longest task. [Learn more](https://developers.google.com/web/updates/2018/05/first-input-delay).",
+      "description": "The maximum potential First Input Delay that your users could experience is the duration, in milliseconds, of the longest task. [Learn more](https://web.dev/lighthouse-max-potential-fid).",
       "score": 0.92,
       "scoreDisplayMode": "numeric",
       "numericValue": 122.537,
@@ -1242,7 +1242,7 @@
       "description": "Collects all available metrics.",
       "score": null,
       "scoreDisplayMode": "informative",
-      "numericValue": 4927.278,
+      "numericValue": 4927,
       "details": {
         "type": "debugdata",
         "items": [
@@ -1563,6 +1563,42 @@
       "score": null,
       "scoreDisplayMode": "notApplicable"
     },
+    "aria-hidden-body": {
+      "id": "aria-hidden-body",
+      "title": "`[aria-hidden=\"true\"]` is not present on the document `<body>`",
+      "description": "Assistive technologies, like screen readers, work inconsistently when `aria-hidden=\"true\"` is set on the document `<body>`. [Learn more](https://web.dev/aria-hidden-body/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "aria-hidden-focus": {
+      "id": "aria-hidden-focus",
+      "title": "`[aria-hidden=\"true\"]` elements do not contain focusable descendents",
+      "description": "Focusable descendents within an `[aria-hidden=\"true\"]` element prevent those interactive elements from being available to users of assistive technologies like screen readers. [Learn more](https://web.dev/aria-hidden-focus/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "aria-input-field-name": {
+      "id": "aria-input-field-name",
+      "title": "ARIA input fields have accessible names",
+      "description": "When an input field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-input-field-name/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
     "aria-required-attr": {
       "id": "aria-required-attr",
       "title": "`[role]`s have all required `[aria-*]` attributes",
@@ -1590,6 +1626,18 @@
       "description": "ARIA roles must have valid values in order to perform their intended accessibility functions. [Learn more](https://web.dev/aria-roles/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
+    },
+    "aria-toggle-field-name": {
+      "id": "aria-toggle-field-name",
+      "title": "ARIA toggle fields have accessible names",
+      "description": "When a toggle field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-toggle-field-label/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
     },
     "aria-valid-attr-value": {
       "id": "aria-valid-attr-value",
@@ -1710,10 +1758,34 @@
         "items": []
       }
     },
-    "duplicate-id": {
-      "id": "duplicate-id",
-      "title": "`[id]` attributes on the page are unique",
-      "description": "The value of an id attribute must be unique to prevent other instances from being overlooked by assistive technologies. [Learn more](https://web.dev/duplicate-id/).",
+    "duplicate-id-active": {
+      "id": "duplicate-id-active",
+      "title": "`[id]` attributes on active, focusable elements are unique",
+      "description": "All focusable elements must have a unique `id` to ensure that they're visible to assistive technologies. [Learn more](https://web.dev/duplicate-id-active/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "duplicate-id-aria": {
+      "id": "duplicate-id-aria",
+      "title": "ARIA IDs are unique",
+      "description": "The value of an ARIA ID must be unique to prevent other instances from being overlooked by assistive technologies. [Learn more](https://web.dev/duplicate-id-aria/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
+    },
+    "form-field-multiple-labels": {
+      "id": "form-field-multiple-labels",
+      "title": "No form fields have multiple labels",
+      "description": "Form fields with multiple labels can be confusingly announced by assistive technologies like screen readers which use either the first, the last, or all of the labels. [Learn more](https://web.dev/form-field-multiple-labels/).",
       "score": 1,
       "scoreDisplayMode": "binary",
       "details": {
@@ -1728,6 +1800,18 @@
       "description": "Screen reader users rely on frame titles to describe the contents of frames. [Learn more](https://web.dev/frame-title/).",
       "score": null,
       "scoreDisplayMode": "notApplicable"
+    },
+    "heading-order": {
+      "id": "heading-order",
+      "title": "Heading elements appear in a sequentially-descending order",
+      "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more](https://web.dev/heading-order/).",
+      "score": 1,
+      "scoreDisplayMode": "binary",
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": []
+      }
     },
     "html-has-lang": {
       "id": "html-has-lang",
@@ -2120,13 +2204,6 @@
       "id": "focusable-controls",
       "title": "Interactive controls are keyboard focusable",
       "description": "Custom interactive controls are keyboard focusable and display a focus indicator. [Learn more](https://web.dev/focusable-controls/).",
-      "score": null,
-      "scoreDisplayMode": "manual"
-    },
-    "heading-levels": {
-      "id": "heading-levels",
-      "title": "Headings don't skip levels",
-      "description": "Headings are used to create an outline for the page and heading levels are not skipped. [Learn more](https://web.dev/heading-levels/).",
       "score": null,
       "scoreDisplayMode": "manual"
     },
@@ -3352,28 +3429,23 @@
         "timings": [
           {
             "metric": "first-contentful-paint",
-            "budget": 3000,
-            "tolerance": 100
+            "budget": 3000
           },
           {
             "metric": "first-cpu-idle",
-            "budget": 2900,
-            "tolerance": 100
+            "budget": 2900
           },
           {
             "metric": "interactive",
-            "budget": 2900,
-            "tolerance": 100
+            "budget": 2900
           },
           {
             "metric": "first-meaningful-paint",
-            "budget": 2000,
-            "tolerance": 100
+            "budget": 2000
           },
           {
             "metric": "max-potential-fid",
-            "budget": 100,
-            "tolerance": 100
+            "budget": 100
           }
         ]
       }
@@ -3606,6 +3678,21 @@
           "group": "a11y-aria"
         },
         {
+          "id": "aria-hidden-body",
+          "weight": 10,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "aria-hidden-focus",
+          "weight": 3,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "aria-input-field-name",
+          "weight": 3,
+          "group": "a11y-aria"
+        },
+        {
           "id": "aria-required-attr",
           "weight": 0,
           "group": "a11y-aria"
@@ -3623,6 +3710,11 @@
         {
           "id": "aria-roles",
           "weight": 0,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "aria-toggle-field-name",
+          "weight": 3,
           "group": "a11y-aria"
         },
         {
@@ -3671,14 +3763,29 @@
           "group": "a11y-names-labels"
         },
         {
-          "id": "duplicate-id",
-          "weight": 1,
-          "group": "a11y-best-practices"
+          "id": "duplicate-id-active",
+          "weight": 3,
+          "group": "a11y-navigation"
+        },
+        {
+          "id": "duplicate-id-aria",
+          "weight": 10,
+          "group": "a11y-aria"
+        },
+        {
+          "id": "form-field-multiple-labels",
+          "weight": 2,
+          "group": "a11y-names-labels"
         },
         {
           "id": "frame-title",
           "weight": 0,
           "group": "a11y-names-labels"
+        },
+        {
+          "id": "heading-order",
+          "weight": 2,
+          "group": "a11y-navigation"
         },
         {
           "id": "html-has-lang",
@@ -3807,16 +3914,12 @@
           "weight": 0
         },
         {
-          "id": "heading-levels",
-          "weight": 0
-        },
-        {
           "id": "use-landmarks",
           "weight": 0
         }
       ],
       "id": "accessibility",
-      "score": 0.46
+      "score": 0.66
     },
     "best-practices": {
       "title": "Best Practices",
@@ -4550,6 +4653,12 @@
       },
       {
         "startTime": 0,
+        "name": "lh:computed:TimingSummary",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
         "name": "lh:computed:LargestContentfulPaint",
         "duration": 100,
         "entryType": "measure"
@@ -4616,6 +4725,24 @@
       },
       {
         "startTime": 0,
+        "name": "lh:audit:aria-hidden-body",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:aria-hidden-focus",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:aria-input-field-name",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
         "name": "lh:audit:aria-required-attr",
         "duration": 100,
         "entryType": "measure"
@@ -4635,6 +4762,12 @@
       {
         "startTime": 0,
         "name": "lh:audit:aria-roles",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:aria-toggle-field-name",
         "duration": 100,
         "entryType": "measure"
       },
@@ -4694,13 +4827,31 @@
       },
       {
         "startTime": 0,
-        "name": "lh:audit:duplicate-id",
+        "name": "lh:audit:duplicate-id-active",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:duplicate-id-aria",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:form-field-multiple-labels",
         "duration": 100,
         "entryType": "measure"
       },
       {
         "startTime": 0,
         "name": "lh:audit:frame-title",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:heading-order",
         "duration": 100,
         "entryType": "measure"
       },
@@ -4833,12 +4984,6 @@
       {
         "startTime": 0,
         "name": "lh:audit:focusable-controls",
-        "duration": 100,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 0,
-        "name": "lh:audit:heading-levels",
         "duration": 100,
         "entryType": "measure"
       },
@@ -5179,7 +5324,7 @@
       "lighthouse-core/audits/without-javascript.js | description": [
         "audits[without-javascript].description"
       ],
-      "lighthouse-core/audits/metrics/first-contentful-paint.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | firstContentfulPaintMetric": [
         "audits[first-contentful-paint].title"
       ],
       "lighthouse-core/audits/metrics/first-contentful-paint.js | description": [
@@ -5229,7 +5374,7 @@
           "path": "audits[bootup-time].displayValue"
         }
       ],
-      "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | firstMeaningfulPaintMetric": [
         "audits[first-meaningful-paint].title"
       ],
       "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": [
@@ -5241,13 +5386,13 @@
       "lighthouse-core/audits/load-fast-enough-for-pwa.js | description": [
         "audits[load-fast-enough-for-pwa].description"
       ],
-      "lighthouse-core/audits/metrics/speed-index.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | speedIndexMetric": [
         "audits[speed-index].title"
       ],
       "lighthouse-core/audits/metrics/speed-index.js | description": [
         "audits[speed-index].description"
       ],
-      "lighthouse-core/audits/metrics/estimated-input-latency.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | estimatedInputLatencyMetric": [
         "audits[estimated-input-latency].title"
       ],
       "lighthouse-core/audits/metrics/estimated-input-latency.js | description": [
@@ -5285,13 +5430,13 @@
           "path": "audits[network-server-latency].displayValue"
         }
       ],
-      "lighthouse-core/audits/metrics/total-blocking-time.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | totalBlockingTimeMetric": [
         "audits[total-blocking-time].title"
       ],
       "lighthouse-core/audits/metrics/total-blocking-time.js | description": [
         "audits[total-blocking-time].description"
       ],
-      "lighthouse-core/audits/metrics/max-potential-fid.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | maxPotentialFIDMetric": [
         "audits[max-potential-fid].title"
       ],
       "lighthouse-core/audits/metrics/max-potential-fid.js | description": [
@@ -5340,13 +5485,13 @@
           "path": "audits[time-to-first-byte].displayValue"
         }
       ],
-      "lighthouse-core/audits/metrics/first-cpu-idle.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | firstCPUIdleMetric": [
         "audits[first-cpu-idle].title"
       ],
       "lighthouse-core/audits/metrics/first-cpu-idle.js | description": [
         "audits[first-cpu-idle].description"
       ],
-      "lighthouse-core/audits/metrics/interactive.js | title": [
+      "lighthouse-core/lib/i18n/i18n.js | interactiveMetric": [
         "audits.interactive.title"
       ],
       "lighthouse-core/audits/metrics/interactive.js | description": [
@@ -5669,6 +5814,24 @@
       "lighthouse-core/audits/accessibility/aria-allowed-attr.js | description": [
         "audits[aria-allowed-attr].description"
       ],
+      "lighthouse-core/audits/accessibility/aria-hidden-body.js | title": [
+        "audits[aria-hidden-body].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-body.js | description": [
+        "audits[aria-hidden-body].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-focus.js | title": [
+        "audits[aria-hidden-focus].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-hidden-focus.js | description": [
+        "audits[aria-hidden-focus].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-input-field-name.js | title": [
+        "audits[aria-input-field-name].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-input-field-name.js | description": [
+        "audits[aria-input-field-name].description"
+      ],
       "lighthouse-core/audits/accessibility/aria-required-attr.js | title": [
         "audits[aria-required-attr].title"
       ],
@@ -5692,6 +5855,12 @@
       ],
       "lighthouse-core/audits/accessibility/aria-roles.js | description": [
         "audits[aria-roles].description"
+      ],
+      "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | title": [
+        "audits[aria-toggle-field-name].title"
+      ],
+      "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | description": [
+        "audits[aria-toggle-field-name].description"
       ],
       "lighthouse-core/audits/accessibility/aria-valid-attr-value.js | title": [
         "audits[aria-valid-attr-value].title"
@@ -5755,17 +5924,35 @@
       "lighthouse-core/audits/accessibility/document-title.js | description": [
         "audits[document-title].description"
       ],
-      "lighthouse-core/audits/accessibility/duplicate-id.js | title": [
-        "audits[duplicate-id].title"
+      "lighthouse-core/audits/accessibility/duplicate-id-active.js | title": [
+        "audits[duplicate-id-active].title"
       ],
-      "lighthouse-core/audits/accessibility/duplicate-id.js | description": [
-        "audits[duplicate-id].description"
+      "lighthouse-core/audits/accessibility/duplicate-id-active.js | description": [
+        "audits[duplicate-id-active].description"
+      ],
+      "lighthouse-core/audits/accessibility/duplicate-id-aria.js | title": [
+        "audits[duplicate-id-aria].title"
+      ],
+      "lighthouse-core/audits/accessibility/duplicate-id-aria.js | description": [
+        "audits[duplicate-id-aria].description"
+      ],
+      "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | title": [
+        "audits[form-field-multiple-labels].title"
+      ],
+      "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | description": [
+        "audits[form-field-multiple-labels].description"
       ],
       "lighthouse-core/audits/accessibility/frame-title.js | title": [
         "audits[frame-title].title"
       ],
       "lighthouse-core/audits/accessibility/frame-title.js | description": [
         "audits[frame-title].description"
+      ],
+      "lighthouse-core/audits/accessibility/heading-order.js | title": [
+        "audits[heading-order].title"
+      ],
+      "lighthouse-core/audits/accessibility/heading-order.js | description": [
+        "audits[heading-order].description"
       ],
       "lighthouse-core/audits/accessibility/html-has-lang.js | failureTitle": [
         "audits[html-has-lang].title"

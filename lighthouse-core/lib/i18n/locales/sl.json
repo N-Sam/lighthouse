@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokument ima element `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Vrednost atributa ID-ja mora biti enolična, če želite preprečiti, da bi pomožne tehnologije spregledale druge primerke. [Več o tem](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Atributi `[id]` na strani niso enolični"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Atributi `[id]` na strani so enolični"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Uporabniki bralnikov zaslona se zanašajo, da jim vsebino okvirjev opišejo naslovi okvirjev. [Več o tem](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Predvidena vhodna zakasnitev je ocena, koliko milisekund potrebuje vaša aplikacija za odziv na uporabnikovo dejavnost med najaktivnejšimi 5 sekundami pri nalaganju strani. Če je zakasnitev večja od 50 ms, se lahko uporabnikom zdi, da se aplikacija zatika. [Več o tem](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Ocenjena zakasnitev vnosa"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Prvi vsebinski izris označuje čas, ko je izrisano prvo besedilo oziroma je izrisana prva slika. [Več o tem](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Prvo vsebinsko barvanje"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Prva nedejavnost CPE-ja označuje čas, po katerem je glavna nit strani dovolj neobremenjena, da lahko obravnava vnos.  [Več o tem](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Prva nedejavnost CPE-ja"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Prvo smiselno barvanje meri, kdaj je vidna glavna vsebina strani. [Več o tem](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Prvo smiselno barvanje"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Čas do interaktivnosti je čas, potreben, da stran postane povsem interaktivna. [Več o tem](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Čas do interaktivnosti"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Največja potencialna zakasnitev od prvega vnosa, na katero lahko uporabniki naletijo, je trajanje (v ms) najdaljšega opravila. [Več o tem](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Najv. potencial. zakasn. od prvega vnosa"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Indeks hitrosti prikazuje, kako hitro je vsebina strani vidno izpolnjena. [Več o tem](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Indeks hitrosti"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Skupek vseh časovnih obdobij med FCP-jem in časom do interaktivnosti, ko je dolžina opravila presegla 50 ms, izražena v milisekundah."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Skupni čas blokiranja"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Omrežni časi povratnega potovanja (RTT) imajo velik vpliv na učinkovitost delovanja. Če je RTT do izvora velik, to kaže na to, da bi lahko strežniki bližje uporabniku izboljšali učinkovitost delovanja. [Več o tem](https://hpbn.co/primer-on-latency-and-bandwidth/)."

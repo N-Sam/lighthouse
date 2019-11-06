@@ -8,25 +8,24 @@
 /* eslint-env jest */
 
 const path = require('path');
-const assert = require('assert');
 const puppeteer = require('../../../node_modules/puppeteer/index.js');
+const {DEFAULT_CATEGORIES, STORAGE_KEYS} =
+  require('../../extension/scripts/settings-controller.js');
 
 const lighthouseExtensionPath = path.resolve(__dirname, '../../../dist/extension');
 
-const defaultCategoriesStub = [
-  {
-    id: 'performance',
-    title: 'Performance',
+const mockStorage = {
+  [STORAGE_KEYS.Categories]: {
+    'performance': true,
+    'pwa': true,
+    'seo': true,
+    'accessibility': false,
+    'best-practices': false,
   },
-  {
-    id: 'pwa',
-    title: 'Progressive Web App',
+  [STORAGE_KEYS.Settings]: {
+    device: 'mobile',
   },
-  {
-    id: 'seo',
-    title: 'SEO',
-  },
-];
+};
 
 describe('Lighthouse chrome popup', function() {
   // eslint-disable-next-line no-console
@@ -44,17 +43,10 @@ describe('Lighthouse chrome popup', function() {
     });
 
     page = await browser.newPage();
-    await page.evaluateOnNewDocument((defaultCategoriesStub) => {
-      const backgroundMock = {
-        isRunning: () => false,
-        listenForStatus: () => {},
-        loadSettings: () => Promise.resolve({
-          selectedCategories: [],
-          useDevTools: false,
-        }),
-        getDefaultCategories: () => defaultCategoriesStub,
-      };
-
+    page.on('pageerror', err => {
+      pageErrors.push(err);
+    });
+    await page.evaluateOnNewDocument((mockStorage) => {
       Object.defineProperty(chrome, 'tabs', {
         get: () => ({
           query: (args, cb) => {
@@ -64,21 +56,22 @@ describe('Lighthouse chrome popup', function() {
           },
         }),
       });
-      Object.defineProperty(chrome, 'runtime', {
+      Object.defineProperty(chrome, 'storage', {
         get: () => ({
-          getBackgroundPage: cb => {
-            cb(backgroundMock);
+          local: {
+            get: (keys, cb) => cb(mockStorage),
           },
         }),
       });
-    }, defaultCategoriesStub);
-
-    page.on('pageerror', err => {
-      pageErrors.push(err);
-    });
+      Object.defineProperty(chrome, 'runtime', {
+        get: () => ({
+          getManifest: () => ({}),
+        }),
+      });
+    }, mockStorage);
 
     await page.goto('file://' + path.join(lighthouseExtensionPath, 'popup.html'), {waitUntil: 'networkidle2'});
-  }, 90 * 1000);
+  }, 10 * 1000);
 
   afterAll(async () => {
     if (browser) {
@@ -87,32 +80,35 @@ describe('Lighthouse chrome popup', function() {
   });
 
   it('should load without errors', async function() {
-    assert.equal(pageErrors.length, 0);
+    expect(pageErrors).toHaveLength(0);
   });
 
-  it('should load the popup with an url', async () => {
-    const titleText = await page.evaluate(() =>
-      document.querySelector('.header-titles__main').textContent);
-    const urlText = await page.evaluate(() =>
-      document.querySelector('.header-titles__url').textContent);
+  it('should generate the category checkboxes', async function() {
+    const checkboxTitles =
+      await page.$$eval('.options__categories li label span', els => els.map(e => e.textContent));
+    const checkboxValues =
+      await page.$$eval('.options__categories li label input', els => els.map(e => e.value));
 
-    // check if the popup is showing the lighthouse page
-    const subPageIsVisible = await page.evaluate(() =>
-      document.querySelector('.status').classList.contains('subpage--visible'));
-
-    assert.ok(!subPageIsVisible, 'Popup is stuck on the splash screen');
-    assert.equal(titleText, 'Lighthouse');
-    assert.equal(urlText, 'http://example.com');
-  });
-
-
-  it('should populate the category checkboxes correctly', async function() {
-    const checkboxTitles = await page.$$eval('li label', els => els.map(e => e.textContent));
-    const checkboxValues = await page.$$eval('li label input', els => els.map(e => e.value));
-
-    for (const {title, id} of defaultCategoriesStub) {
-      assert.ok(checkboxTitles.includes(title));
-      assert.ok(checkboxValues.includes(id));
+    for (const {title, id} of DEFAULT_CATEGORIES) {
+      expect(checkboxTitles).toContain(title);
+      expect(checkboxValues).toContain(id);
     }
+    expect(checkboxTitles).toHaveLength(DEFAULT_CATEGORIES.length);
+    expect(checkboxValues).toHaveLength(DEFAULT_CATEGORIES.length);
+  });
+
+  it('should check the checkboxes based on settings', async function() {
+    const enabledCategoriesFromSettings = Object.keys(mockStorage[STORAGE_KEYS.Categories])
+      .filter(key => mockStorage[STORAGE_KEYS.Categories][key]);
+    const expectedEnabledValues = [
+      ...enabledCategoriesFromSettings,
+      mockStorage[STORAGE_KEYS.Settings].device,
+    ];
+
+    const checkedValues = await page.$$eval('input:checked', els => els.map(e => e.value));
+    for (const key of expectedEnabledValues) {
+      expect(checkedValues).toContain(key);
+    }
+    expect(checkedValues).toHaveLength(expectedEnabledValues.length);
   });
 });

@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "May `<title>` na element ang dokumento"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Natatangi dapat ang value ng id attribute para hindi makaligtaan ng mga nakakatulong na teknolohiya ang iba pang instance. [Matuto pa](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Hindi natatangi ang mga attribute na `[id]`"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Natatangi ang mga attribute na `[id]` sa page"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Umaasa ang mga user ng screen reader sa mga pamagat ng frame para ilarawan ang mga content ng mga frame. [Matuto pa](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Ang Tinantyang Latency ng Input ay isang pagtatantya ng bilis ng pagtugon ng iyong app sa input ng user, na nasa millisecond, sa pinakaabalang 5 segundong palugit ng pag-load ng page. Kung mas mataas kaysa sa 50 ms ang iyong latency, puwedeng ituring ng mga user na mabagal ang app mo. [Matuto pa](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Tinatayang Latency ng Input"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Minamarkahan ng First Contentful Paint ang tagal bago ma-paint ang unang text o larawan. [Matuto pa](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "First Contentful Paint"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Minamarkahan ng First CPU Idle ang unang beses kung kailan hindi abala ang pangunahing thread ng page at puwede itong mangasiwa ng input.  [Matuto pa](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "First CPU Idle"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Sinusukat ng First Meaningful Paint ang bilis ng pagpapakita ng pangunahing content ng isang page. [Matuto pa](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "First Meaningful Paint"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Ang oras bago maging interactive ay ang haba ng oras na inaabot bago maging ganap na interactive ang page. [Matuto pa](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Time to Interactive"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Ang maximum na potensyal na First Input Delay na puwedeng maranasan ng iyong mga user ay ang tagal, na nasa millisecond, ng pinakamahabang gawain. [Matuto pa](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Max na Potensyal na First Input Delay"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Ipinapakita ng Speed Index ang bilis ng nakikitang pag-populate ng mga content ng isang page. [Matuto pa](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Speed Index"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Kabuuan ng lahat ng yugto ng panahon sa pagitan ng FCP at Oras bago maging Interactive, kapag lumampas ang haba ng gawain sa 50ms, ipinahayag sa milliseconds."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Kabuuang Oras ng Pag-block"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Malaki ang epekto ng mga round trip time (RTT) ng network sa performance. Kung mataas ang RTT sa isang pinagmulan, isa itong palatandaan na mapapahusay ng mga server na malapit sa user ang performance. [Matuto pa](https://hpbn.co/primer-on-latency-and-bandwidth/)."

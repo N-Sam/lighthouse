@@ -8,7 +8,6 @@
 const browserify = require('browserify');
 const fs = require('fs');
 const path = require('path');
-const makeDir = require('make-dir');
 const bundleBuilder = require('./build-bundle.js');
 const {minifyFileTransform} = require('./build-utils.js');
 
@@ -21,7 +20,7 @@ const generatorFilename = `./lighthouse-core/report/report-generator.js`;
 const entrySourceName = 'lightrider-entry.js';
 const entryDistName = 'lighthouse-lr-bundle.js';
 
-makeDir.sync(path.dirname(distDir));
+fs.mkdirSync(path.dirname(distDir), {recursive: true});
 
 /**
  * Browserify and minify entry point.

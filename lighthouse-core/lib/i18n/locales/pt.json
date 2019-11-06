@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "O documento tem um elemento `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "O valor de um atributo \"id\" precisa ser único para evitar que outras instâncias sejam ignoradas por tecnologias assistivas. [Saiba mais](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Os atributos `[id]` da página não são únicos"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Os atributos `[id]` da página são únicos"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Os usuários de leitores de tela utilizam títulos para descrever o conteúdo de frames. [Saiba mais](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "\"Latência de entrada estimada\" é uma estimativa de quanto tempo o app leva para responder à entrada do usuário, em milésimos de segundo, durante a janela de carregamento de página mais movimentada de cinco segundos. Se a latência for maior que 50 ms, o usuário poderá notar lentidão no app. [Saiba mais](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Latência de entrada estimada"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "\"Primeira exibição de conteúdo\" marca o momento em que o primeiro texto ou imagem é disponibilizado. [Saiba mais](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Primeiro aparecimento com conteúdo"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "\"Primeira CPU ociosa\" marca a primeira vez que a linha de execução principal da página fica silenciosa o suficiente para lidar com a entrada.  [Saiba mais](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Primeira CPU ociosa"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "\"Primeira exibição significativa\" marca o momento em que o conteúdo principal de uma página se torna visível. [Saiba mais](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Primeira exibição importante"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "\"Tempo para interação da página\" é o período necessário para que ela fique totalmente interativa. [Saiba mais](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Tempo até ficar interativa"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "A possível latência máxima na primeira entrada que seus usuários notariam seria a duração, em milésimos de segundo, da tarefa mais longa. [Saiba mais](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Possível latência máxima na primeira entrada"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "\"Índice de velocidade\" mostra a rapidez com que o conteúdo de uma página é preenchido visivelmente. [Saiba mais](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Índice de velocidade"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Soma de todos os períodos entre \"FCP\" e \"Tempo para interação da página\", quando a duração da tarefa ultrapassa 50 ms, expressa em milésimos de segundo."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Tempo total de bloqueio"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "O tempo de retorno (RTT, na sigla em inglês) da rede tem um grande impacto no desempenho. Se o RTT para uma origem é alto, significa que os servidores mais próximos do usuário poderiam melhorar o desempenho. [Saiba mais](https://hpbn.co/primer-on-latency-and-bandwidth/)."

@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Документ има елемент `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Вредност атрибута ИД мора да буде јединствена да би се спречило да технологије за помоћ особама са инвалидитетом пропусте друге инстанце. [Сазнајте више](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Атрибути `[id]` на страници нису јединствени"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Атрибути `[id]` на страници су јединствени"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Корисници читача екрана очекују од наслова оквира да им опишу садржај оквира. [Сазнајте више](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Процењено кашњење уноса је процена времена које је апликацији потребно да одговори на унос корисника, у милисекундама, током најпрометнијег рока од 5 секунди за учитавање странице. Ако је кашњење веће од 50 ms, корисници ће можда сматрати да апликација ради споро. [Сазнајте више](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Процењено кашњење уноса"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Прво приказивање садржаја означава време када се приказују први текст или слика. [Сазнајте више](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Прво приказивање садржаја"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Време првог неактивног процесора означава први тренутак у ком је главна нит странице довољно неактивна да би обрадила унос.  [Сазнајте више](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Време првог неактивног процесора"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Прво значајно приказивање означава време када примарни садржај странице постаје видљив. [Сазнајте више](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Прво значајно приказивање"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Време до интеракције је количина времена која је потребна да би страница постала потпуно интерактивна. [Сазнајте више](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Време почетка интеракције"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Максимално потенцијално кашњење првог уноса које може да се деси корисницима је трајање најдужег задатка у милисекундама. [Сазнајте више](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Макс. потенцијално кашњење првог приказа"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Индекс брзине приказује колико брзо садржај странице постаје видљив за кориснике. [Сазнајте више](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Индекс брзине"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Збир свих периода између FCP-а и времена до почетка интеракције, када задатак траје дуже од 50 ms, изражено у милисекундама."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Укупно време блокирања"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Трајања повратног пута (RTT) мреже знатно утичу на учинак. Ако је трајање повратног пута до почетне локације велико, то значи да би сервери који су ближи кориснику могли да побољшају учинак. [Сазнајте више](https://hpbn.co/primer-on-latency-and-bandwidth/)."

@@ -30,6 +30,42 @@
             "scoreDisplayMode": "notApplicable",
             "title": "`[aria-*]` attributes match their roles"
         },
+        "aria-hidden-body": {
+            "description": "Assistive technologies, like screen readers, work inconsistently when `aria-hidden=\"true\"` is set on the document `<body>`. [Learn more](https://web.dev/aria-hidden-body/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "aria-hidden-body",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "`[aria-hidden=\"true\"]` is not present on the document `<body>`"
+        },
+        "aria-hidden-focus": {
+            "description": "Focusable descendents within an `[aria-hidden=\"true\"]` element prevent those interactive elements from being available to users of assistive technologies like screen readers. [Learn more](https://web.dev/aria-hidden-focus/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "aria-hidden-focus",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "`[aria-hidden=\"true\"]` elements do not contain focusable descendents"
+        },
+        "aria-input-field-name": {
+            "description": "When an input field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-input-field-name/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "aria-input-field-name",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "ARIA input fields have accessible names"
+        },
         "aria-required-attr": {
             "description": "Some ARIA roles have required attributes that describe the state of the element to screen readers. [Learn more](https://web.dev/aria-required-attr/).",
             "id": "aria-required-attr",
@@ -57,6 +93,18 @@
             "score": null,
             "scoreDisplayMode": "notApplicable",
             "title": "`[role]` values are valid"
+        },
+        "aria-toggle-field-name": {
+            "description": "When a toggle field doesn't have an accessible name, screen readers announce it with a generic name, making it unusable for users who rely on screen readers. [Learn more](https://web.dev/aria-toggle-field-label/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "aria-toggle-field-name",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "ARIA toggle fields have accessible names"
         },
         "aria-valid-attr": {
             "description": "Assistive technologies, like screen readers, can't interpret ARIA attributes with invalid names. [Learn more](https://web.dev/aria-valid-attr/).",
@@ -552,17 +600,29 @@
             "scoreDisplayMode": "numeric",
             "title": "Avoids an excessive DOM size"
         },
-        "duplicate-id": {
-            "description": "The value of an id attribute must be unique to prevent other instances from being overlooked by assistive technologies. [Learn more](https://web.dev/duplicate-id/).",
+        "duplicate-id-active": {
+            "description": "All focusable elements must have a unique `id` to ensure that they're visible to assistive technologies. [Learn more](https://web.dev/duplicate-id-active/).",
             "details": {
                 "headings": [],
                 "items": [],
                 "type": "table"
             },
-            "id": "duplicate-id",
+            "id": "duplicate-id-active",
             "score": 1.0,
             "scoreDisplayMode": "binary",
-            "title": "`[id]` attributes on the page are unique"
+            "title": "`[id]` attributes on active, focusable elements are unique"
+        },
+        "duplicate-id-aria": {
+            "description": "The value of an ARIA ID must be unique to prevent other instances from being overlooked by assistive technologies. [Learn more](https://web.dev/duplicate-id-aria/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "duplicate-id-aria",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "ARIA IDs are unique"
         },
         "efficient-animated-content": {
             "description": "Large GIFs are inefficient for delivering animated content. Consider using MPEG4/WebM videos for animations and PNG/WebP for static images instead of GIF to save network bytes. [Learn more](https://web.dev/efficient-animated-content)",
@@ -793,6 +853,18 @@
             "scoreDisplayMode": "binary",
             "title": "Document uses legible font sizes"
         },
+        "form-field-multiple-labels": {
+            "description": "Form fields with multiple labels can be confusingly announced by assistive technologies like screen readers which use either the first, the last, or all of the labels. [Learn more](https://web.dev/form-field-multiple-labels/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "form-field-multiple-labels",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "No form fields have multiple labels"
+        },
         "frame-title": {
             "description": "Screen reader users rely on frame titles to describe the contents of frames. [Learn more](https://web.dev/frame-title/).",
             "id": "frame-title",
@@ -832,12 +904,17 @@
             "scoreDisplayMode": "binary",
             "title": "Requests the geolocation permission on page load"
         },
-        "heading-levels": {
-            "description": "Headings are used to create an outline for the page and heading levels are not skipped. [Learn more](https://web.dev/heading-levels/).",
-            "id": "heading-levels",
-            "score": null,
-            "scoreDisplayMode": "manual",
-            "title": "Headings don't skip levels"
+        "heading-order": {
+            "description": "Properly ordered headings that do not skip levels convey the semantic structure of the page, making it easier to navigate and understand when using assistive technologies. [Learn more](https://web.dev/heading-order/).",
+            "details": {
+                "headings": [],
+                "items": [],
+                "type": "table"
+            },
+            "id": "heading-order",
+            "score": 1.0,
+            "scoreDisplayMode": "binary",
+            "title": "Heading elements appear in a sequentially-descending order"
         },
         "hreflang": {
             "description": "hreflang links tell search engines what version of a page they should list in search results for a given language or region. [Learn more](https://web.dev/hreflang).",
@@ -1450,7 +1527,7 @@
             "title": "The user's focus is directed to new content added to the page"
         },
         "max-potential-fid": {
-            "description": "The maximum potential First Input Delay that your users could experience is the duration, in milliseconds, of the longest task. [Learn more](https://developers.google.com/web/updates/2018/05/first-input-delay).",
+            "description": "The maximum potential First Input Delay that your users could experience is the duration, in milliseconds, of the longest task. [Learn more](https://web.dev/lighthouse-max-potential-fid).",
             "displayValue": "120\u00a0ms",
             "id": "max-potential-fid",
             "numericValue": 122.537,
@@ -1529,7 +1606,7 @@
                 "type": "debugdata"
             },
             "id": "metrics",
-            "numericValue": 4927.278,
+            "numericValue": 4927.0,
             "score": null,
             "scoreDisplayMode": "informative",
             "title": "Metrics"
@@ -2629,7 +2706,7 @@
             "title": "Server response times are low (TTFB)"
         },
         "total-blocking-time": {
-            "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds.",
+            "description": "Sum of all time periods between FCP and Time to Interactive, when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time).",
             "displayValue": "120\u00a0ms",
             "id": "total-blocking-time",
             "numericValue": 116.79800000000023,
@@ -3236,6 +3313,21 @@
                 },
                 {
                     "group": "a11y-aria",
+                    "id": "aria-hidden-body",
+                    "weight": 10.0
+                },
+                {
+                    "group": "a11y-aria",
+                    "id": "aria-hidden-focus",
+                    "weight": 3.0
+                },
+                {
+                    "group": "a11y-aria",
+                    "id": "aria-input-field-name",
+                    "weight": 3.0
+                },
+                {
+                    "group": "a11y-aria",
                     "id": "aria-required-attr",
                     "weight": 0.0
                 },
@@ -3253,6 +3345,11 @@
                     "group": "a11y-aria",
                     "id": "aria-roles",
                     "weight": 0.0
+                },
+                {
+                    "group": "a11y-aria",
+                    "id": "aria-toggle-field-name",
+                    "weight": 3.0
                 },
                 {
                     "group": "a11y-aria",
@@ -3300,14 +3397,29 @@
                     "weight": 3.0
                 },
                 {
-                    "group": "a11y-best-practices",
-                    "id": "duplicate-id",
-                    "weight": 1.0
+                    "group": "a11y-navigation",
+                    "id": "duplicate-id-active",
+                    "weight": 3.0
+                },
+                {
+                    "group": "a11y-aria",
+                    "id": "duplicate-id-aria",
+                    "weight": 10.0
+                },
+                {
+                    "group": "a11y-names-labels",
+                    "id": "form-field-multiple-labels",
+                    "weight": 2.0
                 },
                 {
                     "group": "a11y-names-labels",
                     "id": "frame-title",
                     "weight": 0.0
+                },
+                {
+                    "group": "a11y-navigation",
+                    "id": "heading-order",
+                    "weight": 2.0
                 },
                 {
                     "group": "a11y-language",
@@ -3436,10 +3548,6 @@
                     "weight": 0.0
                 },
                 {
-                    "id": "heading-levels",
-                    "weight": 0.0
-                },
-                {
                     "id": "use-landmarks",
                     "weight": 0.0
                 }
@@ -3447,7 +3555,7 @@
             "description": "These checks highlight opportunities to [improve the accessibility of your web app](https://developers.google.com/web/fundamentals/accessibility). Only a subset of accessibility issues can be automatically detected so manual testing is also encouraged.",
             "id": "accessibility",
             "manualDescription": "These items address areas which an automated testing tool cannot cover. Learn more in our guide on [conducting an accessibility review](https://developers.google.com/web/fundamentals/accessibility/how-to-review).",
-            "score": 0.46,
+            "score": 0.66,
             "title": "Accessibility"
         },
         "best-practices": {
@@ -3990,7 +4098,7 @@
             "warningHeader": "Warnings: "
         }
     },
-    "lighthouseVersion": "5.5.0",
+    "lighthouseVersion": "5.6.0",
     "requestedUrl": "http://localhost:10200/dobetterweb/dbw_tester.html",
     "runWarnings": [],
     "stackPacks": [
@@ -4447,6 +4555,12 @@
             {
                 "duration": 100.0,
                 "entryType": "measure",
+                "name": "lh:computed:TimingSummary",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
                 "name": "lh:computed:LargestContentfulPaint",
                 "startTime": 0.0
             },
@@ -4513,6 +4627,24 @@
             {
                 "duration": 100.0,
                 "entryType": "measure",
+                "name": "lh:audit:aria-hidden-body",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:aria-hidden-focus",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:aria-input-field-name",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
                 "name": "lh:audit:aria-required-attr",
                 "startTime": 0.0
             },
@@ -4532,6 +4664,12 @@
                 "duration": 100.0,
                 "entryType": "measure",
                 "name": "lh:audit:aria-roles",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:aria-toggle-field-name",
                 "startTime": 0.0
             },
             {
@@ -4591,13 +4729,31 @@
             {
                 "duration": 100.0,
                 "entryType": "measure",
-                "name": "lh:audit:duplicate-id",
+                "name": "lh:audit:duplicate-id-active",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:duplicate-id-aria",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:form-field-multiple-labels",
                 "startTime": 0.0
             },
             {
                 "duration": 100.0,
                 "entryType": "measure",
                 "name": "lh:audit:frame-title",
+                "startTime": 0.0
+            },
+            {
+                "duration": 100.0,
+                "entryType": "measure",
+                "name": "lh:audit:heading-order",
                 "startTime": 0.0
             },
             {
@@ -4730,12 +4886,6 @@
                 "duration": 100.0,
                 "entryType": "measure",
                 "name": "lh:audit:focusable-controls",
-                "startTime": 0.0
-            },
-            {
-                "duration": 100.0,
-                "entryType": "measure",
-                "name": "lh:audit:heading-levels",
                 "startTime": 0.0
             },
             {

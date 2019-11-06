@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Документът има елемент `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Стойността на всеки атрибут id трябва да е уникална, за да се предотврати пропускането на други екземпляри от страна на помощните технологии. [Научете повече](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Някои атрибути `[id]` на страницата не са уникални"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Атрибутите `[id]` на страницата са уникални"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Потребителите на екранни четци очакват заглавието на рамката да описва съдържанието й. [Научете повече](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Приблизителното забавяне при входящо действие показва приблизително колко време (в милисекунди) е необходимо на приложението ви, за да реагира на входящо потребителско действие по време на най-натоварения 5-секунден период от зареждането на страницата. Ако забавянето е над 50 милисекунди, приложението ви може да се стори бавно на потребителите. [Научете повече](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Прогнозно забавяне при входящо действие"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Показателят „Първо изобразяване на съдържание (FCP)“ указва след колко време се изобразява първият текстов или графичен елемент. [Научете повече](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Първо изобразяване на съдържание"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Показателят „Първи момент на неактивност на процесора“ указва първия момент, в който основната нишка на страницата е достатъчно свободна, за да обработва входящи действия.  [Научете повече](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Първи момент на неактивност на процесора"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Показателят „Първо значимо изобразяване“ измерва времето, за което основното съдържание на страницата става видимо. [Научете повече](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Първо значимо изобразяване"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Времето до интерактивност показва след колко време страницата става напълно интерактивна. [Научете повече](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Време до интерактивност"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Максималното потенциално забавяне при първото взаимодействие на потребителите е продължителността в милисекунди на най-времеемката задача. [Научете повече](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Макс. потенц. забавяне при 1. взаимодействие"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Индексът на скоростта показва колко бързо се постига визуална завършеност на страницата. [Научете повече](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Индекс на скоростта"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Сумата от всички интервали от време между FCP и „Време до интерактивност“, когато задачата е траела над 50 мсек, изразена в милисекунди."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Общо време на блокиране"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Времето за осъществяване на двупосочна комуникация в мрежата оказва голямо влияние върху ефективността. Ако двупосочната комуникация с източника отнема дълго време, това означава, че разположени по-близо до потребителя сървъри биха подобрили ефективността. [Научете повече](https://hpbn.co/primer-on-latency-and-bandwidth/)."

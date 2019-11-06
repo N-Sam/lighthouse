@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokumentet har ett `<title>`-element"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Alla id-attribut måste ha unika värden. Hjälpmedelstekniken skulle annars hoppa över dubblettförekomsterna av ett värde. [Läs mer](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Alla `[id]`-attribut på sidan är inte unika"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Alla `[id]`-attribut på sidan är unika"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Med en skärmläsare behövs namn på ramarna som beskriver vad ramen innehåller. [Läs mer](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Uppskattad inmatningslatens är en uppskattning av hur lång tid (i millisekunder) det tar innan appen svarar på användarens inmatning under den mest aktiva femsekundersperioden av sidinläsningen. Om latensen är högre än 50 ms kan användarna uppfatta appen som seg. [Läs mer](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Beräknad inmatningslatens"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Första innehållsrenderingen anger när den första texten eller bilden ritades upp. [Läs mer](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Första uppritningen av innehåll"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Första CPU-avbrottet anger när sidans modertråd först blev inaktiv nog att hantera indata.  [Läs mer](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Första CPU-inaktivitet"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Första användbara renderingen anger när sidans primära innehåll blev synligt. [Läs mer](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Första meningsfulla skärmuppritningen"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Tiden till interaktivitet är den tid det tar innan sidan är fullständigt interaktiv. [Läs mer](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Tid till interaktivt tillstånd"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Den högsta potentiella fördröjningen vid första indata som användarna kan få är längden på den längsta uppgiften i millisekunder. [Läs mer](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Högsta potentiella fördröjning till första inmatningen"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Hastighetsindexet visar hur snabbt en sida fylls med synligt innehåll. [Läs mer](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Hastighetsindex"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Summan av alla tidsperioder mellan FCP och Tid till interaktivt tillstånd när uppgiftstiden överskred 50 ms, uttryckt i millisekunder."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Total blockeringstid"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Nätverkets RTT-tider (Round Trip Times) har stor inverkan på prestanda. Om RTT-tiden till ett ursprung är för hög tyder det på att servrar närmare användaren skulle kunna förbättra prestanda. [Läs mer](https://hpbn.co/primer-on-latency-and-bandwidth/)."

@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Doküman geçerli bir `<title>` öğesi içeriyor"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Kimlik özelliğinin değeri benzersiz olmalıdır. Bunun nedeni, yardımcı teknolojilerin farkına varmadan diğer örnekleri atlamasını önlemektir. [Daha fazla bilgi](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Sayfadaki `[id]` özellikleri benzersiz değil"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Sayfadaki `[id]` özellikleri benzersiz"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Ekran okuyucu kullanıcıları, çerçevelerin içeriklerinin açıklanması için çerçeve başlıklarından yararlanır. [Daha fazla bilgi](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Tahmini Giriş Gecikmesi, sayfa yüklemesinin en yoğun olduğu 5 saniyelik zaman aralığında uygulamanızın kullanıcı girişine kaç milisaniye içinde yanıt vereceğine dair bir tahmindir. Gecikmeniz 50 ms.nin üzerinde olursa kullanıcılar uygulamanızın durakladığını düşünebilir. [Daha fazla bilgi](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Tahmini Giriş Gecikmesi"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "İlk Zengin İçerikli Boyama, ilk metnin veya resmin boyandığı zamanı işaret eder. [Daha fazla bilgi](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "İlk Zengin İçerikli Boya"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "İlk CPU Boşta metriği, sayfanın ana iş parçacığının girişi işlemek için yeterli olduğu ilk anı işaret eder.  [Daha fazla bilgi](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "İlk CPU Boşta"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "İlk Anlamlı Boyama, bir sayfanın ana içeriğinin ne zaman görünür hale geldiğini ölçer. [Daha fazla bilgi](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "İlk Anlamlı Boya"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Etkileşime hazır olma süresi, sayfanın tamamen etkileşime hazır hale gelmesi için geçmesi gereken süreyi ifade eder. [Daha fazla bilgi](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Etkileşim Süresi"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Kullanıcılarınızın karşılaşabileceği olası maksimum İlk Giriş Gecikmesi, en uzun görevin milisaniye cinsinden süresidir. [Daha fazla bilgi](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Maksimum Olası İlk Giriş Gecikmesi"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Hız Endeksi, bir sayfa içeriğinin görsel olarak ne kadar hızlı doldurulabildiğini gösterir. [Daha fazla bilgi](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Hız İndeksi"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Görev süresi 50 ms.yi aştığında, FCP ile Etkileşime Hazır Olma Süresi arasındaki tüm dönemlerin milisaniye cinsinden toplamı."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Toplam Engellenme Süresi"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Ağ gidiş dönüş sürelerinin (RTT) performans üzerinde büyük bir etkisi vardır. Kaynağa RTT'nin fazla olması, kullanıcıya daha yakın olan sunucuların performansı iyileştirebileceğinin göstergesidir. [Daha fazla bilgi](https://hpbn.co/primer-on-latency-and-bandwidth/)."

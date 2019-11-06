@@ -52,16 +52,17 @@ class Connection {
    * Call protocol methods
    * @template {keyof LH.CrdpCommands} C
    * @param {C} method
+   * @param {string|undefined} sessionId
    * @param {LH.CrdpCommands[C]['paramsType']} paramArgs,
    * @return {Promise<LH.CrdpCommands[C]['returnType']>}
    */
-  sendCommand(method, ...paramArgs) {
+  sendCommand(method, sessionId, ...paramArgs) {
     // Reify params since we need it as a property so can't just spread again.
     const params = paramArgs.length ? paramArgs[0] : undefined;
 
     log.formatProtocol('method => browser', {method, params}, 'verbose');
     const id = ++this._lastCommandId;
-    const message = JSON.stringify({id, method, params});
+    const message = JSON.stringify({id, sessionId, method, params});
     this.sendRawMessage(message);
 
     return new Promise(resolve => {
@@ -117,7 +118,7 @@ class Connection {
     if (callback) {
       this._callbacks.delete(object.id);
 
-      return callback.resolve(Promise.resolve().then(_ => {
+      callback.resolve(Promise.resolve().then(_ => {
         if (object.error) {
           log.formatProtocol('method <= browser ERR', {method: callback.method}, 'error');
           throw LHError.fromProtocolMessage(callback.method, object.error);

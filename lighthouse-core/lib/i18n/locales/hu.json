@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "A dokumentum tartalmaz `<title>` elemet"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Az „id” attribútum értékének egyedinek kell lennie, hogy a kisegítő technológiák ne hagyják figyelmen kívül a többi előfordulást. [További információ](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Az oldal `[id]` attribútumai nem egyediek"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Az oldalon található `[id]` attribútumok egyediek"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "A képernyőolvasók a keretcímek alapján írják le a keretek tartalmát. [További információ](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "A becsült bemeneti késés annak a becsült értéke, hogy az alkalmazás mennyi idő alatt reagál – ezredmásodpercben (ms) megadva – a felhasználói interakciókra az oldalbetöltés legforgalmasabb 5 másodperces időkeretében. Ha a várakozási idő meghaladja az 50 ms-ot, a felhasználók lassúnak érezhetik az alkalmazást. [További információ](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Becsült bemeneti késés"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Az első vizuális tartalomválasz azt az időpontot jelöli, amikor a rendszer megkezdi az első szöveg vagy kép megjelenítését. [További információ](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Első, tartalommal rendelkező leképezés"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Az első processzor-üresjárat mutató az első olyan alkalmat jelöli, amikor az oldal főszálának aktivitása elég alacsonnyá vált ahhoz, hogy kezelni tudja a felhasználói interakciókat.  [További információ](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Első processzor-üresjárat"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Az első releváns vizuális válasz azt méri, hogy mikor válik láthatóvá az oldal elsődleges tartalma. [További információ](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Első releváns leképezés"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Az interaktivitásig eltelt idő az az idő, amely ahhoz szükséges, hogy az oldal teljesen interaktívvá váljon. [További információ](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Interaktivitásig eltelt idő"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Az első interakciótól számított maximális potenciális válaszkésés a leghosszabb feladat időtartama ezredmásodpercben. [További információ](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Első interakciótól számított max. potenciális késés"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "A Sebességindex mutató azt jelzi, hogy az adott oldal tartalmai milyen gyorsan válnak láthatóvá. [További információ](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Sebességindex"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Az első vizuális tartalomválasz és az interaktivitásig eltelt idő közötti minden (50 ms-nál hosszabb feladatot jelentő) periódus időtartamának összege milliszekundumban kifejezve."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Blokkolás összideje"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "A hálózati oda-vissza út ideje (round trip time, RTT) nagy hatással van a teljesítményre. Ha túl magas az RTT értéke valamelyik eredet esetében, az azt jelenti, hogy a felhasználóhoz közelebbi szerverek javíthatják a teljesítményt. [További információ](https://hpbn.co/primer-on-latency-and-bandwidth/)."

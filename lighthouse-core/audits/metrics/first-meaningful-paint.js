@@ -10,8 +10,6 @@ const i18n = require('../../lib/i18n/i18n.js');
 const ComputedFmp = require('../../computed/metrics/first-meaningful-paint.js');
 
 const UIStrings = {
-  /** The name of the metric that marks the time at which a majority of the content has been painted by the browser. Shown to users as the label for the numeric metric value. Ideally fits within a ~40 character limit. */
-  title: 'First Meaningful Paint',
   /** Description of the First Meaningful Paint (FMP) metric, which marks the time at which a majority of the content has been painted by the browser. This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'First Meaningful Paint measures when the primary content of a page is ' +
       'visible. [Learn more](https://web.dev/first-meaningful-paint).',
@@ -26,7 +24,7 @@ class FirstMeaningfulPaint extends Audit {
   static get meta() {
     return {
       id: 'first-meaningful-paint',
-      title: str_(UIStrings.title),
+      title: str_(i18n.UIStrings.firstMeaningfulPaintMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       requiredArtifacts: ['traces', 'devtoolsLogs'],

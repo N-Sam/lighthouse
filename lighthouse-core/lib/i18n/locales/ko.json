@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "문서에 `<title>` 요소가 있음"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "보조 기술에서 다른 인스턴스를 놓치지 않도록 하려면 ID 속성값이 고유해야 합니다. [자세히 알아보기](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "페이지에 있는 `[id]` 속성이 고유하지 않음"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "페이지에 있는 `[id]` 속성이 고유함"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "스크린 리더 사용자는 프레임 콘텐츠를 설명해 주는 프레임 제목을 사용합니다. [자세히 알아보기](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "예상 입력 대기시간은 페이지 로드가 가장 많은 5초 동안 앱이 사용자 입력에 응답하는 데 걸리는 시간(밀리초)의 추정치입니다. 지연 시간이 50밀리초보다 길면 사용자가 앱이 느리다고 인식할 수 있습니다. [자세히 알아보기](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "예상 입력 대기시간"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "콘텐츠가 포함된 첫 페인트는 첫 번째 텍스트 또는 이미지가 표시되는 시간을 나타냅니다. [자세히 알아보기](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "최초 만족 페인트"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "최초 CPU 유휴 상태는 페이지의 기본 스레드가 입력을 처리할 수 있을 만큼 조용한 상태가 된 첫 번째 시간을 표시합니다.  [자세히 알아보기](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "최초 CPU 유휴 상태"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "유의미한 첫 페인트는 페이지의 기본 콘텐츠가 표시되는 경우를 측정합니다. [자세히 알아보기](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "최초 유의미 페인트"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "사용할 수 있을 때까지 걸리는 시간은 완전히 페이지와 상호작용할 수 있게 될 때까지 걸리는 시간입니다. [자세히 알아보기](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "상호작용 시간"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "사용자가 경험할 수 있는 최대 첫 입력 지연 예상 시간은 가장 긴 작업의 길이(밀리초)입니다. [자세히 알아보기](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "최대 첫 입력 지연 예상 시간"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "속도 색인은 페이지 콘텐츠가 얼마나 빨리 표시되는지 보여줍니다. [자세히 알아보기](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "속도 색인"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "FCP와 상호작용 시간 사이의 모든 시간의 합으로 작업 지속 시간이 50ms를 넘으면 밀리초 단위로 표현됩니다."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "총 차단 시간"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "네트워크 왕복 시간(RTT)이 성능에 큰 영향을 줍니다. 출발지로의 RTT가 크면 서버가 사용자에게 가까울 때 성능이 향상될 수 있음을 나타냅니다. [자세히 알아보기](https://hpbn.co/primer-on-latency-and-bandwidth/)"

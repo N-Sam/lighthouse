@@ -195,18 +195,18 @@ describe('network recorder', function() {
     ).params.requestId;
 
     for (const log of devtoolsLogs) {
-      if (log.params.requestId === requestId1) log.source = {sessionId: '1', targetId: 'a'};
+      if (log.params.requestId === requestId1) log.sessionId = '1';
 
       if (log.params.requestId === requestId2 && log.method === 'Network.loadingFinished') {
-        log.source = {sessionId: '2', targetId: 'b'};
+        log.sessionId = '2';
       }
     }
 
     const records = NetworkRecorder.recordsFromLogs(devtoolsLogs);
     expect(records).toMatchObject([
-      {url: 'http://example.com', sessionId: undefined, targetId: undefined},
-      {url: 'http://iframe.com', sessionId: '1', targetId: 'a'},
-      {url: 'http://other-iframe.com', sessionId: '2', targetId: 'b'},
+      {url: 'http://example.com', sessionId: undefined},
+      {url: 'http://iframe.com', sessionId: '1'},
+      {url: 'http://other-iframe.com', sessionId: '2'},
     ]);
   });
 

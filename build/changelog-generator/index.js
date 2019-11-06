@@ -28,6 +28,19 @@ process.stderr.write(`
 
 `);
 
+const titlePrecedence = [
+  'New Audits',
+  'Core',
+  'CLI',
+  'Deps',
+  'Report',
+  'Clients',
+  'I18n',
+  'Docs',
+  'Tests',
+  'Misc',
+];
+
 const writerOpts = {
   mainTemplate,
   headerPartial,
@@ -73,23 +86,24 @@ const writerOpts = {
   groupBy: 'type',
   /** @param {{title: string}} a @param {{title: string}} b */
   commitGroupsSort: (a, b) => {
-    // put new audit on the top
-    if (a.title === 'New Audits') {
-      return -1;
-    }
-    if (b.title === 'New Audits') {
-      return 1;
+    const aIndex = titlePrecedence.indexOf(a.title);
+    const bIndex = titlePrecedence.indexOf(b.title);
+
+    // If neither value has a title with a predefined order, use an alphabetical comparison.
+    if (aIndex === -1 && bIndex === -1) {
+      return a.title.localeCompare(b.title);
     }
 
-    // put misc on the bottom
-    if (a.title === 'Misc') {
+    // If just one value has a title with a predefined order, it is greater.
+    if (aIndex === -1 && bIndex >= 0) {
       return 1;
     }
-    if (b.title === 'Misc') {
+    if (bIndex === -1 && aIndex >= 0) {
       return -1;
     }
 
-    return a.title.localeCompare(b.title);
+    // Both values have a title with a predefined order, so do a simple comparison.
+    return aIndex - bIndex;
   },
   commitsSort: ['type', 'scope'],
 };

@@ -17,6 +17,33 @@
   "lighthouse-core/audits/accessibility/aria-allowed-attr.js | title": {
     "message": "`[aria-*]` ât́t̂ŕîb́ût́êś m̂át̂ćĥ t́ĥéîŕ r̂ól̂éŝ"
   },
+  "lighthouse-core/audits/accessibility/aria-hidden-body.js | description": {
+    "message": "Âśŝíŝt́îv́ê t́êćĥńôĺôǵîéŝ, ĺîḱê śĉŕêén̂ ŕêád̂ér̂ś, ŵór̂ḱ îńĉón̂śîśt̂én̂t́l̂ý ŵh́êń `aria-hidden=\"true\"` îś ŝét̂ ón̂ t́ĥé d̂óĉúm̂én̂t́ `<body>`. [L̂éâŕn̂ ḿôŕê](https://web.dev/aria-hidden-body/)."
+  },
+  "lighthouse-core/audits/accessibility/aria-hidden-body.js | failureTitle": {
+    "message": "`[aria-hidden=\"true\"]` îś p̂ŕêśêńt̂ ón̂ t́ĥé d̂óĉúm̂én̂t́ `<body>`"
+  },
+  "lighthouse-core/audits/accessibility/aria-hidden-body.js | title": {
+    "message": "`[aria-hidden=\"true\"]` îś n̂ót̂ ṕr̂éŝén̂t́ ôń t̂h́ê d́ôćûḿêńt̂ `<body>`"
+  },
+  "lighthouse-core/audits/accessibility/aria-hidden-focus.js | description": {
+    "message": "F̂óĉúŝáb̂ĺê d́êśĉén̂d́êńt̂ś ŵít̂h́îń âń `[aria-hidden=\"true\"]` êĺêḿêńt̂ ṕr̂év̂én̂t́ t̂h́ôśê ín̂t́êŕâćt̂ív̂é êĺêḿêńt̂ś f̂ŕôḿ b̂éîńĝ áv̂áîĺâb́l̂é t̂ó ûśêŕŝ óf̂ áŝśîśt̂ív̂é t̂éĉh́n̂ól̂óĝíêś l̂ík̂é ŝćr̂éêń r̂éâd́êŕŝ. [Ĺêár̂ń m̂ór̂é](https://web.dev/aria-hidden-focus/)."
+  },
+  "lighthouse-core/audits/accessibility/aria-hidden-focus.js | failureTitle": {
+    "message": "`[aria-hidden=\"true\"]` êĺêḿêńt̂ś ĉón̂t́âín̂ f́ôćûśâb́l̂é d̂éŝćêńd̂én̂t́ŝ"
+  },
+  "lighthouse-core/audits/accessibility/aria-hidden-focus.js | title": {
+    "message": "`[aria-hidden=\"true\"]` êĺêḿêńt̂ś d̂ó n̂ót̂ ćôńt̂áîń f̂óĉúŝáb̂ĺê d́êśĉén̂d́êńt̂ś"
+  },
+  "lighthouse-core/audits/accessibility/aria-input-field-name.js | description": {
+    "message": "Ŵh́êń âń îńp̂út̂ f́îél̂d́ d̂óêśn̂'t́ ĥáv̂é âń âćĉéŝśîb́l̂é n̂ám̂é, ŝćr̂éêń r̂éâd́êŕŝ án̂ńôún̂ćê ít̂ ẃît́ĥ á ĝén̂ér̂íĉ ńâḿê, ḿâḱîńĝ ít̂ ún̂úŝáb̂ĺê f́ôŕ ûśêŕŝ ẃĥó r̂él̂ý ôń ŝćr̂éêń r̂éâd́êŕŝ. [Ĺêár̂ń m̂ór̂é](https://web.dev/aria-input-field-name/)."
+  },
+  "lighthouse-core/audits/accessibility/aria-input-field-name.js | failureTitle": {
+    "message": "ÂŔÎÁ îńp̂út̂ f́îél̂d́ŝ d́ô ńôt́ ĥáv̂é âćĉéŝśîb́l̂é n̂ám̂éŝ"
+  },
+  "lighthouse-core/audits/accessibility/aria-input-field-name.js | title": {
+    "message": "ÂŔÎÁ îńp̂út̂ f́îél̂d́ŝ h́âv́ê áĉćêśŝíb̂ĺê ńâḿêś"
+  },
   "lighthouse-core/audits/accessibility/aria-required-attr.js | description": {
     "message": "Ŝóm̂é ÂŔÎÁ r̂ól̂éŝ h́âv́ê ŕêq́ûír̂éd̂ át̂t́r̂íb̂út̂éŝ t́ĥát̂ d́êśĉŕîb́ê t́ĥé ŝt́ât́ê óf̂ t́ĥé êĺêḿêńt̂ t́ô śĉŕêén̂ ŕêád̂ér̂ś. [L̂éâŕn̂ ḿôŕê](https://web.dev/aria-required-attr/)."
   },
@@ -52,6 +79,15 @@
   },
   "lighthouse-core/audits/accessibility/aria-roles.js | title": {
     "message": "`[role]` v̂ál̂úêś âŕê v́âĺîd́"
+  },
+  "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | description": {
+    "message": "Ŵh́êń â t́ôǵĝĺê f́îél̂d́ d̂óêśn̂'t́ ĥáv̂é âń âćĉéŝśîb́l̂é n̂ám̂é, ŝćr̂éêń r̂éâd́êŕŝ án̂ńôún̂ćê ít̂ ẃît́ĥ á ĝén̂ér̂íĉ ńâḿê, ḿâḱîńĝ ít̂ ún̂úŝáb̂ĺê f́ôŕ ûśêŕŝ ẃĥó r̂él̂ý ôń ŝćr̂éêń r̂éâd́êŕŝ. [Ĺêár̂ń m̂ór̂é](https://web.dev/aria-toggle-field-label/)."
+  },
+  "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | failureTitle": {
+    "message": "ÂŔÎÁ t̂óĝǵl̂é f̂íêĺd̂ś d̂ó n̂ót̂ h́âv́ê áĉćêśŝíb̂ĺê ńâḿêś"
+  },
+  "lighthouse-core/audits/accessibility/aria-toggle-field-name.js | title": {
+    "message": "ÂŔÎÁ t̂óĝǵl̂é f̂íêĺd̂ś ĥáv̂é âćĉéŝśîb́l̂é n̂ám̂éŝ"
   },
   "lighthouse-core/audits/accessibility/aria-valid-attr-value.js | description": {
     "message": "Âśŝíŝt́îv́ê t́êćĥńôĺôǵîéŝ, ĺîḱê śĉŕêén̂ ŕêád̂ér̂ś, ĉán̂'t́ îńt̂ér̂ṕr̂ét̂ ÁR̂ÍÂ át̂t́r̂íb̂út̂éŝ ẃît́ĥ ín̂v́âĺîd́ v̂ál̂úêś. [L̂éâŕn̂ ḿôŕê](https://web.dev/aria-valid-attr-value/)."
@@ -137,14 +173,32 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "D̂óĉúm̂én̂t́ ĥáŝ á `<title>` êĺêḿêńt̂"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "T̂h́ê v́âĺûé ôf́ âń îd́ ât́t̂ŕîb́ût́ê ḿûśt̂ b́ê ún̂íq̂úê t́ô ṕr̂év̂én̂t́ ôt́ĥér̂ ín̂śt̂án̂ćêś f̂ŕôḿ b̂éîńĝ óv̂ér̂ĺôók̂éd̂ b́ŷ áŝśîśt̂ív̂é t̂éĉh́n̂ól̂óĝíêś. [L̂éâŕn̂ ḿôŕê](https://web.dev/duplicate-id/)."
+  "lighthouse-core/audits/accessibility/duplicate-id-active.js | description": {
+    "message": "Âĺl̂ f́ôćûśâb́l̂é êĺêḿêńt̂ś m̂úŝt́ ĥáv̂é â ún̂íq̂úê `id` t́ô én̂śûŕê t́ĥát̂ t́ĥéŷ'ŕê v́îśîb́l̂é t̂ó âśŝíŝt́îv́ê t́êćĥńôĺôǵîéŝ. [Ĺêár̂ń m̂ór̂é](https://web.dev/duplicate-id-active/)."
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "`[id]` ât́t̂ŕîb́ût́êś ôń t̂h́ê ṕâǵê ár̂é n̂ót̂ ún̂íq̂úê"
+  "lighthouse-core/audits/accessibility/duplicate-id-active.js | failureTitle": {
+    "message": "`[id]` ât́t̂ŕîb́ût́êś ôń âćt̂ív̂é, f̂óĉúŝáb̂ĺê él̂ém̂én̂t́ŝ ár̂é n̂ót̂ ún̂íq̂úê"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "`[id]` ât́t̂ŕîb́ût́êś ôń t̂h́ê ṕâǵê ár̂é ûńîq́ûé"
+  "lighthouse-core/audits/accessibility/duplicate-id-active.js | title": {
+    "message": "`[id]` ât́t̂ŕîb́ût́êś ôń âćt̂ív̂é, f̂óĉúŝáb̂ĺê él̂ém̂én̂t́ŝ ár̂é ûńîq́ûé"
+  },
+  "lighthouse-core/audits/accessibility/duplicate-id-aria.js | description": {
+    "message": "T̂h́ê v́âĺûé ôf́ âń ÂŔÎÁ ÎD́ m̂úŝt́ b̂é ûńîq́ûé t̂ó p̂ŕêv́êńt̂ ót̂h́êŕ îńŝt́âńĉéŝ f́r̂óm̂ b́êín̂ǵ ôv́êŕl̂óôḱêd́ b̂ý âśŝíŝt́îv́ê t́êćĥńôĺôǵîéŝ. [Ĺêár̂ń m̂ór̂é](https://web.dev/duplicate-id-aria/)."
+  },
+  "lighthouse-core/audits/accessibility/duplicate-id-aria.js | failureTitle": {
+    "message": "ÂŔÎÁ ÎD́ŝ ár̂é n̂ót̂ ún̂íq̂úê"
+  },
+  "lighthouse-core/audits/accessibility/duplicate-id-aria.js | title": {
+    "message": "ÂŔÎÁ ÎD́ŝ ár̂é ûńîq́ûé"
+  },
+  "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | description": {
+    "message": "F̂ór̂ḿ f̂íêĺd̂ś ŵít̂h́ m̂úl̂t́îṕl̂é l̂áb̂él̂ś ĉán̂ b́ê ćôńf̂úŝín̂ǵl̂ý âńn̂óûńĉéd̂ b́ŷ áŝśîśt̂ív̂é t̂éĉh́n̂ól̂óĝíêś l̂ík̂é ŝćr̂éêń r̂éâd́êŕŝ ẃĥíĉh́ ûśê éît́ĥér̂ t́ĥé f̂ír̂śt̂, t́ĥé l̂áŝt́, ôŕ âĺl̂ óf̂ t́ĥé l̂áb̂él̂ś. [L̂éâŕn̂ ḿôŕê](https://web.dev/form-field-multiple-labels/)."
+  },
+  "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | failureTitle": {
+    "message": "F̂ór̂ḿ f̂íêĺd̂ś ĥáv̂é m̂úl̂t́îṕl̂é l̂áb̂él̂ś"
+  },
+  "lighthouse-core/audits/accessibility/form-field-multiple-labels.js | title": {
+    "message": "N̂ó f̂ór̂ḿ f̂íêĺd̂ś ĥáv̂é m̂úl̂t́îṕl̂é l̂áb̂él̂ś"
   },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Ŝćr̂éêń r̂éâd́êŕ ûśêŕŝ ŕêĺŷ ón̂ f́r̂ám̂é t̂ít̂ĺêś t̂ó d̂éŝćr̂íb̂é t̂h́ê ćôńt̂én̂t́ŝ óf̂ f́r̂ám̂éŝ. [Ĺêár̂ń m̂ór̂é](https://web.dev/frame-title/)."
@@ -154,6 +208,15 @@
   },
   "lighthouse-core/audits/accessibility/frame-title.js | title": {
     "message": "`<frame>` ôŕ `<iframe>` êĺêḿêńt̂ś ĥáv̂é â t́ît́l̂é"
+  },
+  "lighthouse-core/audits/accessibility/heading-order.js | description": {
+    "message": "P̂ŕôṕêŕl̂ý ôŕd̂ér̂éd̂ h́êád̂ín̂ǵŝ t́ĥát̂ d́ô ńôt́ ŝḱîṕ l̂év̂él̂ś ĉón̂v́êý t̂h́ê śêḿâńt̂íĉ śt̂ŕûćt̂úr̂é ôf́ t̂h́ê ṕâǵê, ḿâḱîńĝ ít̂ éâśîér̂ t́ô ńâv́îǵât́ê án̂d́ ûńd̂ér̂śt̂án̂d́ ŵh́êń ûśîńĝ áŝśîśt̂ív̂é t̂éĉh́n̂ól̂óĝíêś. [L̂éâŕn̂ ḿôŕê](https://web.dev/heading-order/)."
+  },
+  "lighthouse-core/audits/accessibility/heading-order.js | failureTitle": {
+    "message": "Ĥéâd́îńĝ él̂ém̂én̂t́ŝ ár̂é n̂ót̂ ín̂ á ŝéq̂úêńt̂íâĺl̂ý-d̂éŝćêńd̂ín̂ǵ ôŕd̂ér̂"
+  },
+  "lighthouse-core/audits/accessibility/heading-order.js | title": {
+    "message": "Ĥéâd́îńĝ él̂ém̂én̂t́ŝ áp̂ṕêár̂ ín̂ á ŝéq̂úêńt̂íâĺl̂ý-d̂éŝćêńd̂ín̂ǵ ôŕd̂ér̂"
   },
   "lighthouse-core/audits/accessibility/html-has-lang.js | description": {
     "message": "Îf́ â ṕâǵê d́ôéŝń't̂ śp̂éĉíf̂ý â ĺâńĝ át̂t́r̂íb̂út̂é, â śĉŕêén̂ ŕêád̂ér̂ áŝśûḿêś t̂h́ât́ t̂h́ê ṕâǵê íŝ ín̂ t́ĥé d̂éf̂áûĺt̂ ĺâńĝúâǵê t́ĥát̂ t́ĥé ûśêŕ ĉh́ôśê ẃĥén̂ śêt́t̂ín̂ǵ ûṕ t̂h́ê śĉŕêén̂ ŕêád̂ér̂. Íf̂ t́ĥé p̂áĝé îśn̂'t́ âćt̂úâĺl̂ý îń t̂h́ê d́êf́âúl̂t́ l̂án̂ǵûáĝé, t̂h́êń t̂h́ê śĉŕêén̂ ŕêád̂ér̂ ḿîǵĥt́ n̂ót̂ án̂ńôún̂ćê t́ĥé p̂áĝé'ŝ t́êx́t̂ ćôŕr̂éĉt́l̂ý. [L̂éâŕn̂ ḿôŕê](https://web.dev/html-has-lang/)."
@@ -779,50 +842,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Êśt̂ím̂át̂éd̂ Ín̂ṕût́ L̂át̂én̂ćŷ íŝ án̂ éŝt́îḿât́ê óf̂ h́ôẃ l̂ón̂ǵ ŷóûŕ âṕp̂ t́âḱêś t̂ó r̂éŝṕôńd̂ t́ô úŝér̂ ín̂ṕût́, îń m̂íl̂ĺîśêćôńd̂ś, d̂úr̂ín̂ǵ t̂h́ê b́ûśîéŝt́ 5ŝ ẃîńd̂óŵ óf̂ ṕâǵê ĺôád̂. Íf̂ ýôúr̂ ĺât́êńĉý îś ĥíĝh́êŕ t̂h́âń 50 m̂ś, ûśêŕŝ ḿâý p̂ér̂ćêív̂é ŷóûŕ âṕp̂ áŝ ĺâǵĝý. [L̂éâŕn̂ ḿôŕê](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Êśt̂ím̂át̂éd̂ Ín̂ṕût́ L̂át̂én̂ćŷ"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "F̂ír̂śt̂ Ćôńt̂én̂t́f̂úl̂ Ṕâín̂t́ m̂ár̂ḱŝ t́ĥé t̂ím̂é ât́ ŵh́îćĥ t́ĥé f̂ír̂śt̂ t́êx́t̂ ór̂ ím̂áĝé îś p̂áîńt̂éd̂. [Ĺêár̂ń m̂ór̂é](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "F̂ír̂śt̂ Ćôńt̂én̂t́f̂úl̂ Ṕâín̂t́"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "F̂ír̂śt̂ ĆP̂Ú Îd́l̂é m̂ár̂ḱŝ t́ĥé f̂ír̂śt̂ t́îḿê át̂ ẃĥíĉh́ t̂h́ê ṕâǵê'ś m̂áîń t̂h́r̂éâd́ îś q̂úîét̂ én̂óûǵĥ t́ô h́âńd̂ĺê ín̂ṕût́.  [L̂éâŕn̂ ḿôŕê](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "F̂ír̂śt̂ ĆP̂Ú Îd́l̂é"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "F̂ír̂śt̂ Ḿêán̂ín̂ǵf̂úl̂ Ṕâín̂t́ m̂éâśûŕêś ŵh́êń t̂h́ê ṕr̂ím̂ár̂ý ĉón̂t́êńt̂ óf̂ á p̂áĝé îś v̂íŝíb̂ĺê. [Ĺêár̂ń m̂ór̂é](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "F̂ír̂śt̂ Ḿêán̂ín̂ǵf̂úl̂ Ṕâín̂t́"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "T̂ím̂é t̂ó îńt̂ér̂áĉt́îv́ê íŝ t́ĥé âḿôún̂t́ ôf́ t̂ím̂é ît́ t̂ák̂éŝ f́ôŕ t̂h́ê ṕâǵê t́ô b́êćôḿê f́ûĺl̂ý îńt̂ér̂áĉt́îv́ê. [Ĺêár̂ń m̂ór̂é](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "T̂ím̂é t̂ó Îńt̂ér̂áĉt́îv́ê"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
-    "message": "T̂h́ê ḿâx́îḿûḿ p̂ót̂én̂t́îál̂ F́îŕŝt́ Îńp̂út̂ D́êĺâý t̂h́ât́ ŷóûŕ ûśêŕŝ ćôúl̂d́ êx́p̂ér̂íêńĉé îś t̂h́ê d́ûŕât́îón̂, ín̂ ḿîĺl̂íŝéĉón̂d́ŝ, óf̂ t́ĥé l̂ón̂ǵêśt̂ t́âśk̂. [Ĺêár̂ń m̂ór̂é](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "M̂áx̂ Ṕôt́êńt̂íâĺ F̂ír̂śt̂ Ín̂ṕût́ D̂él̂áŷ"
+    "message": "T̂h́ê ḿâx́îḿûḿ p̂ót̂én̂t́îál̂ F́îŕŝt́ Îńp̂út̂ D́êĺâý t̂h́ât́ ŷóûŕ ûśêŕŝ ćôúl̂d́ êx́p̂ér̂íêńĉé îś t̂h́ê d́ûŕât́îón̂, ín̂ ḿîĺl̂íŝéĉón̂d́ŝ, óf̂ t́ĥé l̂ón̂ǵêśt̂ t́âśk̂. [Ĺêár̂ń m̂ór̂é](https://web.dev/lighthouse-max-potential-fid)."
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Ŝṕêéd̂ Ín̂d́êx́ ŝh́ôẃŝ h́ôẃ q̂úîćk̂ĺŷ t́ĥé ĉón̂t́êńt̂ś ôf́ â ṕâǵê ár̂é v̂íŝíb̂ĺŷ ṕôṕûĺât́êd́. [L̂éâŕn̂ ḿôŕê](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Ŝṕêéd̂ Ín̂d́êx́"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
-    "message": "Ŝúm̂ óf̂ ál̂ĺ t̂ím̂é p̂ér̂íôd́ŝ b́êt́ŵéêń F̂ĆP̂ án̂d́ T̂ím̂é t̂ó Îńt̂ér̂áĉt́îv́ê, ẃĥén̂ t́âśk̂ ĺêńĝt́ĥ éx̂ćêéd̂éd̂ 50ḿŝ, éx̂ṕr̂éŝśêd́ îń m̂íl̂ĺîśêćôńd̂ś."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "T̂ót̂ál̂ B́l̂óĉḱîńĝ T́îḿê"
+    "message": "Ŝúm̂ óf̂ ál̂ĺ t̂ím̂é p̂ér̂íôd́ŝ b́êt́ŵéêń F̂ĆP̂ án̂d́ T̂ím̂é t̂ó Îńt̂ér̂áĉt́îv́ê, ẃĥén̂ t́âśk̂ ĺêńĝt́ĥ éx̂ćêéd̂éd̂ 50ḿŝ, éx̂ṕr̂éŝśêd́ îń m̂íl̂ĺîśêćôńd̂ś. [L̂éâŕn̂ ḿôŕê](https://web.dev/lighthouse-total-blocking-time)."
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "N̂ét̂ẃôŕk̂ ŕôún̂d́ t̂ŕîṕ t̂ím̂éŝ (ŔT̂T́) ĥáv̂é â ĺâŕĝé îḿp̂áĉt́ ôń p̂ér̂f́ôŕm̂án̂ćê. Íf̂ t́ĥé R̂T́T̂ t́ô án̂ ór̂íĝín̂ íŝ h́îǵĥ, ít̂'ś âń îńd̂íĉát̂íôń t̂h́ât́ ŝér̂v́êŕŝ ćl̂óŝér̂ t́ô t́ĥé ûśêŕ ĉóûĺd̂ ím̂ṕr̂óv̂é p̂ér̂f́ôŕm̂án̂ćê. [Ĺêár̂ń m̂ór̂é](https://hpbn.co/primer-on-latency-and-bandwidth/)."
@@ -1358,11 +1397,29 @@
   "lighthouse-core/lib/i18n/i18n.js | documentResourceType": {
     "message": "D̂óĉúm̂én̂t́"
   },
+  "lighthouse-core/lib/i18n/i18n.js | estimatedInputLatencyMetric": {
+    "message": "Êśt̂ím̂át̂éd̂ Ín̂ṕût́ L̂át̂én̂ćŷ"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | firstContentfulPaintMetric": {
+    "message": "F̂ír̂śt̂ Ćôńt̂én̂t́f̂úl̂ Ṕâín̂t́"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | firstCPUIdleMetric": {
+    "message": "F̂ír̂śt̂ ĆP̂Ú Îd́l̂é"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | firstMeaningfulPaintMetric": {
+    "message": "F̂ír̂śt̂ Ḿêán̂ín̂ǵf̂úl̂ Ṕâín̂t́"
+  },
   "lighthouse-core/lib/i18n/i18n.js | fontResourceType": {
     "message": "F̂ón̂t́"
   },
   "lighthouse-core/lib/i18n/i18n.js | imageResourceType": {
     "message": "Îḿâǵê"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | interactiveMetric": {
+    "message": "T̂ím̂é t̂ó Îńt̂ér̂áĉt́îv́ê"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | maxPotentialFIDMetric": {
+    "message": "M̂áx̂ Ṕôt́êńt̂íâĺ F̂ír̂śt̂ Ín̂ṕût́ D̂él̂áŷ"
   },
   "lighthouse-core/lib/i18n/i18n.js | mediaResourceType": {
     "message": "M̂éd̂íâ"
@@ -1379,11 +1436,17 @@
   "lighthouse-core/lib/i18n/i18n.js | seconds": {
     "message": "{timeInMs, number, seconds} ŝ"
   },
+  "lighthouse-core/lib/i18n/i18n.js | speedIndexMetric": {
+    "message": "Ŝṕêéd̂ Ín̂d́êx́"
+  },
   "lighthouse-core/lib/i18n/i18n.js | stylesheetResourceType": {
     "message": "Ŝt́ŷĺêśĥéêt́"
   },
   "lighthouse-core/lib/i18n/i18n.js | thirdPartyResourceType": {
     "message": "T̂h́îŕd̂-ṕâŕt̂ý"
+  },
+  "lighthouse-core/lib/i18n/i18n.js | totalBlockingTimeMetric": {
+    "message": "T̂ót̂ál̂ B́l̂óĉḱîńĝ T́îḿê"
   },
   "lighthouse-core/lib/i18n/i18n.js | totalResourceType": {
     "message": "T̂ót̂ál̂"

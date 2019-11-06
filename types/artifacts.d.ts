@@ -553,6 +553,46 @@ declare global {
         /** The package name on NPM, if it exists. */
         npm?: string;
       }
+
+      export interface TimingSummary {
+        firstContentfulPaint: number | undefined;
+        firstContentfulPaintTs: number | undefined;
+        firstMeaningfulPaint: number | undefined;
+        firstMeaningfulPaintTs: number | undefined;
+        largestContentfulPaint: number | undefined;
+        largestContentfulPaintTs: number | undefined;
+        firstCPUIdle: number | undefined;
+        firstCPUIdleTs: number | undefined;
+        interactive: number | undefined;
+        interactiveTs: number | undefined;
+        speedIndex: number | undefined;
+        speedIndexTs: number | undefined;
+        estimatedInputLatency: number | undefined;
+        estimatedInputLatencyTs: number | undefined;
+        totalBlockingTime: number | undefined;
+        observedNavigationStart: number | undefined;
+        observedNavigationStartTs: number | undefined;
+        observedFirstPaint: number | undefined;
+        observedFirstPaintTs: number | undefined;
+        observedFirstContentfulPaint: number | undefined;
+        observedFirstContentfulPaintTs: number | undefined;
+        observedFirstMeaningfulPaint: number | undefined;
+        observedFirstMeaningfulPaintTs: number | undefined;
+        observedLargestContentfulPaint: number | undefined;
+        observedLargestContentfulPaintTs: number | undefined;
+        observedTraceEnd: number | undefined;
+        observedTraceEndTs: number | undefined;
+        observedLoad: number | undefined;
+        observedLoadTs: number | undefined;
+        observedDomContentLoaded: number | undefined;
+        observedDomContentLoadedTs: number | undefined;
+        observedFirstVisualChange: number | undefined;
+        observedFirstVisualChangeTs: number | undefined;
+        observedLastVisualChange: number | undefined;
+        observedLastVisualChangeTs: number | undefined;
+        observedSpeedIndex: number | undefined;
+        observedSpeedIndexTs: number | undefined;
+      }
     }
   }
 }

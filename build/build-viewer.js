@@ -10,13 +10,13 @@ const path = require('path');
 const {promisify} = require('util');
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
+const mkdir = fs.promises.mkdir;
 
 const browserify = require('browserify');
 const cpy = require('cpy');
 const ghPages = require('gh-pages');
 const glob = promisify(require('glob'));
 const lighthousePackage = require('../package.json');
-const makeDir = require('make-dir');
 const rimraf = require('rimraf');
 const terser = require('terser');
 const {minifyFileTransform} = require('./build-utils.js');
@@ -59,7 +59,7 @@ async function loadFiles(pattern) {
  */
 async function safeWriteFileAsync(filePath, data) {
   const fileDir = path.dirname(filePath);
-  await makeDir(fileDir);
+  await mkdir(fileDir, {recursive: true});
   return writeFileAsync(filePath, data);
 }
 

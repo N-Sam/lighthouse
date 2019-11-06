@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Document bevat een `<title>`-element"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "De waarde van een id-kenmerk moet uniek zijn om te voorkomen dat andere instanties over het hoofd worden gezien door hulptechnologieën. [Meer informatie](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "De `[id]`-kenmerken op de pagina zijn niet uniek"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "De `[id]`-kenmerken op de pagina zijn uniek"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Gebruikers van een schermlezer zijn afhankelijk van frametitels die de content van de frames beschrijven. [Meer informatie](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Geschatte wachttijd voor invoer is een schatting van de tijd die je app nodig heeft om te reageren op gebruikersinvoer (in milliseconden) gemeten voor de drukste periode van 5 seconden tijdens het laden van de pagina. Als de wachttijd langer dan 50 ms is, kunnen gebruikers je app als traag beschouwen. [Meer informatie](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Geschatte invoerwachttijd"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "'Eerste tekenbewerking met content' (FCP) geeft het tijdstip aan waarop de eerste tekst of afbeelding wordt weergegeven. [Meer informatie](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Eerste weergave met content (FCP)"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "'Eerste keer dat CPU inactief was' geeft de eerste keer aan dat de primaire thread van de pagina rustig genoeg was om invoer te verwerken.  [Meer informatie](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Eerste keer dat CPU inactief was"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "'Eerste nuttige weergave' (FMP) meet wanneer de primaire content van een pagina zichtbaar is. [Meer informatie](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Eerste nuttige weergave (FMP)"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Tijd tot interactief is de hoeveelheid tijd die nodig is voordat een pagina volledig interactief is. [Meer informatie](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Tijd tot interactief"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "De maximale potentiële vertraging voor de eerste invoer die gebruikers kunnen ervaren, is de duur (in milliseconden) van de langste taak. [Meer informatie](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Max. potentiële eerste invoervertraging"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Snelheidsindex laat zien hoe snel de content van een pagina zichtbaar is. [Meer informatie](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Snelheidsindex"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Som van alle perioden tussen 'Eerste tekenbewerking met content' (FCP) en 'Tijd tot interactief', wanneer de taaklengte langer duurt dan 50 ms, aangegeven in milliseconden."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Totale geblokkeerde tijd"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Retourtijden (RTT) van netwerken hebben een grote invloed op de prestaties. Een hoge RTT naar een beginpunt geeft aan dat de prestaties van servers dichter bij de gebruiker kunnen worden verbeterd. [Meer informatie](https://hpbn.co/primer-on-latency-and-bandwidth/)"

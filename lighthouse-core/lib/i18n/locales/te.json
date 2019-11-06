@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "పత్రంలో '`<title>`' మూలకం ఉంది"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "సహాయకర సాంకేతిక పరిజ్ఞానాల ద్వారా ఇతర సందర్భాలు విస్మరించబడకుండా నిరోధించడానికి id లక్షణం విలువ ప్రత్యేకంగా ఉండాలి. [మరింత తెలుసుకోండి](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "పేజీలోని ``[id]`` లక్షణాలు విశిష్ఠమైనవి కావు"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "పేజీలోని ``[id]`` లక్షణాలు విశిష్ఠంగా ఉన్నాయి"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "స్క్రీన్ రీడర్ వినియోగదారులు ఫ్రేమ్‌ల కంటెంట్‌లను వివరించడానికి ఫ్రేమ్ శీర్షికలపై ఆధారపడతారు. [మరింత తెలుసుకోండి](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "పేజీ లోడ్‌కు అత్యంత రద్దీ అయిన 5 సెకన్ల విండో సమయంలో, వినియోగదారు ఇన్‌పుట్‌కు ప్రతిస్పందించడానికి, మిల్లీ సెకన్లలో, మీ యాప్ తీసుకునే సమయం యొక్క అంచనాను 'అంచనా వేసిన ఇన్‌పుట్ ప్రతిస్పందన సమయం' అని అంటారు. మీ ప్రతిస్పందన సమయం 50 మిల్లీ సెక‌న్ల‌ కన్నా ఎక్కువ అయితే, మీ యాప్ వేగవంతంగా పని చేయట్లేదని వినియోగదారులు భావించవచ్చు. [మరింత తెలుసుకోండి](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "అంచనా వేయబడిన ఇన్‌పుట్ ప్రతిస్పందన సమయం"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "మొదటి కంటెంట్ సహిత పెయింట్ ఏదైనా వచనం లేదా చిత్రం మొదటిసారి పెయింట్ చేయబడిన సమయాన్ని గుర్తిస్తుంది. [మరింత తెలుసుకోండి](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "మొదటి కంటెంట్ సహిత పెయింట్"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "'మొదటి CPU ఖాళీ సమయం' కొలమానం, మొదటి సారి పేజీ యొక్క ప్రధాన థ్రెడ్ ఇన్‌పుట్‌ను నిర్వహించడానికి తీసుకున్న సమయాన్ని గుర్తిస్తుంది.  [మరింత తెలుసుకోండి](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU మొదటి ఖాళీ సమయం"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "ఒక పేజీ ప్రాథమిక కంటెంట్ ఎప్పుడు కనిపించింది అనేదానికి, మొదటి అర్ధవంతమైన పెయింట్ ఒక కొలమానం. [మరింత తెలుసుకోండి](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "మొదటి అర్థవంతమైన పెయింట్"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "పరస్పర చర్య చేయడానికి పేజీ పూర్తిగా సిద్ధం అయ్యేందుకు పట్టే సమయాన్ని 'పేజీలో పూర్తి పరస్పర చర్యకు పట్టే సమయం' అంటారు. [మరింత తెలుసుకోండి](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "పేజీలో పూర్తి పరస్పర చర్యకు పట్టే సమయం"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "మీ వినియోగదారులు ఎదుర్కోగల గరిష్ఠ మొదటి ఇన్‌పుట్ ఆలస్యం అన్నది సుదీర్ఘ టాస్క్‌లో మిల్లీసెకన్ల వ్యవధిలో ఉంటుంది. [మరింత తెలుసుకోండి](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "మొదటి ఇన్‌పుట్ ఆలస్య గరిష్ఠ వ్యవధి"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "వేగం సూచిక అనేది, ఒక పేజీలోని కంటెంట్‌లు ఎంత వేగంగా ప్రత్యక్షంగా చూపించబడతాయో తెలియజేస్తుంది. [మరింత తెలుసుకోండి](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "వేగం సూచిక"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "టాస్క్ వ్యవధి 50 మిల్లీసెకన్లు మించిపోయినప్పుడు FCP మరియు పేజీలో పూర్తి పరస్పర చర్యకు పట్టే సమయం మధ్య వేచి ఉండాల్సిన మొత్తం కాలవ్యవధి మిల్లీసెకన్లలో పేర్కొనబడుతుంది."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "మొత్తం బ్లాక్ చేయబడే సమయం"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "నెట్‌వర్క్ రౌండ్ ట్రిప్ సమయాలు (RTT) పనితీరుపై తీవ్రమైన ప్రభావం చూపుతాయి. మూలానికి RTT ఎక్కువగా ఉంటే, వినియోగదారుకు దగ్గరగా ఉన్న సర్వర్‌ల పనితీరు మెరుగ్గా ఉండవచ్చని సంకేతం. [మరింత తెలుసుకోండి](https://hpbn.co/primer-on-latency-and-bandwidth/)."

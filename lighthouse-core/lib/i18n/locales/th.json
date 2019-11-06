@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "เอกสารมีองค์ประกอบ `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "ค่าของแอตทริบิวต์รหัสต้องไม่ซ้ำกันเพื่อป้องกันไม่ให้เทคโนโลยีอำนวยความสะดวกมองข้ามอินสแตนซ์อื่นๆ [ดูข้อมูลเพิ่มเติม](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "แอตทริบิวต์ `[id]` ในหน้าเว็บซ้ำกัน"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "แอตทริบิวต์ `[id]` ในหน้าเว็บไม่ซ้ำกัน"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "ผู้ใช้โปรแกรมอ่านหน้าจอต้องใช้ชื่อเฟรมเพื่ออธิบายเนื้อหาของเฟรม [ดูข้อมูลเพิ่มเติม](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "เวลาตอบสนองต่ออินพุตโดยประมาณเป็นระยะเวลาโดยประมาณที่แอปใช้เพื่อตอบสนองอินพุตของผู้ใช้ระหว่างการโหลดหน้าเว็บในกรอบเวลา 5 วินาทีที่ทำงานหนักที่สุด มีหน่วยเป็นมิลลิวินาที หากเวลาในการตอบสนองนานกว่า 50 มิลลิวินาที ผู้ใช้อาจรู้สึกว่าแอปช้า [ดูข้อมูลเพิ่มเติม](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "เวลาในการตอบสนองต่ออินพุตโดยประมาณ"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "First Contentful Paint ระบุเวลาที่มีการแสดงผลข้อความหรือรูปภาพครั้งแรก [ดูข้อมูลเพิ่มเติม](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "การแสดงผลที่มีเนื้อหาเต็มครั้งแรก"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "First CPU Idle ระบุครั้งแรกที่เทรดหลักของหน้าเว็บว่างพอที่จะจัดการกับอินพุต  [ดูข้อมูลเพิ่มเติม](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU ไม่ได้ใช้งานครั้งแรก"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "การแสดงผลที่มีความหมายครั้งแรกวัดเมื่อเนื้อหาหลักของหน้าเว็บปรากฏ [ดูข้อมูลเพิ่มเติม](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "การแสดงผลที่มีความหมายครั้งแรก"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "เวลาในการตอบสนองคือระยะเวลาที่หน้าเว็บใช้ในการตอบสนองอย่างสมบูรณ์ [ดูข้อมูลเพิ่มเติม](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "เวลาในการโต้ตอบ"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "First Input Delay สูงสุดที่อาจเกิดขึ้นซึ่งผู้ใช้อาจเจอคือระยะเวลาของงานที่ยาวที่สุดเป็นมิลลิวินาที [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "First Input Delay สูงสุดที่อาจเกิดขึ้น"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "ดัชนีความเร็วแสดงให้เห็นความเร็วที่เนื้อหาของหน้าปรากฏจนดูสมบูรณ์ [ดูข้อมูลเพิ่มเติม](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "ดัชนีความเร็ว"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "ผลรวมช่วงเวลาทั้งหมดระหว่าง FCP และเวลาในการตอบสนอง เมื่อความยาวของงานเกิน 50ms หน่วยเป็นมิลลิวินาที"
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "เวลาที่บล็อกทั้งหมด"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "ระยะเวลารับส่งข้อมูล (RTT) ของเครือข่ายมีผลกระทบอย่างมากต่อประสิทธิภาพ หากต้นทางมี RTT สูง แสดงว่าเซิร์ฟเวอร์ที่อยู่ใกล้กับผู้ใช้มากกว่าอาจช่วยปรับปรุงประสิทธิภาพได้ [ดูข้อมูลเพิ่มเติม](https://hpbn.co/primer-on-latency-and-bandwidth/)"

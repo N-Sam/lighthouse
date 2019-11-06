@@ -24,6 +24,16 @@
         aria-checked="true">
       </div>
     </section>
+    <p>aria-hidden-focus</p>
+    <section>
+      <div id="aria-hidden-focus" aria-hidden="true">
+        <button>Focusable Button</button>
+      </div>
+    </section>
+    <p>aria-input-field-name</p>
+    <section>
+      <div id="aria-input-field-name" role="textbox">text-in-a-box</div>
+    </section>
     <p>aria-required-attr</p>
     <section>
       <div
@@ -96,14 +106,31 @@
         <dd></dd>
       </div>
     </section>
-    <p>duplicate-id</p>
+    <p>duplicate-id-active</p>
     <section>
-      <div id="duplicate-id"></div>
-      <div id="duplicate-id"></div>
+      <textarea id="duplicate-id-active" aria-label="text1"></textarea>
+      <textarea id="duplicate-id-active" aria-label="text2"></textarea>
+    </section>
+    <p>duplicate-id-aria</p>
+    <section>
+      <div id="duplicate-id-aria" class="duplicate-id-aria"></span>
+      <div id="duplicate-id-aria"></div>
+      <div aria-labelledby="duplicate-id-aria"></div>
+    </section>
+    <p>form-field-multiple-labels</p>
+    <section>
+      <label for="form-field-multiple-labels" id="label1">label1</label>
+      <label for="form-field-multiple-labels">label2</label>
+      <input type="checkbox" id="form-field-multiple-labels" />
     </section>
     <p>frame-title</p>
     <section>
       <iframe id="frame-title"></iframe>
+    </section>
+    <p>heading-order</p>
+    <section>
+      <h1>top header</h1>
+      <h3>sub-sub-header</h3>
     </section>
     <p>image-alt</p>
     <section>

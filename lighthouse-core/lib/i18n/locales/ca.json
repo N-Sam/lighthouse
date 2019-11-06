@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "El document té un element `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "El valor d'un atribut d'identificador ha de ser únic per impedir que les tecnologies d'assistència no passin per alt altres instàncies. [Obtén més informació](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Els atributs `[id]` de la pàgina no són únics"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Els atributs `[id]` de la pàgina són únics"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Els usuaris de lectors de pantalla depenen dels títols dels marcs perquè en descriguin el contingut. [Obtén més informació](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "La latència estimada d'una acció és un càlcul de quant tarda en mil·lisegons la teva aplicació a respondre a una acció de l'usuari durant el període de 5 segons amb més càrregues de pàgines. Si la latència és superior a 50 ms, és possible que els usuaris considerin que l'aplicació és lenta. [Obtén més informació](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Latència estimada de les accions"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "La mètrica Primera renderització de contingut marca el moment en què es renderitza el primer text o la primera imatge. [Obtén més informació](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Primera renderització de contingut"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "La mètrica Primera inactivitat de la CPU marca el primer moment en què el fil principal de la pàgina està suficientment inactiu per gestionar accions.  [Obtén més informació](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Primera inactivitat de la CPU"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "La mètrica Primera renderització significativa mesura el moment en què el contingut principal d'una pàgina és visible. [Obtén més informació](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Primera renderització significativa"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "La mètrica Temps fins que és interactiva és el que tarda la pàgina a fer-se completament interactiva. [Obtén més informació](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Temps fins que és interactiva"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "El retard potencial màxim respecte a la primera interacció que els usuaris es poden trobar és la durada, en mil·lisegons, de la tasca més llarga. [Obtén més informació](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Retard potencial màxim respecte a la primera interacció"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "L'índex de velocitat mostra la rapidesa amb què s'emplena el contingut d'una pàgina. [Obtén més informació](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Índex de velocitat"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "La suma de tots els períodes de temps entre l'FCP i el Temps fins que és interactiva, quan la llargada de la tasca ha superat els 50 ms, expressada en mil·lisegons."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Durada total del bloqueig"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Els temps d'anada i tornada a la xarxa afecten considerablement el rendiment. Si el temps d'anada i tornada a un origen és llarg, indica que els servidors de més a prop de l'usuari podrien millorar el rendiment. [Obtén més informació](https://hpbn.co/primer-on-latency-and-bandwidth/)."

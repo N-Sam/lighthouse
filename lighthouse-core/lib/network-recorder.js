@@ -185,15 +185,16 @@ class NetworkRecorder extends EventEmitter {
   // DevTools SDK network layer.
 
   /**
-   * @param {{params: LH.Crdp.Network.RequestWillBeSentEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.RequestWillBeSentEvent, sessionId?: string}} event
    */
   onRequestWillBeSent(event) {
     const data = event.params;
-    const originalRequest = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const originalRequest = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     // This is a simple new request, create the NetworkRequest object and finish.
     if (!originalRequest) {
       const request = new NetworkRequest();
       request.onRequestWillBeSent(data);
+      request.sessionId = event.sessionId;
       this.onRequestStarted(request);
       return;
     }
@@ -225,63 +226,63 @@ class NetworkRecorder extends EventEmitter {
   }
 
   /**
-   * @param {{params: LH.Crdp.Network.RequestServedFromCacheEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.RequestServedFromCacheEvent, sessionId?: string}} event
    */
   onRequestServedFromCache(event) {
     const data = event.params;
-    const request = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
     request.onRequestServedFromCache();
   }
 
   /**
-   * @param {{params: LH.Crdp.Network.ResponseReceivedEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.ResponseReceivedEvent, sessionId?: string}} event
    */
   onResponseReceived(event) {
     const data = event.params;
-    const request = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
     request.onResponseReceived(data);
   }
 
   /**
-   * @param {{params: LH.Crdp.Network.DataReceivedEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.DataReceivedEvent, sessionId?: string}} event
    */
   onDataReceived(event) {
     const data = event.params;
-    const request = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
     request.onDataReceived(data);
   }
 
   /**
-   * @param {{params: LH.Crdp.Network.LoadingFinishedEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.LoadingFinishedEvent, sessionId?: string}} event
    */
   onLoadingFinished(event) {
     const data = event.params;
-    const request = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
     request.onLoadingFinished(data);
     this.onRequestFinished(request);
   }
 
   /**
-   * @param {{params: LH.Crdp.Network.LoadingFailedEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.LoadingFailedEvent, sessionId?: string}} event
    */
   onLoadingFailed(event) {
     const data = event.params;
-    const request = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
     request.onLoadingFailed(data);
     this.onRequestFinished(request);
   }
 
   /**
-   * @param {{params: LH.Crdp.Network.ResourceChangedPriorityEvent, source?: LH.Protocol.RawSource}} event
+   * @param {{params: LH.Crdp.Network.ResourceChangedPriorityEvent, sessionId?: string}} event
    */
   onResourceChangedPriority(event) {
     const data = event.params;
-    const request = this._findRealRequestAndSetSource(data.requestId, event.source);
+    const request = this._findRealRequestAndSetSession(data.requestId, event.sessionId);
     if (!request) return;
     request.onResourceChangedPriority(data);
   }
@@ -310,10 +311,10 @@ class NetworkRecorder extends EventEmitter {
    * message is referring.
    *
    * @param {string} requestId
-   * @param {LH.Protocol.RawSource|undefined} source
+   * @param {string|undefined} sessionId
    * @return {NetworkRequest|undefined}
    */
-  _findRealRequestAndSetSource(requestId, source) {
+  _findRealRequestAndSetSession(requestId, sessionId) {
     let request = this._recordsById.get(requestId);
     if (!request || !request.isValid) return undefined;
 
@@ -321,7 +322,8 @@ class NetworkRecorder extends EventEmitter {
       request = request.redirectDestination;
     }
 
-    request.setSource(source);
+    request.setSession(sessionId);
+
     return request;
   }
 

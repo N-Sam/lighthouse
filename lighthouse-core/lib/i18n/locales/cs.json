@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokument obsahuje prvek `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Aby asistenční technologie nepřehlédly další výskyty, hodnota atributu id musí být jedinečná. [Další informace](https://web.dev/duplicate-id/)"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Atributy `[id]` na stránce nejsou jedinečné"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Atributy `[id]` na stránce jsou jedinečné"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Čtečky obrazovek obvykle k popisu obsahu rámců používají jejich atributy title. [Další informace](https://web.dev/frame-title/)"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Odhadovaná latence vstupu udává, jak dlouho (v milisekundách) bude aplikaci během nejvytíženějších pěti sekund při načítání stránky odhadem trvat reakce na uživatelský vstup. Pokud je latence větší než 50 ms, mohou uživatelé chování aplikace vnímat jako přerušované. [Další informace](https://web.dev/estimated-input-latency)"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Odhadovaná latence vstupu"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "První vykreslení obsahu je okamžik vykreslení prvního textu nebo obrázku. [Další informace](https://web.dev/first-contentful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "První vykreslení obsahu"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "První nečinnost procesoru udává čas, kdy je hlavní podproces stránky dostatečně nečinný na to, aby bylo možné zpracovat vstup.  [Další informace](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "První nečinnost procesoru"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "První smysluplné vykreslení udává, kdy začne být viditelný primární obsah stránky. [Další informace](https://web.dev/first-meaningful-paint)"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "První smysluplné vykreslení"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Doba do interaktivity udává, jak dlouho trvá, než stránka začne být plně interaktivní. [Další informace](https://web.dev/interactive)"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Doba do interaktivity"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Maximální potenciální prodleva prvního vstupu, kterou by uživatelé mohli pocítit, je trvání nejdelší úlohy (v milisekundách). [Další informace](https://developers.google.com/web/updates/2018/05/first-input-delay)"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Maximální potenciální prodleva prvního vstupu"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Index rychlosti ukazuje, jak rychle se viditelně vyplní obsah stránky. [Další informace](https://web.dev/speed-index)"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Index rychlosti"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Součet všech dob (uvedený v milisekundách) mezi prvním vykreslením obsahu a dobou do interaktivity, u nichž délka úlohy překročila 50 ms."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Celková doba blokování"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Na výkon má velký vliv doba odezvy sítě. Pokud je doba odezvy připojení ke zdroji vysoká, značí to, že by se výkon mohl zlepšit při použití serverů méně vzdálených od uživatele. [Další informace](https://hpbn.co/primer-on-latency-and-bandwidth/)"

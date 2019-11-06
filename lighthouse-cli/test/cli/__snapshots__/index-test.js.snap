@@ -151,6 +151,15 @@ Object {
       "path": "accessibility/aria-allowed-attr",
     },
     Object {
+      "path": "accessibility/aria-hidden-body",
+    },
+    Object {
+      "path": "accessibility/aria-hidden-focus",
+    },
+    Object {
+      "path": "accessibility/aria-input-field-name",
+    },
+    Object {
       "path": "accessibility/aria-required-attr",
     },
     Object {
@@ -161,6 +170,9 @@ Object {
     },
     Object {
       "path": "accessibility/aria-roles",
+    },
+    Object {
+      "path": "accessibility/aria-toggle-field-name",
     },
     Object {
       "path": "accessibility/aria-valid-attr-value",
@@ -190,10 +202,19 @@ Object {
       "path": "accessibility/document-title",
     },
     Object {
-      "path": "accessibility/duplicate-id",
+      "path": "accessibility/duplicate-id-active",
+    },
+    Object {
+      "path": "accessibility/duplicate-id-aria",
+    },
+    Object {
+      "path": "accessibility/form-field-multiple-labels",
     },
     Object {
       "path": "accessibility/frame-title",
+    },
+    Object {
+      "path": "accessibility/heading-order",
     },
     Object {
       "path": "accessibility/html-has-lang",
@@ -260,9 +281,6 @@ Object {
     },
     Object {
       "path": "accessibility/manual/focusable-controls",
-    },
-    Object {
-      "path": "accessibility/manual/heading-levels",
     },
     Object {
       "path": "accessibility/manual/interactive-element-affordance",
@@ -403,6 +421,21 @@ Object {
         },
         Object {
           "group": "a11y-aria",
+          "id": "aria-hidden-body",
+          "weight": 10,
+        },
+        Object {
+          "group": "a11y-aria",
+          "id": "aria-hidden-focus",
+          "weight": 3,
+        },
+        Object {
+          "group": "a11y-aria",
+          "id": "aria-input-field-name",
+          "weight": 3,
+        },
+        Object {
+          "group": "a11y-aria",
           "id": "aria-required-attr",
           "weight": 10,
         },
@@ -420,6 +453,11 @@ Object {
           "group": "a11y-aria",
           "id": "aria-roles",
           "weight": 10,
+        },
+        Object {
+          "group": "a11y-aria",
+          "id": "aria-toggle-field-name",
+          "weight": 3,
         },
         Object {
           "group": "a11y-aria",
@@ -467,14 +505,29 @@ Object {
           "weight": 3,
         },
         Object {
-          "group": "a11y-best-practices",
-          "id": "duplicate-id",
-          "weight": 1,
+          "group": "a11y-navigation",
+          "id": "duplicate-id-active",
+          "weight": 3,
+        },
+        Object {
+          "group": "a11y-aria",
+          "id": "duplicate-id-aria",
+          "weight": 10,
+        },
+        Object {
+          "group": "a11y-names-labels",
+          "id": "form-field-multiple-labels",
+          "weight": 2,
         },
         Object {
           "group": "a11y-names-labels",
           "id": "frame-title",
           "weight": 3,
+        },
+        Object {
+          "group": "a11y-navigation",
+          "id": "heading-order",
+          "weight": 2,
         },
         Object {
           "group": "a11y-language",
@@ -600,10 +653,6 @@ Object {
         },
         Object {
           "id": "offscreen-content-hidden",
-          "weight": 0,
-        },
-        Object {
-          "id": "heading-levels",
           "weight": 0,
         },
         Object {

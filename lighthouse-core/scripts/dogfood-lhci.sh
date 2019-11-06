@@ -33,20 +33,12 @@ if ! echo "$CHANGED_FILES" | grep -E 'report|lhci' > /dev/null; then
   exit 0
 fi
 
-# Generate an HTML report and copy into static-server directory for serving.
+# Generate HTML reports in ./dist/now/
 yarn now-build
-cp ./dist/now/english/index.html ./lighthouse-cli/test/fixtures/lhci.report.html
 
 # Install LHCI
 npm install -g @lhci/cli@next
-# Start up a test server.
-yarn static-server &
-# Wait for the server to start before hitting it with data.
-sleep 10
 # Collect our LHCI results.
-lhci collect --url=http://localhost:10200/lhci.report.html
+lhci collect --build-dir=./dist/now/english/
 # Upload the results to our canary server.
-lhci upload --serverBaseUrl="$LHCI_CANARY_SERVER_URL" --token="$LHCI_CANARY_SERVER_TOKEN"
-
-# Kill the static server from earlier.
-kill $!
+lhci upload --serverBaseUrl="$LHCI_CANARY_SERVER_URL" --token="$LHCI_CANARY_SERVER_TOKEN" --github-token="$BUNDLESIZE_GITHUB_TOKEN"

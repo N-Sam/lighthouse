@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Το έγγραφο έχει ένα στοιχείο `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Η τιμή ενός χαρακτηριστικού αναγνωριστικού (id) πρέπει να είναι μοναδική, ώστε οι τεχνολογίες υποβοήθησης χρηστών να μην παραβλέπουν τις άλλες παρουσίες. [Μάθετε περισσότερα](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Τα χαρακτηριστικά `[id]` στη σελίδα δεν είναι μοναδικά"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Τα χαρακτηριστικά `[id]` στη σελίδα είναι μοναδικά"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Οι χρήστες ενός αναγνώστη οθόνης βασίζονται στους τίτλους των πλαισίων για την περιγραφή του περιεχομένου των πλαισίων. [Μάθετε περισσότερα](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Ο εκτιμώμενος λανθάνων χρόνος στοιχείων εισόδου αποτελεί εκτίμηση του χρόνου που απαιτείται, σε χιλιοστά του δευτερολέπτου, προκειμένου η εφαρμογή σας να ανταποκριθεί στα στοιχεία εισόδου χρήστη στο διάστημα των 5 δευτερολέπτων με τον μεγαλύτερο φόρτο κατά τη φόρτωση της σελίδας. Εάν ο λανθάνων χρόνος είναι μεγαλύτερος από 50 χιλιοστά δευτερολέπτου, οι χρήστες μπορεί να θεωρήσουν ότι η εφαρμογή σας είναι αργή. [Μάθετε περισσότερα](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Εκτιμώμενος λανθάνων χρόνος στοιχείων εισόδου"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Η πρώτη μορφή με περιεχόμενο υποδεικνύει πότε σχεδιάζεται το πρώτο κείμενο ή η πρώτη εικόνα. [Μάθετε περισσότερα](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Πρώτη μορφή με περιεχόμενο"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Η πρώτη αδράνεια CPU υποδεικνύει πότε είναι η πρώτη φορά που η δραστηριότητα του κύριου νήματος της σελίδας είναι τόσο χαμηλή ώστε να διαχειριστεί στοιχεία εισόδου.  [Μάθετε περισσότερα](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Πρώτη αδράνεια CPU"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Η πρώτη χρήσιμη μορφή υπολογίζει πότε καθίσταται ορατό το κύριο περιεχόμενο μιας σελίδας. [Μάθετε περισσότερα](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Πρώτη χρήσιμη μορφή"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Ο χρόνος για αλληλεπίδραση είναι το χρονικό διάστημα που απαιτείται προκειμένου η σελίδα να γίνει πλήρως διαδραστική. [Μάθετε περισσότερα](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Χρόνος για Αλληλεπίδραση"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Η μέγιστη δυνητική καθυστέρηση πρώτης εισόδου που θα μπορούσαν να αντιμετωπίσουν οι χρήστες είναι η διάρκεια, σε χιλιοστά δευτερολέπτου, της πιο χρονοβόρας εργασίας. [Μάθετε περισσότερα](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Μέγ. δυνατή καθυστέρηση πρώτης εισόδου"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Το ευρετήριο ταχύτητας δηλώνει πόσο γρήγορα γίνεται ορατό το περιεχόμενο μιας σελίδας. [Μάθετε περισσότερα](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Ευρετήριο ταχύτητας"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Η συνολική διάρκεια, σε χιλιοστά δευτερολέπτου, των χρονικών διαστημάτων από την πρώτη μορφή με περιεχόμενο μέχρι τον χρόνο για αλληλεπίδραση, όταν η διάρκεια της εργασίας υπερβαίνει τα 50 χιλιοστά δευτερολέπτου."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Συνολικός χρόνος αποκλεισμού"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Οι χρόνοι αποστολής και επιστροφής δικτύου (RTT) έχουν μεγάλο αντίκτυπο στην απόδοση. Εάν ο χρόνος RTT προς μια προέλευση είναι υψηλός, αυτό σημαίνει ότι η χρήση διακομιστών πιο κοντά στον χρήστη θα μπορούσε να βελτιώσει την απόδοση. [Μάθετε περισσότερα](https://hpbn.co/primer-on-latency-and-bandwidth/)."

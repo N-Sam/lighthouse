@@ -21,6 +21,7 @@ about: Report something working incorrectly
 #### Environment Information
 * Affected Channels: <!-- CLI, Node, Extension, DevTools -->
 * Lighthouse version:
+* Chrome version: <!-- chrome://version/ -->
 * Node.js version:
 * Operating System:
 

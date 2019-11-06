@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "文档包含 `<title>` 元素"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "id 属性的值必须独一无二，以防其他实例被辅助技术忽略。[了解详情](https://web.dev/duplicate-id/)。"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "页面上的 `[id]` 属性不是独一无二的"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "页面上的 `[id]` 属性是独一无二的"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "屏幕阅读器用户依靠框架标题来描述框架的内容。[了解详情](https://web.dev/frame-title/)。"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "预计输入延迟是估算值，表示您的应用在网页加载最繁忙的 5 秒期间大概需要花费多长时间（以毫秒为单位）才能对用户输入做出响应。如果您的延迟时间超过了 50 毫秒，用户可能会感觉您的应用运行迟缓。[了解详情](https://web.dev/estimated-input-latency)。"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "输入延迟（估算值）"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "首次内容渲染时间标记了渲染出首个文本或首张图片的时间。[了解详情](https://web.dev/first-contentful-paint)。"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "首次内容绘制时间"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "首次 CPU 闲置时间标记了网页的主线程首次有空处理输入操作的时间。[了解详情](https://web.dev/first-cpu-idle)。"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "首次 CPU 闲置时间"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "首次有效渲染时间测量了网页主要内容开始对用户显示的时间。[了解详情](https://web.dev/first-meaningful-paint)。"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "首次有效绘制时间"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "可交互时间是指网页需要多长时间才能提供完整交互功能。[了解详情](https://web.dev/interactive)。"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "可交互前的耗时"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "您的用户可能会遇到的最长首次输入延迟是用时最长的任务的耗时（以毫秒为单位）。[了解详情](https://developers.google.com/web/updates/2018/05/first-input-delay)。"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "首次输入延迟最长预估值"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "速度指数表明了网页内容的可见填充速度。[了解详情](https://web.dev/speed-index)。"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "速度指数"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "当任务长度超过 50 毫秒时，首次内容渲染 (FCP) 和可交互时间之间的所有时间段的总和，以毫秒表示。"
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "总阻塞时间"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "网络往返时间 (RTT) 对性能有很大的影响。如果与来源之间的 RTT 较长，则表明缩短服务器与用户之间的距离可能会提高性能。[了解详情](https://hpbn.co/primer-on-latency-and-bandwidth/)。"

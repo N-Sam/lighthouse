@@ -129,14 +129,8 @@ class NetworkRequest {
     this.frameId = '';
     /**
      * @type {string|undefined}
-     * Only set for OOPIFs. This is the targetId of the protocol target from which this
-     * request came. Undefined means it came from the root.
-     */
-    this.targetId = undefined;
-    /**
-     * @type {string|undefined}
-     * Only set for OOPIFs. This is the sessionId of the protocol connection on which this
-     * request was discovered. Undefined means it came from the root.
+     * Only set for child targets (OOPIFs). This is the sessionId of the protocol connection on
+     * which this request was discovered. `undefined` means it came from the root.
      */
     this.sessionId = undefined;
     this.isLinkPreload = false;
@@ -272,16 +266,10 @@ class NetworkRequest {
   }
 
   /**
-   * @param {LH.Protocol.RawSource|undefined} source
+   * @param {string=} sessionId
    */
-  setSource(source) {
-    if (source) {
-      this.targetId = source.targetId;
-      this.sessionId = source.sessionId;
-    } else {
-      this.targetId = undefined;
-      this.sessionId = undefined;
-    }
+  setSession(sessionId) {
+    this.sessionId = sessionId;
   }
 
   /**

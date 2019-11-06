@@ -63,7 +63,7 @@ function getMockedEmulationDriver(emulationFn, netThrottleFn, cpuThrottleFn,
     clearDataForOrigin() {}
   };
   const EmulationMock = class extends Connection {
-    sendCommand(command, params) {
+    sendCommand(command, sessionId, params) {
       let fn = null;
       switch (command) {
         case 'Network.emulateNetworkConditions':

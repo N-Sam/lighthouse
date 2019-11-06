@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "[Ðöçûméñţ ĥåš å ᐅ`<title>`ᐊ éļéméñţ one two three four five six]"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "[Ţĥé våļûé öƒ åñ îð åţţŕîбûţé mûšţ бé ûñîqûé ţö þŕévéñţ öţĥéŕ îñšţåñçéš ƒŕöm бéîñĝ övéŕļööķéð бý åššîšţîvé ţéçĥñöļöĝîéš. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/duplicate-id/)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone]"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "[ᐅ`[id]`ᐊ åţţŕîбûţéš öñ ţĥé þåĝé åŕé ñöţ ûñîqûé one two three four five six seven eight nine]"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "[ᐅ`[id]`ᐊ åţţŕîбûţéš öñ ţĥé þåĝé åŕé ûñîqûé one two three four five six seven eight]"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "[Šçŕééñ ŕéåðéŕ ûšéŕš ŕéļý öñ ƒŕåmé ţîţļéš ţö ðéšçŕîбé ţĥé çöñţéñţš öƒ ƒŕåméš. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/frame-title/)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen]"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "[Éšţîmåţéð Îñþûţ Ļåţéñçý îš åñ éšţîmåţé öƒ ĥöŵ ļöñĝ ýöûŕ åþþ ţåķéš ţö ŕéšþöñð ţö ûšéŕ îñþûţ, îñ mîļļîšéçöñðš, ðûŕîñĝ ţĥé бûšîéšţ 5š ŵîñðöŵ öƒ þåĝé ļöåð. Îƒ ýöûŕ ļåţéñçý îš ĥîĝĥéŕ ţĥåñ 50 mš, ûšéŕš måý þéŕçéîvé ýöûŕ åþþ åš ļåĝĝý. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/estimated-input-latency)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone]"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "[Éšţîmåţéð Îñþûţ Ļåţéñçý one two three]"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "[Fîŕšţ Çöñţéñţƒûļ Þåîñţ måŕķš ţĥé ţîmé åţ ŵĥîçĥ ţĥé ƒîŕšţ ţéxţ öŕ îmåĝé îš þåîñţéð. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/first-contentful-paint)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen]"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "[Fîŕšţ Çöñţéñţƒûļ Þåîñţ one two three]"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "[Fîŕšţ ÇÞÛ Îðļé måŕķš ţĥé ƒîŕšţ ţîmé åţ ŵĥîçĥ ţĥé þåĝé'š måîñ ţĥŕéåð îš qûîéţ éñöûĝĥ ţö ĥåñðļé îñþûţ.  ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/first-cpu-idle)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen]"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "[Fîŕšţ ÇÞÛ Îðļé one two]"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "[Fîŕšţ Méåñîñĝƒûļ Þåîñţ méåšûŕéš ŵĥéñ ţĥé þŕîmåŕý çöñţéñţ öƒ å þåĝé îš vîšîбļé. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/first-meaningful-paint)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen]"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "[Fîŕšţ Méåñîñĝƒûļ Þåîñţ one two three]"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "[Ţîmé ţö îñţéŕåçţîvé îš ţĥé åmöûñţ öƒ ţîmé îţ ţåķéš ƒöŕ ţĥé þåĝé ţö бéçömé ƒûļļý îñţéŕåçţîvé. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/interactive)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen]"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "[Ţîmé ţö Îñţéŕåçţîvé one two three]"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "[Ţĥé måxîmûm þöţéñţîåļ Fîŕšţ Îñþûţ Ðéļåý ţĥåţ ýöûŕ ûšéŕš çöûļð éxþéŕîéñçé îš ţĥé ðûŕåţîöñ, îñ mîļļîšéçöñðš, öƒ ţĥé ļöñĝéšţ ţåšķ. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://developers.google.com/web/updates/2018/05/first-input-delay)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo]"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "[Måx Þöţéñţîåļ Fîŕšţ Îñþûţ Ðéļåý one two three four five six seven]"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "[Šþééð Îñðéx šĥöŵš ĥöŵ qûîçķļý ţĥé çöñţéñţš öƒ å þåĝé åŕé vîšîбļý þöþûļåţéð. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://web.dev/speed-index)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen]"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "[Šþééð Îñðéx one two]"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "[Šûm öƒ åļļ ţîmé þéŕîöðš бéţŵééñ FÇÞ åñð Ţîmé ţö Îñţéŕåçţîvé, ŵĥéñ ţåšķ ļéñĝţĥ éxçééðéð 50mš, éxþŕéššéð îñ mîļļîšéçöñðš. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen]"
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "[Ţöţåļ Бļöçķîñĝ Ţîmé one two three]"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "[Ñéţŵöŕķ ŕöûñð ţŕîþ ţîméš (ŔŢŢ) ĥåvé å ļåŕĝé îmþåçţ öñ þéŕƒöŕmåñçé. Îƒ ţĥé ŔŢŢ ţö åñ öŕîĝîñ îš ĥîĝĥ, îţ'š åñ îñðîçåţîöñ ţĥåţ šéŕvéŕš çļöšéŕ ţö ţĥé ûšéŕ çöûļð îmþŕövé þéŕƒöŕmåñçé. ᐅ[ᐊĻéåŕñ möŕéᐅ](https://hpbn.co/primer-on-latency-and-bandwidth/)ᐊ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix]"

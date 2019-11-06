@@ -10,11 +10,9 @@ const ComputedTBT = require('../../computed/metrics/total-blocking-time.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
-  /** The name of a metric that calculates the total duration of blocking time for a web page. Blocking times are time periods when the page would be blocked (prevented) from responding to user input (clicks, taps, and keypresses will feel slow to respond). Shown to users as the label for the numeric metric value. Ideally fits within a ~40 character limit. */
-  title: 'Total Blocking Time',
   /** Description of the Total Blocking Time (TBT) metric, which calculates the total duration of blocking time for a web page. Blocking times are time periods when the page would be blocked (prevented) from responding to user input (clicks, taps, and keypresses will feel slow to respond). This is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits.*/
   description: 'Sum of all time periods between FCP and Time to Interactive, ' +
-      'when task length exceeded 50ms, expressed in milliseconds.',
+      'when task length exceeded 50ms, expressed in milliseconds. [Learn more](https://web.dev/lighthouse-total-blocking-time).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -26,7 +24,7 @@ class TotalBlockingTime extends Audit {
   static get meta() {
     return {
       id: 'total-blocking-time',
-      title: str_(UIStrings.title),
+      title: str_(i18n.UIStrings.totalBlockingTimeMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       requiredArtifacts: ['traces', 'devtoolsLogs'],

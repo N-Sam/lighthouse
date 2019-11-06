@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "ஆவணத்தில் `<title>` உறுப்பு உள்ளது"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "உதவிகரமான தொழில்நுட்பங்களால் நேர்வுகள் புறக்கணிக்கப்படுவதைத் தடுக்க, ஐடி பண்புக்கூறின் மதிப்பு பிரத்தியேகமானவையாக இருக்க வேண்டும். [மேலும் அறிக](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "பக்கத்திலுள்ள `[id]` பண்புக்கூறுகள் பிரத்தியேகமானவையாக இல்லை"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "பக்கத்தில் உள்ள `[id]` பண்புக்கூறுகள் பிரத்தியேகமானவை"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "ஃபிரேம்களில் உள்ளவற்றை விவரிக்க அவற்றின் தலைப்பை ஸ்க்ரீன் ரீடர் பயனர்கள் சார்ந்துள்ளனர். [மேலும் அறிக](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "'தோராய உள்ளீட்டுத் தாமதம்' என்பது பக்கம் ஏற்றப்படும் பிஸியான 5 வினாடி காலஅளவின்போது பயனரின் உள்ளீட்டுக்கு பதிலளிக்க உங்கள் ஆப்ஸ் எவ்வளவு நேரம் எடுத்துக் கொள்கிறது என்பதற்கான தோராய மதிப்பாகும். பதிலளிக்க 50 மி.வி.க்கு மேல் தாமதமானால் உங்கள் ஆப்ஸ் மெதுவானது என்று பயனர்கள் கருதக்கூடும். [மேலும் அறிக](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "தோராயமான உள்ளீட்டுத் தாமதம்"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "'உள்ளடக்கமுள்ள முதல் தோற்றம்' என்பது முதல் உரையோ படமோ தோன்றும் நேரத்தைக் குறிக்கிறது. [மேலும் அறிக](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "உள்ளடக்கமுள்ள முதல் தோற்றம்"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "'CPU செயல்படாநிலையின் தொடக்க நேரம்' என்பது உள்ளீட்டை பக்கத்தின் முக்கியத் தொடரிழை கையாள்வதற்குத் தயாராக செயல்படாநிலையில் இருக்கும் நேரத்தின் தொடக்கத்தைக் குறிக்கிறது.  [மேலும் அறிக](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU செயல்படாநிலையின் தொடக்க நேரம்"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "'பயனுள்ள முதல் தோற்றம்' என்பது பக்கத்தின் முதன்மை உள்ளடக்கம் எப்போது தெரிகிறது என்பதை அளவிடுகிறது. [மேலும் அறிக](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "அர்த்தமுள்ள முதல் தோற்றம்"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "எதிர்வினை நேரம் என்பது பக்கம் முழுமையாக எதிர்வினையாற்றும் வகையில் ஏற்றப்படுவதற்கான கால அளவாகும். [மேலும் அறிக](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "எதிர்வினை நேரம்"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "உங்கள் பயனர்கள் எதிர்கொள்ளக்கூடிய அதிக சாத்தியமான ’முதல் உள்ளீட்டுத் தாமதம்’ என்பது மிக நீண்ட பணியின் காலஅளவாகும் (மில்லி வினாடிகளில் குறிப்பிடப்படும்). [மேலும் அறிக](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "முதல் உள்ளீட்டிற்கு பதிலளிக்கக்கூடிய அதிகபட்ச நேரம்"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "பக்கத்திலுள்ள உள்ளடக்கங்கள் எவ்வளவு விரைவாகத் தெரிகின்றன என்பதை 'வேக அட்டவணை' காண்பிக்கிறது. [மேலும் அறிக](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "வேக அட்டவணை"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "பணியின் நீளம் 50மி.வி.களைத் தாண்டும்போது FCP மற்றும் எதிர்வினை நேரத்திற்கு இடையில் இருக்கும் மொத்தக் கால அளவுகளின் கூடுதல் (மில்லி வினாடிகளில்)."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "தடுக்கப்படும் மொத்த நேரம்"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "நெட்வொர்க் ரவுண்ட் டிரிப் டைம்ஸ் (Round Trip Times - RTT) செயல்திறனில் பெரும் தாக்கத்தை ஏற்படுத்தும். அசல் சேவையகத்துக்கான RTT அதிகமாக இருந்தால் பயனரின் அருகில் இருக்கும் சேவையகங்கள் இணையதளத்தின் செயல்திறனை மேம்படுத்தலாம் என்பதைக் குறிக்கும். [மேலும் அறிக](https://hpbn.co/primer-on-latency-and-bandwidth/)."

@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "文件具有 `<title>` 元素"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "ID 屬性的值不得重複，以免輔助技術忽略其他重複的值。[瞭解詳情](https://web.dev/duplicate-id/)。"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "網頁中的 `[id]` 屬性重複"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "網頁中的 `[id]` 屬性沒有重複"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "螢幕閱讀器需使用頁框標題才能說明頁框內容。[瞭解詳情](https://web.dev/frame-title/)。"
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "預估輸入延遲時間是指在頁面載入作業最忙碌的 5 秒中，應用程式對於使用者輸入動作的預估回應時間 (以毫秒為單位)。如果延遲時間超過 50 毫秒，使用者可能會覺得應用程式的速度很慢。[瞭解詳情](https://web.dev/estimated-input-latency)。"
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "預估輸入延遲"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "首次顯示內容所需時間是指瀏覽器首次顯示文字或圖片的時間。[瞭解詳情](https://web.dev/first-contentful-paint)。"
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "首次內容繪製"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "首次 CPU 閒置時間是指網頁的主要執行緒已不再忙碌，且有能力處理輸入內容的最早時間。[瞭解詳情](https://web.dev/first-cpu-idle)。"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "首次 CPU 閒置"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "畫面首次有效顯示所需時間是指網頁顯示主要內容的時間。[瞭解詳情](https://web.dev/first-meaningful-paint)。"
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "首次有效繪製"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "互動準備時間是網頁進入完整互動狀態前花費的時間。[瞭解詳情](https://web.dev/interactive)。"
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "可互動時間"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "使用者可能要等待的最長「首次輸入延遲時間」就是耗時最久的工作所需要的處理時間 (以毫秒為單位)。[瞭解詳情](https://developers.google.com/web/updates/2018/05/first-input-delay)。"
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "首次輸入延遲時間最長預估值"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "速度指數會顯示網頁可見內容的填入速度。[瞭解詳情](https://web.dev/speed-index)。"
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "速度指數"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "當工作長度超過 50 毫秒時，從 FCP 到互動準備時間的時間範圍總計 (以毫秒為單位)。"
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "封鎖時間總計"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "網路封包往返時間 (RTT) 對效能有很大的影響。如果將封包傳送到某個來源的 RTT 很高，表示靠近使用者端的伺服器在效能方面有改善空間。[瞭解詳情](https://hpbn.co/primer-on-latency-and-bandwidth/)。"

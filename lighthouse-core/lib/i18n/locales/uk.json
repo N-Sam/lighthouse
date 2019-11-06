@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Документ містить елемент `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Значення атрибута ідентифікатора має бути унікальним, щоб допоміжні технології не пропускали інші копії. [Докладніше](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Атрибути `[id]` на сторінці неунікальні"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Атрибути `[id]` на сторінці унікальні"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Користувачі програм зчитування з екрана використовують назви фреймів, щоб дізнатися їх вміст. [Докладніше](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Приблизна затримка введення показує, скільки часу в мілісекундах додаток відповідає на ввід користувача під час п'ятисекундного періоду завантаження сторінки. Якщо затримка перевищує 50 мс, користувачі можуть вважати ваш додаток повільним. [Докладніше](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Приблизна затримка введення"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Перша візуалізація вмісту показує, коли з'являється текст чи зображення. [Докладніше](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Перше відображення всього вмісту"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Перший простій ЦП вказує, коли основний ланцюжок сторінки вперше може обробити введення.  [Докладніше](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Перший простій ЦП"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Час початку візуалізації вказує, коли видно основний вміст сторінки. [Докладніше](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Перше значне відображення"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Час до повного завантаження – це період часу, через який сторінка стане повністю інтерактивною. [Докладніше](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Час до повної взаємодії"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Максимальна потенційна затримка відповіді на першу дію – це тривалість найдовшого завдання в мілісекундах. [Докладніше](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Максимальна потенційна затримка відповіді на першу дію"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Індекс швидкості показує, через скільки часу відображається вміст сторінки. [Докладніше](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Індекс швидкості"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Загальна тривалість усіх періодів часу в мілісекундах між першою візуалізацією вмісту та часом до повного завантаження, коли час виконання завдання перевищує 50 мс."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Загальний час блокування"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Час затримки передачі сигналу мережі (RTT) суттєво впливає на ефективність. Якщо показник RTT високий, це означає, що сервери, розташовані ближче до користувача, можуть покращити ефективність. [Докладніше](https://hpbn.co/primer-on-latency-and-bandwidth/)."

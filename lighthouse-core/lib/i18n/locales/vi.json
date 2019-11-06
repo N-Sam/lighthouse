@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Tài liệu có phần tử `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Giá trị của thuộc tính id phải là duy nhất, có như vậy công nghệ hỗ trợ mới không bỏ qua các điểm dữ liệu khác. [Tìm hiểu thêm](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Các thuộc tính `[id]` trên trang không phải là duy nhất"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Các thuộc tính `[id]` trên trang là duy nhất"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Người dùng trình đọc màn hình dựa vào tiêu đề khung để mô tả nội dung của khung. [Tìm hiểu thêm](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Thời gian chờ nhập thông tin theo ước tính là thời gian ước tính mà ứng dụng cần để phản hồi thông tin do người dùng nhập (tính bằng mili giây) trong khoảng thời gian 5 giây tải nhiều trang nhất. Nếu người dùng phải chờ quá 50 mili giây, thì ứng dụng của bạn bị coi là chạy chậm. [Tìm hiểu thêm](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Thời gian chờ nhập thông tin theo ước tính"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Chỉ số Hiển thị nội dung đầu tiên đánh dấu thời điểm hiển thị văn bản hoặc hình ảnh đầu tiên. [Tìm hiểu thêm](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Hình ảnh có nội dung đầu tiên"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Chỉ số CPU nhàn rỗi đầu tiên đánh dấu thời điểm đầu tiên chuỗi chính của trang không phải xử lý quá nhiều thông tin nhập vào.  [Tìm hiểu thêm](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "CPU nhàn rỗi đầu tiên"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Chỉ số Hiển thị nội dung đầu tiên đo lường thời điểm hiển thị nội dung chính của trang. [Tìm hiểu thêm](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Hình ảnh có ý nghĩa đầu tiên"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Thời điểm tương tác là khoảng thời gian mà trang cần để trở nên hoàn toàn tương tác. [Tìm hiểu thêm](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Thời điểm tương tác"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Thời gian phản hồi lần tương tác đầu tiên tối đa mà người dùng có thể gặp phải là thời gian thực hiện nhiệm vụ lâu nhất (tính bằng mili giây). [Tìm hiểu thêm](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Thời gian phản hồi lần tương tác đầu tiên tối đa có thể"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Chỉ số tốc độ cho biết nội dung của một trang hiển thị nhanh chóng đến mức nào. [Tìm hiểu thêm](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Chỉ số tốc độ"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Tổng tất cả các khoảng thời gian giữa thời điểm Hiển thị nội dung đầu tiên (FCP) và Thời điểm tương tác khi thời gian nhiệm vụ vượt quá 50 mili giây được biểu thị bằng đơn vị mili giây."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Tổng thời gian chặn"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Thời gian trọn vòng (RTT) của mạng có ảnh hưởng lớn đến hiệu suất. Nếu mất nhiều thời gian trọn vòng (RTT) để đến một nguồn gốc, tức là máy chủ càng gần người dùng thì hiệu quả càng cao. [Tìm hiểu thêm](https://hpbn.co/primer-on-latency-and-bandwidth/)."

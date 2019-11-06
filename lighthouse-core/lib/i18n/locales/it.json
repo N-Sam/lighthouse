@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Il documento ha un elemento `<title>`"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Il valore di un attributo id deve essere univoco per evitare che altre istanze vengano ignorate dalle tecnologie di ausilio per la disabilità. [Ulteriori informazioni](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Gli attributi `[id]` nella pagina non sono univoci"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Gli attributi `[id]` nella pagina sono univoci"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Gli screen reader si affidano ai titoli dei frame per descrivere i contenuti dei frame agli utenti. [Ulteriori informazioni](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "La metrica Latenza input stimata fornisce una stima del tempo impiegato dall'app, espresso in millisecondi, per rispondere all'input dell'utente durante il periodo di 5 s più impegnativo del caricamento della pagina. Se la latenza è superiore a 50 ms, gli utenti potrebbero considerare lenta la tua app. [Ulteriori informazioni](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Latenza input stimata"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "La metrica First Contentful Paint (prima visualizzazione con contenuti) indica il momento in cui vengono visualizzati il primo testo o la prima immagine. [Ulteriori informazioni](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Visualizzazione dei primi contenuti"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "La metrica Prima inattività CPU indica la prima volta in cui il thread principale della pagina è abbastanza tranquillo da poter gestire l'input.  [Ulteriori informazioni](https://web.dev/first-cpu-idle)."
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Prima inattività CPU"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "La metrica First Meaningful Paint (visualizzazione primo elemento utile) indica quando diventano visibili i contenuti principali di una pagina. [Ulteriori informazioni](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Visualizzazione primi contenuti utili"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "La metrica Tempo all'interattività indica il tempo necessario affinché la pagina diventi completamente interattiva. [Ulteriori informazioni](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Tempo per interattività"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Il potenziale ritardo prima interazione massimo che i tuoi utenti potrebbero riscontrare è la durata, in millisecondi, del task più lungo. [Ulteriori informazioni](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Ritardo prima interazione potenziale max"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "La metrica Indice velocità mostra la velocità con cui diventano visibili i contenuti di una pagina. [Ulteriori informazioni](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Indice velocità"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Somma di tutti i periodi di tempo, espressi in millisecondi, tra FCP e Tempo all'interattività, quando la durata del task ha superato 50 ms."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Tempo di blocco totale"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "I tempi di round trip della rete (RTT) influiscono notevolmente sulle prestazioni. Quando l'RTT verso un'origine è elevato, significa che i server più vicini all'utente potrebbero migliorare le prestazioni. [Ulteriori informazioni](https://hpbn.co/primer-on-latency-and-bandwidth/)."

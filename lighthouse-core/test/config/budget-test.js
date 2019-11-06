@@ -38,12 +38,10 @@ describe('Budget', () => {
           {
             metric: 'interactive',
             budget: 2000,
-            tolerance: 1000,
           },
           {
             metric: 'first-contentful-paint',
             budget: 1000,
-            // tolerance is optional, so not defined here.
           },
         ],
       },
@@ -83,12 +81,10 @@ describe('Budget', () => {
     assert.deepStrictEqual(result[0].timings[0], {
       metric: 'interactive',
       budget: 2000,
-      tolerance: 1000,
     });
     assert.deepStrictEqual(result[0].timings[1], {
       metric: 'first-contentful-paint',
       budget: 1000,
-      tolerance: undefined,
     });
 
     // Does not set unsupplied result
@@ -182,9 +178,9 @@ describe('Budget', () => {
       assert.throws(_ => Budget.initializeBudget(budgets), /Invalid budget: 100KB/);
     });
 
-    it('throws when an invalid tolerance is supplied', () => {
+    it('throws when a tolerance is supplied', () => {
       budgets[0].timings[0].tolerance = '100ms';
-      assert.throws(_ => Budget.initializeBudget(budgets), /Invalid tolerance: 100ms/);
+      assert.throws(_ => Budget.initializeBudget(budgets), /unrecognized properties/);
     });
 
     it('throws when an invalid property is supplied', () => {
@@ -198,6 +194,53 @@ describe('Budget', () => {
       budgets[0].timings.push({metric: 'interactive', budget: 1000});
       assert.throws(_ => Budget.initializeBudget(budgets),
         /has duplicate entry of type 'interactive'/);
+    });
+  });
+
+  describe('budget matching', () => {
+    const budgets = [{
+      path: '/',
+      resourceSizes: [
+        {
+          resourceType: 'script',
+          budget: 0,
+        },
+      ],
+    },
+    {
+      path: '/file.html',
+      resourceSizes: [
+        {
+          resourceType: 'image',
+          budget: 0,
+        },
+      ],
+    },
+    {
+      path: '/not-a-match',
+      resourceSizes: [
+        {
+          resourceType: 'document',
+          budget: 0,
+        },
+      ],
+    },
+    ];
+    it('returns the last matching budget', () => {
+      const budget = Budget.getMatchingBudget(budgets, 'http://example.com/file.html');
+      expect(budget).toEqual(budgets[1]);
+    });
+
+    it('does not mutate the budget config', async () => {
+      const configBefore = JSON.parse(JSON.stringify(budgets));
+      Budget.getMatchingBudget(configBefore, 'https://example.com');
+      const configAfter = JSON.parse(JSON.stringify(budgets));
+      expect(configBefore).toEqual(configAfter);
+    });
+
+    it('returns "undefined" when there is no budget config', () => {
+      const budget = Budget.getMatchingBudget(null, 'https://example.com');
+      expect(budget).toEqual(undefined);
     });
   });
 

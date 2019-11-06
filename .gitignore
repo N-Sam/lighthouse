@@ -29,6 +29,8 @@ last-run-results.html
 !lighthouse-core/test/results/artifacts/*.devtoolslog.json
 !lighthouse-core/test/fixtures/artifacts/**/*.trace.json
 !lighthouse-core/test/fixtures/artifacts/**/*.devtoolslog.json
+!lighthouse-core/test/fixtures/traces/**/*.trace.json
+!lighthouse-core/test/fixtures/traces/**/*.devtoolslog.json
 
 latest-run
 lantern-data

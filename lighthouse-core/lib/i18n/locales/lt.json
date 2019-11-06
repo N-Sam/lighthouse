@@ -137,15 +137,6 @@
   "lighthouse-core/audits/accessibility/document-title.js | title": {
     "message": "Dokumente yra elementas „`<title>`“"
   },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | description": {
-    "message": "Atributo „id“ vertė turi būti unikali, kad pagalbinės technologijos nepraleistų kitų objektų. [Sužinokite daugiau](https://web.dev/duplicate-id/)."
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | failureTitle": {
-    "message": "Puslapio atributai „`[id]`“ nėra unikalūs"
-  },
-  "lighthouse-core/audits/accessibility/duplicate-id.js | title": {
-    "message": "Puslapio atributai „`[id]`“ yra unikalūs"
-  },
   "lighthouse-core/audits/accessibility/frame-title.js | description": {
     "message": "Pagal rėmelių pavadinimus ekrano skaitytuvų naudotojai sužino, koks yra rėmelių turinys. [Sužinokite daugiau](https://web.dev/frame-title/)."
   },
@@ -779,50 +770,26 @@
   "lighthouse-core/audits/metrics/estimated-input-latency.js | description": {
     "message": "Įvertinta įvesties delsa yra įvertintas laikas milisekundėmis, per kurį programa atsako į naudotojo įvestį per labiausiai užimtas puslapio įkėlimo 5 sekundes. Jei delsa ilgesnė nei 50 ms, naudotojams gali atrodyti, kad programa veikia lėtai. [Sužinokite daugiau](https://web.dev/estimated-input-latency)."
   },
-  "lighthouse-core/audits/metrics/estimated-input-latency.js | title": {
-    "message": "Įvertinta įvesties delsa"
-  },
   "lighthouse-core/audits/metrics/first-contentful-paint.js | description": {
     "message": "Pirmas turiningas žymėjimas nurodo laiką, kada pažymimas pirmasis tekstas ar vaizdas. [Sužinokite daugiau](https://web.dev/first-contentful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-contentful-paint.js | title": {
-    "message": "Pirmasis „Contentful“ parodymas"
   },
   "lighthouse-core/audits/metrics/first-cpu-idle.js | description": {
     "message": "Pirmas centrinio procesoriaus neaktyvumo laikas nurodo pirmą kartą, kai pagrindinė puslapio grupė yra pakankamai neaktyvi, kad galėtų apdoroti įvestį.  [Sužinokite daugiau](https://web.dev/first-cpu-idle)"
   },
-  "lighthouse-core/audits/metrics/first-cpu-idle.js | title": {
-    "message": "Pirmas cent. procesoriaus laisvas laikas"
-  },
   "lighthouse-core/audits/metrics/first-meaningful-paint.js | description": {
     "message": "Pirmasis reikšmingas parodymas nurodo, kada parodomas pagrindinis puslapio turinys. [Sužinokite daugiau](https://web.dev/first-meaningful-paint)."
-  },
-  "lighthouse-core/audits/metrics/first-meaningful-paint.js | title": {
-    "message": "Pirmasis reikšmingas parodymas"
   },
   "lighthouse-core/audits/metrics/interactive.js | description": {
     "message": "Laikas iki sąveikos yra vertė, nurodanti, kiek laiko reikia, kol puslapis tampa visiškai interaktyvus. [Sužinokite daugiau](https://web.dev/interactive)."
   },
-  "lighthouse-core/audits/metrics/interactive.js | title": {
-    "message": "Laikas iki sąveikos"
-  },
   "lighthouse-core/audits/metrics/max-potential-fid.js | description": {
     "message": "Didžiausia potenciali naudotojų patiriama pirmosios įvesties delsa yra ilgiausios užduoties trukmė milisekundėmis. [Sužinokite daugiau](https://developers.google.com/web/updates/2018/05/first-input-delay)."
-  },
-  "lighthouse-core/audits/metrics/max-potential-fid.js | title": {
-    "message": "Maksimali potenciali pirmosios įvesties delsa"
   },
   "lighthouse-core/audits/metrics/speed-index.js | description": {
     "message": "Greičio rodiklis parodo, kaip greitai pavaizduojamas puslapio turinys. [Sužinokite daugiau](https://web.dev/speed-index)."
   },
-  "lighthouse-core/audits/metrics/speed-index.js | title": {
-    "message": "Greičio rodiklis"
-  },
   "lighthouse-core/audits/metrics/total-blocking-time.js | description": {
     "message": "Visų laikotarpių tarp PTŽ ir laiko iki sąveikos suma milisekundėmis, kai užduoties atlikimo laikas viršija 50 ms."
-  },
-  "lighthouse-core/audits/metrics/total-blocking-time.js | title": {
-    "message": "Bendras blokavimo laikas"
   },
   "lighthouse-core/audits/network-rtt.js | description": {
     "message": "Abipusis tinklo laikas (RTT) turi didelės įtakos našumui. Didelė RTT į šaltinį vertė nurodo, kad arčiau naudotojo esantys serveriai galėtų padidinti našumą. [Sužinokite daugiau](https://hpbn.co/primer-on-latency-and-bandwidth/)."

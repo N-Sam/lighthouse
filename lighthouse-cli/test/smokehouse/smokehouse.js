@@ -124,7 +124,10 @@ if (!smokeTest) {
   throw new Error(`could not find smoke ${smokeId}`);
 }
 
-const configPath = `./.tmp/smoke-config-${smokeTest.id}.json`;
+const lhRootDir = `${__dirname}/../../..`;
+const tmpDir = `${lhRootDir}/.tmp`;
+fs.mkdirSync(tmpDir, {recursive: true});
+const configPath = `${tmpDir}/smoke-config-${smokeTest.id}.json`;
 fs.writeFileSync(configPath, JSON.stringify(smokeTest.config));
 
 // Loop sequentially over expectations, comparing against Lighthouse run, and
