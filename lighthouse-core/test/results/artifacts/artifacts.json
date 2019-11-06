@@ -28,9 +28,7 @@
     "gatherMode": "lighthouse-core/test/results/artifacts",
     "disableStorageReset": false,
     "emulatedFormFactor": "mobile",
-    "internal": {
-      "disableDeviceScreenEmulation": false
-    },
+    "internalDisableDeviceScreenEmulation": false,
     "channel": "cli",
     "budgets": [
       {
