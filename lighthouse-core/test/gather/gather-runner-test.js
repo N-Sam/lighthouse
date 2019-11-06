@@ -193,7 +193,7 @@ describe('GatherRunner', function() {
       const driver = fakeDriver;
       const config = new Config({
         passes: [],
-        settings: {emulatedFormFactor: 'none'},
+        settings: {emulatedFormFactor: 'none', internal: {disableDeviceScreenEmulation: false}},
       });
       const options = {requestedUrl, driver, settings: config.settings};
 
@@ -205,7 +205,7 @@ describe('GatherRunner', function() {
       const driver = fakeDriver;
       const config = new Config({
         passes: [],
-        settings: {emulatedFormFactor: 'mobile'},
+        settings: {emulatedFormFactor: 'mobile', internal: {disableDeviceScreenEmulation: false}},
       });
       const options = {requestedUrl, driver, settings: config.settings};
 
@@ -217,7 +217,7 @@ describe('GatherRunner', function() {
       const driver = fakeDriverUsingRealMobileDevice;
       const config = new Config({
         passes: [],
-        settings: {emulatedFormFactor: 'none'},
+        settings: {emulatedFormFactor: 'none', internal: {disableDeviceScreenEmulation: false}},
       });
       const options = {requestedUrl, driver, settings: config.settings};
 
@@ -229,7 +229,7 @@ describe('GatherRunner', function() {
       const driver = fakeDriverUsingRealMobileDevice;
       const config = new Config({
         passes: [],
-        settings: {emulatedFormFactor: 'desktop'},
+        settings: {emulatedFormFactor: 'desktop', internal: {disableDeviceScreenEmulation: false}},
       });
       const options = {requestedUrl, driver, settings: config.settings};
 
@@ -258,7 +258,7 @@ describe('GatherRunner', function() {
     return GatherRunner.setupDriver(driver, {
       settings: {
         emulatedFormFactor: 'mobile',
-        deviceScreenEmulationMethod: 'devtools',
+        internal: {disableDeviceScreenEmulation: false},
       },
     }).then(_ => {
       assert.ok(tests.calledDeviceEmulation, 'did not call device emulation');
@@ -279,7 +279,9 @@ describe('GatherRunner', function() {
 
     const getSettings = formFactor => ({
       emulatedFormFactor: formFactor,
-      deviceScreenEmulationMethod: 'devtools',
+      internal: {
+        disableDeviceScreenEmulation: false,
+      }
     });
 
     await GatherRunner.setupDriver(driver, {settings: getSettings('mobile')});
@@ -313,7 +315,9 @@ describe('GatherRunner', function() {
       settings: {
         emulatedFormFactor: 'mobile',
         throttlingMethod: 'provided',
-        deviceScreenEmulationMethod: 'devtools',
+        internal: {
+          disableDeviceScreenEmulation: false,
+        },
       },
     }).then(_ => {
       assert.ok(tests.calledDeviceEmulation, 'did not call device emulation');
@@ -343,9 +347,8 @@ describe('GatherRunner', function() {
 
     return GatherRunner.setupDriver(driver, {
       settings: {
-        emulatedFormFactor: 'mobile',
+        emulatedFormFactor: 'mobile', internal: {disableDeviceScreenEmulation: false},
         throttlingMethod: 'devtools',
-        deviceScreenEmulationMethod: 'devtools',
         throttling: {
           requestLatencyMs: 100,
           downloadThroughputKbps: 8,

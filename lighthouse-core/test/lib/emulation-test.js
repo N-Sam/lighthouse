@@ -17,9 +17,11 @@ describe('emulation', () => {
     const driver = getMockedEmulationDriver(deviceMetricsFn, null, null, null, null, setUAFn);
 
     const getFnCallArg = fn => fn.mock.calls[0][0];
-    const getSettings = (formFactor, screenEmulationMethod) => ({
+    const getSettings = (formFactor, disableDeviceScreenEmulation) => ({
       emulatedFormFactor: formFactor,
-      deviceScreenEmulationMethod: screenEmulationMethod,
+      internal: {
+        disableDeviceScreenEmulation,
+      },
     });
 
     beforeEach(() => {
@@ -27,62 +29,44 @@ describe('emulation', () => {
       setUAFn.mockClear();
     });
 
-    it('handles: emulatedFormFactor: mobile / deviceScreenEmulationMethod: devtools', async () => {
-      await emulation.emulate(driver, {
-        emulatedFormFactor: 'mobile',
-        deviceScreenEmulationMethod: 'devtools'
-      });
+    it('handles: emulatedFormFactor: mobile / disableDeviceScreenEmulation: false', async () => {
+      await emulation.emulate(driver, getSettings('mobile', false));
       expect(setUAFn).toBeCalled();
       expect(deviceMetricsFn).toBeCalled();
       expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.MOBILE_USERAGENT});
       expect(getFnCallArg(deviceMetricsFn)).toMatchObject({mobile: true});
     });
 
-    it('handles: emulatedFormFactor: desktop / deviceScreenEmulationMethod: devtools', async () => {
-      await emulation.emulate(driver, {
-        emulatedFormFactor: 'desktop',
-        deviceScreenEmulationMethod: 'devtools'
-      });
+    it('handles: emulatedFormFactor: desktop / disableDeviceScreenEmulation: false', async () => {
+      await emulation.emulate(driver, getSettings('desktop', false));
       expect(setUAFn).toBeCalled();
       expect(deviceMetricsFn).toBeCalled();
       expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.DESKTOP_USERAGENT});
       expect(getFnCallArg(deviceMetricsFn)).toMatchObject({mobile: false});
     });
 
-    it('handles: emulatedFormFactor: none / deviceScreenEmulationMethod: devtools', async () => {
-      await emulation.emulate(driver, {
-        emulatedFormFactor: 'none',
-        deviceScreenEmulationMethod: 'devtools'
-      });
+    it('handles: emulatedFormFactor: none / disableDeviceScreenEmulation: false', async () => {
+      await emulation.emulate(driver, getSettings('none', false));
       expect(setUAFn).not.toBeCalled();
       expect(deviceMetricsFn).not.toBeCalled();
     });
 
-    it('handles: emulatedFormFactor: mobile / deviceScreenEmulationMethod: provided', async () => {
-      await emulation.emulate(driver, {
-        emulatedFormFactor: 'mobile',
-        deviceScreenEmulationMethod: 'provided'
-      });
+    it('handles: emulatedFormFactor: mobile / disableDeviceScreenEmulation: true', async () => {
+      await emulation.emulate(driver, getSettings('mobile', true));
       expect(setUAFn).toBeCalled();
       expect(deviceMetricsFn).not.toBeCalled();
       expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.MOBILE_USERAGENT});
     });
 
-    it('handles: emulatedFormFactor: desktop / deviceScreenEmulationMethod: provided', async () => {
-      await emulation.emulate(driver, {
-        emulatedFormFactor: 'desktop',
-        deviceScreenEmulationMethod: 'provided'
-      });
+    it('handles: emulatedFormFactor: desktop / disableDeviceScreenEmulation: true', async () => {
+      await emulation.emulate(driver, getSettings('desktop', true));
       expect(setUAFn).toBeCalled();
       expect(deviceMetricsFn).not.toBeCalled();
       expect(getFnCallArg(setUAFn)).toMatchObject({userAgent: emulation.DESKTOP_USERAGENT});
     });
 
-    it('handles: emulatedFormFactor: none / deviceScreenEmulationMethod: provided', async () => {
-      await emulation.emulate(driver, {
-        emulatedFormFactor: 'none',
-        deviceScreenEmulationMethod: 'provided'
-      });
+    it('handles: emulatedFormFactor: none / disableDeviceScreenEmulation: true', async () => {
+      await emulation.emulate(driver, getSettings('none', true));
       expect(setUAFn).not.toBeCalled();
       expect(deviceMetricsFn).not.toBeCalled();
     });

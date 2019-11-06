@@ -101,10 +101,8 @@ declare global {
       gatherMode?: boolean | string;
       /** Flag indicating that the browser storage should not be reset for the audit. */
       disableStorageReset?: boolean;
-      /** The form factor the emulation should use. */
+      /** How emulation (useragent, device screen metrics, touch) should be applied. `none` indicates Lighthouse should leave the host browser as-is. */
       emulatedFormFactor?: 'mobile'|'desktop'|'none';
-      /** Set to `provided` if emulation already applied prior to Lighthouse run. */
-      deviceScreenEmulationMethod?: 'devtools'|'provided';
       /** The method used to throttle the network. */
       throttlingMethod?: 'devtools'|'simulate'|'provided';
       /** The throttling config settings. */
@@ -123,6 +121,11 @@ declare global {
       precomputedLanternData?: PrecomputedLanternData | null;
       /** The budget.json object for LightWallet. */
       budgets?: Array<Budget> | null;
+      /** Dangerous settings only to be used by Lighthouse team. Thar be dragons! */
+      internal: {
+        /* Disables device metrics and touch emulation. Details in emulation.js */
+        disableDeviceScreenEmulation: boolean
+      }
     }
 
     /**
