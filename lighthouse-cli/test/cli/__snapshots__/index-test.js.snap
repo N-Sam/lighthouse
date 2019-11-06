@@ -322,6 +322,9 @@ Object {
       "path": "byte-efficiency/unused-css-rules",
     },
     Object {
+      "path": "byte-efficiency/unused-javascript",
+    },
+    Object {
       "path": "byte-efficiency/uses-webp-images",
     },
     Object {
@@ -801,6 +804,11 @@ Object {
         },
         Object {
           "group": "load-opportunities",
+          "id": "unused-javascript",
+          "weight": 0,
+        },
+        Object {
+          "group": "load-opportunities",
           "id": "uses-optimized-images",
           "weight": 0,
         },
@@ -1168,6 +1176,9 @@ Object {
       "gatherers": Array [
         Object {
           "path": "css-usage",
+        },
+        Object {
+          "path": "js-usage",
         },
         Object {
           "path": "viewport-dimensions",
