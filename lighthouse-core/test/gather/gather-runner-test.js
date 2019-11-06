@@ -40,8 +40,8 @@ const fakeDriver = require('./fake-driver.js');
 const fakeDriverUsingRealMobileDevice = fakeDriver.fakeDriverUsingRealMobileDevice;
 
 // TODO: Refactor this to use gather/mock-commands.js
-function getMockedEmulationDriver(deviceMetricsFn, netThrottleFn, cpuThrottleFn,
-  blockUrlFn, extraHeadersFn, setUAFn) {
+function getMockedEmulationDriver(emulationFn, netThrottleFn, cpuThrottleFn,
+  blockUrlFn, extraHeadersFn) {
   const Driver = require('../../gather/driver.js');
   const Connection = require('../../gather/connections/connection.js');
   const EmulationDriver = class extends Driver {
@@ -74,16 +74,13 @@ function getMockedEmulationDriver(deviceMetricsFn, netThrottleFn, cpuThrottleFn,
           fn = cpuThrottleFn;
           break;
         case 'Emulation.setDeviceMetricsOverride':
-          fn = deviceMetricsFn;
+          fn = emulationFn;
           break;
         case 'Network.setBlockedURLs':
           fn = blockUrlFn;
           break;
         case 'Network.setExtraHTTPHeaders':
           fn = extraHeadersFn;
-          break;
-        case 'Network.setUserAgentOverride':
-          fn = setUAFn;
           break;
         default:
           fn = null;
@@ -270,9 +267,9 @@ describe('GatherRunner', function() {
   });
 
   it('applies the correct emulation given a particular emulationFormFactor', async () => {
-    const deviceMetricsFn = jest.fn();
+    const emulationFn = jest.fn();
     const driver = getMockedEmulationDriver(
-      deviceMetricsFn,
+      emulationFn,
       () => true,
       () => true
     );
@@ -285,14 +282,14 @@ describe('GatherRunner', function() {
     });
 
     await GatherRunner.setupDriver(driver, {settings: getSettings('mobile')});
-    expect(deviceMetricsFn.mock.calls.slice(-1)[0][0]).toMatchObject({mobile: true});
+    expect(emulationFn.mock.calls.slice(-1)[0][0]).toMatchObject({mobile: true});
 
     await GatherRunner.setupDriver(driver, {settings: getSettings('desktop')});
-    expect(deviceMetricsFn.mock.calls.slice(-1)[0][0]).toMatchObject({mobile: false});
+    expect(emulationFn.mock.calls.slice(-1)[0][0]).toMatchObject({mobile: false});
 
-    deviceMetricsFn.mockClear();
+    emulationFn.mockClear();
     await GatherRunner.setupDriver(driver, {settings: getSettings('none')});
-    expect(deviceMetricsFn).not.toHaveBeenCalled();
+    expect(emulationFn).not.toHaveBeenCalled();
   });
 
   it('stops throttling when not devtools', () => {
