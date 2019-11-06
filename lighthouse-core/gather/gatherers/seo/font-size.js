@@ -298,15 +298,14 @@ class FontSize extends Gatherer {
           const cssRule = await fetchSourceRule(driver, failingNode.node);
           failingNode.cssRule = cssRule;
         } catch (err) {
-          // The node was deleted. Don't set `cssRule` in that case.
+          // The node was deleted. We don't need to distinguish between lack-of-rule
+          // due to a deleted node vs due to failed attribution, so just set to undefined.
+          failingNode.cssRule = undefined;
         }
         return failingNode;
       });
 
-    const analyzedFailingNodesData = (await Promise.all(analysisPromises))
-      // Throw out the nodes that got deleted, but keep the nodes that
-      // we couldn't attribute to a specific style rule (undefined).
-      .filter(data => 'cssRule' in data);
+    const analyzedFailingNodesData = await Promise.all(analysisPromises);
 
     const analyzedFailingTextLength = analyzedFailingNodesData.reduce(
       (sum, {textLength}) => (sum += textLength),
