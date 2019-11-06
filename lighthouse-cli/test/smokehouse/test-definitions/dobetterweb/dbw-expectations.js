@@ -12,6 +12,7 @@
 const expectations = [
   {
     artifacts: {
+      HostFormFactor: 'desktop',
       Stacks: [{
         id: 'jquery',
       }, {
