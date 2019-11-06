@@ -18,7 +18,6 @@
 
 const Gatherer = require('../gatherer.js');
 const Sentry = require('../../../lib/sentry.js');
-const log = require('lighthouse-logger');
 const FONT_SIZE_PROPERTY_NAME = 'font-size';
 const TEXT_NODE_BLOCK_LIST = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT']);
 const MINIMAL_LEGIBLE_FONT_SIZE_PX = 12;
@@ -300,7 +299,6 @@ class FontSize extends Gatherer {
           failingNode.cssRule = cssRule;
         } catch (err) {
           // The node was deleted. Don't set `cssRule` in that case.
-          log.error('font-size', err.message);
         }
         return failingNode;
       });
