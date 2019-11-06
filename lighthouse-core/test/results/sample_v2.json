@@ -3346,7 +3346,9 @@
     "gatherMode": false,
     "disableStorageReset": false,
     "emulatedFormFactor": "mobile",
-    "deviceScreenEmulationMethod": "devtools",
+    "internal": {
+      "disableDeviceScreenEmulation": false
+    },
     "channel": "cli",
     "budgets": [
       {
