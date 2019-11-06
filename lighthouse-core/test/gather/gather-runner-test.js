@@ -255,9 +255,11 @@ describe('GatherRunner', function() {
       });
     }
 
+    /* eslint-disable max-len */
     const IOS_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) OPiOS/10.2.0.93022 Mobile/11D257 Safari/9537.53';
     const ANDROID_UA = 'Mozilla/5.0 (Linux; U; Android 4.4.2; en-us; SCH-I535 Build/KOT49H) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30';
     const DESKTOP_UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36';
+    /* eslint-enable max-len */
 
     test('works when running on mobile device', IOS_UA, 'mobile');
     test('works when running on android device', ANDROID_UA, 'mobile');
