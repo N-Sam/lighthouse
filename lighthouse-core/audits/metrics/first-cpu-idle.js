@@ -27,7 +27,7 @@ class FirstCPUIdle extends Audit {
       title: str_(i18n.UIStrings.firstCPUIdleMetric),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces', 'devtoolsLogs'],
+      requiredArtifacts: ['traces', 'devtoolsLogs', 'TestedAsMobileDevice'],
     };
   }
 
