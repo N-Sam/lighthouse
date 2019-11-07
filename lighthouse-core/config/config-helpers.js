@@ -138,10 +138,14 @@ function requireAudits(audits, configDir) {
       const coreAudit = coreList.find(a => a === auditPathJs);
       let requirePath = `../audits/${audit.path}`;
       if (!coreAudit) {
-        // Otherwise, attempt to find it elsewhere. This throws if not found.
-        const absolutePath = resolveModule(audit.path, configDir, 'audit');
-        // Use a relative path so bundler can easily expose it.
-        requirePath = path.relative(__dirname, absolutePath);
+        if (global.devtools) {
+          requirePath = audit.path;
+        } else {
+          // Otherwise, attempt to find it elsewhere. This throws if not found.
+          const absolutePath = resolveModule(audit.path, configDir, 'audit');
+          // Use a relative path so bundler can easily expose it.
+          requirePath = path.relative(__dirname, absolutePath);
+        }
       }
       implementation = /** @type {typeof Audit} */ (require(requirePath));
     }

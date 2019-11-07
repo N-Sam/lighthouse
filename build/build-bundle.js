@@ -100,8 +100,9 @@ async function browserifyFile(entryPath, distPath) {
 
   // HACK: manually include the lighthouse-plugin-publisher-ads audits.
   if (isDevtools(entryPath)) {
+    bundle.require('lighthouse-plugin-publisher-ads');
     pubAdsAudits.forEach(pubAdAudit => {
-      bundle = bundle.require(pubAdAudit, {expose: '../../node_modules/' + pubAdAudit});
+      bundle = bundle.require(pubAdAudit);
     });
   }
 
