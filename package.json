@@ -118,7 +118,7 @@
     "intl-messageformat-parser": "^1.8.1",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^24.3.0",
-    "jsdom": "^12.2.0",
+    "jsdom": "^16.5.0",
     "npm-run-posix-or-windows": "^2.0.2",
     "nyc": "^13.3.0",
     "package-json-versionify": "^1.0.4",
